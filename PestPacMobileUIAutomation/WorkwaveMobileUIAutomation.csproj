@@ -82,6 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\WorkwaveMobileConfiguration.cs" />
+    <Compile Include="Features\SpecFlowFeature1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+    </Compile>
     <Compile Include="WorkwaveMobileSupport.cs" />
     <Compile Include="WorkwaveMobileUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,12 +96,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Configuration\WorkwaveMobileConfig.json" />
+    <None Include="Features\SpecFlowFeature1.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\" />
     <Folder Include="Model\" />
     <Folder Include="SharedData\" />
     <Folder Include="Steps\" />
