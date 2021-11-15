@@ -1,0 +1,13 @@
+{
+    "Mobile": true,
+    "UseSeleniumGrid": false,
+    "DeviceName": "adb:SM-G770U1",
+    "Udid": "RF8N919N89P",
+    "PlatformName": "Android",
+    "BundleId": "com.workwave.service",
+    "AppPackage": "com.workwave.service",
+    "AppActivity": "crc64df008b539702ac6f.SplashActivity",
+    "AppiumAddress": "http://localhost:4723/wd/hub",
+    "ExplicitWait_DefaultTimeoutMilliSec": 15000,
+    "ExplicitWait_DefaultPollingIntervalMilliSec": 500
+}
