@@ -124,6 +124,34 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit Attachment")]
+        public virtual void EditAttachment()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Attachment", null, ((string[])(null)));
+#line 21
+ this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table5.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+            table5.AddRow(new string[] {
+                        "Type",
+                        "Take Photo"});
+#line 22
+ testRunner.Given("Viewing Existing Attachments", ((string)(null)), table5, "Given ");
+#line 26
+ testRunner.When("Attachment Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
+ testRunner.Then("Verify Attachment Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
