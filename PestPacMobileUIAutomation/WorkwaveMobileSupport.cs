@@ -7,9 +7,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Appium;
 using System.Collections.Generic;
-using WorkWave.Workwave.Mobile.Model;
 using System.Linq;
 using System.Timers;
+using OpenQA.Selenium.Appium.Interfaces;
 
 namespace WorkWave.Workwave.Mobile
 {
@@ -349,22 +349,7 @@ namespace WorkWave.Workwave.Mobile
         /// </summary>
         /// <param name="backButton"></param>
         /// <returns></returns>
-        public static bool OnDailyView(IWebElement backButton)
-        {
-            DailyView dailyView = new DailyView();
-
-            bool onDailyView = false;
-
-            while (SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(backButton)))
-            {
-                backButton.Click();
-            }
-
-            if (dailyView.VerifyViewLoaded(5))
-                onDailyView = true;
-
-            return onDailyView;
-        }
+       
 
         public static string GetDeviceName()
         {
@@ -453,6 +438,24 @@ namespace WorkWave.Workwave.Mobile
             ((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver).Keyboard.SendKeys(text);
         }
 
+        public static void SwipeIOSUsingCoordinates(IPerformsTouchActions driver, double startX, double startY, double endX, double endY, int duration)
+        {
+            ITouchAction touchAction = new TouchAction(driver)
+            .Press(startX, startY)
+            .Wait(duration)
+            .MoveTo(endX / 2, endY / 4)
+            .Release();
+            touchAction.Perform();
+        }
+        public static void SwipeDownIOS(String elementID)
+        {
+            // PestPacMobileSupport.ScrollToElement(ContactLabel);
+            Dictionary<string, string> scrollObject = new Dictionary<string, string>();
+            scrollObject.Add("direction", "down");
+            scrollObject.Add("accessibilityLabel", elementID);
+            ((IJavaScriptExecutor)WebApplication.Instance.WebDriver).ExecuteScript("mobile: scroll", scrollObject);
+
+        }
         public static IList<IWebElement> GetList(string className) => WebApplication.Instance.WebDriver.FindElements(By.ClassName(className));
 
     }

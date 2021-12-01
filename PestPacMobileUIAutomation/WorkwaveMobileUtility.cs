@@ -11,10 +11,7 @@ namespace WorkWave.Workwave.Mobile
             WorkwaveData.Login = data.CreateInstance<Login>();
             WorkwaveData.Order = data.CreateInstance<Order>();
             WorkwaveData.Attachment = data.CreateInstance<Attachment>();
-            WorkwaveData.Service = data.CreateInstance<ServiceOffering>();
-            WorkwaveData.Lead = data.CreateInstance<Lead>();
-            WorkwaveData.Timesheet = data.CreateInstance<Timesheet>();
-            WorkwaveData.Sketch = data.CreateInstance<Sketch>();
+
         }
     }
 }

@@ -60,6 +60,7 @@
       <HintPath>..\packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -82,11 +83,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\WorkwaveMobileConfiguration.cs" />
-    <Compile Include="Features\SpecFlowFeature1.feature.cs">
+    <Compile Include="Features\Attachments.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+      <DependentUpon>Attachments.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Login.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Order.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Order.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CommonPageObjectsView.cs" />
+    <Compile Include="Model\AttachmentView.cs" />
+    <Compile Include="Model\DailyView.cs" />
+    <Compile Include="Model\OrderPageView.cs" />
+    <Compile Include="Model\TimeSheetPageView.cs" />
+    <Compile Include="Model\LoginPageView.cs" />
+    <Compile Include="SharedData\Attachment.cs" />
+    <Compile Include="SharedData\Login.cs" />
+    <Compile Include="SharedData\Order.cs" />
+    <Compile Include="SharedData\WorkwaveData.cs" />
+    <Compile Include="Steps\AttachmentsSteps.cs" />
+    <Compile Include="Steps\CommonSteps.cs" />
+    <Compile Include="Steps\LoginSteps.cs" />
+    <Compile Include="Steps\OrderSteps.cs" />
     <Compile Include="WorkwaveMobileSupport.cs" />
     <Compile Include="WorkwaveMobileUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,19 +121,23 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Configuration\WorkwaveMobileConfig.json" />
-    <None Include="Features\SpecFlowFeature1.feature">
+    <None Include="Features\Attachments.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+      <LastGenOutput>Attachments.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Login.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Login.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Order.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Order.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="SharedData\" />
-    <Folder Include="Steps\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
