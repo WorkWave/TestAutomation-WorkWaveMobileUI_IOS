@@ -17,3 +17,5 @@ Scenario: Add Photo,Video and pick from gallery Attachment
 	| Field | Value             |
 	| Type  | Pick from Gallery |
 	Then Verify Attachment Exists
+
+	
