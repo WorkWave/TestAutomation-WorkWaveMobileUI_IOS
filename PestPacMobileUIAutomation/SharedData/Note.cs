@@ -10,6 +10,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
     {
         public string NoteText { get; set; }
         public string NoteStatus { get; set; }
-        public string taggedUsers { get; set; }
+        public string TaggedUsers { get; set; }
     }
 }

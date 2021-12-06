@@ -123,6 +123,54 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Tag Users On Note")]
+        public virtual void TagUsersOnNote()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tag Users On Note", null, ((string[])(null)));
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table4.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 22
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table4, "Given ");
+#line 25
+ testRunner.When("New Note Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table5.AddRow(new string[] {
+                        "TaggedUsers",
+                        "John"});
+#line 26
+ testRunner.When("Users Tagged On Note", ((string)(null)), table5, "When ");
+#line 29
+ testRunner.Then("Verify Users Tagged On Note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table6.AddRow(new string[] {
+                        "NoteStatus",
+                        "Public"});
+            table6.AddRow(new string[] {
+                        "NoteText",
+                        "newAutoNote"});
+#line 30
+ testRunner.When("Note Added", ((string)(null)), table6, "When ");
+#line 34
+ testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

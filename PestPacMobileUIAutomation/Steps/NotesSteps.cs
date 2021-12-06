@@ -71,6 +71,20 @@ namespace WorkWave.Workwave.Mobile.Steps
             noteView.ClickOnText(WorkwaveData.Note.NoteText);
         }
 
+        [When(@"Users Tagged On Note")]
+        public void WhenUsersTaggedOnNote(Table data)
+        {
+            WorkwaveData.Note = data.CreateInstance<Note>();
+            noteView.ClickOnText("addIconMini");
+            noteView.ClickOnText(WorkwaveData.Note.TaggedUsers);
+            noteView.ClickOnText("Done");
+        }
+
+        [Then(@"Verify Users Tagged On Note")]
+        public void ThenVerifyUsersTaggedOnNote()
+        {
+            Assert.True(noteView.VerifyViewLoadedByText(5, WorkwaveData.Note.TaggedUsers));
+        }
 
     }
 }
