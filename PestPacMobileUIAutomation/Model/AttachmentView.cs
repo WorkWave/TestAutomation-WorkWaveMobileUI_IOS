@@ -30,6 +30,10 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Live Photo')])[1]")]
         private IWebElement ImageFromGallery { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Attachments:')])[1]/../..//*[@text='See All']")]
+        private IWebElement AttachmentsSeeAllButton { get; set; }
+
+
         #endregion Page Factory
 
         #region Behavior
@@ -48,6 +52,10 @@ namespace WorkWave.Workwave.Mobile.Model
 
 
         }
+
+        public bool VerifySeeAllViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(AttachmentsSeeAllButton), System.TimeSpan.FromSeconds(time));
+
+        public void ClickOnSeeAll() => AttachmentsSeeAllButton.Click();
 
         #endregion Behavior
 

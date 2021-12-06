@@ -28,9 +28,9 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(noteView.VerifyViewLoadedByHeader(5, "Add"));
             noteView.ClickOnStaticText("Notes");
         }
-        
-        [When(@"Note Modified")]
-        public void WhenNoteModified(Table data)
+
+        [When(@"Note Added")]
+        public void WhenNoteAdded(Table data)
         {
             WorkwaveData.Note = data.CreateInstance<Note>();
 
@@ -40,12 +40,37 @@ namespace WorkWave.Workwave.Mobile.Steps
             noteView.ClickOnText("Save");
             Assert.True(noteView.VerifyViewLoadedByText(5, "Start"));
         }
+
+
+        [When(@"Note Modified")]
+        public void WhenNoteModified(Table data)
+        {
+            WorkwaveData.Note = data.CreateInstance<Note>();
+
+            WorkwaveData.Note.NoteText += WorkwaveMobileSupport.generateRandomString(10);
+            noteView.EditNote(WorkwaveData.Note.NoteText);
+            noteView.ClickOnText(WorkwaveData.Note.NoteStatus);
+            noteView.ClickOnText("Save");
+            Assert.True(noteView.VerifyViewLoadedByText(5, "Start"));
+        }
         
         [Then(@"Verify Note Exists")]
         public void ThenVerifyNoteExists()
         {
             WorkwaveMobileSupport.SwipeDownIOS("NOTES");
+            if (noteView.VerifySeeAllViewLoaded(5))
+            {
+                noteView.ClickOnSeeAll();
+            }
             Assert.True(noteView.VerifyViewLoadedByText(5, WorkwaveData.Note.NoteText));
         }
+
+        [When(@"Existing Note Selected")]
+        public void WhenExistingNoteSelected()
+        {
+            noteView.ClickOnText(WorkwaveData.Note.NoteText);
+        }
+
+
     }
 }

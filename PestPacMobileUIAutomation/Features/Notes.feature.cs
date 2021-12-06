@@ -72,10 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Public Note")]
-        public virtual void AddPublicNote()
+        [NUnit.Framework.DescriptionAttribute("Add Public Note,Note Edited")]
+        public virtual void AddPublicNoteNoteEdited()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Public Note", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Public Note,Note Edited", null, ((string[])(null)));
 #line 4
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -101,8 +101,24 @@ this.ScenarioInitialize(scenarioInfo);
                         "NoteText",
                         "newAutoNote"});
 #line 9
- testRunner.When("Note Modified", ((string)(null)), table2, "When ");
+ testRunner.When("Note Added", ((string)(null)), table2, "When ");
 #line 13
+ testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 14
+ testRunner.When("Existing Note Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table3.AddRow(new string[] {
+                        "NoteStatus",
+                        "Private"});
+            table3.AddRow(new string[] {
+                        "NoteText",
+                        "editNote"});
+#line 15
+ testRunner.When("Note Modified", ((string)(null)), table3, "When ");
+#line 19
  testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

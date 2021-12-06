@@ -72,7 +72,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void ThenVerifyAttachmentExists()
         {
             WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            attachmentView.ClickOnStaticText("See All");
+            if(attachmentView.VerifySeeAllViewLoaded(5))
+            {
+                attachmentView.ClickOnSeeAll();
+            }
+            
             Assert.True(attachmentView.VerifyViewLoadedByHeader(5, "Media Gallery"));
            
             switch (WorkwaveData.Attachment.Type)
