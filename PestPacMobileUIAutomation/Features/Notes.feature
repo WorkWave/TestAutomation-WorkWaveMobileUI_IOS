@@ -1,9 +1,13 @@
-﻿Feature: Notes
-	Simple calculator for adding two numbers
+﻿@Notes
+Feature: Notes
 
-@mytag
-Scenario: Add two numbers
-	Given the first number is 50
-	And the second number is 70
-	When the two numbers are added
-	Then the result should be 120
+Scenario: Add Public Note
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When New Note Opened
+	When Note Modified
+	| Field      | Value       |
+	| NoteStatus | Public      |
+	| NoteText   | newAutoNote |
+	Then Verify Note Exists

@@ -39,6 +39,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public static void LoginBefore()
         {
             LoginPageView loginPg = new LoginPageView();
+            DailyView dailyView = new DailyView();
             TimeSheetPageView timeSheetPageView = new TimeSheetPageView();
 
             if (!loginPg.VerifyViewLoaded(2))
@@ -55,6 +56,10 @@ namespace WorkWave.Workwave.Mobile.Steps
             else if (loginPg.VerifyViewLoaded(2))
             {
                 loginPg.LoginAttempt(WorkwaveMobileSupport.DefaultEmail, WorkwaveMobileSupport.DefaultPassword);
+            }
+            while (!dailyView.VerifyViewLoaded(1))
+            {
+                System.TimeSpan.FromSeconds(30);
             }
         }
 

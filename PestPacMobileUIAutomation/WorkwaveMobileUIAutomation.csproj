@@ -105,17 +105,20 @@
     </Compile>
     <Compile Include="Model\CommonPageObjectsView.cs" />
     <Compile Include="Model\AttachmentView.cs" />
+    <Compile Include="Model\NoteView.cs" />
     <Compile Include="Model\DailyView.cs" />
     <Compile Include="Model\OrderPageView.cs" />
     <Compile Include="Model\TimeSheetPageView.cs" />
     <Compile Include="Model\LoginPageView.cs" />
     <Compile Include="SharedData\Attachment.cs" />
     <Compile Include="SharedData\Login.cs" />
+    <Compile Include="SharedData\Note.cs" />
     <Compile Include="SharedData\Order.cs" />
     <Compile Include="SharedData\WorkwaveData.cs" />
     <Compile Include="Steps\AttachmentsSteps.cs" />
     <Compile Include="Steps\CommonSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
+    <Compile Include="Steps\NotesSteps.cs" />
     <Compile Include="Steps\OrderSteps.cs" />
     <Compile Include="WorkwaveMobileSupport.cs" />
     <Compile Include="WorkwaveMobileUtility.cs" />

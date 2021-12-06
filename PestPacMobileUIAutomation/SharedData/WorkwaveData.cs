@@ -11,6 +11,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public Login Login { get; set; }
         public Order Order { get; set; }
         public Attachment Attachment { get; set; }
-
+        public Note Note { get; set; }
     }
 }
