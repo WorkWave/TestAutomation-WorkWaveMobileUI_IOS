@@ -43,7 +43,6 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "plusButtonIcon")]
         private IWebElement PlusIcon { get; set; }
 
-
         #endregion Page Factory
 
         #region Behavior
@@ -131,6 +130,8 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public void ClickPlusIcon() => PlusIcon.Click();
+
+        
 
         #endregion Behavior
     }

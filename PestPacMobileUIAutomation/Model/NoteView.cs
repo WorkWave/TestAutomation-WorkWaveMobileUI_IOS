@@ -21,8 +21,13 @@ namespace WorkWave.Workwave.Mobile.Model
         #region Page Factory
 
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Start typing note…']")]
+        [FindsBy(How = How.XPath, Using = "//*[@text='Note']/./..//XCUIElementTypeTextView")]
         private IWebElement NotesTextField { get; set; }
+
+
+        [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Notes:')])[1]/../..//*[@text='See All']")]
+        private IWebElement NotesSeeAllButton { get; set; }
+
 
         #endregion Page Factory
 
@@ -35,6 +40,14 @@ namespace WorkWave.Workwave.Mobile.Model
             WorkwaveMobileSupport.HideKeyboard();
         }
 
+        public void EditNote(string name)
+        {
+            EnterText(name, NotesTextField);
+        }
+
+        public bool VerifySeeAllViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(NotesSeeAllButton), System.TimeSpan.FromSeconds(time));
+
+        public void ClickOnSeeAll() => NotesSeeAllButton.Click();
 
         #endregion Behavior
 
