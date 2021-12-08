@@ -43,6 +43,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "plusButtonIcon")]
         private IWebElement PlusIcon { get; set; }
 
+        [FindsBy(How = How.Id, Using = "AddIconLarge")]
+        private IWebElement AddIcon { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -63,6 +66,12 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickOnButton(String Name)
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/../XCUIElementTypeButton[1]"));
+            element.Click();
+        }
+
+        public void ClickOnArrowFollowingToText(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//*[@id='drillDownIcon']"));
             element.Click();
         }
 
@@ -131,7 +140,7 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void ClickPlusIcon() => PlusIcon.Click();
 
-        
+        public void ClickAddIcon() => AddIcon.Click();
 
         #endregion Behavior
     }

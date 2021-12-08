@@ -87,5 +87,27 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Order.Status = "NOT STARTED";
             WorkwaveData.Order.OrderName = orderPageView.GetOrderName();
         }
+
+        [Given("Work Order Discounts Removed")]
+        public void WorkOrderDiscountsRemoved()
+        {
+            
+            ServiceView serviceView = new ServiceView();
+            double previousDiscount = 0.00;
+
+            previousDiscount = serviceView.GetWorkOrderDiscountValue();
+            if (!previousDiscount.Equals(0.00))
+            {
+                serviceView.ClickOnDiscount();
+                while (serviceView.IsDiscountValueExist(5))
+                {
+                    serviceView.ClickOnDiscountValue();
+                    serviceView.ClickOnStaticText("Remove Discount");
+                }
+                serviceView.ClickBack();
+            }
+
+        }
+
     }
 }
