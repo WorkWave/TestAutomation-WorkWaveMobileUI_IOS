@@ -12,6 +12,7 @@ namespace WorkWave.Workwave.Mobile
             WorkwaveData.Order = data.CreateInstance<Order>();
             WorkwaveData.Attachment = data.CreateInstance<Attachment>();
             WorkwaveData.Note = data.CreateInstance<Note>();
+            WorkwaveData.Services = data.CreateInstance<Services>();
         }
     }
 }

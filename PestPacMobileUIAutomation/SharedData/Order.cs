@@ -17,5 +17,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string CustomFieldType { get; set; }
         public string CustomFieldValue { get; set; }
         public string WorkOrderCustomFields { get; set; }
+
     }
 }
