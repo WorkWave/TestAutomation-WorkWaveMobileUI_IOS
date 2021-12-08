@@ -13,7 +13,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
-        double subTotal,total,productTotalAmount = 0.00;
+        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal = 0.00;
         string productTotal = null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
@@ -59,7 +59,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Given(@"Product Tab Opened")]
         public void GivenProductTabOpened(Table data)
         {
-            common.GivenNotStartedOrderOpened(data);
+           
             WorkwaveMobileSupport.SwipeDownIOS("FORMS");
             WorkwaveData.Services = data.CreateInstance<Services>();
             subTotal = serviceView.GetSubTotal();
@@ -94,6 +94,9 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.ClickOnStaticText("Add");
 
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+            expectedServiceSubTotal = productTotalAmount + subTotal;
+            expectedServiceTotal = productTotalAmount + total;
+
         }
         
         [Then(@"Verify Product Exists")]
@@ -107,13 +110,51 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void ThenVerifyServiceTotal()
         {
             serviceView.ClickBack();
-            double updatedSubTotal = serviceView.GetSubTotal();
-            double updatedTotal = serviceView.GetTotal();
+            Assert.True(serviceView.VerifyViewLoadedByText(5, "Start"));
+             updatedSubTotal = serviceView.GetSubTotal();
+             updatedTotal = serviceView.GetTotal();
             Console.WriteLine(updatedSubTotal);
-            Console.WriteLine(productTotalAmount + subTotal);
-            Assert.True(updatedSubTotal == (productTotalAmount+subTotal));
-            Assert.True(updatedTotal == (productTotalAmount + total));
-
+            Console.WriteLine(expectedServiceSubTotal);
+            Assert.True(updatedSubTotal == expectedServiceSubTotal);
+            Assert.True(updatedTotal == expectedServiceTotal);
         }
+
+        [When(@"Product Edited")]
+        public void WhenProductEdited(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+
+            //Get the existing price before update
+            double prodVal = serviceView.GetproductValue();
+
+            serviceView.ClickOnLastStaticText(WorkwaveData.Services.ServiceProduct);
+
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Edit " + WorkwaveData.Services.ServiceProduct));
+            WorkwaveData.Services.ServiceProductQuantity = WorkwaveMobileSupport.RandomInt(3);
+            WorkwaveData.Services.ServiceProductPrice = serviceView.getPrice();
+            serviceView.EnterProductQuantity(WorkwaveData.Services.ServiceProductQuantity);
+
+            productTotal = serviceView.GetProductSubTotal();
+            double productTotalAmountUpdated = serviceView.GetProSubTotalValue();
+            Console.WriteLine("productTotalAmountUpdated " + productTotalAmountUpdated);
+            double expectedquan = (Double.Parse(WorkwaveData.Services.ServiceProductQuantity) * Double.Parse(WorkwaveData.Services.ServiceProductPrice));
+            Console.WriteLine(expectedquan);
+            Assert.True(productTotalAmountUpdated == expectedquan);
+
+            WorkwaveData.Services.ServiceProductPrice = productTotal;
+            serviceView.ClickOnStaticText("Save");
+
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+
+            Console.WriteLine(updatedSubTotal);
+            Console.WriteLine(prodVal);
+            Console.WriteLine(productTotalAmountUpdated);
+
+            expectedServiceSubTotal = (updatedSubTotal - prodVal)  + productTotalAmountUpdated;
+
+            Console.WriteLine("expectedServiceSubTotal "+expectedServiceSubTotal);
+            expectedServiceTotal = (updatedTotal - prodVal) + productTotalAmountUpdated ;
+        }
+
     }
 }

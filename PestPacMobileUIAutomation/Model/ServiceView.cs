@@ -44,6 +44,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Subtotal']/..//XCUIElementTypeTextField")]
         private IWebElement ProductSubTotalField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'$')])[last()-1]")]
+        private IWebElement ProductValue { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -102,6 +105,16 @@ namespace WorkWave.Workwave.Mobile.Model
             String previousAmountS = stringValue.Replace(",", "");
             proSubTotal = double.Parse(previousAmountS);
             return proSubTotal;
+        }
+
+        double productValue = 0.00;
+        public double GetproductValue()
+        {
+            String stringValue = ProductValue.GetAttribute("text").ToString();
+            String[] amount = stringValue.Split('$');
+            String previousAmountS = amount[1].Replace(",", "");
+            productValue = double.Parse(previousAmountS);
+            return productValue;
         }
 
         #endregion Behavior

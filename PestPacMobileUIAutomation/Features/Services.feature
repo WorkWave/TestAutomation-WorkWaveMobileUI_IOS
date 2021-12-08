@@ -1,16 +1,24 @@
 ﻿@Services
 Feature: Services
 
-Scenario: Add Product On Service
-	#Given No Service Discounts Exist
-	#| Field          | Value |
-	#| ServiceType    | ANY   |
-	#| RandomizePrice | false |
+Scenario: Add Product On Service,Update Product On Service
+	Given Not Started Order Opened
+	| Field    | Value                 |
+	| DetailsNeeded    | true |
 	Given Product Tab Opened
 	| Field    | Value |
 	| ServiceType   | Cleaning Garden  |
 	When Product Added
 	| Field          | Value |
+	| ServiceProduct | Cleaning Powder|
+	| ServiceType    | Cleaning Garden  |
+	Then Verify Product Exists
+	Then Verify Service Total
+	Given Product Tab Opened
+	| Field    | Value |
+	| ServiceType   | Cleaning Garden  |
+	When Product Edited
+	| Field | Value |
 	| ServiceProduct | Cleaning Powder|
 	| ServiceType    | Cleaning Garden  |
 	Then Verify Product Exists

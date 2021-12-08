@@ -81,6 +81,12 @@ namespace WorkWave.Workwave.Mobile.Model
             element.Click();
         }
 
+        public void ClickOnLastStaticText(String Text)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//XCUIElementTypeStaticText[@text='" + Text + "'])[last()]"));
+            element.Click();
+        }
+
         public void ClickOnText(String Text)
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + Text + "']"));
