@@ -148,6 +148,77 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void ClickAddIcon() => AddIcon.Click();
 
+        public IList<IWebElement> findElementsGivenByType(string id, string byType)
+        {
+            IList<IWebElement> elems = null;
+            switch (byType)
+            {
+                case "xpath":
+                    elems = WebApplication.Instance.WebDriver.FindElements(By.XPath(id));
+                    break;
+                case "id":
+                    elems = WebApplication.Instance.WebDriver.FindElements(By.Id(id));
+                    break;
+                case "class":
+                    elems = WebApplication.Instance.WebDriver.FindElements(By.ClassName(id));
+                    break;
+            }
+            return elems;
+        }
+
+        public IWebElement findListElement(string name, string id, string byType)
+        {
+            int index = 1;
+            IWebElement currElem = null;
+            IList<IWebElement> allElements = null;
+            string prevLastFoundElem = "";
+            try
+            {
+                allElements = findElementsGivenByType(id, byType);
+            }
+            catch
+            {
+                return null;
+            }
+
+            if (allElements.Count == 0)
+                return null;
+
+            if (name.Equals("") || name.Equals("ANY"))
+                return allElements[index - 1];
+
+            while (index < allElements.Count + 1)
+            {
+                try
+                {
+                    currElem = allElements[index - 1];
+
+                    if (index == allElements.Count && prevLastFoundElem.Equals(currElem.GetAttribute("text")))
+                        break;
+
+                    if (currElem.GetAttribute("text").Equals(name))
+                        return currElem;
+
+                    if (index == allElements.Count)
+                    {
+                        prevLastFoundElem = currElem.GetAttribute("text");
+                        WorkwaveMobileSupport.Swipe(-1139);
+                        allElements = findElementsGivenByType(id, byType);
+                        index = 1;
+                    }
+                    else
+                        index++;
+
+                }
+                catch
+                {
+                    break;
+                }
+            }
+
+            return null;
+        }
+
         #endregion Behavior
     }
 }

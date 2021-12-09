@@ -1,10 +1,11 @@
 ﻿@Services
 Feature: Services
 
-Scenario: Add Product On Service,Update Product On Service
+Scenario: Add Product On Service,Update Product On Service,Delete Product On Service
 	Given Not Started Order Opened
 	| Field    | Value                 |
 	| DetailsNeeded    | true |
+	When Navigate To Services View
 	Given Product Tab Opened
 	| Field    | Value |
 	| ServiceType   | Cleaning Garden  |
@@ -22,4 +23,13 @@ Scenario: Add Product On Service,Update Product On Service
 	| ServiceProduct | Cleaning Powder|
 	| ServiceType    | Cleaning Garden  |
 	Then Verify Product Exists
+	Then Verify Service Total
+	Given Product Tab Opened
+	| Field    | Value |
+	| ServiceType   | Cleaning Garden  |
+	When Product Deleted
+	| Field | Value |
+	| ServiceProduct | Cleaning Powder|
+	| ServiceType    | Cleaning Garden  |
+	Then Verify Product Deleted
 	Then Verify Service Total

@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
         double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal = 0.00;
-        string productTotal = null;
+        string productTotal,firstProductValue = null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
         {
@@ -55,12 +55,17 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             GivenDiscountTabOpened(data);
         }
-        
+
+        [When(@"Navigate To Services View")]
+        public void WhenNavigateToServicesView()
+        {
+            WorkwaveMobileSupport.SwipeDownIOS("FORMS");
+        }
+
+
         [Given(@"Product Tab Opened")]
         public void GivenProductTabOpened(Table data)
         {
-           
-            WorkwaveMobileSupport.SwipeDownIOS("FORMS");
             WorkwaveData.Services = data.CreateInstance<Services>();
             subTotal = serviceView.GetSubTotal();
             total = serviceView.GetTotal();
@@ -146,14 +151,39 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
 
-            Console.WriteLine(updatedSubTotal);
-            Console.WriteLine(prodVal);
-            Console.WriteLine(productTotalAmountUpdated);
-
             expectedServiceSubTotal = (updatedSubTotal - prodVal)  + productTotalAmountUpdated;
 
             Console.WriteLine("expectedServiceSubTotal "+expectedServiceSubTotal);
             expectedServiceTotal = (updatedTotal - prodVal) + productTotalAmountUpdated ;
+        }
+
+        [When(@"Product Deleted")]
+        public void WhenProductDeleted(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+
+            double existingProdSubTotal = serviceView.GetProMainSubTotalValue();
+            firstProductValue = serviceView.getFirstProPrice(WorkwaveData.Services.ServiceProduct);
+            double prodVal = serviceView.GetFirstproductValue(WorkwaveData.Services.ServiceProduct);
+            serviceView.DeleteProduct(WorkwaveData.Services.ServiceProduct);
+            
+            double productTotalAmountUpdated = serviceView.GetProMainSubTotalValue();
+            Console.WriteLine("productTotalAmountUpdated " + productTotalAmountUpdated);
+            double expectedquan = existingProdSubTotal - prodVal;
+            Console.WriteLine(expectedquan);
+            Assert.True(productTotalAmountUpdated == expectedquan);
+
+            expectedServiceSubTotal = updatedSubTotal - prodVal;
+
+            Console.WriteLine("expectedServiceSubTotal " + expectedServiceSubTotal);
+            expectedServiceTotal = updatedTotal - prodVal;
+        }
+
+        [Then(@"Verify Product Deleted")]
+        public void ThenVerifyProductDeleted()
+        {
+            Assert.True(serviceView.findElement(firstProductValue) == null);
+
         }
 
     }
