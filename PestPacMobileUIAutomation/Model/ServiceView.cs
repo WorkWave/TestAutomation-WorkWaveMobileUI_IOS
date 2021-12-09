@@ -1,4 +1,7 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -44,8 +47,14 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Subtotal']/..//XCUIElementTypeTextField")]
         private IWebElement ProductSubTotalField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Subtotal']/..//XCUIElementTypeStaticText[2]")]
+        private IWebElement ProductMainSubTotalField { get; set; }
+
         [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'$')])[last()-1]")]
         private IWebElement ProductValue { get; set; }
+
+        [FindsBy(How = How.Id, Using = "Subtotal")]
+        private IWebElement SubTotalValueLabel { get; set; }
 
         #endregion Page Factory
 
@@ -107,6 +116,18 @@ namespace WorkWave.Workwave.Mobile.Model
             return proSubTotal;
         }
 
+        double proMainSubTotal = 0.00;
+        public double GetProMainSubTotalValue()
+        {
+            String stringValue = ProductMainSubTotalField.GetAttribute("text").ToString();
+            String[] amount = stringValue.Split('$');
+            String previousAmountS = amount[1].Replace(",", "");
+            proMainSubTotal = double.Parse(previousAmountS);
+            return proMainSubTotal;
+        }
+
+        public string getFirstProPrice(String Name) => WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Name + "'])[1]/..//XCUIElementTypeStaticText[3]")).GetAttribute("text");
+
         double productValue = 0.00;
         public double GetproductValue()
         {
@@ -116,6 +137,39 @@ namespace WorkWave.Workwave.Mobile.Model
             productValue = double.Parse(previousAmountS);
             return productValue;
         }
+
+        public double GetFirstproductValue(String Name)
+        {
+            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Name + "'])[1]/..//XCUIElementTypeStaticText[3]"));
+            String stringValue = element1.GetAttribute("text").ToString();
+            String[] amount = stringValue.Split('$');
+            String previousAmountS = amount[1].Replace(",", "");
+            productValue = double.Parse(previousAmountS);
+            return productValue;
+        }
+
+        public void SwipeToDeleteProduct(IPerformsTouchActions driver, String Name)
+        {
+            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Name + "'])[1]/..//*[@id='chevron']"));
+            IWebElement element2 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Name + "'])[1]"));
+            var touchAction = new TouchAction(driver);
+            touchAction.Press(element1).MoveTo(element2).Release().Perform();
+        }
+
+        public void DeleteProduct(String Name)
+        {
+
+            SwipeToDeleteProduct(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), Name);
+            System.TimeSpan.FromSeconds(10);
+        }
+
+        public IWebElement findElement(string name)
+        {
+            return findListElement(name, name, "id");
+        }
+
+        public bool VerifyServicesViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SubTotalValueLabel), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
 

@@ -72,10 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Product On Service,Update Product On Service")]
-        public virtual void AddProductOnServiceUpdateProductOnService()
+        [NUnit.Framework.DescriptionAttribute("Add Product On Service,Update Product On Service,Delete Product On Service")]
+        public virtual void AddProductOnServiceUpdateProductOnServiceDeleteProductOnService()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Product On Service,Update Product On Service", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Product On Service,Update Product On Service,Delete Product On Service", null, ((string[])(null)));
 #line 4
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -88,6 +88,8 @@ this.ScenarioInitialize(scenarioInfo);
                         "true"});
 #line 5
  testRunner.Given("Not Started Order Opened", ((string)(null)), table1, "Given ");
+#line 8
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -95,7 +97,7 @@ this.ScenarioInitialize(scenarioInfo);
             table2.AddRow(new string[] {
                         "ServiceType",
                         "Cleaning Garden"});
-#line 8
+#line 9
  testRunner.Given("Product Tab Opened", ((string)(null)), table2, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -107,11 +109,11 @@ this.ScenarioInitialize(scenarioInfo);
             table3.AddRow(new string[] {
                         "ServiceType",
                         "Cleaning Garden"});
-#line 11
+#line 12
  testRunner.When("Product Added", ((string)(null)), table3, "When ");
-#line 15
- testRunner.Then("Verify Product Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 16
+ testRunner.Then("Verify Product Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 17
  testRunner.Then("Verify Service Total", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -120,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
             table4.AddRow(new string[] {
                         "ServiceType",
                         "Cleaning Garden"});
-#line 17
+#line 18
  testRunner.Given("Product Tab Opened", ((string)(null)), table4, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -132,11 +134,36 @@ this.ScenarioInitialize(scenarioInfo);
             table5.AddRow(new string[] {
                         "ServiceType",
                         "Cleaning Garden"});
-#line 20
+#line 21
  testRunner.When("Product Edited", ((string)(null)), table5, "When ");
-#line 24
- testRunner.Then("Verify Product Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 25
+ testRunner.Then("Verify Product Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 26
+ testRunner.Then("Verify Service Total", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table6.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Garden"});
+#line 27
+ testRunner.Given("Product Tab Opened", ((string)(null)), table6, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table7.AddRow(new string[] {
+                        "ServiceProduct",
+                        "Cleaning Powder"});
+            table7.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Garden"});
+#line 30
+ testRunner.When("Product Deleted", ((string)(null)), table7, "When ");
+#line 34
+ testRunner.Then("Verify Product Deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 35
  testRunner.Then("Verify Service Total", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
