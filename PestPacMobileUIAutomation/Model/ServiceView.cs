@@ -183,6 +183,7 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyServicesViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SubTotalValueLabel), System.TimeSpan.FromSeconds(time));
 
+        public string getMaterialQuantity() => MaterialQuantityField.GetAttribute("text");
 
         #endregion Behavior
 

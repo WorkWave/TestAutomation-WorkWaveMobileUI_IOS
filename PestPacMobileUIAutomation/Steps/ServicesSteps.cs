@@ -221,6 +221,24 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceMaterial));
         }
 
+        [When(@"Material Edited")]
+        public void WhenMaterialEdited(Table data)
+        {
+            serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
+            WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
+            serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
+            serviceView.ClickOnStaticText("Save");
+
+        }
+
+        [Then(@"Verify Material Edited")]
+        public void ThenVerifyMaterialEdited()
+        {
+            serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
+            string updatedQuantity = serviceView.getMaterialQuantity();
+            Assert.True(updatedQuantity .Equals(WorkwaveData.Services.ServiceMaterialQuantity));
+
+        }
 
     }
 }
