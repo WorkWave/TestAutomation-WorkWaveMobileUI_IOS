@@ -33,3 +33,17 @@ Scenario: Add Product On Service,Update Product On Service,Delete Product On Ser
 	| ServiceType    | Cleaning Garden  |
 	Then Verify Product Deleted
 	Then Verify Service Total
+
+Scenario: Add Material On Service
+	Given Not Started Order Opened
+	| Field    | Value                 |
+	| DetailsNeeded    | true |
+	When Navigate To Services View
+	Given Material Tab Opened
+	| Field    | Value |
+	| ServiceType    | Cleaning Garden   |
+	| RandomizePrice | false |
+	When Material Added
+	| Field | Value |
+	| ServiceMaterial | Ladder |
+	Then Verify Material Exists

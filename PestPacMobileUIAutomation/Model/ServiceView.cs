@@ -38,11 +38,17 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[2]")]
         private IWebElement ProductButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[4]")]
+        private IWebElement MaterialButton { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[5]")]
         private IWebElement PriceField { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[3]")]
         private IWebElement QuantityField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[1]")]
+        private IWebElement MaterialQuantityField { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@text='Subtotal']/..//XCUIElementTypeTextField")]
         private IWebElement ProductSubTotalField { get; set; }
@@ -98,11 +104,18 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void ClickProductButton() => ProductButton.Click();
 
+        public void ClickMaterialButton() => MaterialButton.Click();
+
         public string getPrice() => PriceField.GetAttribute("text");
 
         public void EnterProductQuantity(string text)
         {
             EnterText(text, QuantityField);
+        }
+
+        public void EnterMaterialQuantity(string text)
+        {
+            EnterText(text, MaterialQuantityField);
         }
 
         public string GetProductSubTotal() => ProductSubTotalField.GetAttribute("text");
