@@ -186,5 +186,41 @@ namespace WorkWave.Workwave.Mobile.Steps
 
         }
 
+        [Given(@"Material Tab Opened")]
+        public void GivenMaterialTabOpened(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+            serviceView.ClickMaterialButton();
+        }
+
+        [When(@"Material Added")]
+        public void WhenMaterialAdded(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickAddIcon();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Material"));
+            serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceMaterial);
+            serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
+
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Edit Material"));
+            WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
+            serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
+
+            serviceView.ClickOnStaticText("Save");
+
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Material"));
+
+        }
+
+        [Then(@"Verify Material Exists")]
+        public void ThenVerifyMaterialExists()
+        {
+            serviceView.ClickBack();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceMaterial));
+        }
+
+
     }
 }
