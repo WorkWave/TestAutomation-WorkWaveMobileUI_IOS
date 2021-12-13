@@ -165,7 +165,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             double existingProdSubTotal = serviceView.GetProMainSubTotalValue();
             firstProductValue = serviceView.getFirstProPrice(WorkwaveData.Services.ServiceProduct);
             double prodVal = serviceView.GetFirstproductValue(WorkwaveData.Services.ServiceProduct);
-            serviceView.DeleteProduct(WorkwaveData.Services.ServiceProduct);
+            serviceView.DeleteProductMaterial(WorkwaveData.Services.ServiceProduct);
             
             double productTotalAmountUpdated = serviceView.GetProMainSubTotalValue();
             Console.WriteLine("productTotalAmountUpdated " + productTotalAmountUpdated);
@@ -224,6 +224,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Material Edited")]
         public void WhenMaterialEdited(Table data)
         {
+            WorkwaveData.Services = data.CreateInstance<Services>();
             serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
             WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
             serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
@@ -239,6 +240,23 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(updatedQuantity .Equals(WorkwaveData.Services.ServiceMaterialQuantity));
 
         }
+
+        [When(@"Material Deleted")]
+        public void WhenMaterialDeleted(Table data)
+        {
+            serviceView.ClickBack();
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.DeleteProductMaterial(WorkwaveData.Services.ServiceMaterial);
+            System.TimeSpan.FromSeconds(60);
+            serviceView.ClickOnStaticText("Delete");
+        }
+
+        [Then(@"Verify Material Does Not Exist")]
+        public void ThenVerifyMaterialDoesNotExist()
+        {
+            Assert.True(serviceView.findElement(WorkwaveData.Services.ServiceMaterial) == null);
+        }
+
 
     }
 }

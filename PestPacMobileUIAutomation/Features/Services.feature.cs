@@ -170,10 +170,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Material On Service,Edit Material On Service")]
-        public virtual void AddMaterialOnServiceEditMaterialOnService()
+        [NUnit.Framework.DescriptionAttribute("Add Material On Service,Edit Material On Service,Delete Material On Service")]
+        public virtual void AddMaterialOnServiceEditMaterialOnServiceDeleteMaterialOnService()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Material On Service,Edit Material On Service", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Material On Service,Edit Material On Service,Delete Material On Service", null, ((string[])(null)));
 #line 37
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -222,6 +222,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Material Edited", ((string)(null)), table11, "When ");
 #line 53
  testRunner.Then("Verify Material Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table12.AddRow(new string[] {
+                        "ServiceMaterial",
+                        "Broom"});
+#line 54
+ testRunner.When("Material Deleted", ((string)(null)), table12, "When ");
+#line 57
+ testRunner.Then("Verify Material Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

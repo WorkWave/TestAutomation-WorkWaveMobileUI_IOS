@@ -34,7 +34,7 @@ Scenario: Add Product On Service,Update Product On Service,Delete Product On Ser
 	Then Verify Product Deleted
 	Then Verify Service Total
 
-Scenario: Add Material On Service,Edit Material On Service
+Scenario: Add Material On Service,Edit Material On Service,Delete Material On Service
 	Given Not Started Order Opened
 	| Field    | Value                 |
 	| DetailsNeeded    | true |
@@ -51,3 +51,7 @@ Scenario: Add Material On Service,Edit Material On Service
 	| Field | Value |
 	| ServiceMaterial | Broom |
 	Then Verify Material Edited
+	When Material Deleted
+	| Field | Value |
+	| ServiceMaterial | Broom |
+	Then Verify Material Does Not Exist
