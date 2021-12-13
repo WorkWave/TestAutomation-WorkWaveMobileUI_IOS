@@ -169,7 +169,7 @@ namespace WorkWave.Workwave.Mobile.Model
             touchAction.Press(element1).MoveTo(element2).Release().Perform();
         }
 
-        public void DeleteProduct(String Name)
+        public void DeleteProductMaterial(String Name)
         {
 
             SwipeToDeleteProduct(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), Name);
