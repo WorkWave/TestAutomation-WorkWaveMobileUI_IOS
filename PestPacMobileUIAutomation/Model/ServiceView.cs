@@ -41,6 +41,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[4]")]
         private IWebElement MaterialButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[5]")]
+        private IWebElement DiscountButton { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[5]")]
         private IWebElement PriceField { get; set; }
 
@@ -105,6 +108,8 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickProductButton() => ProductButton.Click();
 
         public void ClickMaterialButton() => MaterialButton.Click();
+
+        public void ClickDiscountButton() => DiscountButton.Click();
 
         public string getPrice() => PriceField.GetAttribute("text");
 

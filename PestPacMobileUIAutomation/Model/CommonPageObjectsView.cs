@@ -219,6 +219,16 @@ namespace WorkWave.Workwave.Mobile.Model
             return null;
         }
 
+        public void EnterTextCommonField(string text, string fieldName)
+        {
+            IWebElement field = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + fieldName + "']/../../XCUIElementTypeTextField"));
+            field.Click();
+            if (!field.GetAttribute("text").Equals(""))
+                field.Clear();
+            field.SendKeys(text);
+            WorkwaveMobileSupport.HideKeyboard();
+        }
+
         #endregion Behavior
     }
 }

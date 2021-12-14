@@ -43,23 +43,12 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Work Order Discounts"));
         }
 
-        [Given("Discount Tab Opened")]
-        public void GivenDiscountTabOpened(Table data)
-        {
-            GivenServicesExist(data);
-            WhenDiscountTabOpened();
-        }
-
-        [Given(@"No Service Discounts Exist")]
-        public void GivenNoServiceDiscountsExist(Table data)
-        {
-            GivenDiscountTabOpened(data);
-        }
+      
 
         [When(@"Navigate To Services View")]
         public void WhenNavigateToServicesView()
         {
-            WorkwaveMobileSupport.SwipeDownIOS("FORMS");
+            WorkwaveMobileSupport.SwipeDownIOS("SERVICES");
         }
 
 
@@ -257,6 +246,63 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.findElement(WorkwaveData.Services.ServiceMaterial) == null);
         }
 
+        [Given("Discount Tab Opened")]
+        public void GivenDiscountTabOpened(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            subTotal = serviceView.GetSubTotal();
+            total = serviceView.GetTotal();
+            serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+            serviceView.ClickDiscountButton();
+        }
+
+        [When(@"Discount Added")]
+        public void WhenDiscountAdded(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickAddIcon();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Discount"));
+            WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
+            serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription,"Description");
+            serviceView.ClickOnButton(WorkwaveData.Services.ServiceDiscountType);
+            WorkwaveData.Services.ServiceDiscountAmount = WorkwaveMobileSupport.RandomInt(2);
+            if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
+            {
+                serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountAmount, "Percentage");
+            }
+            else
+            {
+                serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountAmount, "Amount");
+            }
+
+            serviceView.ClickOnStaticText("Add");
+            double discount = double.Parse(WorkwaveData.Services.ServiceDiscountAmount);
+
+            if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
+            {
+                expectedServiceSubTotal = subTotal - (subTotal * discount) / 100;
+                expectedServiceTotal = total - (total * discount) / 100;
+            }
+            else
+            {
+                expectedServiceSubTotal = subTotal - discount;
+                expectedServiceTotal = total - discount;
+            }
+         
+        }
+
+        [Then(@"Verify Discount Exists")]
+        public void ThenVerifyDiscountExists()
+        {
+            Assert.True(serviceView.VerifyViewLoadedByText(5, WorkwaveData.Services.ServiceDiscountDescription));
+        }
+
+        [Then(@"Verify Discount Applied")]
+        public void ThenVerifyDiscountApplied()
+        {
+            ThenVerifyServiceTotal();
+        }
 
     }
 }
