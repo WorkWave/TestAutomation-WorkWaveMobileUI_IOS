@@ -238,10 +238,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Value Discount On Service")]
-        public virtual void AddValueDiscountOnService()
+        [NUnit.Framework.DescriptionAttribute("Add Value Discount On Service,Add Percentage Discount On Service")]
+        public virtual void AddValueDiscountOnServiceAddPercentageDiscountOnService()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Value Discount On Service", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Value Discount On Service,Add Percentage Discount On Service", null, ((string[])(null)));
 #line 59
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();

@@ -29,6 +29,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Subtotal']/..//*[@XCElementType='XCUIElementTypeStaticText'][2]")]
         private IWebElement SubTotalValue { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Service Price']/..//XCUIElementTypeTextField[2]")]
+        private IWebElement ServicePrice { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//*[@text='Total']/..//*[@XCElementType='XCUIElementTypeStaticText'][2]")]
         private IWebElement TotalValue { get; set; }
 
@@ -88,6 +91,15 @@ namespace WorkWave.Workwave.Mobile.Model
             subTotal = double.Parse(previousAmountS);
             return subTotal;
         }
+
+        double servicePrice = 0.00;
+        public double GetservicePrice()
+        {
+            String stringValue = ServicePrice.GetAttribute("text").ToString();
+            subTotal = double.Parse(stringValue);
+            return servicePrice;
+        }
+
 
         double total = 0.00;
         public double GetTotal()
