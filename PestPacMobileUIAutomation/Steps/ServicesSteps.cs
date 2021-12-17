@@ -13,8 +13,8 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
-        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount = 0.00;
-        string productTotal,firstProductValue = null;
+        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount = 0.00;
+        string productTotal,firstProductValue, serviceDescription = null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
         {
@@ -287,17 +287,20 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
             {
+                discountAmount = (updatedServiceAmount * discount) / 100;
                 expectedServiceSubTotal = subTotal - ((updatedServiceAmount * discount) / 100);
                 expectedServiceTotal = total - ((updatedServiceAmount * discount) / 100);
             }
             else
             {
+                discountAmount = discount;
                 expectedServiceSubTotal = subTotal - discount;
                 expectedServiceTotal = total - discount;
             }
 
-            
-         
+            serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
+
+
         }
 
         [Then(@"Verify Discount Exists")]
@@ -311,6 +314,43 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             ThenVerifyServiceTotal();
         }
+
+        [When(@"Discount Edited")]
+        public void WhenDiscountEdited(Table data)
+        {
+            
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickOnText(serviceDescription);
+            WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
+            serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription, "Description");
+            
+            WorkwaveData.Services.ServiceDiscountAmount = WorkwaveMobileSupport.RandomInt(2);
+            if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
+            {
+
+                serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountAmount, "Percentage");
+            }
+            else
+            {
+                serviceView.ClickOnButton(WorkwaveData.Services.ServiceDiscountType);
+                serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountAmount, "Amount");
+            }
+
+            serviceView.ClickOnStaticText("Add");
+            double discount = double.Parse(WorkwaveData.Services.ServiceDiscountAmount);
+
+            if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
+            {
+                expectedServiceSubTotal = (subTotal - ((updatedServiceAmount * discount) / 100))+ discountAmount;
+                expectedServiceTotal = (total - ((updatedServiceAmount * discount) / 100))+ discountAmount;
+            }
+            else
+            {
+                expectedServiceSubTotal = (subTotal - discount)+ discountAmount;
+                expectedServiceTotal = (total - discount)+ discountAmount;
+            }
+        }
+
 
     }
 }
