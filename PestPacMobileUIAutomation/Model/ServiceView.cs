@@ -100,6 +100,16 @@ namespace WorkWave.Workwave.Mobile.Model
             return servicePrice;
         }
 
+        double serviceAmount = 0.00;
+        public double GetServiceAmount(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//XCUIElementTypeStaticText[2]"));
+            String stringValue = element.GetAttribute("text").ToString();
+            String[] amount = stringValue.Split('$');
+            String previousAmountS = amount[1].Replace(",", "");
+            serviceAmount = double.Parse(previousAmountS);
+            return serviceAmount;
+        }
 
         double total = 0.00;
         public double GetTotal()
