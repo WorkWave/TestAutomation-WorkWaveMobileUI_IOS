@@ -13,7 +13,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
-        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice = 0.00;
+        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount = 0.00;
         string productTotal,firstProductValue = null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
@@ -252,9 +252,12 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Services = data.CreateInstance<Services>();
             subTotal = serviceView.GetSubTotal();
             total = serviceView.GetTotal();
+            servicePrice = serviceView.GetServiceAmount(WorkwaveData.Services.ServiceType);
             serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
-            servicePrice = serviceView.GetservicePrice();
+            serviceView.ClickProductButton();
+            double productTotalAmountUpdated = serviceView.GetProMainSubTotalValue();
+            updatedServiceAmount = servicePrice - productTotalAmountUpdated;
             serviceView.ClickDiscountButton();
         }
 
@@ -284,14 +287,16 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
             {
-                expectedServiceSubTotal = subTotal - ((servicePrice * discount) / 100);
-                expectedServiceTotal = total - ((servicePrice * discount) / 100);
+                expectedServiceSubTotal = subTotal - ((updatedServiceAmount * discount) / 100);
+                expectedServiceTotal = total - ((updatedServiceAmount * discount) / 100);
             }
             else
             {
                 expectedServiceSubTotal = subTotal - discount;
                 expectedServiceTotal = total - discount;
             }
+
+            
          
         }
 
