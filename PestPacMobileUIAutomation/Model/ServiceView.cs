@@ -212,6 +212,11 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public string getMaterialQuantity() => MaterialQuantityField.GetAttribute("text");
 
+        public IWebElement findDiscount(string text)
+        {
+            return findListElement(text, "title", "id");
+        }
+
         #endregion Behavior
 
     }
