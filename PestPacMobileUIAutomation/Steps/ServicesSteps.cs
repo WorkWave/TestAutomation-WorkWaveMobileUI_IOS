@@ -343,12 +343,40 @@ namespace WorkWave.Workwave.Mobile.Steps
             {
                 expectedServiceSubTotal = (subTotal - ((serviceAmountBefore * discount) / 100))+ discountAmount;
                 expectedServiceTotal = (total - ((serviceAmountBefore * discount) / 100))+ discountAmount;
+                discountAmount = (serviceAmountBefore * discount) / 100;
             }
             else
             {
                 expectedServiceSubTotal = (subTotal - discount)+ discountAmount;
                 expectedServiceTotal = (total - discount)+ discountAmount;
+                discountAmount = discount;
             }
+
+            serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
+        }
+
+        [When(@"Discount Deleted")]
+        public void WhenDiscountDeleted(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickOnText(serviceDescription);
+            serviceView.ClickOnText("Remove Discount");
+
+            expectedServiceSubTotal = subTotal  + discountAmount;
+            expectedServiceTotal = total + discountAmount;
+
+        }
+
+        [Then(@"Verify Discount Does Not Exist")]
+        public void ThenVerifyDiscountDoesNotExist()
+        {
+            Assert.True(serviceView.findDiscount(WorkwaveData.Services.ServiceDiscountDescription) == null);
+        }
+
+        [Then(@"Verify Discount Removed")]
+        public void ThenVerifyDiscountRemoved()
+        {
+            ThenVerifyServiceTotal();
         }
 
 

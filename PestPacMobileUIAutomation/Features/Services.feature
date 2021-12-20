@@ -56,7 +56,7 @@ Scenario: Add Material On Service,Edit Material On Service,Delete Material On Se
 	| ServiceMaterial | Broom |
 	Then Verify Material Does Not Exist
 
-Scenario: Add Value Discount On Service,Update Service offering Value Discount On Service
+Scenario: Add Value Discount On Service,Update Service offering Value Discount On Service,Delete Service Offering Value Discount
 	Given Not Started Order Opened
 	| Field    | Value                 |
 	| DetailsNeeded    | true |
@@ -77,6 +77,14 @@ Scenario: Add Value Discount On Service,Update Service offering Value Discount O
 	| ServiceDiscountType | Value |
 	Then Verify Discount Exists
 	Then Verify Discount Applied
+	Given Discount Tab Opened
+	| Field    | Value |
+	| ServiceType    | Cleaning Auto   |
+	When Discount Deleted
+	| Field | Value |
+	| ServiceDiscountType | Value |
+	Then Verify Discount Does Not Exist
+	Then Verify Discount Removed
 	
 
 Scenario: Add Percentage Discount On Service,Update Service offering Percentage Discount On Service
