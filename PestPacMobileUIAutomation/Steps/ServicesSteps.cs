@@ -13,7 +13,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
-        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount = 0.00;
+        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore = 0.00;
         string productTotal,firstProductValue, serviceDescription = null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
@@ -300,7 +300,7 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
 
-
+            serviceAmountBefore = updatedServiceAmount;
         }
 
         [Then(@"Verify Discount Exists")]
@@ -341,8 +341,8 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
             {
-                expectedServiceSubTotal = (subTotal - ((updatedServiceAmount * discount) / 100))+ discountAmount;
-                expectedServiceTotal = (total - ((updatedServiceAmount * discount) / 100))+ discountAmount;
+                expectedServiceSubTotal = (subTotal - ((serviceAmountBefore * discount) / 100))+ discountAmount;
+                expectedServiceTotal = (total - ((serviceAmountBefore * discount) / 100))+ discountAmount;
             }
             else
             {
