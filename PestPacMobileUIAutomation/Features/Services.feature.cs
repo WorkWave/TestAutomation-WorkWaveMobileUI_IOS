@@ -398,10 +398,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Fixed Price Service Offering")]
-        public virtual void AddFixedPriceServiceOffering()
+        [NUnit.Framework.DescriptionAttribute("Add Fixed Price Service Offering,Update Fixed Price Service Offering")]
+        public virtual void AddFixedPriceServiceOfferingUpdateFixedPriceServiceOffering()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Fixed Price Service Offering", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Fixed Price Service Offering,Update Fixed Price Service Offering", null, ((string[])(null)));
 #line 112
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -427,6 +427,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Service Added", ((string)(null)), table26, "When ");
 #line 120
  testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table27.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Window"});
+#line 121
+ testRunner.When("Service Edited", ((string)(null)), table27, "When ");
+#line 124
+ testRunner.Then("Verify Service Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

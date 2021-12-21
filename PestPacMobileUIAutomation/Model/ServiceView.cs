@@ -92,11 +92,9 @@ namespace WorkWave.Workwave.Mobile.Model
             return subTotal;
         }
 
-        double servicePrice = 0.00;
-        public double GetservicePrice()
+        public String GetservicePrice()
         {
-            String stringValue = ServicePrice.GetAttribute("text").ToString();
-            subTotal = double.Parse(stringValue);
+            String servicePrice = ServicePrice.GetAttribute("text").ToString();         
             return servicePrice;
         }
 
@@ -134,7 +132,7 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickDiscountButton() => DiscountButton.Click();
 
         public string getPrice() => PriceField.GetAttribute("text");
-
+       
         public void EnterProductQuantity(string text)
         {
             EnterText(text, QuantityField);
@@ -215,6 +213,13 @@ namespace WorkWave.Workwave.Mobile.Model
         public IWebElement findDiscount(string text)
         {
             return findListElement(text, "title", "id");
+        }
+
+        public string getServicePriceString(String Name) => WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//XCUIElementTypeStaticText[2]")).GetAttribute("text");
+
+        public void EnterServicePrice(string text)
+        {
+            EnterText(text, ServicePrice);
         }
 
         #endregion Behavior

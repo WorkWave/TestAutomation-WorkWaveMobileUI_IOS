@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
         double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore = 0.00;
-        string productTotal,firstProductValue, serviceDescription = null;
+        string productTotal,firstProductValue, serviceDescription,serviceValueAmount= null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
         {
@@ -396,6 +396,29 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             Assert.True(serviceView.VerifyViewLoadedByText(5, WorkwaveData.Services.ServiceType));
         }
+
+        [When(@"Service Edited")]
+        public void WhenServiceEdited(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
+            serviceValueAmount = serviceView.getServicePriceString(WorkwaveData.Services.ServiceType);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+            WorkwaveData.Services.ServicePrice = WorkwaveMobileSupport.RandomInt(4);
+            serviceView.EnterServicePrice(WorkwaveData.Services.ServicePrice);
+            serviceView.ClickOnText("Save");
+        }
+
+        [Then(@"Verify Service Edited")]
+        public void ThenVerifyServiceEdited()
+        {
+            string updatedSerPrice = serviceView.GetservicePrice();
+            Assert.True(updatedSerPrice.Equals(WorkwaveData.Services.ServicePrice));
+            serviceView.ClickBack();
+            string updatedAmount = serviceView.getServicePriceString(WorkwaveData.Services.ServiceType);
+            Assert.True(!updatedAmount.Equals(serviceValueAmount));
+        }
+
 
     }
 }
