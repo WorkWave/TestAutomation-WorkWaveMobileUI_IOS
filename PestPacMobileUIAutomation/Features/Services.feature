@@ -108,4 +108,14 @@ Scenario: Add Percentage Discount On Service,Update Service offering Percentage 
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Exists
 	Then Verify Discount Applied
+
+Scenario: Add Fixed Price Service Offering
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Cleaning Window |
+	Then Verify Service Added
 	

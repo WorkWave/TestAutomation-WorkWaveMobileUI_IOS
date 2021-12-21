@@ -396,6 +396,40 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Fixed Price Service Offering")]
+        public virtual void AddFixedPriceServiceOffering()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Fixed Price Service Offering", null, ((string[])(null)));
+#line 112
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table25.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 113
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table25, "Given ");
+#line 116
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table26.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Window"});
+#line 117
+ testRunner.When("Service Added", ((string)(null)), table26, "When ");
+#line 120
+ testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
