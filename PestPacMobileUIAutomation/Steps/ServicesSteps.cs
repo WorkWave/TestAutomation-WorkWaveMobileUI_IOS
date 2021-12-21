@@ -379,6 +379,23 @@ namespace WorkWave.Workwave.Mobile.Steps
             ThenVerifyServiceTotal();
         }
 
+        [When(@"Service Added")]
+        public void WhenServiceAdded(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.ClickPlusIcon();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
+            serviceView.ClickOnStaticText("Services");
+            serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
+            serviceView.ClickOnStaticText("Add");
+        }
+
+        [Then(@"Verify Service Added")]
+        public void ThenVerifyServiceAdded()
+        {
+            Assert.True(serviceView.VerifyViewLoadedByText(5, WorkwaveData.Services.ServiceType));
+        }
 
     }
 }
