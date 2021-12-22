@@ -330,11 +330,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Percentage Discount On Service,Update Service offering Percentage Discount On" +
-            " Service")]
-        public virtual void AddPercentageDiscountOnServiceUpdateServiceOfferingPercentageDiscountOnService()
+            " Service,Delete Service Offering Percentage Discount")]
+        public virtual void AddPercentageDiscountOnServiceUpdateServiceOfferingPercentageDiscountOnServiceDeleteServiceOfferingPercentageDiscount()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Percentage Discount On Service,Update Service offering Percentage Discount On" +
-                    " Service", null, ((string[])(null)));
+                    " Service,Delete Service Offering Percentage Discount", null, ((string[])(null)));
 #line 90
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -394,6 +394,28 @@ this.ScenarioInitialize(scenarioInfo);
 #line 110
  testRunner.Then("Verify Discount Applied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table25.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Auto"});
+#line 111
+ testRunner.Given("Discount Tab Opened", ((string)(null)), table25, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table26.AddRow(new string[] {
+                        "ServiceDiscountType",
+                        "Percent"});
+#line 114
+ testRunner.When("Discount Deleted", ((string)(null)), table26, "When ");
+#line 117
+ testRunner.Then("Verify Discount Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 118
+ testRunner.Then("Verify Discount Removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             this.ScenarioCleanup();
         }
         
@@ -404,42 +426,20 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed" +
                     " Price Service Offering", null, ((string[])(null)));
-#line 112
+#line 120
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table25.AddRow(new string[] {
-                        "DetailsNeeded",
-                        "true"});
-#line 113
- testRunner.Given("Not Started Order Opened", ((string)(null)), table25, "Given ");
-#line 116
- testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table26.AddRow(new string[] {
-                        "ServiceType",
-                        "Cleaning Window"});
-#line 117
- testRunner.When("Service Added", ((string)(null)), table26, "When ");
-#line 120
- testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table27.AddRow(new string[] {
-                        "ServiceType",
-                        "Cleaning Window"});
+                        "DetailsNeeded",
+                        "true"});
 #line 121
- testRunner.When("Service Edited", ((string)(null)), table27, "When ");
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table27, "Given ");
 #line 124
- testRunner.Then("Verify Service Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -448,8 +448,30 @@ this.ScenarioInitialize(scenarioInfo);
                         "ServiceType",
                         "Cleaning Window"});
 #line 125
- testRunner.When("Service Deleted", ((string)(null)), table28, "When ");
+ testRunner.When("Service Added", ((string)(null)), table28, "When ");
 #line 128
+ testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table29.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Window"});
+#line 129
+ testRunner.When("Service Edited", ((string)(null)), table29, "When ");
+#line 132
+ testRunner.Then("Verify Service Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table30.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Window"});
+#line 133
+ testRunner.When("Service Deleted", ((string)(null)), table30, "When ");
+#line 136
  testRunner.Then("Verify Service Deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

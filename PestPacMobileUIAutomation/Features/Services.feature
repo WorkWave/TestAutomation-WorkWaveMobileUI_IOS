@@ -87,7 +87,7 @@ Scenario: Add Value Discount On Service,Update Service offering Value Discount O
 	Then Verify Discount Removed
 	
 
-Scenario: Add Percentage Discount On Service,Update Service offering Percentage Discount On Service
+Scenario: Add Percentage Discount On Service,Update Service offering Percentage Discount On Service,Delete Service Offering Percentage Discount
 	Given Not Started Order Opened
 	| Field    | Value                 |
 	| DetailsNeeded    | true |
@@ -108,6 +108,14 @@ Scenario: Add Percentage Discount On Service,Update Service offering Percentage 
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Exists
 	Then Verify Discount Applied
+	Given Discount Tab Opened
+	| Field    | Value |
+	| ServiceType    | Cleaning Auto   |
+	When Discount Deleted
+	| Field | Value |
+	| ServiceDiscountType | Percent |
+	Then Verify Discount Does Not Exist
+	Then Verify Discount Removed
 
 Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed Price Service Offering
 	Given Not Started Order Opened
