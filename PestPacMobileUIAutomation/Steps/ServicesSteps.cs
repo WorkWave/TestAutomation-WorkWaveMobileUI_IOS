@@ -385,9 +385,9 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Services = data.CreateInstance<Services>();
             serviceView.ClickPlusIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
-            serviceView.ClickOnStaticText("Services");
-            serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
+            serviceView.ClickOnStaticText("Services");          
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
+            serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
             serviceView.ClickOnStaticText("Add");
         }
 
@@ -419,6 +419,19 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(!updatedAmount.Equals(serviceValueAmount));
         }
 
+        [When(@"Service Deleted")]
+        public void WhenServiceDeleted(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Services>();
+            serviceView.DeleteService(WorkwaveData.Services.ServiceType);
+            System.TimeSpan.FromSeconds(60);
+            serviceView.ClickOnStaticText("Remove");
+        }
+        [Then(@"Verify Service Deleted")]
+        public void ThenVerifyServiceDeleted()
+        {
+            Assert.True(serviceView.findElement(WorkwaveData.Services.ServiceType) == null);
+        }
 
     }
 }
