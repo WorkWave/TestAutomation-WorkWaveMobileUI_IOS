@@ -510,6 +510,40 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add By Man Hour Service Offering")]
+        public virtual void AddByManHourServiceOffering()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add By Man Hour Service Offering", null, ((string[])(null)));
+#line 148
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table33.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 149
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table33, "Given ");
+#line 152
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table34.AddRow(new string[] {
+                        "ServiceType",
+                        "Service MH"});
+#line 153
+ testRunner.When("Service Added", ((string)(null)), table34, "When ");
+#line 156
+ testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
