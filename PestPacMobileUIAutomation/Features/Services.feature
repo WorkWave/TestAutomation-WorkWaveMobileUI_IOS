@@ -144,3 +144,13 @@ Scenario: Add Unit of Measure Service Offering
 	| Field          | Value      |
 	| ServiceType    | Service UOM |
 	Then Verify Service Added
+
+Scenario: Add By Man Hour Service Offering
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Service MH |
+	Then Verify Service Added
