@@ -134,3 +134,13 @@ Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,D
 	| Field       | Value |
 	| ServiceType | Cleaning Window   |
 	Then Verify Service Deleted
+
+Scenario: Add Unit of Measure Service Offering
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Service UOM |
+	Then Verify Service Added

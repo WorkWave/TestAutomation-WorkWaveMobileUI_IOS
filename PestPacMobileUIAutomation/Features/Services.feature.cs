@@ -476,6 +476,40 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Unit of Measure Service Offering")]
+        public virtual void AddUnitOfMeasureServiceOffering()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Unit of Measure Service Offering", null, ((string[])(null)));
+#line 138
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table31.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 139
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table31, "Given ");
+#line 142
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table32.AddRow(new string[] {
+                        "ServiceType",
+                        "Service UOM"});
+#line 143
+ testRunner.When("Service Added", ((string)(null)), table32, "When ");
+#line 146
+ testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
