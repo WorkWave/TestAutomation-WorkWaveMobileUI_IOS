@@ -13,5 +13,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public Attachment Attachment { get; set; }
         public Note Note { get; set; }
         public Services Services { get; set; }
+        public Sketch Sketch { get; set; }
     }
 }

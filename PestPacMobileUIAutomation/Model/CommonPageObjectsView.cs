@@ -40,6 +40,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Save']")]
         private IWebElement SaveButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Save")]
+        private IWebElement SaveCommonButton { get; set; }
+
         [FindsBy(How = How.Id, Using = "plusButtonIcon")]
         private IWebElement PlusIcon { get; set; }
 
@@ -228,6 +231,8 @@ namespace WorkWave.Workwave.Mobile.Model
             field.SendKeys(text);
             WorkwaveMobileSupport.HideKeyboard();
         }
+
+        public void ClickCommonSave() => SaveCommonButton.Click();
 
         #endregion Behavior
     }
