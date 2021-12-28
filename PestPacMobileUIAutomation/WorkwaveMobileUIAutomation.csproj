@@ -108,8 +108,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Services.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Sketch.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sketch.feature</DependentUpon>
+    </Compile>
     <Compile Include="Model\CommonPageObjectsView.cs" />
     <Compile Include="Model\AttachmentView.cs" />
+    <Compile Include="Model\SketchView.cs" />
     <Compile Include="Model\ServiceView.cs" />
     <Compile Include="Model\NoteView.cs" />
     <Compile Include="Model\DailyView.cs" />
@@ -121,6 +127,7 @@
     <Compile Include="SharedData\Note.cs" />
     <Compile Include="SharedData\Order.cs" />
     <Compile Include="SharedData\Services.cs" />
+    <Compile Include="SharedData\Sketch.cs" />
     <Compile Include="SharedData\WorkwaveData.cs" />
     <Compile Include="Steps\AttachmentsSteps.cs" />
     <Compile Include="Steps\CommonSteps.cs" />
@@ -128,6 +135,7 @@
     <Compile Include="Steps\NotesSteps.cs" />
     <Compile Include="Steps\OrderSteps.cs" />
     <Compile Include="Steps\ServicesSteps.cs" />
+    <Compile Include="Steps\SketchSteps.cs" />
     <Compile Include="WorkwaveMobileSupport.cs" />
     <Compile Include="WorkwaveMobileUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,6 +164,10 @@
     <None Include="Features\Services.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Services.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Sketch.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Sketch.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
