@@ -201,10 +201,7 @@ namespace WorkWave.Workwave.Mobile.Model
             System.TimeSpan.FromSeconds(10);
         }
 
-        public IWebElement findElement(string name)
-        {
-            return findListElement(name, name, "id");
-        }
+       
 
         public bool VerifyServicesViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SubTotalValueLabel), System.TimeSpan.FromSeconds(time));
 

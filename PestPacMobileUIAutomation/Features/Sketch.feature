@@ -1,7 +1,7 @@
 ﻿@Sketch
 Feature: Sketch
 
-Scenario: Add Sketch
+Scenario: Add Sketch.Delete Sketch
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -15,3 +15,5 @@ Scenario: Add Sketch
 	| SketchName | autoMapSketch |
 	When New Sketch Saved
 	Then Verify Sketch Added
+	When Sketch Deleted
+	Then Verify Sketch Deleted
