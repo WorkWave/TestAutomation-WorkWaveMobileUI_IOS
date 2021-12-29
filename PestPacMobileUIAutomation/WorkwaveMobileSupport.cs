@@ -456,6 +456,8 @@ namespace WorkWave.Workwave.Mobile
             ((IJavaScriptExecutor)WebApplication.Instance.WebDriver).ExecuteScript("mobile: scroll", scrollObject);
 
         }
+
+       
         public static IList<IWebElement> GetList(string className) => WebApplication.Instance.WebDriver.FindElements(By.ClassName(className));
 
     }

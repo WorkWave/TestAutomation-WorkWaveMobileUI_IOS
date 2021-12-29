@@ -234,6 +234,11 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void ClickCommonSave() => SaveCommonButton.Click();
 
+        public IWebElement findElement(string name)
+        {
+            return findListElement(name, name, "id");
+        }
+
         #endregion Behavior
     }
 }

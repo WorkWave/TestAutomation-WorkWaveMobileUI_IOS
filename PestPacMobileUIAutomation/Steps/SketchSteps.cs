@@ -41,7 +41,9 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Sketch = data.CreateInstance<Sketch>();
             Assert.True(sketchView.VerifySketchPadVisible(5));
+            System.TimeSpan.FromSeconds(30);
             sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
+            System.TimeSpan.FromSeconds(30);
             sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
             System.TimeSpan.FromSeconds(30);
             WorkwaveMobileSupport.TapTargetNoWait(200, 200);
@@ -53,11 +55,12 @@ namespace WorkWave.Workwave.Mobile.Steps
            
             sketchView.ClickCommonSave();
             Assert.True(sketchView.VerifyViewLoadedByHeader(5, "Sketch"));
-            sketchView.EnterSketchName(WorkwaveData.Sketch.SketchName);
+            SketchName = WorkwaveData.Sketch.SketchName + WorkwaveMobileSupport.RandomInt(3);
+            sketchView.EnterSketchName(SketchName);
             System.TimeSpan.FromSeconds(30);
             sketchView.ClickOK();
             WorkwaveMobileSupport.TapTargetNoWait(1200, 550);
-            SketchName = WorkwaveData.Sketch.SketchName;
+           
         }
         
         [Then(@"Verify Sketch Added")]
@@ -72,5 +75,22 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             Assert.True(attachmentView.VerifyViewLoadedByContainsText(5, SketchName));
         }
+
+        [When(@"Sketch Deleted")]
+        public void WhenSketchDeleted()
+        {
+            sketchView.ClickOnText(SketchName);
+            sketchView.ClickOnStaticText("Clear All");
+            System.TimeSpan.FromSeconds(30);
+            sketchView.ClickCommonSave();
+            sketchView.ClickOnText("Delete");
+        }
+
+        [Then(@"Verify Sketch Deleted")]
+        public void ThenVerifySketchDeleted()
+        {
+            Assert.True(sketchView.findElement(SketchName) == null);
+        }
+
     }
 }
