@@ -103,6 +103,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Order.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Payments.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Payments.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Services.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +139,7 @@
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\NotesSteps.cs" />
     <Compile Include="Steps\OrderSteps.cs" />
+    <Compile Include="Steps\PaymentsSteps.cs" />
     <Compile Include="Steps\ServicesSteps.cs" />
     <Compile Include="Steps\SketchSteps.cs" />
     <Compile Include="WorkwaveMobileSupport.cs" />
@@ -160,6 +166,10 @@
     <None Include="Features\Order.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Order.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Payments.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Payments.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Services.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
