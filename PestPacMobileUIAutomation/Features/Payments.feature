@@ -5,9 +5,8 @@ Scenario: Cash Payment
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
+	When Navigate To Payment View
 	Given Payments Opened
-	| Field        | Value |
-	| DetailsNeeded| false |
 	When Payment Made
 	| Field       | Value |
 	| PaymentType | Cash  |

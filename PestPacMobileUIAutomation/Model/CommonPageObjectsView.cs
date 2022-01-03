@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -237,6 +238,13 @@ namespace WorkWave.Workwave.Mobile.Model
         public IWebElement findElement(string name)
         {
             return findListElement(name, name, "id");
+        }
+
+        public void SelectType(String Type)
+        {
+
+            AppiumWebElement PickerWheel = (AppiumWebElement)WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@class='UIAPickerWheel']"));
+            PickerWheel.SetImmediateValue(Type);
         }
 
         #endregion Behavior

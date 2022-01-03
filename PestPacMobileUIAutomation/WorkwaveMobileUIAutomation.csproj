@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="Model\CommonPageObjectsView.cs" />
     <Compile Include="Model\AttachmentView.cs" />
+    <Compile Include="Model\PaymentView.cs" />
     <Compile Include="Model\SketchView.cs" />
     <Compile Include="Model\ServiceView.cs" />
     <Compile Include="Model\NoteView.cs" />

@@ -27,7 +27,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         {           
             common.GivenNotStartedOrderOpened(data);
             WorkwaveMobileSupport.SwipeDownIOS("FORMS");
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             common.WorkOrderDiscountsRemoved();
             subTotal = serviceView.GetSubTotal();
             total = serviceView.GetTotal();
@@ -55,7 +55,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Given(@"Product Tab Opened")]
         public void GivenProductTabOpened(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             subTotal = serviceView.GetSubTotal();
             total = serviceView.GetTotal();
             serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
@@ -66,7 +66,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Product Added")]
         public void WhenProductAdded(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickAddIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Product"));
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceProduct);
@@ -116,7 +116,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Product Edited")]
         public void WhenProductEdited(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
 
             //Get the existing price before update
             double prodVal = serviceView.GetproductValue();
@@ -149,7 +149,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Product Deleted")]
         public void WhenProductDeleted(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
 
             double existingProdSubTotal = serviceView.GetProMainSubTotalValue();
             firstProductValue = serviceView.getFirstProPrice(WorkwaveData.Services.ServiceProduct);
@@ -178,7 +178,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Given(@"Material Tab Opened")]
         public void GivenMaterialTabOpened(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
             serviceView.ClickMaterialButton();
@@ -187,7 +187,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Material Added")]
         public void WhenMaterialAdded(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickAddIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Material"));
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceMaterial);
@@ -213,7 +213,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Material Edited")]
         public void WhenMaterialEdited(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
             WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
             serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
@@ -234,7 +234,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenMaterialDeleted(Table data)
         {
             serviceView.ClickBack();
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.DeleteProductMaterial(WorkwaveData.Services.ServiceMaterial);
             System.TimeSpan.FromSeconds(60);
             serviceView.ClickOnStaticText("Delete");
@@ -249,7 +249,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Given("Discount Tab Opened")]
         public void GivenDiscountTabOpened(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             subTotal = serviceView.GetSubTotal();
             total = serviceView.GetTotal();
             servicePrice = serviceView.GetServiceAmount(WorkwaveData.Services.ServiceType);
@@ -264,7 +264,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Discount Added")]
         public void WhenDiscountAdded(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickAddIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Discount"));
             WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
@@ -319,7 +319,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenDiscountEdited(Table data)
         {
             
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickOnText(serviceDescription);
             WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
             serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription, "Description");
@@ -358,7 +358,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Discount Deleted")]
         public void WhenDiscountDeleted(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickOnText(serviceDescription);
             serviceView.ClickOnText("Remove Discount");
 
@@ -382,7 +382,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Service Added")]
         public void WhenServiceAdded(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickPlusIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
             serviceView.ClickOnStaticText("Services");          
@@ -400,7 +400,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Service Edited")]
         public void WhenServiceEdited(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
             serviceValueAmount = serviceView.getServicePriceString(WorkwaveData.Services.ServiceType);
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
@@ -422,7 +422,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Service Deleted")]
         public void WhenServiceDeleted(Table data)
         {
-            WorkwaveData.Services = data.CreateInstance<Services>();
+            WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.DeleteService(WorkwaveData.Services.ServiceType);
             System.TimeSpan.FromSeconds(60);
             serviceView.ClickOnStaticText("Remove");

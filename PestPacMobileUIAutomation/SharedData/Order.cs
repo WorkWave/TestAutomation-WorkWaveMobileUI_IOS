@@ -17,6 +17,9 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string CustomFieldType { get; set; }
         public string CustomFieldValue { get; set; }
         public string WorkOrderCustomFields { get; set; }
+        public string PaymentType { get; set; }
+        public bool PayTotalDue { get; set; }
+        public string PaymentAmount { get; set; }
 
     }
 }
