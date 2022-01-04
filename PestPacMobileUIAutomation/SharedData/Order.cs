@@ -20,6 +20,7 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string PaymentType { get; set; }
         public bool PayTotalDue { get; set; }
         public string PaymentAmount { get; set; }
+        public string PaymentReference { get; set; }
 
     }
 }

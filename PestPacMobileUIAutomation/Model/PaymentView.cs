@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Total Due:']/preceding-sibling::XCUIElementTypeStaticText[1]")]
         private IWebElement TotalDueField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Check Number']/following-sibling::XCUIElementTypeTextField[1]")]
+        private IWebElement CheckNumberField { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -45,6 +49,20 @@ namespace WorkWave.Workwave.Mobile.Model
         public void EnterAmount(string name)
         {
             EnterText(name, AmountField);
+        }
+
+        public void EnterCheckNumber(string name)
+        {
+            EnterText(name, CheckNumberField);
+        }
+
+        public void ViewPayment()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 100, -3500, 1);
+            System.TimeSpan.FromSeconds(10);
+
+
         }
 
         public bool VerifyPaymentsViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PaymentHeader), System.TimeSpan.FromSeconds(time));
