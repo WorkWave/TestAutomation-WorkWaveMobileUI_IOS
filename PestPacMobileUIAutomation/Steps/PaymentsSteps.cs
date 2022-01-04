@@ -25,6 +25,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenNavigateToPaymentView()
         {
             WorkwaveMobileSupport.SwipeDownIOS("Collect Payment");
+            WorkwaveMobileSupport.SwipeDownIOS("Collect Payment");
         }
 
         [Given(@"Payments Opened")]
@@ -43,7 +44,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Order = data.CreateInstance<Order>();
             paymentView.PaymentTypeClick();
+            System.TimeSpan.FromSeconds(60);
             paymentView.SelectType(WorkwaveData.Order.PaymentType);
+            System.TimeSpan.FromSeconds(60);
+            paymentView.ClickOnText("Done");
 
             if ((WorkwaveData.Order.PayTotalDue).Equals("Total Due"))
             {
@@ -58,6 +62,13 @@ namespace WorkWave.Workwave.Mobile.Steps
                 WorkwaveData.Order.PaymentAmount = "$" + WorkwaveData.Order.PaymentAmount;
             }
 
+            if ((WorkwaveData.Order.PaymentType).Equals("Check"))
+            {
+               
+                WorkwaveData.Order.PaymentReference = WorkwaveMobileSupport.RandomInt(5);
+                paymentView.EnterCheckNumber(WorkwaveData.Order.PaymentReference);
+            }
+
             paymentView.ClickOnButton("Process");
             System.TimeSpan.FromSeconds(60);
             paymentView.VerifyViewLoadedByText(5,"Payment History");
@@ -68,6 +79,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void ThenVerifyPaymentMade()
         {
             paymentView.VerifyViewLoadedByText(5, WorkwaveData.Order.PaymentAmount);
+            if ((WorkwaveData.Order.PaymentType).Equals("check"))
+            {
+                paymentView.VerifyViewLoadedByText(5, "Check # " + WorkwaveData.Order.PaymentReference);
+            }
             paymentView.ClickOnText("Done");
         }
     }
