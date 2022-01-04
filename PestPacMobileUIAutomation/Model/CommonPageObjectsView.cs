@@ -50,6 +50,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "AddIconLarge")]
         private IWebElement AddIcon { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='TODAY']")]
+        private IWebElement TodayIcon { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -246,6 +249,11 @@ namespace WorkWave.Workwave.Mobile.Model
             AppiumWebElement PickerWheel = (AppiumWebElement)WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@class='UIAPickerWheel']"));
             PickerWheel.SetImmediateValue(Type);
         }
+
+        public bool MainBackButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(BackButton), TimeSpan.FromSeconds(time));
+
+        public bool HomePageLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(TodayIcon), TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
     }
