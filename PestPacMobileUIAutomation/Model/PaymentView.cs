@@ -36,6 +36,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Check Number']/following-sibling::XCUIElementTypeTextField[1]")]
         private IWebElement CheckNumberField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Reference']/following-sibling::XCUIElementTypeTextField[1]")]
+        private IWebElement ReferenceField { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -54,6 +57,11 @@ namespace WorkWave.Workwave.Mobile.Model
         public void EnterCheckNumber(string name)
         {
             EnterText(name, CheckNumberField);
+        }
+
+        public void EnterReference(string name)
+        {
+            EnterText(name, ReferenceField);
         }
 
         public void ViewPayment()

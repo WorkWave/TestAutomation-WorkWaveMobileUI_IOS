@@ -69,6 +69,13 @@ namespace WorkWave.Workwave.Mobile.Steps
                 paymentView.EnterCheckNumber(WorkwaveData.Order.PaymentReference);
             }
 
+            if ((WorkwaveData.Order.PaymentType).Equals("Credit Card"))
+            {
+
+                WorkwaveData.Order.PaymentReference = WorkwaveMobileSupport.RandomInt(5);
+                paymentView.EnterReference(WorkwaveData.Order.PaymentReference);
+            }
+
             paymentView.ClickOnButton("Process");
             System.TimeSpan.FromSeconds(60);
             paymentView.VerifyViewLoadedByText(5,"Payment History");

@@ -41,25 +41,23 @@ namespace WorkWave.Workwave.Mobile.Steps
             LoginPageView loginPg = new LoginPageView();
             DailyView dailyView = new DailyView();
             TimeSheetPageView timeSheetPageView = new TimeSheetPageView();
-
-            if (!loginPg.VerifyViewLoaded(2))
-            {
-                if (loginPg.ProgressBarVisible())
-                {
-                    System.TimeSpan.FromSeconds(30);
-                    if (timeSheetPageView.VerifyViewLoaded(2))
-                    {
-                        timeSheetPageView.ClickOnStaticText("Go To Timesheet");
-                    }
-                }               
-            }
-            else if (loginPg.VerifyViewLoaded(2))
-            {
-                loginPg.LoginAttempt(WorkwaveMobileSupport.DefaultEmail, WorkwaveMobileSupport.DefaultPassword);
-            }
             while (!dailyView.VerifyViewLoaded(1))
             {
-                System.TimeSpan.FromSeconds(30);
+                if (!loginPg.VerifyViewLoaded(2))
+                {
+                    if (loginPg.ProgressBarVisible())
+                    {
+                        System.TimeSpan.FromSeconds(30);
+                        if (timeSheetPageView.VerifyViewLoaded(2))
+                        {
+                            timeSheetPageView.ClickOnStaticText("Go To Timesheet");
+                        }
+                    }
+                }
+                else if (loginPg.VerifyViewLoaded(2))
+                {
+                    loginPg.LoginAttempt(WorkwaveMobileSupport.DefaultEmail, WorkwaveMobileSupport.DefaultPassword);
+                }
             }
         }
 
@@ -105,6 +103,24 @@ namespace WorkWave.Workwave.Mobile.Steps
                     serviceView.ClickOnStaticText("Remove Discount");
                 }
                 serviceView.ClickBack();
+            }
+
+        }
+
+        [AfterScenario]
+        public static void Return()
+        {
+            CommonPageObjectsView commonPageObjectsView = new CommonPageObjectsView();
+
+            while (!commonPageObjectsView.HomePageLoaded(5))
+            {
+               
+                if (commonPageObjectsView.MainBackButtonVisible(5))
+                {
+                    while (commonPageObjectsView.MainBackButtonVisible(5))
+                        commonPageObjectsView.ClickBack();
+                }
+           
             }
 
         }
