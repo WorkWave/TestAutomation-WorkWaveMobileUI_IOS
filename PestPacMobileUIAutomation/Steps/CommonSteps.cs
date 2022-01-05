@@ -114,13 +114,13 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             while (!commonPageObjectsView.HomePageLoaded(5))
             {
-               
+
                 if (commonPageObjectsView.MainBackButtonVisible(5))
                 {
                     while (commonPageObjectsView.MainBackButtonVisible(5))
                         commonPageObjectsView.ClickBack();
                 }
-           
+
             }
 
         }

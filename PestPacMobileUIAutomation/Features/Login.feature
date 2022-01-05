@@ -13,6 +13,7 @@ Scenario: Successful Login
 	Then Verify logged in
 
 Scenario: Invalid Login
+	Given Logged Out
 	When I Login
 	| Field    | Value                 |
 	| Email    | mdelgoda@workwave.com |

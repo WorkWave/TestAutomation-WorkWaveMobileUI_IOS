@@ -107,6 +107,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
+#line 16
+ testRunner.Given("Logged Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
@@ -117,9 +119,9 @@ this.ScenarioInitialize(scenarioInfo);
             table2.AddRow(new string[] {
                         "Password",
                         "asdfasdfasdf"});
-#line 16
+#line 17
  testRunner.When("I Login", ((string)(null)), table2, "When ");
-#line 20
+#line 21
  testRunner.Then("Verify invalid email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
