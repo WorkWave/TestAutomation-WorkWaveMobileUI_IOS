@@ -154,3 +154,18 @@ Scenario: Add By Man Hour Service Offering
 	| Field          | Value      |
 	| ServiceType    | Service MH |
 	Then Verify Service Added
+
+Scenario: Add Service Offering with Customer Signature Required
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Service Auto with Customer sign |
+	Then Verify Service Added
+	When Customer Signature Tab added
+	When Order Started 
+	Then Verify Order Started
+	When Order Completion
+	Then Verify Customer Signature Required

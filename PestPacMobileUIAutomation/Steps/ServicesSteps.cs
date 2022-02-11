@@ -13,6 +13,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
+        OrderPageView orderPageView = new OrderPageView();
         double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore = 0.00;
         string productTotal,firstProductValue, serviceDescription,serviceValueAmount= null;
 
@@ -431,6 +432,27 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void ThenVerifyServiceDeleted()
         {
             Assert.True(serviceView.findElement(WorkwaveData.Services.ServiceType) == null);
+        }
+
+        [When(@"Customer Signature Tab added")]
+        public void WhenCustomerSignatureTabAdded()
+        {
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "CUSTOMER SIGNATURE"));
+        }
+
+
+        [When(@"Order Completion")]
+        public void WhenOrderCompletion()
+        {
+            orderPageView.ClickOnText("Stop");
+           
+        }
+
+        [Then(@"Verify Customer Signature Required")]
+        public void ThenVerifyCustomerSignatureRequired()
+        {
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "Need to capture customer signature before completing the order"));
+            serviceView.ClickOK();
         }
 
     }
