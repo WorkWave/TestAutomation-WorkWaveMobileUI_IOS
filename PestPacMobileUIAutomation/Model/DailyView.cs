@@ -49,6 +49,9 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void NotStartedOrderClick() => NotStartedOption.Click();
 
+        public bool VerifyNotStartedOrderLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(NotStartedOption), System.TimeSpan.FromSeconds(time));
+
+
         #endregion Behavior
 
     }

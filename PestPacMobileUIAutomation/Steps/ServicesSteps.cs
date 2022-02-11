@@ -455,5 +455,19 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.ClickOK();
         }
 
+        [When(@"Employee Signature Tab added")]
+        public void WhenEmployeeSignatureTabAdded()
+        {
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "EMPLOYEE SIGNATURE"));
+        }
+
+        [Then(@"Verify Employee Signature Required")]
+        public void ThenVerifyEmployeeSignatureRequired()
+        {
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "Need to capture employee signature before completing the order"));
+            serviceView.ClickOK();
+        }
+
+
     }
 }
