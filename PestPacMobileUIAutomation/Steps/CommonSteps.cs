@@ -79,6 +79,10 @@ namespace WorkWave.Workwave.Mobile.Steps
             DailyView dailyView = new DailyView();
             OrderPageView orderPageView = new OrderPageView();
             LoginBefore();
+            while (!dailyView.VerifyNotStartedOrderLoaded(5))
+            {
+                WorkwaveMobileSupport.Swipe(-1139);
+            }
             dailyView.NotStartedOrderClick();
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "Start"));
             WorkwaveData.Order.OrderNumber = orderPageView.GetOrderNumber();

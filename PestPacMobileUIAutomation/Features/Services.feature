@@ -169,3 +169,18 @@ Scenario: Add Service Offering with Customer Signature Required
 	Then Verify Order Started
 	When Order Completion
 	Then Verify Customer Signature Required
+
+Scenario: Add Service Offering with Employee Signature Required
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Service offering with Employee Signature |
+	Then Verify Service Added
+	When Employee Signature Tab added
+	When Order Started 
+	Then Verify Order Started
+	When Order Completion
+	Then Verify Employee Signature Required
