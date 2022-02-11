@@ -162,7 +162,7 @@ Scenario: Add Service Offering with Customer Signature Required
 	When Navigate To Services View
 	When Service Added
 	| Field          | Value      |
-	| ServiceType    | Service Auto with Customer sign |
+	| ServiceType    | Service Offering with Customer sign |
 	Then Verify Service Added
 	When Customer Signature Tab added
 	When Order Started 

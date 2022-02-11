@@ -570,7 +570,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table36.AddRow(new string[] {
                         "ServiceType",
-                        "Service Auto with Customer sign"});
+                        "Service Offering with Customer sign"});
 #line 163
  testRunner.When("Service Added", ((string)(null)), table36, "When ");
 #line 166
