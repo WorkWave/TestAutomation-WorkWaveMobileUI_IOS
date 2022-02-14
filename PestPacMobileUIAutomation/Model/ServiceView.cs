@@ -68,6 +68,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "Subtotal")]
         private IWebElement SubTotalValueLabel { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Do Not Charge for Service']/..//*[@label='0']")]
+        private IWebElement DoNotChargeForServiceToggleButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -233,6 +236,11 @@ namespace WorkWave.Workwave.Mobile.Model
             SwipeToDeleteService(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), Name);
             System.TimeSpan.FromSeconds(10);
         }
+
+        public void ClickDoNotChargeForServiceToggleButton() => DoNotChargeForServiceToggleButton.Click();
+
+        public bool VerifyServiceAddedWithOutServicePrice(int time, String Text) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@id='"+Text+"' and  '$0.00']"))), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
 

@@ -488,6 +488,26 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.VerifyViewLoadedByContainsText(5, servicePriceString));
         }
 
+        [When(@"Service Added without service charge")]
+        public void WhenServiceAddedWithoutServiceCharge(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickPlusIcon();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
+            serviceView.ClickOnStaticText("Services");
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
+            serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
+            servicePriceString = serviceView.GetservicePrice();
+            serviceView.ClickDoNotChargeForServiceToggleButton();
+            serviceView.ClickOnStaticText("Add");
+        }
+
+        [Then(@"Verify Service Price not added")]
+        public void ThenVerifyServicePriceNotAdded()
+        {
+            Assert.True(serviceView.VerifyServiceAddedWithOutServicePrice(5, WorkwaveData.Services.ServiceType));
+        }
+
 
 
     }
