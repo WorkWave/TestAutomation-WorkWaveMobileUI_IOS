@@ -421,11 +421,13 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed" +
-            " Price Service Offering,Toggle Do Not Charge for Service to OFF")]
-        public virtual void AddFixedPriceServiceOfferingUpdateFixedPriceServiceOfferingDeleteFixedPriceServiceOfferingToggleDoNotChargeForServiceToOFF()
+            " Price Service Offering,Toggle Do Not Charge for Service to OFF,Toggle Do Not Ch" +
+            "arge for Service to ON")]
+        public virtual void AddFixedPriceServiceOfferingUpdateFixedPriceServiceOfferingDeleteFixedPriceServiceOfferingToggleDoNotChargeForServiceToOFFToggleDoNotChargeForServiceToON()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed" +
-                    " Price Service Offering,Toggle Do Not Charge for Service to OFF", null, ((string[])(null)));
+                    " Price Service Offering,Toggle Do Not Charge for Service to OFF,Toggle Do Not Ch" +
+                    "arge for Service to ON", null, ((string[])(null)));
 #line 120
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -485,6 +487,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 140
  testRunner.Then("Verify Service Price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table32.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Window"});
+#line 141
+ testRunner.When("Service Added without service charge", ((string)(null)), table32, "When ");
+#line 144
+ testRunner.Then("Verify Service Price not added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             this.ScenarioCleanup();
         }
         
@@ -493,30 +506,30 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddUnitOfMeasureServiceOffering()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Unit of Measure Service Offering", null, ((string[])(null)));
-#line 143
+#line 147
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table32.AddRow(new string[] {
-                        "DetailsNeeded",
-                        "true"});
-#line 144
- testRunner.Given("Not Started Order Opened", ((string)(null)), table32, "Given ");
-#line 147
- testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table33.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 148
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table33, "Given ");
+#line 151
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table34.AddRow(new string[] {
                         "ServiceType",
                         "Service UOM"});
-#line 148
- testRunner.When("Service Added", ((string)(null)), table33, "When ");
-#line 151
+#line 152
+ testRunner.When("Service Added", ((string)(null)), table34, "When ");
+#line 155
  testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -527,30 +540,30 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddByManHourServiceOffering()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add By Man Hour Service Offering", null, ((string[])(null)));
-#line 153
+#line 157
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table34.AddRow(new string[] {
-                        "DetailsNeeded",
-                        "true"});
-#line 154
- testRunner.Given("Not Started Order Opened", ((string)(null)), table34, "Given ");
-#line 157
- testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table35.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 158
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table35, "Given ");
+#line 161
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table36.AddRow(new string[] {
                         "ServiceType",
                         "Service MH"});
-#line 158
- testRunner.When("Service Added", ((string)(null)), table35, "When ");
-#line 161
+#line 162
+ testRunner.When("Service Added", ((string)(null)), table36, "When ");
+#line 165
  testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -561,40 +574,40 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddServiceOfferingWithCustomerSignatureRequired()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Service Offering with Customer Signature Required", null, ((string[])(null)));
-#line 163
+#line 167
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table36.AddRow(new string[] {
-                        "DetailsNeeded",
-                        "true"});
-#line 164
- testRunner.Given("Not Started Order Opened", ((string)(null)), table36, "Given ");
-#line 167
- testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table37.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 168
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table37, "Given ");
+#line 171
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table38.AddRow(new string[] {
                         "ServiceType",
                         "Service Offering with Customer sign"});
-#line 168
- testRunner.When("Service Added", ((string)(null)), table37, "When ");
-#line 171
- testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 172
- testRunner.When("Customer Signature Tab added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 173
- testRunner.When("Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 174
- testRunner.Then("Verify Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("Service Added", ((string)(null)), table38, "When ");
 #line 175
- testRunner.When("Order Completion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 176
+ testRunner.When("Customer Signature Tab added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 177
+ testRunner.When("Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 178
+ testRunner.Then("Verify Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 179
+ testRunner.When("Order Completion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 180
  testRunner.Then("Verify Customer Signature Required", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -605,40 +618,40 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddServiceOfferingWithEmployeeSignatureRequired()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Service Offering with Employee Signature Required", null, ((string[])(null)));
-#line 178
+#line 182
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table38.AddRow(new string[] {
-                        "DetailsNeeded",
-                        "true"});
-#line 179
- testRunner.Given("Not Started Order Opened", ((string)(null)), table38, "Given ");
-#line 182
- testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table39.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 183
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table39, "Given ");
+#line 186
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table40.AddRow(new string[] {
                         "ServiceType",
                         "Service offering with Employee Signature"});
-#line 183
- testRunner.When("Service Added", ((string)(null)), table39, "When ");
-#line 186
- testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 187
- testRunner.When("Employee Signature Tab added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 188
- testRunner.When("Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 189
- testRunner.Then("Verify Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("Service Added", ((string)(null)), table40, "When ");
 #line 190
- testRunner.When("Order Completion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("Verify Service Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 191
+ testRunner.When("Employee Signature Tab added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 192
+ testRunner.When("Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 193
+ testRunner.Then("Verify Order Started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 194
+ testRunner.When("Order Completion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 195
  testRunner.Then("Verify Employee Signature Required", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
