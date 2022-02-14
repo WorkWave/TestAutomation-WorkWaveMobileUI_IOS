@@ -15,7 +15,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         ServiceView serviceView = new ServiceView();
         OrderPageView orderPageView = new OrderPageView();
         double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore = 0.00;
-        string productTotal,firstProductValue, serviceDescription,serviceValueAmount= null;
+        string productTotal,firstProductValue, serviceDescription,serviceValueAmount,servicePriceString= null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
         {
@@ -467,6 +467,27 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "Need to capture employee signature before completing the order"));
             serviceView.ClickOK();
         }
+
+        [When(@"Service Added with service charge")]
+        public void WhenServiceAddedWithServiceCharge(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickPlusIcon();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
+            serviceView.ClickOnStaticText("Services");
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
+            serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
+            servicePriceString = serviceView.GetservicePrice();
+            serviceView.ClickOnStaticText("Add");
+        }
+
+        [Then(@"Verify Service Price")]
+        public void ThenVerifyServicePrice()
+        {
+           
+            Assert.True(serviceView.VerifyViewLoadedByContainsText(5, servicePriceString));
+        }
+
 
 
     }
