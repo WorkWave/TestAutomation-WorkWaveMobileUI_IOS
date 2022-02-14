@@ -117,7 +117,7 @@ Scenario: Add Percentage Discount On Service,Update Service offering Percentage 
 	Then Verify Discount Does Not Exist
 	Then Verify Discount Removed
 
-Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed Price Service Offering
+Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed Price Service Offering,Toggle Do Not Charge for Service to OFF
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
@@ -134,6 +134,11 @@ Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,D
 	| Field       | Value |
 	| ServiceType | Cleaning Window   |
 	Then Verify Service Deleted
+	When Service Added with service charge
+	| Field          | Value      |
+	| ServiceType    | Cleaning Window |
+	Then Verify Service Price
+
 
 Scenario: Add Unit of Measure Service Offering
 	Given Not Started Order Opened
