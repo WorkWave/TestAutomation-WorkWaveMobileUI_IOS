@@ -656,6 +656,50 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Service Offering with Default Material")]
+        public virtual void AddServiceOfferingWithDefaultMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Service Offering with Default Material", null, ((string[])(null)));
+#line 197
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table41.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 198
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table41, "Given ");
+#line 201
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table42.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default material"});
+#line 202
+ testRunner.When("Service Added", ((string)(null)), table42, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table43.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default material"});
+            table43.AddRow(new string[] {
+                        "ServiceMaterial",
+                        "Material Auto IOS"});
+#line 205
+ testRunner.Then("Verify Service with material Added", ((string)(null)), table43, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
