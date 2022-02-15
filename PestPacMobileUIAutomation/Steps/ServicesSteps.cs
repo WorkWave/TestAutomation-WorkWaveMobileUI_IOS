@@ -508,6 +508,13 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.VerifyServiceAddedWithOutServicePrice(5, WorkwaveData.Services.ServiceType));
         }
 
+        [Then(@"Verify Service with material Added")]
+        public void ThenVerifyServiceWithMaterialAdded(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            GivenMaterialTabOpened(data);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceMaterial));
+        }
 
 
     }

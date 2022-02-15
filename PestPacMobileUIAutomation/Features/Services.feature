@@ -193,3 +193,16 @@ Scenario: Add Service Offering with Employee Signature Required
 	Then Verify Order Started
 	When Order Completion
 	Then Verify Employee Signature Required
+
+Scenario: Add Service Offering with Default Material
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Service with default material |
+	Then Verify Service with material Added
+	| Field           | Value |
+	| ServiceType    | Service with default material |
+	| ServiceMaterial | Material Auto IOS |
