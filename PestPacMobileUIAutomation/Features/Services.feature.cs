@@ -700,6 +700,50 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Service Offering with Default Product")]
+        public virtual void AddServiceOfferingWithDefaultProduct()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Service Offering with Default Product", null, ((string[])(null)));
+#line 210
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table44.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 211
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table44, "Given ");
+#line 214
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table45.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default product"});
+#line 215
+ testRunner.When("Service Added", ((string)(null)), table45, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table46.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default product"});
+            table46.AddRow(new string[] {
+                        "ServiceProduct",
+                        "Product auto IOS"});
+#line 218
+ testRunner.Then("Verify Service with product Added", ((string)(null)), table46, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
