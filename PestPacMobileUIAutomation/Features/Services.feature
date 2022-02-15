@@ -206,3 +206,16 @@ Scenario: Add Service Offering with Default Material
 	| Field           | Value |
 	| ServiceType    | Service with default material |
 	| ServiceMaterial | Material Auto IOS |
+
+Scenario: Add Service Offering with Default Product
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added
+	| Field          | Value      |
+	| ServiceType    | Service with default product |
+	Then Verify Service with product Added
+	| Field           | Value |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS |
