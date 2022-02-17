@@ -544,13 +544,25 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.Pest);
             serviceView.ClickOnText(WorkwaveData.Services.Pest);
             serviceView.ClickOnText("Done");
-            Assert.True(serviceView.VerifyViewLoadedByHeader(5,  WorkwaveData.Services.ServiceType));
+           
 
         }
         [Then(@"Verify Pest Added")]
         public void ThenVerifyPestAdded()
         {
             Assert.True(serviceView.VerifyViewLoadedByText(5,  WorkwaveData.Services.Pest));
+        }
+
+        [When(@"Delete Target Pest")]
+        public void WhenDeleteTargetPest(Table data)
+        {
+            WhenPestAdded(data);
+        }
+
+        [Then(@"Verify Pest deleted")]
+        public void ThenVerifyPestDeleted()
+        {
+            Assert.True(serviceView.findElement(WorkwaveData.Services.Pest) == null);
         }
 
 
