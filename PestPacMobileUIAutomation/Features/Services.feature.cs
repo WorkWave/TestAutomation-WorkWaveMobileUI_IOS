@@ -746,10 +746,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Target Pest")]
-        public virtual void AddTargetPest()
+        [NUnit.Framework.DescriptionAttribute("Add Target Pest,Delete Target Pest")]
+        public virtual void AddTargetPestDeleteTargetPest()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Target Pest", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Target Pest,Delete Target Pest", null, ((string[])(null)));
 #line 223
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -787,6 +787,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Pest Added", ((string)(null)), table49, "When ");
 #line 235
  testRunner.Then("Verify Pest Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table50.AddRow(new string[] {
+                        "Pest",
+                        "Ants"});
+#line 236
+ testRunner.When("Delete Target Pest", ((string)(null)), table50, "When ");
+#line 239
+ testRunner.Then("Verify Pest deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

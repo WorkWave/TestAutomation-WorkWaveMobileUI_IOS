@@ -220,7 +220,7 @@ Scenario: Add Service Offering with Default Product
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS |
 
-Scenario: Add Target Pest
+Scenario: Add Target Pest,Delete Target Pest
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
@@ -233,3 +233,7 @@ Scenario: Add Target Pest
 	| Pest        | Ants          |
 	| ServiceType | Cleaning Auto |
 	Then Verify Pest Added
+	When Delete Target Pest
+	| Field       | Value         |
+	| Pest        | Ants          |
+	Then Verify Pest deleted
