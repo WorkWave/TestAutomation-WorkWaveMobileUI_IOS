@@ -388,6 +388,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
             serviceView.ClickOnStaticText("Services");          
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
+            serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceType);
             serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
             serviceView.ClickOnStaticText("Add");
         }

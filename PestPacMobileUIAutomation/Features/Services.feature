@@ -144,15 +144,20 @@ Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,D
 	Then Verify Service Price not added
 
 
-Scenario: Add Unit of Measure Service Offering
+Scenario: Add Unit of Measure Service Offering,Update Unit of Measure Service Offering
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
 	When Navigate To Services View
 	When Service Added
-	| Field          | Value      |
-	| ServiceType    | Service UOM |
+	| Field       | Value       |
+	| ServiceType | Service UOM |
 	Then Verify Service Added
+	When Service Edited
+	| Field       | Value       |
+	| ServiceType | Service UOM |
+	Then Verify Service Edited
+
 
 Scenario: Add By Man Hour Service Offering
 	Given Not Started Order Opened
@@ -237,3 +242,4 @@ Scenario: Add Target Pest,Delete Target Pest
 	| Field       | Value         |
 	| Pest        | Ants          |
 	Then Verify Pest deleted
+
