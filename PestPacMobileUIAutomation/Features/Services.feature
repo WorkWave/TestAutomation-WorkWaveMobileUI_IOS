@@ -219,3 +219,17 @@ Scenario: Add Service Offering with Default Product
 	| Field           | Value |
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS |
+
+Scenario: Add Target Pest
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	Given Pest Tab Opened
+	| Field       | Value         |
+	| ServiceType | Cleaning Auto |
+	When Pest Added
+	| Field       | Value         |
+	| Pest        | Ants          |
+	| ServiceType | Cleaning Auto |
+	Then Verify Pest Added

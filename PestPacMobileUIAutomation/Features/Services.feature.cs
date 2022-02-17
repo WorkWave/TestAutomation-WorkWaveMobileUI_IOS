@@ -744,6 +744,52 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Target Pest")]
+        public virtual void AddTargetPest()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Target Pest", null, ((string[])(null)));
+#line 223
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table47.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 224
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table47, "Given ");
+#line 227
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table48.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Auto"});
+#line 228
+ testRunner.Given("Pest Tab Opened", ((string)(null)), table48, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table49.AddRow(new string[] {
+                        "Pest",
+                        "Ants"});
+            table49.AddRow(new string[] {
+                        "ServiceType",
+                        "Cleaning Auto"});
+#line 231
+ testRunner.When("Pest Added", ((string)(null)), table49, "When ");
+#line 235
+ testRunner.Then("Verify Pest Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
