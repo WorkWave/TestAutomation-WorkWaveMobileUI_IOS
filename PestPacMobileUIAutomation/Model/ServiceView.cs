@@ -71,6 +71,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Do Not Charge for Service']/..//*[@label='0']")]
         private IWebElement DoNotChargeForServiceToggleButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[3]")]
+        private IWebElement PestButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -241,6 +244,7 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyServiceAddedWithOutServicePrice(int time, String Text) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@id='"+Text+"' and  '$0.00']"))), System.TimeSpan.FromSeconds(time));
 
+        public void ClickPestButton() => PestButton.Click();
 
         #endregion Behavior
 

@@ -26,7 +26,7 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public bool RandomizePrice { get; set; }
         public bool VerifyServiceType { get; set; }
         public double PriceDifference { get; set; }
-      
+        public string Pest { get; set; }
 
 
     }

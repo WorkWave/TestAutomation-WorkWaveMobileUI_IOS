@@ -524,6 +524,35 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceProduct));
         }
 
+        [Given(@"Pest Tab Opened")]
+        public void GivenPestTabOpened(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            subTotal = serviceView.GetSubTotal();
+            total = serviceView.GetTotal();
+            serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+            serviceView.ClickPestButton();
+        }
+
+        [When(@"Pest Added")]
+        public void WhenPestAdded(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickAddIcon();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Target Pests"));
+            serviceView.EnterTextOnCommonField(WorkwaveData.Services.Pest);
+            serviceView.ClickOnText(WorkwaveData.Services.Pest);
+            serviceView.ClickOnText("Done");
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5,  WorkwaveData.Services.ServiceType));
+
+        }
+        [Then(@"Verify Pest Added")]
+        public void ThenVerifyPestAdded()
+        {
+            Assert.True(serviceView.VerifyViewLoadedByText(5,  WorkwaveData.Services.Pest));
+        }
+
 
     }
 }
