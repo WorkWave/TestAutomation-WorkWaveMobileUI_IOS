@@ -178,7 +178,7 @@ Scenario: Add By Man Hour Service Offering,Update By Man-Hour Service Offering,D
 	| ServiceType | Service MH  |
 	Then Verify Service Edited
 	When Service Deleted
-	| Field       | Value       |
+	| Field       | Value      |
 	| ServiceType | Service MH |
 	Then Verify Service Deleted
 
