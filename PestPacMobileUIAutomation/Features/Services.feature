@@ -172,6 +172,10 @@ Scenario: Add By Man Hour Service Offering
 	| Field          | Value      |
 	| ServiceType    | Service MH |
 	Then Verify Service Added
+	When Service Edited
+	| Field       | Value       |
+	| ServiceType | Service MH  |
+	Then Verify Service Edited
 
 	# MOB-3363
 Scenario: Add Service Offering with Customer Signature Required
