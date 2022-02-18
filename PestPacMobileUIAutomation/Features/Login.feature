@@ -8,7 +8,7 @@ Scenario: Successful Login
 	Given Logged Out
 	When I Login
 	| Field    | Value                |
-	| Email    | mdelgoda@workwave.com|
+	| Email    | mdelgoda+qa@workwave.com|
 	| Password | WorkWave1!           |
 	Then Verify logged in
 
@@ -16,6 +16,6 @@ Scenario: Invalid Login
 	Given Logged Out
 	When I Login
 	| Field    | Value                 |
-	| Email    | mdelgoda@workwave.com |
+	| Email    | mdelgoda+qa@workwave.com |
 	| Password | asdfasdfasdf          |
 	Then Verify invalid email

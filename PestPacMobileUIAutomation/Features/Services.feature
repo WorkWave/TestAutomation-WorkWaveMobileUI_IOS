@@ -86,7 +86,7 @@ Scenario: Add Value Discount On Service,Update Service offering Value Discount O
 	Then Verify Discount Does Not Exist
 	Then Verify Discount Removed
 	
-
+	#MOB-3337,MOB-3357,MOB-3364
 Scenario: Add Percentage Discount On Service,Update Service offering Percentage Discount On Service,Delete Service Offering Percentage Discount
 	Given Not Started Order Opened
 	| Field    | Value                 |
@@ -235,12 +235,14 @@ Scenario: Add Service Offering with Default Product
 	| DetailsNeeded | true  |
 	When Navigate To Services View
 	When Service Added
-	| Field          | Value      |
-	| ServiceType    | Service with default product |
+	| Field       | Value                        |
+	| ServiceType | Service with default product |
 	Then Verify Service with product Added
-	| Field           | Value |
+	| Field          | Value                        |
 	| ServiceType    | Service with default product |
-	| ServiceProduct | Product auto IOS |
+	| ServiceProduct | Product auto IOS             |
+	
+
 
 	# MOB-3348,MOB-3359
 Scenario: Add Target Pest,Delete Target Pest
@@ -261,3 +263,24 @@ Scenario: Add Target Pest,Delete Target Pest
 	| Pest        | Ants          |
 	Then Verify Pest deleted
 
+	# MOB-3343
+Scenario: Add Product Percentage Discount
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added With Product
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Product Discount Tab Opened
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Product Discount Added
+	| Field               | Value                        |
+	| ServiceDiscountType | Percent                      |
+	| ServiceType         | Service with default product |
+	| ServiceProduct      | Product auto IOS             |
+	Then Verify Product Discount Exists
+	Then Verify Product Discount Applied
