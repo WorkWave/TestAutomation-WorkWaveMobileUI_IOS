@@ -117,6 +117,7 @@ Scenario: Add Percentage Discount On Service,Update Service offering Percentage 
 	Then Verify Discount Does Not Exist
 	Then Verify Discount Removed
 
+	# MOB-3365 MOB-3366
 Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed Price Service Offering,Toggle Do Not Charge for Service to OFF,Toggle Do Not Charge for Service to ON
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -143,7 +144,7 @@ Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,D
 	| ServiceType    | Cleaning Window |
 	Then Verify Service Price not added
 
-
+	# MOB-3355 MOB-3338 MOB-3339
 Scenario: Add Unit of Measure Service Offering,Update Unit of Measure Service Offering,Delete Unit of Measure Service Offering
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -172,6 +173,7 @@ Scenario: Add By Man Hour Service Offering
 	| ServiceType    | Service MH |
 	Then Verify Service Added
 
+	# MOB-3363
 Scenario: Add Service Offering with Customer Signature Required
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -187,6 +189,7 @@ Scenario: Add Service Offering with Customer Signature Required
 	When Order Completion
 	Then Verify Customer Signature Required
 
+	# MOB-3361
 Scenario: Add Service Offering with Employee Signature Required
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -202,6 +205,7 @@ Scenario: Add Service Offering with Employee Signature Required
 	When Order Completion
 	Then Verify Employee Signature Required
 
+	# MOB-3358
 Scenario: Add Service Offering with Default Material
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -215,6 +219,7 @@ Scenario: Add Service Offering with Default Material
 	| ServiceType    | Service with default material |
 	| ServiceMaterial | Material Auto IOS |
 
+	# MOB-3356
 Scenario: Add Service Offering with Default Product
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -228,6 +233,7 @@ Scenario: Add Service Offering with Default Product
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS |
 
+	# MOB-3348 MOB-3359
 Scenario: Add Target Pest,Delete Target Pest
 	Given Not Started Order Opened
 	| Field         | Value |
