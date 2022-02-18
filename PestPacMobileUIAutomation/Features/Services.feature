@@ -163,8 +163,8 @@ Scenario: Add Unit of Measure Service Offering,Update Unit of Measure Service Of
 	| ServiceType | Service UOM |
 	Then Verify Service Deleted
 
-	# MOB-3370 MOB-3338 
-Scenario: Add By Man Hour Service Offering
+	# MOB-3370,MOB-3338,MOB-3369 
+Scenario: Add By Man Hour Service Offering,Update By Man-Hour Service Offering,Delete By Man-Hour Service Offering
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
@@ -177,6 +177,10 @@ Scenario: Add By Man Hour Service Offering
 	| Field       | Value       |
 	| ServiceType | Service MH  |
 	Then Verify Service Edited
+	When Service Deleted
+	| Field       | Value       |
+	| ServiceType | Service MH |
+	Then Verify Service Deleted
 
 	# MOB-3363
 Scenario: Add Service Offering with Customer Signature Required
@@ -238,7 +242,7 @@ Scenario: Add Service Offering with Default Product
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS |
 
-	# MOB-3348 MOB-3359
+	# MOB-3348,MOB-3359
 Scenario: Add Target Pest,Delete Target Pest
 	Given Not Started Order Opened
 	| Field         | Value |
