@@ -171,6 +171,10 @@ Scenario: Add By Man Hour Service Offering
 	| Field          | Value      |
 	| ServiceType    | Service MH |
 	Then Verify Service Added
+	When Service Edited
+	| Field       | Value       |
+	| ServiceType | Service MH  |
+	Then Verify Service Edited
 
 Scenario: Add Service Offering with Customer Signature Required
 	Given Not Started Order Opened

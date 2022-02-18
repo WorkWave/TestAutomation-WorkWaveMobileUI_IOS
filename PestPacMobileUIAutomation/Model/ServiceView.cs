@@ -29,7 +29,7 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Subtotal']/..//*[@XCElementType='XCUIElementTypeStaticText'][2]")]
         private IWebElement SubTotalValue { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Service Price']/..//XCUIElementTypeTextField[2]")]
+        [FindsBy(How = How.XPath, Using = "//*[contains(text(),'Service Price')]/..//XCUIElementTypeTextField[2]")]
         private IWebElement ServicePrice { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@text='Total']/..//*[@XCElementType='XCUIElementTypeStaticText'][2]")]
