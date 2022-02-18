@@ -163,6 +163,7 @@ Scenario: Add Unit of Measure Service Offering,Update Unit of Measure Service Of
 	| ServiceType | Service UOM |
 	Then Verify Service Deleted
 
+	# MOB-3370 MOB-3338 
 Scenario: Add By Man Hour Service Offering
 	Given Not Started Order Opened
 	| Field         | Value |
