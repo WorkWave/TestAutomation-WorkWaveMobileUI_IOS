@@ -246,6 +246,27 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void ClickPestButton() => PestButton.Click();
 
+        double proudctAmount = 0.00;
+        public double GetProductAmount(String Product)
+        {
+            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + Product + "']/..//XCUIElementTypeStaticText[2]"));
+            String stringValue = ProductMainSubTotalField.GetAttribute("text").ToString();
+            String[] amount = stringValue.Split('$');
+            String previousAmountS = amount[1].Replace(",", "");
+            proudctAmount = double.Parse(previousAmountS);
+            return proudctAmount;
+        }
+
+        public double GetProductAmountTwo(String Product)
+        {
+            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + Product + "']/..//XCUIElementTypeStaticText[3]"));
+            String stringValue = ProductMainSubTotalField.GetAttribute("text").ToString();
+            String[] amount = stringValue.Split('$');
+            String previousAmountS = amount[1].Replace(",", "");
+            proudctAmount = double.Parse(previousAmountS);
+            return proudctAmount;
+        }
+
         #endregion Behavior
 
     }

@@ -82,6 +82,12 @@ namespace WorkWave.Workwave.Mobile.Model
             element.Click();
         }
 
+        public void ClickOnArrowFollowingToTextTwo(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//*[@id='chevron']"));
+            element.Click();
+        }
+
         public void ClickOnStaticText(String Text)
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//XCUIElementTypeStaticText[@text='" + Text + "']"));

@@ -87,7 +87,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table1.AddRow(new string[] {
                         "Email",
-                        "mdelgoda@workwave.com"});
+                        "mdelgoda+qa@workwave.com"});
             table1.AddRow(new string[] {
                         "Password",
                         "WorkWave1!"});
@@ -115,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table2.AddRow(new string[] {
                         "Email",
-                        "mdelgoda@workwave.com"});
+                        "mdelgoda+qa@workwave.com"});
             table2.AddRow(new string[] {
                         "Password",
                         "asdfasdfasdf"});

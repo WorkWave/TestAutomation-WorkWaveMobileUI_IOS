@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         ServiceView serviceView = new ServiceView();
         OrderPageView orderPageView = new OrderPageView();
-        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore = 0.00;
+        double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore,productAmount, updatedProductSubTotal,productSubTotal,updatedProductAmount = 0.00;
         string productTotal,firstProductValue, serviceDescription,serviceValueAmount,servicePriceString= null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
@@ -260,13 +260,14 @@ namespace WorkWave.Workwave.Mobile.Steps
             double productTotalAmountUpdated = serviceView.GetProMainSubTotalValue();
             updatedServiceAmount = servicePrice - productTotalAmountUpdated;
             serviceView.ClickDiscountButton();
+            serviceView.ClickAddIcon();
         }
 
         [When(@"Discount Added")]
         public void WhenDiscountAdded(Table data)
         {
             WorkwaveData.Services = data.CreateInstance<Payment>();
-            serviceView.ClickAddIcon();
+           
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Discount"));
             WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
             serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription,"Description");
@@ -564,6 +565,96 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void ThenVerifyPestDeleted()
         {
             Assert.True(serviceView.findElement(WorkwaveData.Services.Pest) == null);
+        }
+
+        [When(@"Product Discount Tab Opened")]
+        public void WhenProductDiscountTabOpened(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            
+            serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
+            serviceView.ClickProductButton();
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceProduct));
+            productAmount = serviceView.GetProductAmountTwo(WorkwaveData.Services.ServiceProduct);
+            productSubTotal = serviceView.GetProMainSubTotalValue();
+            updatedServiceAmount = servicePrice - productSubTotal;
+            
+            serviceView.ClickOnArrowFollowingToTextTwo(WorkwaveData.Services.ServiceProduct);
+            serviceView.ClickOnText("Add Discount");
+        }
+
+        [When(@"Product Discount Added")]
+        public void WhenProductDiscountAdded(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Discount"));
+            WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
+            serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription, "Description");
+
+            WorkwaveData.Services.ServiceDiscountAmount = WorkwaveMobileSupport.RandomInt(2);
+            if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
+            {
+
+                serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountAmount, "Percentage");
+            }
+            else
+            {
+                serviceView.ClickOnButton(WorkwaveData.Services.ServiceDiscountType);
+                serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountAmount, "Amount");
+            }
+
+            serviceView.ClickOnStaticText("Add");
+            double discount = double.Parse(WorkwaveData.Services.ServiceDiscountAmount);
+
+            if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
+            {
+                discountAmount = (productAmount * discount) / 100;
+                //expectedProductSubTotal = productSubTotal - discountAmount;
+                //expectedServiceSubTotal = subTotal - ((productAmount * discount) / 100);
+                //expectedServiceTotal = total - ((productAmount * discount) / 100);
+            }
+            else
+            {
+                discountAmount = discount;               
+            }
+            updatedProductAmount = productAmount - discountAmount;
+            updatedProductSubTotal = productSubTotal - discountAmount;
+            expectedServiceSubTotal = subTotal - discountAmount;
+            expectedServiceTotal = total - discountAmount;
+
+            serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
+
+            serviceAmountBefore = updatedServiceAmount;
+        }
+
+        [Then(@"Verify Product Discount Exists")]
+        public void ThenVerifyProductDiscountExists()
+        {
+            Assert.True(serviceView.VerifyViewLoadedByText(5, WorkwaveData.Services.ServiceDiscountDescription));
+            Assert.True(serviceView.VerifyViewLoadedByContainsText(5, WorkwaveData.Services.ServiceDiscountAmount));
+            serviceView.ClickOnStaticText("Save");
+        }
+
+        [Then(@"Verify Product Discount Applied")]
+        public void ThenVerifyProductDiscountApplied()
+        {
+            productAmount = serviceView.GetProductAmountTwo(WorkwaveData.Services.ServiceProduct);
+            productSubTotal = serviceView.GetProMainSubTotalValue();
+            Assert.True(updatedProductAmount == productAmount);
+            Assert.True(updatedProductSubTotal == productSubTotal);
+            ThenVerifyServiceTotal();
+        }
+
+        [When(@"Service Added With Product")]
+        public void WhenServiceAddedWithProduct(Table data)
+        {
+            WhenServiceAdded(data);
+           // ThenVerifyServiceWithProductAdded(data);
+            subTotal = serviceView.GetSubTotal();
+            total = serviceView.GetTotal();
+            servicePrice = serviceView.GetServiceAmount(WorkwaveData.Services.ServiceType);
         }
 
 

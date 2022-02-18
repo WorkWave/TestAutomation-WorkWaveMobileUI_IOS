@@ -116,16 +116,16 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             CommonPageObjectsView commonPageObjectsView = new CommonPageObjectsView();
 
-            while (!commonPageObjectsView.HomePageLoaded(5))
-            {
+            //while (!commonPageObjectsView.HomePageLoaded(5))
+            //{
 
-                if (commonPageObjectsView.MainBackButtonVisible(5))
-                {
-                    while (commonPageObjectsView.MainBackButtonVisible(5))
-                        commonPageObjectsView.ClickBack();
-                }
+            //    if (commonPageObjectsView.MainBackButtonVisible(5))
+            //    {
+            //        while (commonPageObjectsView.MainBackButtonVisible(5))
+            //            commonPageObjectsView.ClickBack();
+            //    }
 
-            }
+            //}
 
         }
 
