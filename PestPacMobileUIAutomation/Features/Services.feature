@@ -262,7 +262,7 @@ Scenario: Add Target Pest,Delete Target Pest
 	| Pest        | Ants          |
 	Then Verify Pest deleted
 
-	# MOB-3343
+	# MOB-3343 , MOB-3351
 Scenario: Add Product Percentage Discount,Update Product Percentage Discount
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -294,3 +294,11 @@ Scenario: Add Product Percentage Discount,Update Product Percentage Discount
 	| ServiceProduct      | Product auto IOS             |
 	Then Verify Product Discount Exists
 	Then Verify Product Discount Applied
+	When Product Discount Tab Opened
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Discount Deleted
+	| Field | Value |
+	| ServiceDiscountType | Percent |
+	Then Verify Discount Does Not Exist

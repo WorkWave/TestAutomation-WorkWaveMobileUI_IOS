@@ -944,6 +944,29 @@ this.ScenarioInitialize(scenarioInfo);
 #line 296
  testRunner.Then("Verify Product Discount Applied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table61.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default product"});
+            table61.AddRow(new string[] {
+                        "ServiceProduct",
+                        "Product auto IOS"});
+#line 297
+ testRunner.When("Product Discount Tab Opened", ((string)(null)), table61, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table62.AddRow(new string[] {
+                        "ServiceDiscountType",
+                        "Percent"});
+#line 301
+ testRunner.When("Discount Deleted", ((string)(null)), table62, "When ");
+#line 304
+ testRunner.Then("Verify Discount Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             this.ScenarioCleanup();
         }
     }
