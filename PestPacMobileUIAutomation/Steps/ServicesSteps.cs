@@ -692,7 +692,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
             else
             {
-                newDis = newproductSubTotal - discount;
+                newDis = discount;
             }
 
             updatedProductAmount = newproductAmount - newDis;
