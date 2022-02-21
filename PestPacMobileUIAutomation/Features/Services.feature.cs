@@ -851,10 +851,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Product Percentage Discount,Update Product Percentage Discount")]
-        public virtual void AddProductPercentageDiscountUpdateProductPercentageDiscount()
+        [NUnit.Framework.DescriptionAttribute("Add Product Percentage Discount,Update Product Percentage Discount,Delete Product" +
+            " Percentage Discount")]
+        public virtual void AddProductPercentageDiscountUpdateProductPercentageDiscountDeleteProductPercentageDiscount()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Product Percentage Discount,Update Product Percentage Discount", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Product Percentage Discount,Update Product Percentage Discount,Delete Product" +
+                    " Percentage Discount", null, ((string[])(null)));
 #line 266
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -966,6 +968,72 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Discount Deleted", ((string)(null)), table62, "When ");
 #line 304
  testRunner.Then("Verify Discount Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Product Value Discount")]
+        public virtual void AddProductValueDiscount()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Product Value Discount", null, ((string[])(null)));
+#line 307
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table63.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "true"});
+#line 308
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table63, "Given ");
+#line 311
+ testRunner.When("Navigate To Services View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table64.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default product"});
+            table64.AddRow(new string[] {
+                        "ServiceProduct",
+                        "Product auto IOS"});
+#line 312
+ testRunner.When("Service Added With Product", ((string)(null)), table64, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table65.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default product"});
+            table65.AddRow(new string[] {
+                        "ServiceProduct",
+                        "Product auto IOS"});
+#line 316
+ testRunner.When("Product Discount Tab Opened", ((string)(null)), table65, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table66.AddRow(new string[] {
+                        "ServiceDiscountType",
+                        "Value"});
+            table66.AddRow(new string[] {
+                        "ServiceType",
+                        "Service with default product"});
+            table66.AddRow(new string[] {
+                        "ServiceProduct",
+                        "Product auto IOS"});
+#line 320
+ testRunner.When("Product Discount Added", ((string)(null)), table66, "When ");
+#line 325
+ testRunner.Then("Verify Product Discount Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 326
+ testRunner.Then("Verify Product Discount Applied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

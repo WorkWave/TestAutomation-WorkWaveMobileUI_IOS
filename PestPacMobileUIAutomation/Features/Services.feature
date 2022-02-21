@@ -262,8 +262,8 @@ Scenario: Add Target Pest,Delete Target Pest
 	| Pest        | Ants          |
 	Then Verify Pest deleted
 
-	# MOB-3343 , MOB-3351
-Scenario: Add Product Percentage Discount,Update Product Percentage Discount
+	# MOB-3343 , MOB-3351 , MOB-3352
+Scenario: Add Product Percentage Discount,Update Product Percentage Discount,Delete Product Percentage Discount
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
@@ -302,3 +302,25 @@ Scenario: Add Product Percentage Discount,Update Product Percentage Discount
 	| Field | Value |
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Does Not Exist
+
+	# MOB-3344
+Scenario: Add Product Value Discount
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | true  |
+	When Navigate To Services View
+	When Service Added With Product
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Product Discount Tab Opened
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Product Discount Added
+	| Field               | Value                        |
+	| ServiceDiscountType | Value                        |
+	| ServiceType         | Service with default product |
+	| ServiceProduct      | Product auto IOS             |
+	Then Verify Product Discount Exists
+	Then Verify Product Discount Applied
