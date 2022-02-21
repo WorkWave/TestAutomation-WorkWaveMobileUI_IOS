@@ -243,7 +243,6 @@ Scenario: Add Service Offering with Default Product
 	| ServiceProduct | Product auto IOS             |
 	
 
-
 	# MOB-3348,MOB-3359
 Scenario: Add Target Pest,Delete Target Pest
 	Given Not Started Order Opened
@@ -264,7 +263,7 @@ Scenario: Add Target Pest,Delete Target Pest
 	Then Verify Pest deleted
 
 	# MOB-3343
-Scenario: Add Product Percentage Discount
+Scenario: Add Product Percentage Discount,Update Product Percentage Discount
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
@@ -278,6 +277,17 @@ Scenario: Add Product Percentage Discount
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS             |
 	When Product Discount Added
+	| Field               | Value                        |
+	| ServiceDiscountType | Percent                      |
+	| ServiceType         | Service with default product |
+	| ServiceProduct      | Product auto IOS             |
+	Then Verify Product Discount Exists
+	Then Verify Product Discount Applied
+	When Product Discount Tab Opened
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Discount Product Edited
 	| Field               | Value                        |
 	| ServiceDiscountType | Percent                      |
 	| ServiceType         | Service with default product |
