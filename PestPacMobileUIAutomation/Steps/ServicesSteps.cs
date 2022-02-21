@@ -701,6 +701,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             expectedServiceTotal = newtotal - newDis;
             serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
             serviceAmountBefore = updatedServiceAmount;
+            discountAmount = newDis;
         }
 
 
