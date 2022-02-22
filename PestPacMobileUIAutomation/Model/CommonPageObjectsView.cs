@@ -26,6 +26,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "Back")]
         private IWebElement BackButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "BackArrowWhite")]
+        private IWebElement BackTwoButton { get; set; }
+
         [FindsBy(How = How.Id, Using = "leftArrow")]
         private IWebElement BackButtonTwo { get; set; }
 
@@ -257,6 +260,10 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public bool MainBackButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(BackButton), TimeSpan.FromSeconds(time));
+
+        public bool MainBackButtonTwoVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(BackTwoButton), TimeSpan.FromSeconds(time));
+
+        public void ClickMainBackButtonTwo() => BackTwoButton.Click();
 
         public bool HomePageLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(TodayIcon), TimeSpan.FromSeconds(time));
 
