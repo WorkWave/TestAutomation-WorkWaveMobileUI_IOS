@@ -117,7 +117,7 @@ Scenario: Add Percentage Discount On Service,Update Service offering Percentage 
 	Then Verify Discount Does Not Exist
 	Then Verify Discount Removed
 
-	# MOB-3365 MOB-3366
+	# MOB-3365 MOB-3366 , MOB-3365 , MOB-3366
 Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,Delete Fixed Price Service Offering,Toggle Do Not Charge for Service to OFF,Toggle Do Not Charge for Service to ON
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -139,10 +139,15 @@ Scenario: Add Fixed Price Service Offering,Update Fixed Price Service Offering,D
 	| Field          | Value      |
 	| ServiceType    | Cleaning Window |
 	Then Verify Service Price
+	| Field          | Value      |
+	| ServiceType    | Cleaning Window |
 	When Service Added without service charge
 	| Field          | Value      |
 	| ServiceType    | Cleaning Window |
 	Then Verify Service Price not added
+	| Field          | Value      |
+	| ServiceType    | Cleaning Window |
+	
 
 	# MOB-3355 MOB-3338 MOB-3339
 Scenario: Add Unit of Measure Service Offering,Update Unit of Measure Service Offering,Delete Unit of Measure Service Offering
@@ -302,6 +307,9 @@ Scenario: Add Product Percentage Discount,Update Product Percentage Discount,Del
 	| Field | Value |
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Does Not Exist
+	Then Return To Home On Product
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
 
 	# MOB-3344 , MOB-3346 , MOB-3341
 Scenario: Add Product Value Discount,Update Product Value Discount,Delete Product Value Discount
@@ -343,3 +351,6 @@ Scenario: Add Product Value Discount,Update Product Value Discount,Delete Produc
 	| Field | Value |
 	| ServiceDiscountType | Value |
 	Then Verify Discount Does Not Exist
+	Then Return To Home On Product
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |

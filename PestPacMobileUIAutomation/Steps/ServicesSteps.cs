@@ -484,10 +484,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         }
 
         [Then(@"Verify Service Price")]
-        public void ThenVerifyServicePrice()
+        public void ThenVerifyServicePrice(Table data)
         {
            
             Assert.True(serviceView.VerifyViewLoadedByContainsText(5, servicePriceString));
+            WhenServiceDeleted(data);
         }
 
         [When(@"Service Added without service charge")]
@@ -505,9 +506,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         }
 
         [Then(@"Verify Service Price not added")]
-        public void ThenVerifyServicePriceNotAdded()
+        public void ThenVerifyServicePriceNotAdded(Table data)
         {
             Assert.True(serviceView.VerifyServiceAddedWithOutServicePrice(5, WorkwaveData.Services.ServiceType));
+            WhenServiceDeleted(data);
         }
 
         [Then(@"Verify Service with material Added")]
@@ -702,6 +704,20 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
             serviceAmountBefore = updatedServiceAmount;
             discountAmount = newDis;
+        }
+
+        [Then(@"Return To Home On Product")]
+        public void ThenReturnToHomeOnProduct(Table data)
+        {
+            serviceView.ClickOnText("Save");
+            serviceView.ClickBack();
+            WhenServiceDeleted(data);
+        }
+
+        [Then(@"Return To Home On Service Offering")]
+        public void ThenReturnToHomeOnServiceOffering(Table data)
+        {
+            WhenServiceDeleted(data); 
         }
 
 

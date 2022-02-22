@@ -227,8 +227,8 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void SwipeToDeleteService(IPerformsTouchActions driver, String Name)
         {
-            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Name + "'])[1]/..//*[@id='drillDownIcon']"));
-            IWebElement element2 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Name + "'])[1]"));
+            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[contains(text(),'" + Name + "')])[1]/..//*[@id='drillDownIcon']"));
+            IWebElement element2 = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[contains(text(),'" + Name + "')])[1]"));
             var touchAction = new TouchAction(driver);
             touchAction.Press(element1).MoveTo(element2).Release().Perform();
         }
