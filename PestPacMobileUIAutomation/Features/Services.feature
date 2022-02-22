@@ -303,8 +303,8 @@ Scenario: Add Product Percentage Discount,Update Product Percentage Discount,Del
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Does Not Exist
 
-	# MOB-3344 , MOB-3346
-Scenario: Add Product Value Discount,Update Product Value Discount
+	# MOB-3344 , MOB-3346 , MOB-3341
+Scenario: Add Product Value Discount,Update Product Value Discount,Delete Product Value Discount
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | true  |
@@ -335,3 +335,11 @@ Scenario: Add Product Value Discount,Update Product Value Discount
 	| ServiceProduct      | Product auto IOS             |
 	Then Verify Product Discount Exists
 	Then Verify Product Discount Applied
+	When Product Discount Tab Opened
+	| Field          | Value                        |
+	| ServiceType    | Service with default product |
+	| ServiceProduct | Product auto IOS             |
+	When Discount Deleted
+	| Field | Value |
+	| ServiceDiscountType | Value |
+	Then Verify Discount Does Not Exist
