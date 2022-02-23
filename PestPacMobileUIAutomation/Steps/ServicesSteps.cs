@@ -15,7 +15,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         ServiceView serviceView = new ServiceView();
         OrderPageView orderPageView = new OrderPageView();
         double subTotal,total,productTotalAmount, updatedSubTotal, updatedTotal, expectedServiceTotal, expectedServiceSubTotal,servicePrice,updatedServiceAmount,discountAmount,serviceAmountBefore,productAmount, updatedProductSubTotal,productSubTotal,updatedProductAmount = 0.00;
-        string productTotal,firstProductValue, serviceDescription,serviceValueAmount,servicePriceString= null;
+        string productTotal,firstProductValue, serviceDescription,serviceValueAmount,servicePriceString = null;
 
         public ServicesSteps(WorkwaveData WorkwaveData)
         {
@@ -308,7 +308,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Discount Exists")]
         public void ThenVerifyDiscountExists()
         {
-            Assert.True(serviceView.VerifyViewLoadedByText(5, WorkwaveData.Services.ServiceDiscountDescription));
+            Assert.True(serviceView.VerifyViewLoadedByText(5, serviceDescription));
         }
 
         [Then(@"Verify Discount Applied")]
@@ -322,9 +322,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             
             WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickBack();
             serviceView.ClickOnText(serviceDescription);
-            WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
-            serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription, "Description");
+            //WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
+            //serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription, "Description");
             
             WorkwaveData.Services.ServiceDiscountAmount = WorkwaveMobileSupport.RandomInt(2);
             if (WorkwaveData.Services.ServiceDiscountType.Equals("Percent"))
@@ -354,13 +355,14 @@ namespace WorkWave.Workwave.Mobile.Steps
                 discountAmount = discount;
             }
 
-            serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
+            //serviceDescription = WorkwaveData.Services.ServiceDiscountDescription;
         }
 
         [When(@"Discount Deleted")]
         public void WhenDiscountDeleted(Table data)
         {
             WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickBack();
             serviceView.ClickOnText(serviceDescription);
             serviceView.ClickOnText("Remove Discount");
 
@@ -433,6 +435,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Service Deleted")]
         public void ThenVerifyServiceDeleted()
         {
+            System.TimeSpan.FromSeconds(60);
             Assert.True(serviceView.findElement(WorkwaveData.Services.ServiceType) == null);
         }
 
