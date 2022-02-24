@@ -86,5 +86,17 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(noteView.VerifyViewLoadedByText(5, WorkwaveData.Note.TaggedUsers));
         }
 
+        [When(@"Canned Note Added")]
+        public void WhenCannedNoteAdded(Table data)
+        {
+            WorkwaveData.Note = data.CreateInstance<Note>();
+            noteView.ClickOnStaticText("Canned Note");
+            Assert.True(noteView.VerifyViewLoadedByHeader(5, "Canned Notes"));
+            noteView.ClickOnText(WorkwaveData.Note.NoteHeader);
+            Assert.True(noteView.VerifyViewLoadedByText(5, WorkwaveData.Note.NoteText));
+            noteView.ClickOnText("Save");
+            Assert.True(noteView.VerifyViewLoadedByText(5, "Start"));
+        }
+
     }
 }
