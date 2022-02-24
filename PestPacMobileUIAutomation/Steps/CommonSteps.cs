@@ -43,18 +43,21 @@ namespace WorkWave.Workwave.Mobile.Steps
             TimeSheetPageView timeSheetPageView = new TimeSheetPageView();
             while (!dailyView.VerifyViewLoaded(1))
             {
-                if (!loginPg.VerifyViewLoaded(2))
+                //if (!loginPg.VerifyViewLoaded(2))
+                //{
+                //    if (loginPg.ProgressBarVisible())
+                //    {
+                //        System.TimeSpan.FromSeconds(30);                       
+                //    }
+                //}
+                if (timeSheetPageView.VerifyViewLoaded(2))
                 {
-                    if (loginPg.ProgressBarVisible())
-                    {
-                        System.TimeSpan.FromSeconds(30);
-                        if (timeSheetPageView.VerifyViewLoaded(2))
-                        {
-                            timeSheetPageView.ClickOnStaticText("Go To Timesheet");
-                        }
-                    }
+                    timeSheetPageView.ClickOnStaticText("Go To Timesheet");
+                    Assert.True(loginPg.VerifyViewLoadedByHeader(5, "Timesheets"));
+                    timeSheetPageView.ClickOnStaticText("Time In");
+                    timeSheetPageView.ClickBack();
                 }
-                else if (loginPg.VerifyViewLoaded(2))
+                if (loginPg.VerifyViewLoaded(2))
                 {
                     loginPg.LoginAttempt(WorkwaveMobileSupport.DefaultEmail, WorkwaveMobileSupport.DefaultPassword);
                 }
@@ -116,20 +119,20 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             CommonPageObjectsView commonPageObjectsView = new CommonPageObjectsView();
 
-            while (!commonPageObjectsView.HomePageLoaded(5))
-            {
+            //while (!commonPageObjectsView.HomePageLoaded(5))
+            //{
 
-                if (commonPageObjectsView.MainBackButtonVisible(5))
-                {
-                    while (commonPageObjectsView.MainBackButtonVisible(5))
-                        commonPageObjectsView.ClickBack();
-                }
-                if (commonPageObjectsView.MainBackButtonTwoVisible(5))
-                {
-                    while (commonPageObjectsView.MainBackButtonTwoVisible(5))
-                        commonPageObjectsView.ClickMainBackButtonTwo();
-                }
-            }
+            //    if (commonPageObjectsView.MainBackButtonVisible(5))
+            //    {
+            //        while (commonPageObjectsView.MainBackButtonVisible(5))
+            //            commonPageObjectsView.ClickBack();
+            //    }
+            //    if (commonPageObjectsView.MainBackButtonTwoVisible(5))
+            //    {
+            //        while (commonPageObjectsView.MainBackButtonTwoVisible(5))
+            //            commonPageObjectsView.ClickMainBackButtonTwo();
+            //    }
+            //}
 
         }
 

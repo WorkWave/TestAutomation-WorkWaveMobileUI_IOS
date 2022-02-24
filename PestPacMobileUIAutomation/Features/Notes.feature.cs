@@ -171,6 +171,43 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Private Note")]
+        public virtual void AddPrivateNote()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Private Note", null, ((string[])(null)));
+#line 37
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table7.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 38
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table7, "Given ");
+#line 41
+ testRunner.When("New Note Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table8.AddRow(new string[] {
+                        "NoteStatus",
+                        "Private"});
+            table8.AddRow(new string[] {
+                        "NoteText",
+                        "newAutoNotePrivate"});
+#line 42
+ testRunner.When("Note Added", ((string)(null)), table8, "When ");
+#line 46
+ testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
