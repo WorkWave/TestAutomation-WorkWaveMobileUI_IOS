@@ -18,7 +18,8 @@ Scenario: Add Public Note,Note Edited
 	| NoteText   | editNote |
 	Then Verify Note Exists
 
-Scenario: Tag Users On Note
+	#MOB-3284 , MOB-3285
+Scenario: Tag Users On Note,Remove Tagged Users from a Note
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -32,6 +33,11 @@ Scenario: Tag Users On Note
 	| NoteStatus | Public      |
 	| NoteText   | newAutoNote |
 	Then Verify Note Exists
+	When Existing Note Selected
+	When Users Tagged On Note
+	| Field       | Value |
+	| TaggedUsers | John  |
+	Then Verify Tagged User Removed On Note
 
 	#MOB-3288
 Scenario: Add Private Note

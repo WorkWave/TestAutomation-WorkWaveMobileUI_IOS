@@ -86,5 +86,13 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(noteView.VerifyViewLoadedByText(5, WorkwaveData.Note.TaggedUsers));
         }
 
+        [Then(@"Verify Tagged User Removed On Note")]
+        public void ThenVerifyTaggedUserRemovedOnNote()
+        {
+            System.TimeSpan.FromSeconds(60);
+            Assert.True(noteView.findElement(WorkwaveData.Note.TaggedUsers) == null);
+        }
+
+
     }
 }
