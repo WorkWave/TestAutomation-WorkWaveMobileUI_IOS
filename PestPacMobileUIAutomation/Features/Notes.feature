@@ -50,3 +50,16 @@ Scenario: Add Private Note
 	| NoteStatus | Private            |
 	| NoteText   | newAutoNotePrivate |
 	Then Verify Note Exists
+
+	#MOB-3286
+Scenario: Add Canned Note
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When New Note Opened
+	When Canned Note Added
+	| Field      | Value                                 |
+	| NoteStatus | Private                               |
+	| NoteHeader | IOS Automation Note - Test automation |
+	| NoteText   | Test automation                       |
+	Then Verify Note Exists   

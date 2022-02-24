@@ -221,6 +221,46 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Canned Note")]
+        public virtual void AddCannedNote()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Canned Note", null, ((string[])(null)));
+#line 55
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table10.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 56
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table10, "Given ");
+#line 59
+ testRunner.When("New Note Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table11.AddRow(new string[] {
+                        "NoteStatus",
+                        "Private"});
+            table11.AddRow(new string[] {
+                        "NoteHeader",
+                        "IOS Automation Note - Test automation"});
+            table11.AddRow(new string[] {
+                        "NoteText",
+                        "Test automation"});
+#line 60
+ testRunner.When("Canned Note Added", ((string)(null)), table11, "When ");
+#line 65
+ testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
