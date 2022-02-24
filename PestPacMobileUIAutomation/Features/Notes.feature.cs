@@ -125,11 +125,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tag Users On Note")]
-        public virtual void TagUsersOnNote()
+        [NUnit.Framework.DescriptionAttribute("Tag Users On Note,Remove Tagged Users from a Note")]
+        public virtual void TagUsersOnNoteRemoveTaggedUsersFromANote()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tag Users On Note", null, ((string[])(null)));
-#line 21
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tag Users On Note,Remove Tagged Users from a Note", null, ((string[])(null)));
+#line 22
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -139,9 +139,9 @@ this.ScenarioInitialize(scenarioInfo);
             table4.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 22
+#line 23
  testRunner.Given("Not Started Order Opened", ((string)(null)), table4, "Given ");
-#line 25
+#line 26
  testRunner.When("New Note Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -150,9 +150,9 @@ this.ScenarioInitialize(scenarioInfo);
             table5.AddRow(new string[] {
                         "TaggedUsers",
                         "John"});
-#line 26
+#line 27
  testRunner.When("Users Tagged On Note", ((string)(null)), table5, "When ");
-#line 29
+#line 30
  testRunner.Then("Verify Users Tagged On Note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -164,10 +164,23 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "NoteText",
                         "newAutoNote"});
-#line 30
+#line 31
  testRunner.When("Note Added", ((string)(null)), table6, "When ");
-#line 34
+#line 35
  testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 36
+ testRunner.When("Existing Note Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table7.AddRow(new string[] {
+                        "TaggedUsers",
+                        "John"});
+#line 37
+ testRunner.When("Users Tagged On Note", ((string)(null)), table7, "When ");
+#line 40
+ testRunner.Then("Verify Tagged User Removed On Note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -177,33 +190,33 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddPrivateNote()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Private Note", null, ((string[])(null)));
-#line 37
+#line 43
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table7.AddRow(new string[] {
-                        "DetailsNeeded",
-                        "false"});
-#line 38
- testRunner.Given("Not Started Order Opened", ((string)(null)), table7, "Given ");
-#line 41
- testRunner.When("New Note Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table8.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 44
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table8, "Given ");
+#line 47
+ testRunner.When("New Note Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table9.AddRow(new string[] {
                         "NoteStatus",
                         "Private"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "NoteText",
                         "newAutoNotePrivate"});
-#line 42
- testRunner.When("Note Added", ((string)(null)), table8, "When ");
-#line 46
+#line 48
+ testRunner.When("Note Added", ((string)(null)), table9, "When ");
+#line 52
  testRunner.Then("Verify Note Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
