@@ -32,3 +32,15 @@ Scenario: Tag Users On Note
 	| NoteStatus | Public      |
 	| NoteText   | newAutoNote |
 	Then Verify Note Exists
+
+	#MOB-3288
+Scenario: Add Private Note
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When New Note Opened
+	When Note Added
+	| Field      | Value              |
+	| NoteStatus | Private            |
+	| NoteText   | newAutoNotePrivate |
+	Then Verify Note Exists
