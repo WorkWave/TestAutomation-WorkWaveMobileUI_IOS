@@ -109,6 +109,12 @@ namespace WorkWave.Workwave.Mobile.Model
             element.Click();
         }
 
+        public void ClickOnContainsText(String Text)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Text + "')]"));
+            element.Click();
+        }
+
         public void ClickOnCheckBoxValue(String Text)
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='Check Box'])[2]//*[@text='" + Text + "']"));

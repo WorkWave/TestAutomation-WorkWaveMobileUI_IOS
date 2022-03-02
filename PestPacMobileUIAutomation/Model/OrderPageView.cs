@@ -33,6 +33,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Check Box']/../XCUIElementTypeStaticText[2]")]
         private IWebElement CheckBoxLabel { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@id='Start']")]
+        private IWebElement StartButton { get; set; }
+
 
         #endregion Page Factory
 
@@ -54,6 +57,9 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             return CheckBoxLabel.GetAttribute("text");
         }
+
+        public bool VerifyStartButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(StartButton), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
 
