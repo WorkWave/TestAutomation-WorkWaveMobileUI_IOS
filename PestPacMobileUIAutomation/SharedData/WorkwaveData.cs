@@ -14,6 +14,7 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public Note Note { get; set; }
         public Payment Services { get; set; }
         public Sketch Sketch { get; set; }
-       
+        public Form Form { get; set; }
+
     }
 }

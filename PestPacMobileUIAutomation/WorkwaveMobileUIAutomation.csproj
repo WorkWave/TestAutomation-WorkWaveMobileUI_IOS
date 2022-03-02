@@ -88,6 +88,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Attachments.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Forms.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Forms.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +125,7 @@
     </Compile>
     <Compile Include="Model\CommonPageObjectsView.cs" />
     <Compile Include="Model\AttachmentView.cs" />
+    <Compile Include="Model\FormView.cs" />
     <Compile Include="Model\PaymentView.cs" />
     <Compile Include="Model\SketchView.cs" />
     <Compile Include="Model\ServiceView.cs" />
@@ -129,6 +135,7 @@
     <Compile Include="Model\TimeSheetPageView.cs" />
     <Compile Include="Model\LoginPageView.cs" />
     <Compile Include="SharedData\Attachment.cs" />
+    <Compile Include="SharedData\Form.cs" />
     <Compile Include="SharedData\Login.cs" />
     <Compile Include="SharedData\Note.cs" />
     <Compile Include="SharedData\Order.cs" />
@@ -137,6 +144,7 @@
     <Compile Include="SharedData\WorkwaveData.cs" />
     <Compile Include="Steps\AttachmentsSteps.cs" />
     <Compile Include="Steps\CommonSteps.cs" />
+    <Compile Include="Steps\FormsSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\NotesSteps.cs" />
     <Compile Include="Steps\OrderSteps.cs" />
@@ -155,6 +163,10 @@
     <None Include="Features\Attachments.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Attachments.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Forms.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Forms.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
