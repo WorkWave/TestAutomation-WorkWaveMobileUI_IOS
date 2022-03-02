@@ -34,6 +34,15 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeOther[@text='Office Text']")]
         private IWebElement OfficeTextTextField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Edit Draft']")]
+        public IWebElement EditDraftLabel { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@text='FormBackArrow']/..//*[@class='UIAButton'][2]")]
+        public IWebElement FormTopMenu { get; set; }
+
+        [FindsBy(How = How.Id, Using = "FormBackArrow")]
+        private IWebElement FormBackButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -60,6 +69,12 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public bool ShareFormHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ShareFormsHeader), TimeSpan.FromSeconds(time));
+
+        public bool EditDraftLabelVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(EditDraftLabel), TimeSpan.FromSeconds(time));
+
+        public void ClickTopMenuButton() => FormTopMenu.Click();
+
+        public void ClickFormBackButton() => FormBackButton.Click();
 
         #endregion Behavior
     }
