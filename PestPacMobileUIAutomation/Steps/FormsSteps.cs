@@ -172,5 +172,26 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.findFormEntryFromFavorites(FormType) == null);
         }
 
+        [When(@"Insert Image To Form")]
+        public void WhenInsertImageToForm()
+        {
+            formView.ClickInsertButton();
+            formView.ClickOnText("Pick from Gallery");
+            while (!formView.VerifyPhotoViewLoaded(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+
+            formView.SelectImageFromGallery();
+        }
+
+        [Then(@"Verify Image Added")]
+        public void ThenVerifyImageAdded()
+        {
+            Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
+            Assert.True(formView.VerifyViewLoadedByText(5, "Image"));
+        }
+
+
     }
 }

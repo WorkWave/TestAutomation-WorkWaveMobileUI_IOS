@@ -43,11 +43,17 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "FormBackArrow")]
         private IWebElement FormBackButton { get; set; }
 
-        [FindsBy(How = How.Id, Using = "FormBookmarkedNotFilled")]
-        private IWebElement FavouriteButton { get; set; }
-
         [FindsBy(How = How.XPath, Using = "(//*[@text='FormBookmarkedFilled']/preceding-sibling::XCUIElementTypeStaticText[1])[1]")]
         private IWebElement FavoriteFormName { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@text='Button: Office Image']")]
+        public IWebElement InsertButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Photos']")]
+        private IWebElement PhotoViewHeader { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "(//XCUIElementTypeImage[contains(text(),'Photo')])[1]")]
+        private IWebElement ImageFromGallery { get; set; }
 
         #endregion Page Factory
 
@@ -99,14 +105,18 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//*[@id='FormBookmarkedFilled']"));
             element.Click();
-        }
-
-        
+        }        
 
         public IWebElement findFormEntryFromFavorites(string type)
         {
             return findListElementContainer(type, "//XCUIElementTypeOther[@text='FAVORITES']/..//*[@text='" + type + "']", "Title", "xpath", "id");
         }
+
+        public void ClickInsertButton() => InsertButton.Click();
+
+        public bool VerifyPhotoViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PhotoViewHeader), System.TimeSpan.FromSeconds(time));
+
+        public void SelectImageFromGallery() => ImageFromGallery.Click();
 
         #endregion Behavior
     }

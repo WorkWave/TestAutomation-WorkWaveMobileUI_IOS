@@ -37,4 +37,15 @@ Scenario: Add Form To Favorites,Unfavorite a Form Template
 	Then Verify Form Favorited
 	When Form Unfavorited
 	Then Verify Form Unfavorited
+
+	# MOB-3209
+Scenario: Edit Form → Insert Image → Pick from Gallery
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value       |
+	| FormType | Simple 1    |
+	When Insert Image To Form
+	Then Verify Image Added
 	
