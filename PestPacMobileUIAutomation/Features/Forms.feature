@@ -38,8 +38,8 @@ Scenario: Add Form To Favorites,Unfavorite a Form Template
 	When Form Unfavorited
 	Then Verify Form Unfavorited
 
-	# MOB-3209
-Scenario: Edit Form → Insert Image → Pick from Gallery
+	# MOB-3209,MOB-3206
+Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert Image → Take a Photo
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -47,5 +47,13 @@ Scenario: Edit Form → Insert Image → Pick from Gallery
 	| Field    | Value       |
 	| FormType | Simple 1    |
 	When Insert Image To Form
+	| Field        | Value             |
+	| FormType     | Simple 1          |
+	| DocumentType | Pick from Gallery |
+	Then Verify Image Added
+	When Insert Image To Form
+	| Field        | Value        |
+	| FormType     | Simple 1     |
+	| DocumentType | Take a Photo |
 	Then Verify Image Added
 	

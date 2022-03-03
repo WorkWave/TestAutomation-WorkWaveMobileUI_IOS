@@ -55,6 +55,15 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//XCUIElementTypeImage[contains(text(),'Photo')])[1]")]
         private IWebElement ImageFromGallery { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Button: Customer Image']")]
+        public IWebElement CustomerImageInsertButton { get; set; }
+
+        [FindsBy(How = How.Id, Using = "CameraMode")]
+        private IWebElement CameraView { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Use Photo']")]
+        private IWebElement UsePhotoView { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -117,6 +126,13 @@ namespace WorkWave.Workwave.Mobile.Model
         public bool VerifyPhotoViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PhotoViewHeader), System.TimeSpan.FromSeconds(time));
 
         public void SelectImageFromGallery() => ImageFromGallery.Click();
+
+        public void ClickCustomerImageInsertButton() => CustomerImageInsertButton.Click();
+
+        public bool VerifyCameraViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(CameraView), System.TimeSpan.FromSeconds(time));
+
+        public bool VerifyUsePhotoViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(UsePhotoView), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
     }
