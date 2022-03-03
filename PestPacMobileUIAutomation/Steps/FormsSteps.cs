@@ -173,16 +173,36 @@ namespace WorkWave.Workwave.Mobile.Steps
         }
 
         [When(@"Insert Image To Form")]
-        public void WhenInsertImageToForm()
+        public void WhenInsertImageToForm(Table data)
         {
-            formView.ClickInsertButton();
-            formView.ClickOnText("Pick from Gallery");
-            while (!formView.VerifyPhotoViewLoaded(5))
-            {
-                System.TimeSpan.FromSeconds(30);
-            }
+            WorkwaveData.Form = data.CreateInstance<Form>();
+           
 
-            formView.SelectImageFromGallery();
+            if(WorkwaveData.Form.DocumentType.Equals("Pick from Gallery"))
+            {
+                formView.ClickInsertButton();
+                formView.ClickOnText(WorkwaveData.Form.DocumentType);
+                while (!formView.VerifyPhotoViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.SelectImageFromGallery();
+            }else if (WorkwaveData.Form.DocumentType.Equals("Take a Photo"))
+            {
+                formView.ClickCustomerImageInsertButton();
+                formView.ClickOnText(WorkwaveData.Form.DocumentType);
+                while (!formView.VerifyCameraViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.ClickOnText("Take Picture");
+                while (!formView.VerifyUsePhotoViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.ClickOnText("Use Photo");
+            }
+           
         }
 
         [Then(@"Verify Image Added")]

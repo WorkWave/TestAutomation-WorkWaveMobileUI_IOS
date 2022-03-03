@@ -182,10 +182,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Insert Image → Pick from Gallery")]
-        public virtual void EditFormInsertImagePickFromGallery()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert Image → Take a Ph" +
+            "oto")]
+        public virtual void EditFormInsertImagePickFromGalleryEditFormInsertImageTakeAPhoto()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Insert Image → Pick from Gallery", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert Image → Take a Ph" +
+                    "oto", null, ((string[])(null)));
 #line 42
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -207,9 +209,33 @@ this.ScenarioInitialize(scenarioInfo);
                         "Simple 1"});
 #line 46
  testRunner.When("Form Added", ((string)(null)), table8, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table9.AddRow(new string[] {
+                        "FormType",
+                        "Simple 1"});
+            table9.AddRow(new string[] {
+                        "DocumentType",
+                        "Pick from Gallery"});
 #line 49
- testRunner.When("Insert Image To Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 50
+ testRunner.When("Insert Image To Form", ((string)(null)), table9, "When ");
+#line 53
+ testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table10.AddRow(new string[] {
+                        "FormType",
+                        "Simple 1"});
+            table10.AddRow(new string[] {
+                        "DocumentType",
+                        "Take a Photo"});
+#line 54
+ testRunner.When("Insert Image To Form", ((string)(null)), table10, "When ");
+#line 58
  testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
