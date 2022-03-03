@@ -133,5 +133,32 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnText("Done");
         }
 
+        [When(@"Form Favorited")]
+        public void WhenFormFavorited(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickPlusIcon();
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Add"));
+            formView.ClickOnStaticText("Forms");
+            WhenFormTemplatesSearched();
+            formView.ClickOnFavourite(WorkwaveData.Form.FormType);
+        }
+
+        [Then(@"Verify Form Favorited")]
+        public void ThenVerifyFormFavorited()
+        {
+            formView.ClickBack();
+            formView.ClickPlusIcon();
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Add"));
+            formView.ClickOnStaticText("Forms");
+            while (!formView.NewFormHeaderVisible(2))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+
+            Assert.True(formView.VerifyFormAdded(5, WorkwaveData.Form.FormType));
+        }
+
+
     }
 }
