@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         FormView formView = new FormView();
         OrderPageView orderPageView = new OrderPageView();
-       
+        String FormType;
 
         public FormsSteps(WorkwaveData WorkwaveData)
         {
@@ -159,6 +159,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyFormAdded(5, WorkwaveData.Form.FormType));
         }
 
+        [When(@"Form Unfavorited")]
+        public void WhenFormUnfavorited()
+        {
+            FormType = formView.getFavoriteFormName();
+            formView.ClickOnUnFavourite(FormType);
+        }
+
+        [Then(@"Verify Form Unfavorited")]
+        public void ThenVerifyFormUnfavorited()
+        {
+            Assert.True(formView.findFormEntryFromFavorites(FormType) == null);
+        }
 
     }
 }

@@ -26,8 +26,8 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview
 	When Preview Form
 	Then Verify Preview Loaded
 
-	# MOB-3213
-Scenario: Add Form To Favorites
+	# MOB-3213 , MOB-3212
+Scenario: Add Form To Favorites,Unfavorite a Form Template
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -35,4 +35,6 @@ Scenario: Add Form To Favorites
 	| Field    | Value       |
 	| FormType | Simple 1    | 
 	Then Verify Form Favorited
+	When Form Unfavorited
+	Then Verify Form Unfavorited
 	

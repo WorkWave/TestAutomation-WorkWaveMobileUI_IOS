@@ -46,6 +46,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "FormBookmarkedNotFilled")]
         private IWebElement FavouriteButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[@text='FormBookmarkedFilled']/preceding-sibling::XCUIElementTypeStaticText[1])[1]")]
+        private IWebElement FavoriteFormName { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -86,6 +89,24 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public bool VerifyFormAdded(int time, String Text) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//XCUIElementTypeOther[@text='FAVORITES']/..//*[@text='" + Text + "']"))), System.TimeSpan.FromSeconds(time));
+
+        public string getFavoriteFormName()
+        {
+            return FavoriteFormName.GetAttribute("text");
+        }
+
+        public void ClickOnUnFavourite(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//*[@id='FormBookmarkedFilled']"));
+            element.Click();
+        }
+
+        
+
+        public IWebElement findFormEntryFromFavorites(string type)
+        {
+            return findListElementContainer(type, "//XCUIElementTypeOther[@text='FAVORITES']/..//*[@text='" + type + "']", "Title", "xpath", "id");
+        }
 
         #endregion Behavior
     }
