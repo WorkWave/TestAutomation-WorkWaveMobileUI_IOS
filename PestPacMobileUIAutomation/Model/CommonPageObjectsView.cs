@@ -273,6 +273,75 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool HomePageLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(TodayIcon), TimeSpan.FromSeconds(time));
 
+        public IWebElement findElementGivenByType(string id, string byType, IWebElement container)
+        {
+            IWebElement elem = null;
+            switch (byType)
+            {
+                case "xpath":
+                    elem = container.FindElement(By.XPath(id));
+                    break;
+                case "id":
+                    elem = container.FindElement(By.Id(id));
+                    break;
+                case "class":
+                    elem = container.FindElement(By.ClassName(id));
+                    break;
+            }
+            return elem;
+        }
+
+        public IWebElement findListElementContainer(string name, string container, string id, string containerByType, string byType)
+        {
+            int index = 1;
+            IWebElement currElem = null;
+            IList<IWebElement> allElements = null;
+            string prevLastFoundElem = "";
+            try
+            {
+                allElements = findElementsGivenByType(container, containerByType);
+                if (allElements.Count == 0)
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+
+            if (name.Equals("") || name.Equals("ANY"))
+                return allElements[index - 1];
+
+            while (index < allElements.Count + 1)
+            {
+                try
+                {
+                    currElem = findElementGivenByType(id, byType, allElements[index - 1]);
+
+                    if (index == allElements.Count && prevLastFoundElem.Equals(currElem.GetAttribute("text")))
+                        break;
+
+                    if (currElem.GetAttribute("text").Equals(name))
+                        return allElements[index - 1];
+
+                    if (index == allElements.Count)
+                    {
+                        prevLastFoundElem = currElem.GetAttribute("text");
+                        WorkwaveMobileSupport.Swipe(-1139);
+                        allElements = findElementsGivenByType(container, containerByType);
+                        index = 1;
+                    }
+                    else
+                        index++;
+
+                }
+                catch
+                {
+                    break;
+                }
+            }
+
+            return null;
+        }
 
         #endregion Behavior
     }
