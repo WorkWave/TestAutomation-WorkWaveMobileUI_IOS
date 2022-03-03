@@ -43,6 +43,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "FormBackArrow")]
         private IWebElement FormBackButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "FormBookmarkedNotFilled")]
+        private IWebElement FavouriteButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -75,6 +78,14 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickTopMenuButton() => FormTopMenu.Click();
 
         public void ClickFormBackButton() => FormBackButton.Click();
+
+        public void ClickOnFavourite(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/..//*[@id='FormBookmarkedNotFilled']"));
+            element.Click();
+        }
+
+        public bool VerifyFormAdded(int time, String Text) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//XCUIElementTypeOther[@text='FAVORITES']/..//*[@text='" + Text + "']"))), System.TimeSpan.FromSeconds(time));
 
         #endregion Behavior
     }

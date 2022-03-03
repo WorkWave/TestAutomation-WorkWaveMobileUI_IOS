@@ -25,3 +25,14 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview
 	When Drafted Form Opened
 	When Preview Form
 	Then Verify Preview Loaded
+
+	# MOB-3213
+Scenario: Add Form To Favorites
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Favorited
+	| Field    | Value       |
+	| FormType | Simple 1    | 
+	Then Verify Form Favorited
+	
