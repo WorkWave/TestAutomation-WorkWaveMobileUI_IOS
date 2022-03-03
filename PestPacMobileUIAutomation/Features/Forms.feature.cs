@@ -106,10 +106,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Preview")]
-        public virtual void EditFormPreview()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Save Draft,Edit Form → Preview")]
+        public virtual void EditFormSaveDraftEditFormPreview()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Preview", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Save Draft,Edit Form → Preview", null, ((string[])(null)));
 #line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
