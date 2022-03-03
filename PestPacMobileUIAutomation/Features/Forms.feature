@@ -12,8 +12,8 @@ Scenario: Add A Forms
 	When Complete Form
 	Then Verify Form Added
 
-	# MOB-3218
-Scenario: Edit Form → Preview
+	# MOB-3217,MOB-3218
+Scenario: Edit Form → Save Draft,Edit Form → Preview
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
