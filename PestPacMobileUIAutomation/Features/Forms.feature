@@ -26,6 +26,7 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview
 	When Preview Form
 	Then Verify Preview Loaded
 
+
 	# MOB-3213 , MOB-3212
 Scenario: Add Form To Favorites,Unfavorite a Form Template
 	Given Not Started Order Opened
@@ -38,8 +39,8 @@ Scenario: Add Form To Favorites,Unfavorite a Form Template
 	When Form Unfavorited
 	Then Verify Form Unfavorited
 
-	# MOB-3209,MOB-3206
-Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert Image → Take a Photo
+	# MOB-3209,MOB-3206,MOB-3234
+Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert Image → Take a Photo,Edit Form → Clear All Fields
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -56,4 +57,6 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| FormType     | Simple 1     |
 	| DocumentType | Take a Photo |
 	Then Verify Image Added
+	When All Form Fields Cleared
+	Then Verify All Form Fields Cleared
 	
