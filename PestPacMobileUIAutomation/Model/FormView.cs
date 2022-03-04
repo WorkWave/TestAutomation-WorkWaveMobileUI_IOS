@@ -32,7 +32,10 @@ namespace WorkWave.Workwave.Mobile.Model
         public IWebElement SearchTextFeild { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeOther[@text='Office Text']")]
-        private IWebElement OfficeTextTextField { get; set; }
+        private IWebElement OfficeTextField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[contains(text(),'Office Text: ')]")]
+        private IWebElement EditedOfficeTextField { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@text='Edit Draft']")]
         public IWebElement EditDraftLabel { get; set; }
@@ -64,6 +67,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Use Photo']")]
         private IWebElement UsePhotoView { get; set; }
 
+        [FindsBy(How = How.Id, Using = "SketchArrowRightSmallBlue")]
+        private IWebElement BottomExpandArrowButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -86,7 +92,7 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void EnterOfficeText(string text)
         {
-            EnterText(text, OfficeTextTextField);
+            EnterText(text, OfficeTextField);
         }
 
         public bool ShareFormHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ShareFormsHeader), TimeSpan.FromSeconds(time));
@@ -96,6 +102,8 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickTopMenuButton() => FormTopMenu.Click();
 
         public void ClickFormBackButton() => FormBackButton.Click();
+
+        public void ClickOfficeTextField() => EditedOfficeTextField.Click();
 
         public void ClickOnFavourite(String Name)
         {
@@ -133,6 +141,7 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyUsePhotoViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(UsePhotoView), System.TimeSpan.FromSeconds(time));
 
+        public void ClickBottomExpandArrowButton() => BottomExpandArrowButton.Click();
 
         #endregion Behavior
     }

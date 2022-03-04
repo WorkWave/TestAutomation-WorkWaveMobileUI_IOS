@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         FormView formView = new FormView();
         OrderPageView orderPageView = new OrderPageView();
-        String FormType;
+        String FormType,Text;
 
         public FormsSteps(WorkwaveData WorkwaveData)
         {
@@ -34,6 +34,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             formView.ClickOnStaticText("Start");
             WorkwaveData.Form.Text =  WorkwaveMobileSupport.generateRandomString(10);
+            Text = WorkwaveData.Form.Text;
             formView.EnterOfficeText(WorkwaveData.Form.Text);
         }
 
@@ -83,6 +84,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnContainsText(WorkwaveData.Form.FormType);
             Assert.True(formView.VerifyViewLoadedByHeader(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.Text));
+           
             formView.ClickOnText("Done");
         }
 
@@ -210,6 +212,24 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByText(5, "Image"));
+        }
+
+        [When(@"All Form Fields Cleared")]
+        public void WhenAllFormFieldsCleared()
+        {
+            formView.ClickOfficeTextField();
+            formView.ClickOnText("done");
+            formView.ClickBottomExpandArrowButton();
+            formView.ClickOnText("Clear All Fields");
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Clear Form"));
+            formView.ClickOnText("Clear All Fields");
+        }
+
+        [Then(@"Verify All Form Fields Cleared")]
+        public void ThenVerifyAllFormFieldsCleared()
+        {
+            Assert.True(formView.findElement(Text) == null);
+            Assert.True(formView.findElement("Image") == null);
         }
 
 
