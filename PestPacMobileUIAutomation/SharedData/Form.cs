@@ -11,5 +11,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string FormType { get; set; }
         public string Text { get; set; }
         public string DocumentType { get; set; }
+        public string DocumentName { get; set; }
     }
 }

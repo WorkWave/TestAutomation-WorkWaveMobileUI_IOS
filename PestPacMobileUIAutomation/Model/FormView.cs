@@ -70,6 +70,15 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "SketchArrowRightSmallBlue")]
         private IWebElement BottomExpandArrowButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Images']")]
+        private IWebElement ImageView { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "(//*[contains(text(),'Photo')])[1]")]
+        private IWebElement LocationImage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeAlert[@text='Service Location Photo Option']")]
+        private IWebElement PhotoOptionAlert { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -142,6 +151,13 @@ namespace WorkWave.Workwave.Mobile.Model
         public bool VerifyUsePhotoViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(UsePhotoView), System.TimeSpan.FromSeconds(time));
 
         public void ClickBottomExpandArrowButton() => BottomExpandArrowButton.Click();
+
+        public bool VerifyImageViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ImageView), System.TimeSpan.FromSeconds(time));
+
+        public void ClickFirstLocationImage() => LocationImage.Click();
+
+        public bool PhotoOptionAlertVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PhotoOptionAlert), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
     }

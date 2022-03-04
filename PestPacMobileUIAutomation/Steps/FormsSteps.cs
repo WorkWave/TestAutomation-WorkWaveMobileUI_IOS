@@ -203,6 +203,16 @@ namespace WorkWave.Workwave.Mobile.Steps
                     System.TimeSpan.FromSeconds(30);
                 }
                 formView.ClickOnText("Use Photo");
+            }else if (WorkwaveData.Form.DocumentType.Equals("Location Images"))
+            {
+                formView.ClickCustomerImageInsertButton();
+                formView.ClickOnText(WorkwaveData.Form.DocumentType);
+                while(!formView.VerifyImageViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.ClickFirstLocationImage();
+                formView.ClickOnStaticText("Select as Background");
             }
            
         }
@@ -231,6 +241,44 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.findElement(Text) == null);
             Assert.True(formView.findElement("Image") == null);
         }
+
+        [When(@"Add Image To Media Gallery")]
+        public void WhenAddImageToMediaGallery(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnText("camera");
+            if (formView.PhotoOptionAlertVisible(5))
+            {
+                formView.ClickOnText("Add New Picture");
+            }
+            if (WorkwaveData.Form.DocumentType.Equals("Pick from Gallery"))
+            {
+                formView.ClickOnText(WorkwaveData.Form.DocumentType);
+                while (!formView.VerifyPhotoViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.SelectImageFromGallery();
+            }
+            else if (WorkwaveData.Form.DocumentType.Equals("Take a Photo"))
+            {
+                formView.ClickOnText(WorkwaveData.Form.DocumentType);
+                while (!formView.VerifyCameraViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.ClickOnText("Take Picture");
+                while (!formView.VerifyUsePhotoViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.ClickOnText("Use Photo");
+            }
+
+            formView.ClickOnText("Save");
+        }
+
+     
 
 
     }
