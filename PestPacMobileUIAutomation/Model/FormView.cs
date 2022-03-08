@@ -88,6 +88,12 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[@text='Draft'])[1]/..//XCUIElementTypeStaticText[3]")]
         private IWebElement DraftedFormName { get; set; }
 
+        [FindsBy(How = How.Id, Using = "FormSideMenu")]
+        private IWebElement SideMenuButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@value='Type to search']")]
+        private IWebElement SearchTextField { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -187,6 +193,24 @@ namespace WorkWave.Workwave.Mobile.Model
             IWebElement element2 = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@id='" + Name + "']"));
             var touchAction = new TouchAction(driver);
             touchAction.Press(element1).MoveTo(element2).Release().Perform();
+        }
+
+        public void ClickSideMenuButton() => SideMenuButton.Click();
+
+        public void EnterFeildName(string text)
+        {
+            EnterText(text, SearchTextField);
+        }
+
+        public bool VerifyFieldStatus(int time, String FieldName, String Status)
+        {
+            return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='"+FieldName+"'])[2]/..//*[@text='"+Status+"']"))), System.TimeSpan.FromSeconds(time));
+        }
+
+        public void ClickOnSearchedFeild(String Text)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Text + "'])[2]"));
+            element.Click();
         }
 
         #endregion Behavior
