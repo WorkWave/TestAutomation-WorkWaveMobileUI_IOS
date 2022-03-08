@@ -12,8 +12,8 @@ Scenario: Add A Forms
 	When Complete Form
 	Then Verify Form Added
 
-	# MOB-3217,MOB-3218
-Scenario: Edit Form → Save Draft,Edit Form → Preview
+	# MOB-3217,MOB-3218.MOB-3154
+Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -25,6 +25,8 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview
 	When Drafted Form Opened
 	When Preview Form
 	Then Verify Preview Loaded
+	When Draft Form Delete
+	Then Verify Form Deleted
 
 
 	# MOB-3213 , MOB-3212

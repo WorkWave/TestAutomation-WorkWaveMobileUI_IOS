@@ -1,4 +1,7 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -79,6 +82,12 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeAlert[@text='Service Location Photo Option']")]
         private IWebElement PhotoOptionAlert { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[@text='FORMS']/../following-sibling::XCUIElementTypeOther[1]//*[@text='See All'])[1]")]
+        public IWebElement FormSeeAllButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "(//*[@text='Draft'])[1]/..//XCUIElementTypeStaticText[3]")]
+        private IWebElement DraftedFormName { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -158,6 +167,27 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool PhotoOptionAlertVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PhotoOptionAlert), System.TimeSpan.FromSeconds(time));
 
+        public void ClickFormSeeAllButton() => FormSeeAllButton.Click();
+
+        public string getDraftedFormName()
+        {
+            return DraftedFormName.GetAttribute("text");
+        }
+
+        public void DeleteForm(String Name)
+        {
+
+            SwipeToDeleteForm(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), Name);
+            System.TimeSpan.FromSeconds(10);
+        }
+
+        public void SwipeToDeleteForm(IPerformsTouchActions driver, String Name)
+        {
+            IWebElement element1 = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + Name + "']/..//*[@text='chevron']"));
+            IWebElement element2 = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@id='" + Name + "']"));
+            var touchAction = new TouchAction(driver);
+            touchAction.Press(element1).MoveTo(element2).Release().Perform();
+        }
 
         #endregion Behavior
     }

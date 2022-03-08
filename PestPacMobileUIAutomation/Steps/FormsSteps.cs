@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         FormView formView = new FormView();
         OrderPageView orderPageView = new OrderPageView();
-        String FormType,Text;
+        String FormType,Text,FormName;
 
         public FormsSteps(WorkwaveData WorkwaveData)
         {
@@ -95,6 +95,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             formView.ClickTopMenuButton();
             formView.ClickOnText("Save Draft");
+            System.TimeSpan.FromSeconds(30);
             formView.ClickFormBackButton();
         }
 
@@ -133,6 +134,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Preview"));
             Assert.True(formView.VerifyViewLoadedByText(5, "Share"));
             formView.ClickOnText("Done");
+            formView.ClickOnText("FormBackArrow");
         }
 
         [When(@"Form Favorited")]
@@ -278,7 +280,28 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnText("Save");
         }
 
-     
+        [When(@"Draft Form Delete")]
+        public void WhenDraftFormDelete()
+        {
+            formView.ClickFormSeeAllButton();
+            FormName = formView.getDraftedFormName();
+            formView.DeleteForm(FormName);
+            if (formView.DeleteButtonVisible(2))
+            {
+                System.TimeSpan.FromSeconds(30);
+                Assert.True(formView.VerifyViewLoadedByText(5, "Delete"));
+                formView.ClickOnText("Delete");
+            }
+
+        }
+
+        [Then(@"Verify Form Deleted")]
+        public void ThenVerifyFormDeleted()
+        {
+            Assert.True(formView.findElement(FormName) == null);
+            formView.ClickBack();
+        }
+
 
 
     }
