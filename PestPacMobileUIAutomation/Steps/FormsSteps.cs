@@ -341,5 +341,23 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.findElement("Done") == null);
         }
 
+        [When(@"Required Feilds Filled")]
+        public void WhenRequiredFeildsFilled(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnTextThree("Mode: Default");
+            Assert.True(formView.VerifyViewLoadedByText(5, "Required Fields Completed:"));
+            Assert.True(!formView.VerifyCompleteButtonVisible(5));
+            formView.EnterTextCommonFieldTwo("Test", WorkwaveData.Form.FieldName);
+            formView.ClickOnText("Given Name:");
+        }
+
+        [Then(@"Verify Required Fields Completed")]
+        public void ThenVerifyRequiredFieldsCompleted()
+        {
+            Assert.True(formView.VerifyCompleteButtonVisible(5));
+        }
+
+
     }
 }

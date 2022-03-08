@@ -112,6 +112,12 @@ namespace WorkWave.Workwave.Mobile.Model
             element.Click();
         }
 
+        public void ClickOnTextThree(String Text)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Text + "'])[3]"));
+            element.Click();
+        }
+
         public void ClickOnContainsText(String Text)
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Text + "')]"));
@@ -247,6 +253,16 @@ namespace WorkWave.Workwave.Mobile.Model
         public void EnterTextCommonField(string text, string fieldName)
         {
             IWebElement field = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + fieldName + "']/../../XCUIElementTypeTextField"));
+            field.Click();
+            if (!field.GetAttribute("text").Equals(""))
+                field.Clear();
+            field.SendKeys(text);
+            WorkwaveMobileSupport.HideKeyboard();
+        }
+
+        public void EnterTextCommonFieldTwo(string text, string fieldName)
+        {
+            IWebElement field = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + fieldName + "'])[2]"));
             field.Click();
             if (!field.GetAttribute("text").Equals(""))
                 field.Clear();
