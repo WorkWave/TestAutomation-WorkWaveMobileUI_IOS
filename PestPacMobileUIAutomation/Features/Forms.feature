@@ -9,6 +9,7 @@ Scenario: Add A Forms
 	When Form Added
 	| Field    | Value       |
 	| FormType | Simple 1    | 
+	When Fill Form Fields
 	When Complete Form
 	Then Verify Form Added
 
@@ -20,6 +21,7 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form
 	When Form Added
 	| Field    | Value       |
 	| FormType | Simple 1    | 
+	When Fill Form Fields
 	When Save Form As A Draft
 	Then Verify Form Drafted
 	When Drafted Form Opened
@@ -53,6 +55,7 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	When Form Added
 	| Field    | Value       |
 	| FormType | Simple 1    |
+	When Fill Form Fields
 	When Insert Image To Form
 	| Field        | Value             |
 	| FormType     | Simple 1          |
@@ -71,6 +74,20 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| DocumentType | Location Images |
 	Then Verify Image Added
 	
-
-	
+	#MOB-3159
+Scenario: Edit Form → Interact with Read-only Fields
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
+	When Start Form Editing
+	When Search For Field
+	| Field     | Value                |
+	| FieldName | Family Name Text Box |
+	Then Verify Search Result 
+	| Field  | Value    |
+	| Status | Readonly |
+	Then Verify ReadOnly Field Is Not Editable
 	

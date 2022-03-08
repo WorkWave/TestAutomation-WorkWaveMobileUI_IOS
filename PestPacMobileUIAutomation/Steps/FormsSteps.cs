@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         FormView formView = new FormView();
         OrderPageView orderPageView = new OrderPageView();
-        String FormType,Text,FormName;
+        String FormType,Text,FormName, FieldName;
 
         public FormsSteps(WorkwaveData WorkwaveData)
         {
@@ -32,11 +32,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             WhenFormTemplatesSearched();
             formView.ClickOnStaticText(WorkwaveData.Form.FormType);
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
+           
+        }
+
+        [When(@"Fill Form Fields")]
+        public void WhenFillFormFields()
+        {
             formView.ClickOnStaticText("Start");
-            WorkwaveData.Form.Text =  WorkwaveMobileSupport.generateRandomString(10);
+            WorkwaveData.Form.Text = WorkwaveMobileSupport.generateRandomString(10);
             Text = WorkwaveData.Form.Text;
             formView.EnterOfficeText(WorkwaveData.Form.Text);
         }
+
 
         [When("Form Templates Searched")]
         public void WhenFormTemplatesSearched()
@@ -302,7 +309,37 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickBack();
         }
 
+        [When(@"Start Form Editing")]
+        public void WhenStartFormEditing()
+        {
+            formView.ClickOnStaticText("Start");
+        }
 
+        [When(@"Search For Field")]
+        public void WhenSearchForField(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickSideMenuButton();
+            formView.ClickOnText("Type to search");
+            formView.EnterFeildName(WorkwaveData.Form.FieldName);
+            FieldName = WorkwaveData.Form.FieldName;
+        }
+
+        [Then(@"Verify Search Result")]
+        public void ThenVerifySearchResult(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            Assert.True(formView.VerifyFieldStatus(5, FieldName, WorkwaveData.Form.Status));
+        }
+
+        [Then(@"Verify ReadOnly Field Is Not Editable")]
+        public void ThenVerifyReadOnlyFieldIsNotEditable()
+        {
+            formView.ClickOnSearchedFeild(FieldName);
+            formView.ClickSideMenuButton();
+            formView.ClickOnSearchedFeild(FieldName);
+            Assert.True(formView.findElement("Done") == null);
+        }
 
     }
 }
