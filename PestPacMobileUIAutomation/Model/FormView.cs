@@ -94,6 +94,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@value='Type to search']")]
         private IWebElement SearchTextField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Complete']")]
+        private IWebElement CompleteButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -212,6 +215,9 @@ namespace WorkWave.Workwave.Mobile.Model
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Text + "'])[2]"));
             element.Click();
         }
+
+        public bool VerifyCompleteButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(CompleteButton), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
     }

@@ -284,10 +284,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Interact with Read-only Fields")]
-        public virtual void EditFormInteractWithRead_OnlyFields()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Interact with Read-only Fields,Edit Form → Interact with Required Fie" +
+            "lds")]
+        public virtual void EditFormInteractWithRead_OnlyFieldsEditFormInteractWithRequiredFields()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Interact with Read-only Fields", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Interact with Read-only Fields,Edit Form → Interact with Required Fie" +
+                    "lds", null, ((string[])(null)));
 #line 78
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -331,6 +333,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("Verify Search Result", ((string)(null)), table16, "Then ");
 #line 92
  testRunner.Then("Verify ReadOnly Field Is Not Editable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table17.AddRow(new string[] {
+                        "FieldName",
+                        "Given Name Text Box"});
+#line 93
+ testRunner.When("Required Feilds Filled", ((string)(null)), table17, "When ");
+#line 96
+ testRunner.Then("Verify Required Fields Completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

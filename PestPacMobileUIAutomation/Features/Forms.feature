@@ -74,8 +74,8 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| DocumentType | Location Images |
 	Then Verify Image Added
 	
-	#MOB-3159
-Scenario: Edit Form → Interact with Read-only Fields
+	#MOB-3159,MOB-3158
+Scenario: Edit Form → Interact with Read-only Fields,Edit Form → Interact with Required Fields
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -90,4 +90,8 @@ Scenario: Edit Form → Interact with Read-only Fields
 	| Field  | Value    |
 	| Status | Readonly |
 	Then Verify ReadOnly Field Is Not Editable
+	When Required Feilds Filled
+	| Field     | Value               |
+	| FieldName | Given Name Text Box |
+	Then Verify Required Fields Completed
 	
