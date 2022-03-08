@@ -106,10 +106,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Save Draft,Edit Form → Preview")]
-        public virtual void EditFormSaveDraftEditFormPreview()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form")]
+        public virtual void EditFormSaveDraftEditFormPreviewDeleteADraftForm()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Save Draft,Edit Form → Preview", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form", null, ((string[])(null)));
 #line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -141,6 +141,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Preview Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 27
  testRunner.Then("Verify Preview Loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 28
+ testRunner.When("Draft Form Delete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 29
+ testRunner.Then("Verify Form Deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -150,7 +154,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddFormToFavoritesUnfavoriteAFormTemplate()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Form To Favorites,Unfavorite a Form Template", null, ((string[])(null)));
-#line 31
+#line 33
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -160,7 +164,7 @@ this.ScenarioInitialize(scenarioInfo);
             table5.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 32
+#line 34
  testRunner.Given("Not Started Order Opened", ((string)(null)), table5, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -169,13 +173,13 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "FormType",
                         "Simple 1"});
-#line 35
+#line 37
  testRunner.When("Form Favorited", ((string)(null)), table6, "When ");
-#line 38
- testRunner.Then("Verify Form Favorited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 39
- testRunner.When("Form Unfavorited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 40
+ testRunner.Then("Verify Form Favorited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 41
+ testRunner.When("Form Unfavorited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 42
  testRunner.Then("Verify Form Unfavorited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -190,7 +194,7 @@ this.ScenarioInitialize(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert Image → Take a Ph" +
                     "oto,Edit Form → Clear All Fields,Edit Form → Insert Image → Location Images,Inse" +
                     "rt Image → Location Images", null, ((string[])(null)));
-#line 43
+#line 45
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -200,7 +204,7 @@ this.ScenarioInitialize(scenarioInfo);
             table7.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 44
+#line 46
  testRunner.Given("Not Started Order Opened", ((string)(null)), table7, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -212,7 +216,7 @@ this.ScenarioInitialize(scenarioInfo);
             table8.AddRow(new string[] {
                         "DocumentName",
                         "autoDoc"});
-#line 47
+#line 49
  testRunner.When("Add Image To Media Gallery", ((string)(null)), table8, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -221,7 +225,7 @@ this.ScenarioInitialize(scenarioInfo);
             table9.AddRow(new string[] {
                         "FormType",
                         "Simple 1"});
-#line 51
+#line 53
  testRunner.When("Form Added", ((string)(null)), table9, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -233,9 +237,9 @@ this.ScenarioInitialize(scenarioInfo);
             table10.AddRow(new string[] {
                         "DocumentType",
                         "Pick from Gallery"});
-#line 54
+#line 56
  testRunner.When("Insert Image To Form", ((string)(null)), table10, "When ");
-#line 58
+#line 60
  testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -247,13 +251,13 @@ this.ScenarioInitialize(scenarioInfo);
             table11.AddRow(new string[] {
                         "DocumentType",
                         "Take a Photo"});
-#line 59
+#line 61
  testRunner.When("Insert Image To Form", ((string)(null)), table11, "When ");
-#line 63
- testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 64
- testRunner.When("All Form Fields Cleared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 65
+ testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 66
+ testRunner.When("All Form Fields Cleared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 67
  testRunner.Then("Verify All Form Fields Cleared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -265,9 +269,9 @@ this.ScenarioInitialize(scenarioInfo);
             table12.AddRow(new string[] {
                         "DocumentType",
                         "Location Images"});
-#line 66
+#line 68
  testRunner.When("Insert Image To Form", ((string)(null)), table12, "When ");
-#line 70
+#line 72
  testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

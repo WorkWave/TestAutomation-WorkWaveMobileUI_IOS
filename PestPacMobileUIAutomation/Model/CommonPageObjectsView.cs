@@ -56,6 +56,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='TODAY']")]
         private IWebElement TodayIcon { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Delete']")]
+        private IWebElement DeleteButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -342,6 +345,9 @@ namespace WorkWave.Workwave.Mobile.Model
 
             return null;
         }
+
+        public bool DeleteButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(DeleteButton), TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
     }
