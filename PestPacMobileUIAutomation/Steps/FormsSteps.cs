@@ -385,6 +385,24 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.findElement("Done") == null);
         }
 
+        [When(@"Clear Non Auto Fields")]
+        public void WhenClearNonAutoFields()
+        {
+            formView.ClickFilledTextField();
+            Text = formView.getFilledFieldValue();
+            formView.ClickOnText("done");
+            formView.ClickBottomExpandArrowButton();
+            formView.ClickOnText("Clear All Fields");
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Clear Form"));
+            formView.ClickOnText("Clear Non-Auto Fields");
+        }
+
+        [Then(@"Verify Non Auto Fields Cleared")]
+        public void ThenVerifyNonAutoFieldsCleared()
+        {
+            String textNow = formView.getFilledFieldValue();
+            Assert.True(Text.Equals(textNow));
+        }
 
     }
 }

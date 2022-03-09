@@ -97,6 +97,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Complete']")]
         private IWebElement CompleteButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[@value='Has comment'])[1]")]
+        private IWebElement FilledTextField { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -222,6 +225,14 @@ namespace WorkWave.Workwave.Mobile.Model
         { 
             return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + FormName + "']/..//*[@text='Signed']"))), System.TimeSpan.FromSeconds(time));
         }
+
+        public void ClickFilledTextField() => FilledTextField.Click();
+
+        public string getFilledFieldValue()
+        {
+            return FilledTextField.GetAttribute("text");
+        }
+
         #endregion Behavior
     }
 }

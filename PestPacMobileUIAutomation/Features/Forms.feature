@@ -104,3 +104,15 @@ Scenario: Edit Form → Interact with Fields Editable After Customer Signs
 	| Field    | Value                |
 	| FormType | Customer Signed Form |
 	Then Verify Fields Editable After Customer Signs
+
+	#MOB-3184
+Scenario: Edit Form → Clear Non-Auto Fields
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value     |
+	| FormType | Mapped QA |
+	When Start Form Editing
+	When Clear Non Auto Fields
+	Then Verify Non Auto Fields Cleared
