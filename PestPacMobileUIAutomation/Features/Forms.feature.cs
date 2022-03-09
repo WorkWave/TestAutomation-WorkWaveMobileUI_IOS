@@ -379,6 +379,42 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Clear Non-Auto Fields")]
+        public virtual void EditFormClearNon_AutoFields()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Clear Non-Auto Fields", null, ((string[])(null)));
+#line 109
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table20.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 110
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table20, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table21.AddRow(new string[] {
+                        "FormType",
+                        "Mapped QA"});
+#line 113
+ testRunner.When("Form Added", ((string)(null)), table21, "When ");
+#line 116
+ testRunner.When("Start Form Editing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 117
+ testRunner.When("Clear Non Auto Fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 118
+ testRunner.Then("Verify Non Auto Fields Cleared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
