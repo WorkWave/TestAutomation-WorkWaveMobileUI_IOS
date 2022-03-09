@@ -95,3 +95,12 @@ Scenario: Edit Form → Interact with Read-only Fields,Edit Form → Interact wi
 	| FieldName | Given Name Text Box |
 	Then Verify Required Fields Completed
 	
+	#MOB-3157
+Scenario: Edit Form → Interact with Fields Editable After Customer Signs
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Search Form
+	| Field    | Value                |
+	| FormType | Customer Signed Form |
+	Then Verify Fields Editable After Customer Signs

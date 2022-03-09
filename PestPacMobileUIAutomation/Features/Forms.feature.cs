@@ -347,6 +347,38 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Interact with Fields Editable After Customer Signs")]
+        public virtual void EditFormInteractWithFieldsEditableAfterCustomerSigns()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Interact with Fields Editable After Customer Signs", null, ((string[])(null)));
+#line 99
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table18.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 100
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table18, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table19.AddRow(new string[] {
+                        "FormType",
+                        "Customer Signed Form"});
+#line 103
+ testRunner.When("Search Form", ((string)(null)), table19, "When ");
+#line 106
+ testRunner.Then("Verify Fields Editable After Customer Signs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
