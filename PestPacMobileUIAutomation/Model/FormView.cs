@@ -217,8 +217,11 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public bool VerifyCompleteButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(CompleteButton), System.TimeSpan.FromSeconds(time));
-
-
+    
+        public bool VerifySignedFormDisplayed(int time, String FormName)
+        { 
+            return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + FormName + "']/..//*[@text='Signed']"))), System.TimeSpan.FromSeconds(time));
+        }
         #endregion Behavior
     }
 }

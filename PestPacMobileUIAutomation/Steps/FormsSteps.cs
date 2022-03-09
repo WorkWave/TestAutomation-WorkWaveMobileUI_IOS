@@ -358,6 +358,33 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyCompleteButtonVisible(5));
         }
 
+        [When(@"Search Form")]
+        public void WhenSearchForm(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            System.TimeSpan.FromSeconds(30);
+            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            System.TimeSpan.FromSeconds(30);
+            formView.ClickFormSeeAllButton();
+            //if(!formView.VerifySignedFormDisplayed(5, WorkwaveData.Form.FormType))
+            //{
+            //    WorkwaveMobileSupport.SwipeDownIOS(WorkwaveData.Form.FormType);
+            //    System.TimeSpan.FromSeconds(30);
+            //}
+            formView.ClickOnText(WorkwaveData.Form.FormType);
+        }
+
+        [Then(@"Verify Fields Editable After Customer Signs")]
+        public void ThenVerifyFieldsEditableAfterCustomerSigns()
+        {
+            Assert.True(formView.VerifyViewLoadedByHeader(5,  WorkwaveData.Form.FormType));
+            formView.ClickOnStaticText("Edit Draft");
+            Assert.True(formView.VerifyViewLoadedByText(5, "Done"));
+            formView.ClickOnText("Text Field: Client  Address");
+            Assert.True(formView.findElement("Done") == null);
+        }
+
 
     }
 }
