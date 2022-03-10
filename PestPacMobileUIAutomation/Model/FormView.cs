@@ -100,6 +100,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[@value='Has comment'])[1]")]
         private IWebElement FilledTextField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Role']/../XCUIElementTypeTextField")]
+        private IWebElement RoleTextField { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -233,6 +236,24 @@ namespace WorkWave.Workwave.Mobile.Model
             return FilledTextField.GetAttribute("text");
         }
 
+        public void SelectRole(String Type)
+        {
+            RoleTextField.Click();
+            //AppiumWebElement PickerWheel = (AppiumWebElement)WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@class='UIAPicker']"));
+            //PickerWheel.SetImmediateValue(Type);
+            WorkwaveMobileSupport.TapTargetNoWait(554,2050);
+        }
+
+        public bool VerifyFormStatus(int time, String FieldName, String Status)
+        {
+            return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + FieldName + "')]/..//*[@text='" + Status + "']"))), System.TimeSpan.FromSeconds(time));
+        }
+
+
+        public string getRoleValue()
+        {
+            return RoleTextField.GetAttribute("text");
+        }
         #endregion Behavior
     }
 }

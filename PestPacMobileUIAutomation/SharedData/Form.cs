@@ -14,5 +14,7 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string DocumentName { get; set; }
         public string FieldName { get; set; }
         public string Status { get; set; }
+        public string Role { get; set; }
+        public string Email { get; set; }
     }
 }

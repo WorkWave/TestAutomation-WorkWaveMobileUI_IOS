@@ -32,16 +32,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             WhenFormTemplatesSearched();
             formView.ClickOnStaticText(WorkwaveData.Form.FormType);
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
-           
+            FormType = WorkwaveData.Form.FormType;
         }
 
         [When(@"Fill Form Fields")]
-        public void WhenFillFormFields()
+        public void WhenFillFormFields(Table data)
         {
+            WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnStaticText("Start");
             WorkwaveData.Form.Text = WorkwaveMobileSupport.generateRandomString(10);
             Text = WorkwaveData.Form.Text;
-            formView.EnterOfficeText(WorkwaveData.Form.Text);
+            formView.EnterTextCommonFieldTwo("Test", WorkwaveData.Form.FieldName);
+           // formView.EnterOfficeText(WorkwaveData.Form.Text);
         }
 
 
@@ -367,11 +369,6 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
             System.TimeSpan.FromSeconds(30);
             formView.ClickFormSeeAllButton();
-            //if(!formView.VerifySignedFormDisplayed(5, WorkwaveData.Form.FormType))
-            //{
-            //    WorkwaveMobileSupport.SwipeDownIOS(WorkwaveData.Form.FormType);
-            //    System.TimeSpan.FromSeconds(30);
-            //}
             formView.ClickOnText(WorkwaveData.Form.FormType);
         }
 
@@ -402,6 +399,41 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             String textNow = formView.getFilledFieldValue();
             Assert.True(Text.Equals(textNow));
+        }
+       
+        [When(@"Fill The Form")]
+        public void WhenFillTheForm(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnStaticText("Start");
+            WorkwaveData.Form.Text = WorkwaveMobileSupport.generateRandomString(10);
+            Text = WorkwaveData.Form.Text;
+            formView.EnterTextToCommonField("Test", WorkwaveData.Form.FieldName);
+            formView.ClickOnText("Given Name:");
+        }
+
+        [When(@"Send The Form")]
+        public void WhenSendTheForm(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnText("Send");
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Send Form"));
+            formView.SelectRole(WorkwaveData.Form.Role);
+            formView.ClickOnText("Done");
+            formView.ClickOnText(WorkwaveData.Form.Email);
+            formView.ClickOnText("Send");
+        }
+
+        [Then(@"Verify Sending Successful")]
+        public void ThenVerifySendingSuccessful(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Email sent!"));
+            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            System.TimeSpan.FromSeconds(30);
+            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            System.TimeSpan.FromSeconds(30);
+            Assert.True(formView.VerifyFormStatus(5, FormType, WorkwaveData.Form.Status));
         }
 
     }

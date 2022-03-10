@@ -270,6 +270,16 @@ namespace WorkWave.Workwave.Mobile.Model
             WorkwaveMobileSupport.HideKeyboard();
         }
 
+        public void EnterTextToCommonField(string text, string fieldName)
+        {
+            IWebElement field = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + fieldName + "'])[1]"));
+            field.Click();
+            if (!field.GetAttribute("text").Equals(""))
+                field.Clear();
+            field.SendKeys(text);
+            WorkwaveMobileSupport.HideKeyboard();
+        }
+
         public void ClickCommonSave() => SaveCommonButton.Click();
 
         public IWebElement findElement(string name)
