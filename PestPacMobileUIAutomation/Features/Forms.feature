@@ -10,6 +10,8 @@ Scenario: Add A Forms
 	| Field    | Value       |
 	| FormType | Simple 1    | 
 	When Fill Form Fields
+	| Field     | Value               |
+	| FieldName | Given Name Text Box |
 	When Complete Form
 	Then Verify Form Added
 
@@ -22,6 +24,8 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form
 	| Field    | Value       |
 	| FormType | Simple 1    | 
 	When Fill Form Fields
+	| Field     | Value               |
+	| FieldName | Given Name Text Box |
 	When Save Form As A Draft
 	Then Verify Form Drafted
 	When Drafted Form Opened
@@ -56,6 +60,8 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| Field    | Value       |
 	| FormType | Simple 1    |
 	When Fill Form Fields
+	| Field     | Value               |
+	| FieldName | Given Name Text Box |
 	When Insert Image To Form
 	| Field        | Value             |
 	| FormType     | Simple 1          |
@@ -95,6 +101,7 @@ Scenario: Edit Form → Interact with Read-only Fields,Edit Form → Interact wi
 	| FieldName | Given Name Text Box |
 	Then Verify Required Fields Completed
 	
+	
 	#MOB-3157
 Scenario: Edit Form → Interact with Fields Editable After Customer Signs
 	Given Not Started Order Opened
@@ -116,3 +123,23 @@ Scenario: Edit Form → Clear Non-Auto Fields
 	When Start Form Editing
 	When Clear Non Auto Fields
 	Then Verify Non Auto Fields Cleared
+
+	#MOB-3215
+Scenario: Edit Form → Send Form → Customer Role
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
+	When Fill The Form
+	| Field     | Value               |
+	| FieldName | Given Name Text Box |
+	Then Verify Required Fields Completed
+	When Send The Form
+	| Field | Value                 |
+	| Role  | Customer              |
+	| Email | mdelgoda@workwave.com |
+	Then Verify Sending Successful
+	| Field  | Value             |
+	| Status | Out for Signature |
