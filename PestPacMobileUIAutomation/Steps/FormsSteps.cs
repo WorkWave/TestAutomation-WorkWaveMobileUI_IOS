@@ -418,9 +418,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnText("Send");
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Send Form"));
-            formView.SelectRole(WorkwaveData.Form.Role);
-            formView.ClickOnText("Done");
-            formView.ClickOnText(WorkwaveData.Form.Email);
+            if (WorkwaveData.Form.Role.Equals("Customer"))
+            {
+                formView.SelectRole(WorkwaveData.Form.Role);
+                formView.ClickOnText("Done");
+                formView.ClickOnText(WorkwaveData.Form.Email);
+            }
+            else if(WorkwaveData.Form.Role.Equals("Administrator"))
+            {
+                formView.EnterTextToCommonField(WorkwaveData.Form.Name,"Search");
+                formView.ClickOnStaticText(WorkwaveData.Form.Name);
+            }
+                    
             formView.ClickOnText("Send");
         }
 

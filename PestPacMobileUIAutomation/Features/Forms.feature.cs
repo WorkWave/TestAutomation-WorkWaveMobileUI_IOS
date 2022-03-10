@@ -498,6 +498,71 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Send Form → Internal Role")]
+        public virtual void EditFormSendFormInternalRole()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Send Form → Internal Role", null, ((string[])(null)));
+#line 148
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table30.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 149
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table30, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table31.AddRow(new string[] {
+                        "FormType",
+                        "Ios_Test Form"});
+#line 152
+ testRunner.When("Form Added", ((string)(null)), table31, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table32.AddRow(new string[] {
+                        "FieldName",
+                        "Given Name Text Box"});
+#line 155
+ testRunner.When("Fill The Form", ((string)(null)), table32, "When ");
+#line 158
+ testRunner.Then("Verify Required Fields Completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table33.AddRow(new string[] {
+                        "Role",
+                        "Administrator"});
+            table33.AddRow(new string[] {
+                        "Name",
+                        "Maheshika Delgoda"});
+            table33.AddRow(new string[] {
+                        "Email",
+                        "mdelgoda+qa@workwave.com"});
+#line 159
+ testRunner.When("Send The Form", ((string)(null)), table33, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table34.AddRow(new string[] {
+                        "Status",
+                        "In Progress"});
+#line 164
+ testRunner.Then("Verify Sending Successful", ((string)(null)), table34, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

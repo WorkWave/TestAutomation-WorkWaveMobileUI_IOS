@@ -143,3 +143,24 @@ Scenario: Edit Form → Send Form → Customer Role
 	Then Verify Sending Successful
 	| Field  | Value             |
 	| Status | Out for Signature |
+
+	#MOB-3216
+Scenario: Edit Form → Send Form → Internal Role
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
+	When Fill The Form
+	| Field     | Value               |
+	| FieldName | Given Name Text Box |
+	Then Verify Required Fields Completed
+	When Send The Form
+	| Field | Value                    |
+	| Role  | Administrator            |
+	| Name  | Maheshika Delgoda        |
+	| Email | mdelgoda+qa@workwave.com |
+	Then Verify Sending Successful
+	| Field  | Value       |
+	| Status | In Progress |
