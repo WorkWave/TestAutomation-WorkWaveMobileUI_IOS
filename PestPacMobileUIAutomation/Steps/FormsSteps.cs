@@ -470,6 +470,14 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByText(5, "Edit Draft"));
         }
 
+        [Then(@"Verify Form Editor Not Displaying")]
+        public void ThenVerifyFormEditorNotDisplaying()
+        {
+            Assert.True(formView.findElement("Edit Draft") == null);
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "All Forms"));
+            Assert.True(formView.VerifyViewLoadedByText(5, "Canceled"));
+        }
+
 
 
     }

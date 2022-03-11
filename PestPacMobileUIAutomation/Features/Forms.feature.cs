@@ -595,6 +595,38 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Interact with Canceled Form")]
+        public virtual void InteractWithCanceledForm()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Interact with Canceled Form", null, ((string[])(null)));
+#line 178
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table37.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 179
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table37, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table38.AddRow(new string[] {
+                        "Status",
+                        "Canceled"});
+#line 182
+ testRunner.When("Search Forms", ((string)(null)), table38, "When ");
+#line 185
+ testRunner.Then("Verify Form Editor Not Displaying", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
