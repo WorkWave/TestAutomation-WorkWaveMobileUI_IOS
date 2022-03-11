@@ -173,3 +173,13 @@ Scenario:  Interact with Signed Form
 	| Field    | Value  |
 	| Status | Signed |
 	Then Verify Form Editor Displaying
+
+	#MOB-3214
+Scenario:  Interact with Canceled Form
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Search Forms
+	| Field    | Value  |
+	| Status | Canceled |
+	Then Verify Form Editor Not Displaying
