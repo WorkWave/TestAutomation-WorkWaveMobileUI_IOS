@@ -374,7 +374,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void EditFormInteractWithFieldsEditableAfterCustomerSigns()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Interact with Fields Editable After Customer Signs", null, ((string[])(null)));
-#line 106
+#line 105
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -384,7 +384,7 @@ this.ScenarioInitialize(scenarioInfo);
             table21.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 107
+#line 106
  testRunner.Given("Not Started Order Opened", ((string)(null)), table21, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -393,9 +393,9 @@ this.ScenarioInitialize(scenarioInfo);
             table22.AddRow(new string[] {
                         "FormType",
                         "Customer Signed Form"});
-#line 110
+#line 109
  testRunner.When("Search Form", ((string)(null)), table22, "When ");
-#line 113
+#line 112
  testRunner.Then("Verify Fields Editable After Customer Signs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -406,7 +406,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void EditFormClearNon_AutoFields()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Clear Non-Auto Fields", null, ((string[])(null)));
-#line 116
+#line 115
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -416,7 +416,7 @@ this.ScenarioInitialize(scenarioInfo);
             table23.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 117
+#line 116
  testRunner.Given("Not Started Order Opened", ((string)(null)), table23, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -425,13 +425,13 @@ this.ScenarioInitialize(scenarioInfo);
             table24.AddRow(new string[] {
                         "FormType",
                         "Mapped QA"});
-#line 120
+#line 119
  testRunner.When("Form Added", ((string)(null)), table24, "When ");
-#line 123
+#line 122
  testRunner.When("Start Form Editing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 124
+#line 123
  testRunner.When("Clear Non Auto Fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 125
+#line 124
  testRunner.Then("Verify Non Auto Fields Cleared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -442,7 +442,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void EditFormSendFormCustomerRole()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Send Form → Customer Role", null, ((string[])(null)));
-#line 128
+#line 127
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -452,7 +452,7 @@ this.ScenarioInitialize(scenarioInfo);
             table25.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 129
+#line 128
  testRunner.Given("Not Started Order Opened", ((string)(null)), table25, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -461,7 +461,7 @@ this.ScenarioInitialize(scenarioInfo);
             table26.AddRow(new string[] {
                         "FormType",
                         "Ios_Test Form"});
-#line 132
+#line 131
  testRunner.When("Form Added", ((string)(null)), table26, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -470,9 +470,9 @@ this.ScenarioInitialize(scenarioInfo);
             table27.AddRow(new string[] {
                         "FieldName",
                         "Given Name Text Box"});
-#line 135
+#line 134
  testRunner.When("Fill The Form", ((string)(null)), table27, "When ");
-#line 138
+#line 137
  testRunner.Then("Verify Required Fields Completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -484,7 +484,7 @@ this.ScenarioInitialize(scenarioInfo);
             table28.AddRow(new string[] {
                         "Email",
                         "mdelgoda@workwave.com"});
-#line 139
+#line 138
  testRunner.When("Send The Form", ((string)(null)), table28, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -493,7 +493,7 @@ this.ScenarioInitialize(scenarioInfo);
             table29.AddRow(new string[] {
                         "Status",
                         "Out for Signature"});
-#line 143
+#line 142
  testRunner.Then("Verify Sending Successful", ((string)(null)), table29, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -504,7 +504,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void EditFormSendFormInternalRole()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Send Form → Internal Role", null, ((string[])(null)));
-#line 148
+#line 147
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -514,7 +514,7 @@ this.ScenarioInitialize(scenarioInfo);
             table30.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 149
+#line 148
  testRunner.Given("Not Started Order Opened", ((string)(null)), table30, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -523,7 +523,7 @@ this.ScenarioInitialize(scenarioInfo);
             table31.AddRow(new string[] {
                         "FormType",
                         "Ios_Test Form"});
-#line 152
+#line 151
  testRunner.When("Form Added", ((string)(null)), table31, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -532,9 +532,9 @@ this.ScenarioInitialize(scenarioInfo);
             table32.AddRow(new string[] {
                         "FieldName",
                         "Given Name Text Box"});
-#line 155
+#line 154
  testRunner.When("Fill The Form", ((string)(null)), table32, "When ");
-#line 158
+#line 157
  testRunner.Then("Verify Required Fields Completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -549,7 +549,7 @@ this.ScenarioInitialize(scenarioInfo);
             table33.AddRow(new string[] {
                         "Email",
                         "mdelgoda+qa@workwave.com"});
-#line 159
+#line 158
  testRunner.When("Send The Form", ((string)(null)), table33, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -558,8 +558,40 @@ this.ScenarioInitialize(scenarioInfo);
             table34.AddRow(new string[] {
                         "Status",
                         "In Progress"});
-#line 164
+#line 163
  testRunner.Then("Verify Sending Successful", ((string)(null)), table34, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Interact with Signed Form")]
+        public virtual void InteractWithSignedForm()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Interact with Signed Form", null, ((string[])(null)));
+#line 168
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table35.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 169
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table35, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table36.AddRow(new string[] {
+                        "Status",
+                        "Signed"});
+#line 172
+ testRunner.When("Search Forms", ((string)(null)), table36, "When ");
+#line 175
+ testRunner.Then("Verify Form Editor Displaying", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

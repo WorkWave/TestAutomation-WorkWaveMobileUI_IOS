@@ -103,6 +103,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Role']/../XCUIElementTypeTextField")]
         private IWebElement RoleTextField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Preview']")]
+        private IWebElement PreviewButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -254,6 +257,9 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             return RoleTextField.GetAttribute("text");
         }
+
+        public bool VerifyPreviewButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PreviewButton), System.TimeSpan.FromSeconds(time));
+
         #endregion Behavior
     }
 }

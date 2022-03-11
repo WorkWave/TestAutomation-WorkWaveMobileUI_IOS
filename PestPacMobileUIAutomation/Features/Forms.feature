@@ -101,7 +101,6 @@ Scenario: Edit Form → Interact with Read-only Fields,Edit Form → Interact wi
 	| FieldName | Given Name Text Box |
 	Then Verify Required Fields Completed
 	
-	
 	#MOB-3157
 Scenario: Edit Form → Interact with Fields Editable After Customer Signs
 	Given Not Started Order Opened
@@ -164,3 +163,13 @@ Scenario: Edit Form → Send Form → Internal Role
 	Then Verify Sending Successful
 	| Field  | Value       |
 	| Status | In Progress |
+
+	#MOB-3198
+Scenario:  Interact with Signed Form
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Search Forms
+	| Field    | Value  |
+	| Status | Signed |
+	Then Verify Form Editor Displaying

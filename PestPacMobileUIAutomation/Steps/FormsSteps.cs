@@ -445,5 +445,32 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyFormStatus(5, FormType, WorkwaveData.Form.Status));
         }
 
+        [When(@"Search Forms")]
+        public void WhenSearchForms(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            System.TimeSpan.FromSeconds(30);
+            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            System.TimeSpan.FromSeconds(30);
+            formView.ClickFormSeeAllButton();
+            formView.ClickOnText(WorkwaveData.Form.Status);
+        }
+
+
+        [Then(@"Verify Form Editor Displaying")]
+        public void ThenVerifyFormEditorDisplaying()
+        {
+            while (!formView.VerifyPreviewButtonLoaded(2))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+           
+            Assert.True(formView.VerifyViewLoadedByText(5, "Edit Draft"));
+        }
+
+
+
     }
 }
