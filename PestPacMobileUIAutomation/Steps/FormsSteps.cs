@@ -90,9 +90,14 @@ namespace WorkWave.Workwave.Mobile.Steps
             System.TimeSpan.FromSeconds(30);
             Assert.True( formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByText(5, "Complete"));
-            formView.ClickOnContainsText(WorkwaveData.Form.FormType);
-            Assert.True(formView.VerifyViewLoadedByHeader(5, WorkwaveData.Form.FormType));
-            Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.Text));
+            formView.ClickOnContainsText(FormType);
+            
+            while (!formView.VerifyDoneButtonLoaded(2))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+            Assert.True(formView.VerifyViewLoadedByHeader(5, FormType));
+            Assert.True(formView.VerifyViewLoadedByContainsText(5, Text));
            
             formView.ClickOnText("Done");
         }
@@ -408,7 +413,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnStaticText("Start");
             WorkwaveData.Form.Text = WorkwaveMobileSupport.generateRandomString(10);
             Text = WorkwaveData.Form.Text;
-            formView.EnterTextToCommonField("Test", WorkwaveData.Form.FieldName);
+            formView.EnterTextToCommonField(WorkwaveData.Form.Text, WorkwaveData.Form.FieldName);
             formView.ClickOnText("Given Name:");
         }
 
@@ -465,8 +470,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             while (!formView.VerifyPreviewButtonLoaded(2))
             {
                 System.TimeSpan.FromSeconds(30);
-            }
-           
+            }           
             Assert.True(formView.VerifyViewLoadedByText(5, "Edit Draft"));
         }
 
@@ -477,7 +481,6 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByHeader(5, "All Forms"));
             Assert.True(formView.VerifyViewLoadedByText(5, "Canceled"));
         }
-
 
 
     }
