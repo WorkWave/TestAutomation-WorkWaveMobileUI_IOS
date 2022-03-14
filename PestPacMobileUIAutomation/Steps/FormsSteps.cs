@@ -127,7 +127,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Drafted Form Opened")]
         public void WhenDraftedFormOpened()
         {
-            formView.ClickOnContainsText( WorkwaveData.Form.FormType);
+            formView.ClickOnForm( WorkwaveData.Form.FormType,"Draft");
             while (!formView.EditDraftLabelVisible(2))
             {
                 System.TimeSpan.FromSeconds(30);

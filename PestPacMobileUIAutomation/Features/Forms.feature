@@ -15,15 +15,15 @@ Scenario: Add A Forms,Interact with Complete Form
 	When Complete Form
 	Then Verify Form Added
 
-	# MOB-3217,MOB-3218.MOB-3154
-Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form
+	# MOB-3217,MOB-3218.MOB-3154,MOB-3181
+Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form,Interact with Draft Form
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
 	When Form Added
 	| Field    | Value         |
 	| FormType | Ios_Test Form |
-	When Fill Form Fields
+	When Fill The Form
 	| Field     | Value               |
 	| FieldName | Given Name Text Box |
 	When Save Form As A Draft

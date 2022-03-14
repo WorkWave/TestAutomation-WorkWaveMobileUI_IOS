@@ -115,10 +115,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form")]
-        public virtual void EditFormSaveDraftEditFormPreviewDeleteADraftForm()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form,Interact with Draf" +
+            "t Form")]
+        public virtual void EditFormSaveDraftEditFormPreviewDeleteADraftFormInteractWithDraftForm()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form,Interact with Draf" +
+                    "t Form", null, ((string[])(null)));
 #line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -148,7 +150,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "FieldName",
                         "Given Name Text Box"});
 #line 26
- testRunner.When("Fill Form Fields", ((string)(null)), table6, "When ");
+ testRunner.When("Fill The Form", ((string)(null)), table6, "When ");
 #line 29
  testRunner.When("Save Form As A Draft", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30

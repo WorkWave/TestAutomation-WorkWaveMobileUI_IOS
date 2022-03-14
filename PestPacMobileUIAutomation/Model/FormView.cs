@@ -265,6 +265,12 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyDoneButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(DoneButton), System.TimeSpan.FromSeconds(time));
 
+        public void ClickOnForm(String Text,String Status)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[contains(text(),'"+Text+"')])[1]/..//*[@text='"+Status+"']"));
+            element.Click();
+        }
+
         #endregion Behavior
     }
 }
