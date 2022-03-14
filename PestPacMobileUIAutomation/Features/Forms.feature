@@ -123,8 +123,8 @@ Scenario: Edit Form → Clear Non-Auto Fields
 	When Clear Non Auto Fields
 	Then Verify Non Auto Fields Cleared
 
-	#MOB-3215
-Scenario: Edit Form → Send Form → Customer Role
+	#MOB-3215,MOB-3201
+Scenario: Edit Form → Send Form → Customer Role,Interact with Out for Signature Form
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -142,6 +142,7 @@ Scenario: Edit Form → Send Form → Customer Role
 	Then Verify Sending Successful
 	| Field  | Value             |
 	| Status | Out for Signature |
+	Then Verify Form Interactable
 
 	#MOB-3216,MOB-3180
 Scenario: Edit Form → Send Form → Internal Role,Interact with In Progress Form
