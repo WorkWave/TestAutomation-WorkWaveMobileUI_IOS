@@ -106,6 +106,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Preview']")]
         private IWebElement PreviewButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Done']")]
+        private IWebElement DoneButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -259,6 +262,8 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public bool VerifyPreviewButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PreviewButton), System.TimeSpan.FromSeconds(time));
+
+        public bool VerifyDoneButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(DoneButton), System.TimeSpan.FromSeconds(time));
 
         #endregion Behavior
     }

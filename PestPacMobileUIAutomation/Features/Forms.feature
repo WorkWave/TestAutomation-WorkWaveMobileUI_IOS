@@ -1,15 +1,15 @@
 ﻿@Forms
 Feature: Forms
 	
-	# MOB-3220
-Scenario: Add A Forms
+	# MOB-3220,MOB-3195
+Scenario: Add A Forms,Interact with Complete Form
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
 	When Form Added
-	| Field    | Value       |
-	| FormType | Simple 1    | 
-	When Fill Form Fields
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
+	When Fill The Form
 	| Field     | Value               |
 	| FieldName | Given Name Text Box |
 	When Complete Form
@@ -21,8 +21,8 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form
 	| Field         | Value |
 	| DetailsNeeded | false |
 	When Form Added
-	| Field    | Value       |
-	| FormType | Simple 1    | 
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
 	When Fill Form Fields
 	| Field     | Value               |
 	| FieldName | Given Name Text Box |
@@ -41,8 +41,8 @@ Scenario: Add Form To Favorites,Unfavorite a Form Template
 	| Field         | Value |
 	| DetailsNeeded | false |
 	When Form Favorited
-	| Field    | Value       |
-	| FormType | Simple 1    | 
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
 	Then Verify Form Favorited
 	When Form Unfavorited
 	Then Verify Form Unfavorited
@@ -57,26 +57,26 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| DocumentType | Pick from Gallery |
 	| DocumentName | autoDoc           |
 	When Form Added
-	| Field    | Value       |
-	| FormType | Simple 1    |
+	| Field    | Value         |
+	| FormType | Ios_Test Form |
 	When Fill Form Fields
 	| Field     | Value               |
 	| FieldName | Given Name Text Box |
 	When Insert Image To Form
 	| Field        | Value             |
-	| FormType     | Simple 1          |
+	| FormType     | Ios_Test Form          |
 	| DocumentType | Pick from Gallery |
 	Then Verify Image Added
 	When Insert Image To Form
 	| Field        | Value        |
-	| FormType     | Simple 1     |
+	| FormType     | Ios_Test Form     |
 	| DocumentType | Take a Photo |
 	Then Verify Image Added
 	When All Form Fields Cleared
 	Then Verify All Form Fields Cleared
 	When Insert Image To Form
 	| Field        | Value           |
-	| FormType     | Simple 1        |
+	| FormType     | Ios_Test Form        |
 	| DocumentType | Location Images |
 	Then Verify Image Added
 	

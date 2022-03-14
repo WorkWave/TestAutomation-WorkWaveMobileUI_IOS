@@ -72,10 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add A Forms")]
-        public virtual void AddAForms()
+        [NUnit.Framework.DescriptionAttribute("Add A Forms,Interact with Complete Form")]
+        public virtual void AddAFormsInteractWithCompleteForm()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add A Forms", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add A Forms,Interact with Complete Form", null, ((string[])(null)));
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -94,7 +94,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table2.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
 #line 9
  testRunner.When("Form Added", ((string)(null)), table2, "When ");
 #line hidden
@@ -105,7 +105,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "FieldName",
                         "Given Name Text Box"});
 #line 12
- testRunner.When("Fill Form Fields", ((string)(null)), table3, "When ");
+ testRunner.When("Fill The Form", ((string)(null)), table3, "When ");
 #line 15
  testRunner.When("Complete Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 16
@@ -137,7 +137,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table5.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
 #line 23
  testRunner.When("Form Added", ((string)(null)), table5, "When ");
 #line hidden
@@ -190,7 +190,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table8.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
 #line 43
  testRunner.When("Form Favorited", ((string)(null)), table8, "When ");
 #line 46
@@ -242,7 +242,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table11.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
 #line 59
  testRunner.When("Form Added", ((string)(null)), table11, "When ");
 #line hidden
@@ -260,7 +260,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table13.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
             table13.AddRow(new string[] {
                         "DocumentType",
                         "Pick from Gallery"});
@@ -274,7 +274,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table14.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
             table14.AddRow(new string[] {
                         "DocumentType",
                         "Take a Photo"});
@@ -292,7 +292,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table15.AddRow(new string[] {
                         "FormType",
-                        "Simple 1"});
+                        "Ios_Test Form"});
             table15.AddRow(new string[] {
                         "DocumentType",
                         "Location Images"});
