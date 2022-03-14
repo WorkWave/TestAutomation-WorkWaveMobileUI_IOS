@@ -502,10 +502,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Send Form → Internal Role")]
-        public virtual void EditFormSendFormInternalRole()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Send Form → Internal Role,Interact with In Progress Form")]
+        public virtual void EditFormSendFormInternalRoleInteractWithInProgressForm()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Send Form → Internal Role", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Send Form → Internal Role,Interact with In Progress Form", null, ((string[])(null)));
 #line 147
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -562,6 +562,8 @@ this.ScenarioInitialize(scenarioInfo);
                         "In Progress"});
 #line 163
  testRunner.Then("Verify Sending Successful", ((string)(null)), table34, "Then ");
+#line 166
+ testRunner.Then("Verify Form Interactable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -571,7 +573,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void InteractWithSignedForm()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Interact with Signed Form", null, ((string[])(null)));
-#line 168
+#line 169
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -581,7 +583,7 @@ this.ScenarioInitialize(scenarioInfo);
             table35.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 169
+#line 170
  testRunner.Given("Not Started Order Opened", ((string)(null)), table35, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -590,9 +592,9 @@ this.ScenarioInitialize(scenarioInfo);
             table36.AddRow(new string[] {
                         "Status",
                         "Signed"});
-#line 172
+#line 173
  testRunner.When("Search Forms", ((string)(null)), table36, "When ");
-#line 175
+#line 176
  testRunner.Then("Verify Form Editor Displaying", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -603,7 +605,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void InteractWithCanceledForm()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Interact with Canceled Form", null, ((string[])(null)));
-#line 178
+#line 179
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -613,7 +615,7 @@ this.ScenarioInitialize(scenarioInfo);
             table37.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 179
+#line 180
  testRunner.Given("Not Started Order Opened", ((string)(null)), table37, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -622,9 +624,9 @@ this.ScenarioInitialize(scenarioInfo);
             table38.AddRow(new string[] {
                         "Status",
                         "Canceled"});
-#line 182
+#line 183
  testRunner.When("Search Forms", ((string)(null)), table38, "When ");
-#line 185
+#line 186
  testRunner.Then("Verify Form Editor Not Displaying", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

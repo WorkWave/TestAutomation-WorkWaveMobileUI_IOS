@@ -143,8 +143,8 @@ Scenario: Edit Form → Send Form → Customer Role
 	| Field  | Value             |
 	| Status | Out for Signature |
 
-	#MOB-3216
-Scenario: Edit Form → Send Form → Internal Role
+	#MOB-3216,MOB-3180
+Scenario: Edit Form → Send Form → Internal Role,Interact with In Progress Form
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -163,6 +163,7 @@ Scenario: Edit Form → Send Form → Internal Role
 	Then Verify Sending Successful
 	| Field  | Value       |
 	| Status | In Progress |
+	Then Verify Form Interactable
 
 	#MOB-3198
 Scenario:  Interact with Signed Form
