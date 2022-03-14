@@ -482,6 +482,14 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByText(5, "Canceled"));
         }
 
+        [Then(@"Verify Form Interactable")]
+        public void ThenVerifyFormInteractable()
+        {
+            formView.ClickOnForm(FormType, WorkwaveData.Form.Status);
+            ThenVerifyFormEditorDisplaying();
+        }
+
+
 
     }
 }
