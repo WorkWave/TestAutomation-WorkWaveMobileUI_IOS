@@ -185,3 +185,15 @@ Scenario:  Interact with Canceled Form
 	| Field    | Value  |
 	| Status | Canceled |
 	Then Verify Form Editor Not Displaying
+
+	#MOB-3211 
+Scenario: Edit Form → Populate Date field
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value              |
+	| FormType | Sample Global Form |
+	When Start Form Editing
+	When Filter Date Field
+	Then Verify Date Added
