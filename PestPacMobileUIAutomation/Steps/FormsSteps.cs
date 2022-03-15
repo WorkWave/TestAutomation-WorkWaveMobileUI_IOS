@@ -513,14 +513,22 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
             Assert.True(formView.VerifyViewLoadedByText(5, "searchBlue"));
             formView.ClickOnText("searchBlue");
-            formView.EnterTextOnCommonField(WorkwaveData.Form.Type);
-            formView.ClickOnTextTwo(WorkwaveData.Form.Type);
+            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            formView.ClickOnTextTwo(WorkwaveData.Form.Value);
         }
 
         [Then(@"Verify Value Selected")]
         public void ThenVerifyValueSelected()
         {
-            Assert.True(formView.VerifyViewLoadedByText(5, WorkwaveData.Form.FieldName + " " + WorkwaveData.Form.Type));
+            Assert.True(formView.VerifyViewLoadedByText(5, WorkwaveData.Form.FieldName + ": " + WorkwaveData.Form.Value));
+        }
+
+        [When(@"Enter Text To Text Field")]
+        public void WhenEnterTextToTextField(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.EnterTextToCommonField(WorkwaveData.Form.Value, WorkwaveData.Form.FieldName);
+            WorkwaveMobileSupport.TapTargetNoWait(367,753);
         }
 
 
