@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         FormView formView = new FormView();
         OrderPageView orderPageView = new OrderPageView();
-        String FormType,Text,FormName, FieldName;
+        String FormType, Text, FormName, FieldName, Date;
 
         public FormsSteps(WorkwaveData WorkwaveData)
         {
@@ -489,6 +489,21 @@ namespace WorkWave.Workwave.Mobile.Steps
             ThenVerifyFormEditorDisplaying();
         }
 
+        [When(@"Filter Date Field")]
+        public void WhenFilterDateField()
+        {
+            formView.ClickOnText("done");
+            formView.ClickOnText("Text Field: Date");
+            Assert.True(formView.VerifyViewLoadedByText(5, "Date"));
+            Date = DateTime.Now.ToString("MM/dd/yyyy"); ;
+            formView.ClickOnText("Set");
+        }
+
+        [Then(@"Verify Date Added")]
+        public void ThenVerifyDateAdded()
+        {
+            Assert.True(formView.VerifyViewLoadedByText(5, "Text Field: Date: "+Date));
+        }
 
 
     }

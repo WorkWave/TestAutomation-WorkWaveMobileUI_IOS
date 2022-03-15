@@ -374,6 +374,9 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool DeleteButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(DeleteButton), TimeSpan.FromSeconds(time));
 
+      
+
+
 
         #endregion Behavior
     }
