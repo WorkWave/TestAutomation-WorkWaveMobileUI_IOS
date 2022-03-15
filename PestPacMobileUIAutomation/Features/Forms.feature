@@ -186,8 +186,8 @@ Scenario:  Interact with Canceled Form
 	| Status | Canceled |
 	Then Verify Form Editor Not Displaying
 
-	#MOB-3211,MOB-3183
-Scenario: Edit Form → Populate Date field,Populate Dropdown from Mapped Lookup Values,Populate Text field
+	#MOB-3211,MOB-3182,MOB-3176
+Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defined in Adobe,Populate Text field
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
