@@ -186,8 +186,8 @@ Scenario:  Interact with Canceled Form
 	| Status | Canceled |
 	Then Verify Form Editor Not Displaying
 
-	#MOB-3211 
-Scenario: Edit Form → Populate Date field
+	#MOB-3211,MOB-3183
+Scenario: Edit Form → Populate Date field,Populate Dropdown from Mapped Lookup Values
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -196,4 +196,11 @@ Scenario: Edit Form → Populate Date field
 	| FormType | Sample Global Form |
 	When Start Form Editing
 	When Filter Date Field
+	| Field     | Value            |
+	| FieldName | Text Field: Date |
 	Then Verify Date Added
+	When Select Value of DropDown
+	| Field     | Value                   |
+	| FieldName | Choice Field: YardSize: |
+	| Type      | Small                   |
+	Then Verify Value Selected

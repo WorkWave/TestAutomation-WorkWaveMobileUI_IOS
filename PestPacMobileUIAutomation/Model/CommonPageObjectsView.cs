@@ -111,6 +111,11 @@ namespace WorkWave.Workwave.Mobile.Model
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + Text + "']"));
             element.Click();
         }
+        public void ClickOnTextTwo(String Text)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@text='" + Text + "'])[2]"));
+            element.Click();
+        }
 
         public void ClickOnTextThree(String Text)
         {
