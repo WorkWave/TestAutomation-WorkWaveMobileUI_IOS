@@ -490,10 +490,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         }
 
         [When(@"Filter Date Field")]
-        public void WhenFilterDateField()
+        public void WhenFilterDateField(Table data)
         {
+            WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnText("done");
-            formView.ClickOnText("Text Field: Date");
+            formView.ClickOnText(WorkwaveData.Form.FieldName);
             Assert.True(formView.VerifyViewLoadedByText(5, "Date"));
             Date = DateTime.Now.ToString("MM/dd/yyyy"); ;
             formView.ClickOnText("Set");
@@ -502,7 +503,24 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Date Added")]
         public void ThenVerifyDateAdded()
         {
-            Assert.True(formView.VerifyViewLoadedByText(5, "Text Field: Date: "+Date));
+            Assert.True(formView.VerifyViewLoadedByText(5, WorkwaveData.Form.FieldName+": " +Date));
+        }
+
+        [When(@"Select Value of DropDown")]
+        public void WhenSelectValueOfDropDown(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
+            Assert.True(formView.VerifyViewLoadedByText(5, "searchBlue"));
+            formView.ClickOnText("searchBlue");
+            formView.EnterTextOnCommonField(WorkwaveData.Form.Type);
+            formView.ClickOnTextTwo(WorkwaveData.Form.Type);
+        }
+
+        [Then(@"Verify Value Selected")]
+        public void ThenVerifyValueSelected()
+        {
+            Assert.True(formView.VerifyViewLoadedByText(5, WorkwaveData.Form.FieldName + " " + WorkwaveData.Form.Type));
         }
 
 

@@ -635,10 +635,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Populate Date field")]
-        public virtual void EditFormPopulateDateField()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Populate Date field,Populate Dropdown from Mapped Lookup Values")]
+        public virtual void EditFormPopulateDateFieldPopulateDropdownFromMappedLookupValues()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Populate Date field", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Populate Date field,Populate Dropdown from Mapped Lookup Values", null, ((string[])(null)));
 #line 190
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -662,10 +662,31 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Form Added", ((string)(null)), table40, "When ");
 #line 197
  testRunner.When("Start Form Editing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table41.AddRow(new string[] {
+                        "FieldName",
+                        "Text Field: Date"});
 #line 198
- testRunner.When("Filter Date Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 199
+ testRunner.When("Filter Date Field", ((string)(null)), table41, "When ");
+#line 201
  testRunner.Then("Verify Date Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table42.AddRow(new string[] {
+                        "FieldName",
+                        "Choice Field: YardSize:"});
+            table42.AddRow(new string[] {
+                        "Type",
+                        "Small"});
+#line 202
+ testRunner.When("Select Value of DropDown", ((string)(null)), table42, "When ");
+#line 206
+ testRunner.Then("Verify Value Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
