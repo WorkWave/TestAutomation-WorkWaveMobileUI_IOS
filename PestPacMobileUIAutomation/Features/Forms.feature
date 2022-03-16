@@ -215,7 +215,7 @@ Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defin
 	| Value     | Test             |
 	Then Verify Value Selected
 	
-		#MOB-3192
+	#MOB-3192
 Scenario:  Interact with Declined Form
 	Given Not Started Order Opened
 	| Field         | Value |
@@ -224,3 +224,18 @@ Scenario:  Interact with Declined Form
 	| Field  | Value    |
 	| Status | Declined |
 	Then Verify Form Editor Displaying
+
+	#MOB-3186
+Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value                                 |
+	| FormType | WorkWave Test Automation Form Example |
+	When Start Form Editing
+	When Enter Text To Multi-line Text Field From Mapped Lookup Values
+	| Field     | Value             |
+	| FieldName | Text Field: Notes |
+	| Value     | Towel             |
+	Then Verify Value Added

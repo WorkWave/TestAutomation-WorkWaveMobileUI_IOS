@@ -544,6 +544,24 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveMobileSupport.TapTargetNoWait(208, 740);
         }
 
+        [When(@"Enter Text To Multi-line Text Field From Mapped Lookup Values")]
+        public void WhenEnterTextToMulti_LineTextFieldFromMappedLookupValues(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnText("FormNavigationBarResetZoom");
+            WorkwaveMobileSupport.TapTargetNoWait(561,1600);
+            Assert.True(formView.VerifyViewLoadedByHeader(5, "Notes"));
+            formView.ClickOnText("searchBlue");
+            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            formView.ClickOnStaticText(WorkwaveData.Form.Value);
+        }
+
+        [Then(@"Verify Value Added")]
+        public void ThenVerifyValueAdded()
+        {
+            Assert.True(formView.VerifyViewLoadedByText(5, WorkwaveData.Form.FieldName + ":  " + WorkwaveData.Form.Value));
+        }
+
 
     }
 }

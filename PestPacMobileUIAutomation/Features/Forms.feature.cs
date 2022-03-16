@@ -752,6 +752,52 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Populate Multi-line Text field from Mapped Lookup Values")]
+        public virtual void EditFormPopulateMulti_LineTextFieldFromMappedLookupValues()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Populate Multi-line Text field from Mapped Lookup Values", null, ((string[])(null)));
+#line 229
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table47.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 230
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table47, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table48.AddRow(new string[] {
+                        "FormType",
+                        "WorkWave Test Automation Form Example"});
+#line 233
+ testRunner.When("Form Added", ((string)(null)), table48, "When ");
+#line 236
+ testRunner.When("Start Form Editing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table49.AddRow(new string[] {
+                        "FieldName",
+                        "Text Field: Notes"});
+            table49.AddRow(new string[] {
+                        "Value",
+                        "Towel"});
+#line 237
+ testRunner.When("Enter Text To Multi-line Text Field From Mapped Lookup Values", ((string)(null)), table49, "When ");
+#line 241
+ testRunner.Then("Verify Value Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
