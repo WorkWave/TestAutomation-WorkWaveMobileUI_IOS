@@ -379,8 +379,15 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool DeleteButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(DeleteButton), TimeSpan.FromSeconds(time));
 
-      
 
+        public void SwipeDown()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -5000, 1);
+            System.TimeSpan.FromSeconds(10);
+
+
+        }
 
 
         #endregion Behavior

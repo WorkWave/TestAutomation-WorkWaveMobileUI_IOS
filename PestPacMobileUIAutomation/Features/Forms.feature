@@ -186,8 +186,8 @@ Scenario:  Interact with Canceled Form
 	| Status | Canceled |
 	Then Verify Form Editor Not Displaying
 
-	#MOB-3211,MOB-3182,MOB-3176
-Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defined in Adobe,Populate Text field
+	#MOB-3211,MOB-3182,MOB-3176,MOB-3174
+Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defined in Adobe,Populate Text field, Populate Multi-line Text field
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -199,6 +199,11 @@ Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defin
 	| Field     | Value            |
 	| FieldName | Text Field: Date |
 	Then Verify Date Added
+	When Enter Text To Multi-line Text Field
+	| Field     | Value             |
+	| FieldName | Text Field: Notes |
+	| Value     | Test Multi Line   |
+	Then Verify Value Selected
 	When Select Value of DropDown
 	| Field     | Value                   |
 	| FieldName | Choice Field: YardSize  |
@@ -209,3 +214,4 @@ Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defin
 	| FieldName | Text Field: Name |
 	| Value     | Test             |
 	Then Verify Value Selected
+	

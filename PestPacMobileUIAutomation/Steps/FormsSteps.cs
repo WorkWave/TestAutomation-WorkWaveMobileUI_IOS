@@ -511,6 +511,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
+            formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
             Assert.True(formView.VerifyViewLoadedByText(5, "searchBlue"));
             formView.ClickOnText("searchBlue");
             formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
@@ -529,6 +530,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.EnterTextToCommonField(WorkwaveData.Form.Value, WorkwaveData.Form.FieldName);
             WorkwaveMobileSupport.TapTargetNoWait(367,753);
+        }
+
+        [When(@"Enter Text To Multi-line Text Field")]
+        public void WhenEnterTextToMulti_LineTextField(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.SwipeDown();
+            System.TimeSpan.FromSeconds(30);
+            formView.SwipeDown();
+            System.TimeSpan.FromSeconds(30);
+            formView.EnterTextToCommonField(WorkwaveData.Form.Value, WorkwaveData.Form.FieldName);
+            WorkwaveMobileSupport.TapTargetNoWait(208, 740);
         }
 
 
