@@ -215,3 +215,12 @@ Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defin
 	| Value     | Test             |
 	Then Verify Value Selected
 	
+		#MOB-3192
+Scenario:  Interact with Declined Form
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Search Forms
+	| Field  | Value    |
+	| Status | Declined |
+	Then Verify Form Editor Displaying
