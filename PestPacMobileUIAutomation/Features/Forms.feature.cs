@@ -754,10 +754,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Populate Multi-line Text field from Mapped Lookup Values")]
-        public virtual void EditFormPopulateMulti_LineTextFieldFromMappedLookupValues()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Populate Multi-line Text field from Mapped Lookup Values,Populate Tex" +
+            "t field from Mapped Lookup Values")]
+        public virtual void EditFormPopulateMulti_LineTextFieldFromMappedLookupValuesPopulateTextFieldFromMappedLookupValues()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Populate Multi-line Text field from Mapped Lookup Values", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Populate Multi-line Text field from Mapped Lookup Values,Populate Tex" +
+                    "t field from Mapped Lookup Values", null, ((string[])(null)));
 #line 229
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -794,6 +796,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 237
  testRunner.When("Enter Text To Multi-line Text Field From Mapped Lookup Values", ((string)(null)), table49, "When ");
 #line 241
+ testRunner.Then("Verify Value Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table50.AddRow(new string[] {
+                        "FieldName",
+                        "Text Field: Client Name"});
+            table50.AddRow(new string[] {
+                        "Value",
+                        "Cleaning Auto"});
+#line 242
+ testRunner.When("Enter Text To Text Field From Mapped Lookup Values", ((string)(null)), table50, "When ");
+#line 246
  testRunner.Then("Verify Value Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

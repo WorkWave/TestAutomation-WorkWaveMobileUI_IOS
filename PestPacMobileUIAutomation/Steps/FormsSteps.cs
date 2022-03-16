@@ -562,6 +562,16 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByText(5, WorkwaveData.Form.FieldName + ":  " + WorkwaveData.Form.Value));
         }
 
+        [When(@"Enter Text To Text Field From Mapped Lookup Values")]
+        public void WhenEnterTextToTextFieldFromMappedLookupValues(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            WorkwaveMobileSupport.TapTargetNoWait(580, 817);
+            formView.ClickOnText("searchBlue");
+            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            formView.ClickOnStaticText(WorkwaveData.Form.Value);
+        }
+
 
     }
 }

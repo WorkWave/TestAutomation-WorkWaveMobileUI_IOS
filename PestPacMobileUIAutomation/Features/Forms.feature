@@ -225,8 +225,8 @@ Scenario:  Interact with Declined Form
 	| Status | Declined |
 	Then Verify Form Editor Displaying
 
-	#MOB-3186
-Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values
+	#MOB-3186,MOB-3170
+Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values,Populate Text field from Mapped Lookup Values
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -238,4 +238,9 @@ Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values
 	| Field     | Value             |
 	| FieldName | Text Field: Notes |
 	| Value     | Towel             |
+	Then Verify Value Added
+	When Enter Text To Text Field From Mapped Lookup Values
+	| Field     | Value                   |
+	| FieldName | Text Field: Client Name |
+	| Value     | Cleaning Auto           |
 	Then Verify Value Added
