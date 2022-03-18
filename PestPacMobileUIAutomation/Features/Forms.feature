@@ -249,3 +249,17 @@ Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values
 	| FieldName | Choice Field: Technician |
 	| Value     | Maheshika Delgoda        |
 	Then Verify Value Selected
+
+	#MOB-3193
+Scenario: Edit Form → Manipulate Radio Buttons
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value                                 |
+	| FormType | WorkWave Test Automation Form Example |
+	When Start Form Editing
+	When Manipulate Radio Button
+	| Field     | Value |
+	| FieldName | Yes   |
+	Then Verify Radio Button Clicked

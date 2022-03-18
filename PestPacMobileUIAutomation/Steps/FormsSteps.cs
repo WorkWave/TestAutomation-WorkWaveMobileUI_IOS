@@ -587,6 +587,21 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnStaticText(WorkwaveData.Form.Value);
         }
 
+        [When(@"Manipulate Radio Button")]
+        public void WhenManipulateRadioButton(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnText("FormNavigationBarResetZoom");
+            formView.ClickOnText("Button: Paid.0: Off");
+        }
+
+        [Then(@"Verify Radio Button Clicked")]
+        public void ThenVerifyRadioButtonClicked()
+        {
+            Assert.True(formView.VerifyViewLoadedByText(5, "Button: Paid.0: " + WorkwaveData.Form.FieldName));
+        }
+
+
 
     }
 }
