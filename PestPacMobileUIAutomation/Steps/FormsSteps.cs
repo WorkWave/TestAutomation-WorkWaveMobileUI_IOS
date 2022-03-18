@@ -319,6 +319,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Start Form Editing")]
         public void WhenStartFormEditing()
         {
+            while (!formView.VerifyPreviewButtonLoaded(2))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
             formView.ClickOnStaticText("Start");
         }
 
@@ -567,6 +571,17 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             WorkwaveMobileSupport.TapTargetNoWait(580, 817);
+            formView.ClickOnText("searchBlue");
+            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            formView.ClickOnStaticText(WorkwaveData.Form.Value);
+        }
+
+        [When(@"Select Value of DropDown From Mapped Lookup Values")]
+        public void WhenSelectValueOfDropDownFromMappedLookupValues(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
+            Assert.True(formView.VerifyViewLoadedByText(5, "searchBlue"));
             formView.ClickOnText("searchBlue");
             formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
             formView.ClickOnStaticText(WorkwaveData.Form.Value);
