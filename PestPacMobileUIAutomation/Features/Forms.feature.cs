@@ -755,11 +755,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit Form → Populate Multi-line Text field from Mapped Lookup Values,Populate Tex" +
-            "t field from Mapped Lookup Values")]
-        public virtual void EditFormPopulateMulti_LineTextFieldFromMappedLookupValuesPopulateTextFieldFromMappedLookupValues()
+            "t field from Mapped Lookup Values,Populate Dropdown from Mapped Lookup Values")]
+        public virtual void EditFormPopulateMulti_LineTextFieldFromMappedLookupValuesPopulateTextFieldFromMappedLookupValuesPopulateDropdownFromMappedLookupValues()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Populate Multi-line Text field from Mapped Lookup Values,Populate Tex" +
-                    "t field from Mapped Lookup Values", null, ((string[])(null)));
+                    "t field from Mapped Lookup Values,Populate Dropdown from Mapped Lookup Values", null, ((string[])(null)));
 #line 229
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -811,6 +811,20 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Enter Text To Text Field From Mapped Lookup Values", ((string)(null)), table50, "When ");
 #line 246
  testRunner.Then("Verify Value Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table51.AddRow(new string[] {
+                        "FieldName",
+                        "Choice Field: Technician"});
+            table51.AddRow(new string[] {
+                        "Value",
+                        "Maheshika Delgoda"});
+#line 247
+ testRunner.When("Select Value of DropDown From Mapped Lookup Values", ((string)(null)), table51, "When ");
+#line 251
+ testRunner.Then("Verify Value Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
