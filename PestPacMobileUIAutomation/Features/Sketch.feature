@@ -9,11 +9,13 @@ Scenario: Add Sketch.Delete Sketch
 	| Field            | Value |
 	| SketchBackground | Grid  |
 	When Object Added To Sketch
-	| Field   | Value   |
-	| Tool    | Objects |
-	| SubTool | AC Unit |
+	| Field      | Value         |
+	| Tool       | Objects       |
+	| SubTool    | AC Unit       |
 	| SketchName | autoMapSketch |
 	When New Sketch Saved
+	| Field      | Value         |
+	| SketchName | autoMapSketch |
 	Then Verify Sketch Added
 	When Sketch Deleted
 	Then Verify Sketch Deleted

@@ -41,22 +41,22 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Sketch = data.CreateInstance<Sketch>();
             Assert.True(sketchView.VerifySketchPadVisible(5));
-            System.TimeSpan.FromSeconds(30);
+            System.TimeSpan.FromSeconds(60);
             sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
-            System.TimeSpan.FromSeconds(30);
+            System.TimeSpan.FromSeconds(60);
             sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
-            System.TimeSpan.FromSeconds(30);
+            System.TimeSpan.FromSeconds(60);
             WorkwaveMobileSupport.TapTargetNoWait(200, 200);
         }
         
         [When(@"New Sketch Saved")]
-        public void WhenNewSketchSaved()
+        public void WhenNewSketchSaved(Table data)
         {
-           
+            WorkwaveData.Sketch = data.CreateInstance<Sketch>();
             sketchView.ClickCommonSave();
             Assert.True(sketchView.VerifyViewLoadedByHeader(5, "Sketch"));
-            SketchName = WorkwaveData.Sketch.SketchName + WorkwaveMobileSupport.RandomInt(3);
-            sketchView.EnterSketchName(SketchName);
+            WorkwaveData.Sketch.SketchName = WorkwaveData.Sketch.SketchName + WorkwaveMobileSupport.RandomInt(3);
+            sketchView.EnterSketchName(WorkwaveData.Sketch.SketchName);
             System.TimeSpan.FromSeconds(30);
             sketchView.ClickOK();
             WorkwaveMobileSupport.TapTargetNoWait(1200, 550);

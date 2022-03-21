@@ -263,3 +263,31 @@ Scenario: Edit Form → Manipulate Radio Buttons
 	| Field     | Value |
 	| FieldName | Yes   |
 	Then Verify Radio Button Clicked
+
+	#MOB-3200
+Scenario: Edit Form → Insert Image → Sketches
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value         |
+	| Tool       | Objects       |
+	| SubTool    | AC Unit       |
+	| SketchName | autoMapSketch |
+	When New Sketch Saved
+	| Field      | Value         |
+	| SketchName | autoMapSketch |
+	When Form Added
+	| Field    | Value                                 |
+	| FormType | WorkWave Test Automation Form Example |
+	When Start Form Editing
+	When Resize The Screen
+	When Insert Image To Form
+	| Field        | Value                                 |
+	| FormType     | WorkWave Test Automation Form Example |
+	| DocumentType | Sketches                              |
+	| SketchName   | autoMapSketch                         |
+	Then Verify Image Added

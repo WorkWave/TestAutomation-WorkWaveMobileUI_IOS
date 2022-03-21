@@ -871,6 +871,90 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Insert Image → Sketches")]
+        public virtual void EditFormInsertImageSketches()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Insert Image → Sketches", null, ((string[])(null)));
+#line 268
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table55.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 269
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table55, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table56.AddRow(new string[] {
+                        "SketchBackground",
+                        "Grid"});
+#line 272
+ testRunner.Given("New Sketch Opened", ((string)(null)), table56, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table57.AddRow(new string[] {
+                        "Tool",
+                        "Objects"});
+            table57.AddRow(new string[] {
+                        "SubTool",
+                        "AC Unit"});
+            table57.AddRow(new string[] {
+                        "SketchName",
+                        "autoMapSketch"});
+#line 275
+ testRunner.When("Object Added To Sketch", ((string)(null)), table57, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table58.AddRow(new string[] {
+                        "SketchName",
+                        "autoMapSketch"});
+#line 280
+ testRunner.When("New Sketch Saved", ((string)(null)), table58, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table59.AddRow(new string[] {
+                        "FormType",
+                        "WorkWave Test Automation Form Example"});
+#line 283
+ testRunner.When("Form Added", ((string)(null)), table59, "When ");
+#line 286
+ testRunner.When("Start Form Editing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 287
+ testRunner.When("Resize The Screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table60.AddRow(new string[] {
+                        "FormType",
+                        "WorkWave Test Automation Form Example"});
+            table60.AddRow(new string[] {
+                        "DocumentType",
+                        "Sketches"});
+            table60.AddRow(new string[] {
+                        "SketchName",
+                        "autoMapSketch"});
+#line 288
+ testRunner.When("Insert Image To Form", ((string)(null)), table60, "When ");
+#line 293
+ testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

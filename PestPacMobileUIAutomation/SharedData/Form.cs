@@ -18,5 +18,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string Email { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
+        public string SketchName { get; set; }
     }
 }

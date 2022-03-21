@@ -55,6 +55,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Button: Office Image']")]
         public IWebElement InsertButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[contains(text(),'Button: Image')]")]
+        public IWebElement CommonInsertImageButton { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Photos']")]
         private IWebElement PhotoViewHeader { get; set; }
 
@@ -108,6 +111,9 @@ namespace WorkWave.Workwave.Mobile.Model
 
         [FindsBy(How = How.XPath, Using = "//*[@text='Done']")]
         private IWebElement DoneButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Sketches']")]
+        private IWebElement SketchesHeader { get; set; }
 
         #endregion Page Factory
 
@@ -270,6 +276,11 @@ namespace WorkWave.Workwave.Mobile.Model
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[contains(text(),'"+Text+"')])[1]/..//*[@text='"+Status+"']"));
             element.Click();
         }
+
+        public void ClickInsertImageButton() => CommonInsertImageButton.Click();
+
+        public bool VerifySketchesHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SketchesHeader), System.TimeSpan.FromSeconds(time));
+
 
         #endregion Behavior
     }
