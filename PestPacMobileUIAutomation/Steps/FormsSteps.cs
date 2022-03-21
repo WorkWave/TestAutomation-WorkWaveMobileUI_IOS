@@ -27,6 +27,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickPlusIcon();
+            System.TimeSpan.FromSeconds(60);
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Add"));
             formView.ClickOnStaticText("Forms");
             WhenFormTemplatesSearched();
@@ -229,6 +230,16 @@ namespace WorkWave.Workwave.Mobile.Steps
                 }
                 formView.ClickFirstLocationImage();
                 formView.ClickOnStaticText("Select as Background");
+            }else if (WorkwaveData.Form.DocumentType.Equals("Sketches"))
+            {
+                formView.ClickInsertImageButton();
+                System.TimeSpan.FromSeconds(60);
+                formView.ClickOnText(WorkwaveData.Form.DocumentType);
+                while (!formView.VerifySketchesHeaderVisible(5))
+                {
+                    System.TimeSpan.FromSeconds(30);
+                }
+                formView.ClickOnContainsText(WorkwaveData.Form.SketchName);
             }
            
         }
@@ -600,6 +611,13 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             Assert.True(formView.VerifyViewLoadedByText(5, "Button: Paid.0: " + WorkwaveData.Form.FieldName));
         }
+
+        [When(@"Resize The Screen")]
+        public void WhenResizeTheScreen()
+        {
+            formView.ClickOnText("FormNavigationBarResetZoom");
+        }
+
 
 
 
