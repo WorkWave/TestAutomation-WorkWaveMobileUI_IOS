@@ -957,10 +957,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Edit Form → Capture Signature")]
-        public virtual void EditFormCaptureSignature()
+        [NUnit.Framework.DescriptionAttribute("Edit Form → Capture Signature,Manipulate Checkbox")]
+        public virtual void EditFormCaptureSignatureManipulateCheckbox()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Capture Signature", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Form → Capture Signature,Manipulate Checkbox", null, ((string[])(null)));
 #line 296
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -990,6 +990,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Capture The Signature", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 306
  testRunner.Then("Verify Signature Captured", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table63.AddRow(new string[] {
+                        "FieldName",
+                        "Recurring"});
+#line 307
+ testRunner.When("Manipulate CheckBox", ((string)(null)), table63, "When ");
+#line 310
+ testRunner.Then("Verify CheckBox Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

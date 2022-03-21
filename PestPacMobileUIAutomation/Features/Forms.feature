@@ -292,8 +292,8 @@ Scenario: Edit Form → Insert Image → Sketches
 	| SketchName   | autoMapSketch                         |
 	Then Verify Image Added
 
-	#MOB-3199
-Scenario: Edit Form → Capture Signature
+	#MOB-3199,MOB-3191
+Scenario: Edit Form → Capture Signature,Manipulate Checkbox
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -304,3 +304,7 @@ Scenario: Edit Form → Capture Signature
 	When Resize The Screen
 	When Capture The Signature
 	Then Verify Signature Captured
+	When Manipulate CheckBox
+	| Field     | Value     |
+	| FieldName | Recurring |
+	Then Verify CheckBox Selected
