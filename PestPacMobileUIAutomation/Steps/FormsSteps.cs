@@ -634,6 +634,19 @@ namespace WorkWave.Workwave.Mobile.Steps
             ThenVerifyImageAdded();
         }
 
+        [When(@"Manipulate CheckBox")]
+        public void WhenManipulateCheckBox(Table data)
+        {
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            formView.ClickOnText("Button: "+ WorkwaveData.Form.FieldName + ": Off");
+        }
+
+        [Then(@"Verify CheckBox Selected")]
+        public void ThenVerifyCheckBoxSelected()
+        {
+            Assert.True(formView.VerifyViewLoadedByText(5, "Button: " + WorkwaveData.Form.FieldName + ": Yes"));
+        }
+
 
 
     }
