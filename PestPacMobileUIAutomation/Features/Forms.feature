@@ -291,3 +291,16 @@ Scenario: Edit Form → Insert Image → Sketches
 	| DocumentType | Sketches                              |
 	| SketchName   | autoMapSketch                         |
 	Then Verify Image Added
+
+	#MOB-3199
+Scenario: Edit Form → Capture Signature
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Form Added
+	| Field    | Value                                 |
+	| FormType | WorkWave Test Automation Form Example |
+	When Start Form Editing
+	When Resize The Screen
+	When Capture The Signature
+	Then Verify Signature Captured

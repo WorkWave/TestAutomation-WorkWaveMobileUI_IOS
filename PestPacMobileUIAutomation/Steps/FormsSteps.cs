@@ -618,6 +618,21 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnText("FormNavigationBarResetZoom");
         }
 
+        [When(@"Capture The Signature")]
+        public void WhenCaptureTheSignature()
+        {
+            formView.ClickOnText("Signature Field: Signature");
+            Assert.True(formView.VerifyViewLoadedByText(5, "Sign here"));
+            formView.ClickOnText("▶");
+            Assert.True(formView.VerifyViewLoadedByText(5, "clear"));
+            formView.ClickOnText("Save");
+        }
+
+        [Then(@"Verify Signature Captured")]
+        public void ThenVerifySignatureCaptured()
+        {
+            ThenVerifyImageAdded();
+        }
 
 
 
