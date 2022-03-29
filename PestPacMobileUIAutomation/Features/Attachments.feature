@@ -1,7 +1,7 @@
 ﻿@Attachments
 Feature: Attachments
 
-Scenario: Take a Photo → Not Included in Service Report,Video,Pick from Gallery → Photo
+Scenario: Take a Photo → Not Included in Service Report,Take a Video → Not Included in Service Report,Pick from Gallery → Photo
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
