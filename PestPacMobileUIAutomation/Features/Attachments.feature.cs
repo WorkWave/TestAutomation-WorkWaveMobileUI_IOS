@@ -72,10 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Photo,Video and pick from gallery Attachment")]
-        public virtual void AddPhotoVideoAndPickFromGalleryAttachment()
+        [NUnit.Framework.DescriptionAttribute("Take a Photo → Not Included in Service Report,Video,Pick from Gallery → Photo")]
+        public virtual void TakeAPhotoNotIncludedInServiceReportVideoPickFromGalleryPhoto()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Photo,Video and pick from gallery Attachment", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Take a Photo → Not Included in Service Report,Video,Pick from Gallery → Photo", null, ((string[])(null)));
 #line 4
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
