@@ -393,13 +393,14 @@ namespace WorkWave.Workwave.Mobile.Steps
         }
 
         [Then(@"Verify Fields Editable After Customer Signs")]
-        public void ThenVerifyFieldsEditableAfterCustomerSigns()
+        public void ThenVerifyFieldsEditableAfterCustomerSigns(Table data)
         {
-            Assert.True(formView.VerifyViewLoadedByHeader(5,  WorkwaveData.Form.FormType));
+            WorkwaveData.Form = data.CreateInstance<Form>();
+            //Assert.True(formView.VerifyViewLoadedByHeader(5,  WorkwaveData.Form.FormType));
             formView.ClickOnStaticText("Edit Draft");
             Assert.True(formView.VerifyViewLoadedByText(5, "Done"));
-            formView.ClickOnText("Text Field: Client  Address");
-            Assert.True(formView.findElement("Done") == null);
+            //formView.ClickOnText(WorkwaveData.Form.FieldName);
+            Assert.True(formView.findElement("done") != null);
         }
 
         [When(@"Clear Non Auto Fields")]
@@ -647,7 +648,16 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(formView.VerifyViewLoadedByText(5, "Button: " + WorkwaveData.Form.FieldName + ": Yes"));
         }
 
-
+        [Then(@"ReturnsToHome")]
+        public void ThenReturnsToHome()
+        {
+            formView.ClickFormBackButton();
+            while (!formView.LeaveWithoutSavingVisible(5))
+            {
+                formView.ClickFormBackButton();
+            }
+            formView.ClickOnText("Leave without saving");
+        }
 
     }
 }

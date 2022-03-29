@@ -132,6 +132,12 @@ namespace WorkWave.Workwave.Mobile.Steps
             //        while (commonPageObjectsView.MainBackButtonTwoVisible(5))
             //            commonPageObjectsView.ClickMainBackButtonTwo();
             //    }
+            //    if (commonPageObjectsView.FormBackButtonVisible(5))
+            //    {
+            //        while (commonPageObjectsView.FormBackButtonVisible(5))
+            //            commonPageObjectsView.ClickFormBack();
+            //    }
+
             //}
 
         }
