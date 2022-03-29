@@ -72,11 +72,13 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Take a Photo → Not Included in Service Report,Video,Pick from Gallery → Photo")]
-        public virtual void TakeAPhotoNotIncludedInServiceReportVideoPickFromGalleryPhoto()
+        [NUnit.Framework.DescriptionAttribute("Take a Photo → Not Included in Service Report,Take a Video → Not Included in Serv" +
+            "ice Report,Pick from Gallery → Photo")]
+        public virtual void TakeAPhotoNotIncludedInServiceReportTakeAVideoNotIncludedInServiceReportPickFromGalleryPhoto()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Take a Photo → Not Included in Service Report,Video,Pick from Gallery → Photo", null, ((string[])(null)));
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Take a Photo → Not Included in Service Report,Take a Video → Not Included in Serv" +
+                    "ice Report,Pick from Gallery → Photo", null, ((string[])(null)));
+#line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -86,7 +88,7 @@ this.ScenarioInitialize(scenarioInfo);
             table1.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 5
+#line 6
  testRunner.Given("Not Started Order Opened", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -95,9 +97,9 @@ this.ScenarioInitialize(scenarioInfo);
             table2.AddRow(new string[] {
                         "Type",
                         "Take a Photo"});
-#line 8
+#line 9
  testRunner.When("Attachment Added", ((string)(null)), table2, "When ");
-#line 11
+#line 12
  testRunner.Then("Verify Attachment Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -106,9 +108,9 @@ this.ScenarioInitialize(scenarioInfo);
             table3.AddRow(new string[] {
                         "Type",
                         "Take a Video"});
-#line 12
+#line 13
  testRunner.When("Attachment Added", ((string)(null)), table3, "When ");
-#line 15
+#line 16
  testRunner.Then("Verify Attachment Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -117,9 +119,9 @@ this.ScenarioInitialize(scenarioInfo);
             table4.AddRow(new string[] {
                         "Type",
                         "Pick from Gallery"});
-#line 16
+#line 17
  testRunner.When("Attachment Added", ((string)(null)), table4, "When ");
-#line 19
+#line 20
  testRunner.Then("Verify Attachment Exists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
