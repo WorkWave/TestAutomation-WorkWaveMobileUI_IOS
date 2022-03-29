@@ -115,6 +115,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Sketches']")]
         private IWebElement SketchesHeader { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Leave without saving']")]
+        private IWebElement LeaveWithoutSavingButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -280,6 +283,8 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickInsertImageButton() => CommonInsertImageButton.Click();
 
         public bool VerifySketchesHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SketchesHeader), System.TimeSpan.FromSeconds(time));
+
+        public bool LeaveWithoutSavingVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(LeaveWithoutSavingButton), TimeSpan.FromSeconds(time));
 
 
         #endregion Behavior

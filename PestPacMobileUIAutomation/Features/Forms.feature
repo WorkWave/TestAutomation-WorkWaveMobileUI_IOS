@@ -35,6 +35,7 @@ Scenario: Edit Form → Save Draft,Edit Form → Preview,Delete a Draft Form,Int
 	Then Verify Form Deleted
 
 
+
 	# MOB-3213 , MOB-3212
 Scenario: Add Form To Favorites,Unfavorite a Form Template
 	Given Not Started Order Opened
@@ -100,16 +101,19 @@ Scenario: Edit Form → Interact with Read-only Fields,Edit Form → Interact wi
 	| Field     | Value               |
 	| FieldName | Given Name Text Box |
 	Then Verify Required Fields Completed
+	Then ReturnsToHome
 	
 	#MOB-3157
 Scenario: Edit Form → Interact with Fields Editable After Customer Signs
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
-	When Search Form
-	| Field    | Value                |
-	| FormType | Customer Signed Form |
+	When Search Forms
+	| Field  | Value  |
+	| Status | Signed |
 	Then Verify Fields Editable After Customer Signs
+	| Field     | Value             |
+	| FieldName | Country Combo Box |
 
 	#MOB-3184
 Scenario: Edit Form → Clear Non-Auto Fields
@@ -122,6 +126,7 @@ Scenario: Edit Form → Clear Non-Auto Fields
 	When Start Form Editing
 	When Clear Non Auto Fields
 	Then Verify Non Auto Fields Cleared
+	Then ReturnsToHome
 
 	#MOB-3215,MOB-3201
 Scenario: Edit Form → Send Form → Customer Role,Interact with Out for Signature Form
@@ -214,6 +219,7 @@ Scenario: Edit Form → Populate Date field,Populate Dropdown from Options Defin
 	| FieldName | Text Field: Name |
 	| Value     | Test             |
 	Then Verify Value Selected
+	Then ReturnsToHome
 	
 	#MOB-3192
 Scenario:  Interact with Declined Form
@@ -224,6 +230,7 @@ Scenario:  Interact with Declined Form
 	| Field  | Value    |
 	| Status | Declined |
 	Then Verify Form Editor Displaying
+
 
 	#MOB-3186,MOB-3170,MOB-3183
 Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values,Populate Text field from Mapped Lookup Values,Populate Dropdown from Mapped Lookup Values
@@ -249,6 +256,7 @@ Scenario: Edit Form → Populate Multi-line Text field from Mapped Lookup Values
 	| FieldName | Choice Field: Technician |
 	| Value     | Maheshika Delgoda        |
 	Then Verify Value Selected
+	Then ReturnsToHome
 
 	#MOB-3193
 Scenario: Edit Form → Manipulate Radio Buttons
@@ -263,6 +271,7 @@ Scenario: Edit Form → Manipulate Radio Buttons
 	| Field     | Value |
 	| FieldName | Yes   |
 	Then Verify Radio Button Clicked
+	Then ReturnsToHome
 
 	#MOB-3200
 Scenario: Edit Form → Insert Image → Sketches
@@ -291,6 +300,7 @@ Scenario: Edit Form → Insert Image → Sketches
 	| DocumentType | Sketches                              |
 	| SketchName   | autoMapSketch                         |
 	Then Verify Image Added
+	Then ReturnsToHome
 
 	#MOB-3199,MOB-3191
 Scenario: Edit Form → Capture Signature,Manipulate Checkbox
@@ -308,3 +318,4 @@ Scenario: Edit Form → Capture Signature,Manipulate Checkbox
 	| Field     | Value     |
 	| FieldName | Recurring |
 	Then Verify CheckBox Selected
+	Then ReturnsToHome

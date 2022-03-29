@@ -32,6 +32,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "leftArrow")]
         private IWebElement BackButtonTwo { get; set; }
 
+        [FindsBy(How = How.Id, Using = "FormBackArrow")]
+        private IWebElement FormBackButton { get; set; }
+
         [FindsBy(How = How.Id, Using = "OK")]
         private IWebElement OKButton { get; set; }
 
@@ -73,6 +76,8 @@ namespace WorkWave.Workwave.Mobile.Model
         }
 
         public void ClickBack() => BackButton.Click();
+
+        public void ClickFormBack() => FormBackButton.Click();
 
         public void ClickBackTwo() => BackButtonTwo.Click();
 
@@ -388,6 +393,9 @@ namespace WorkWave.Workwave.Mobile.Model
 
 
         }
+
+        public bool FormBackButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(FormBackButton), TimeSpan.FromSeconds(time));
+
 
 
         #endregion Behavior
