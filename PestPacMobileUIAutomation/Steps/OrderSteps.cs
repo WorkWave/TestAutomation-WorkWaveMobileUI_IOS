@@ -84,6 +84,8 @@ namespace WorkWave.Workwave.Mobile.Steps
                 case "Text":
                     WorkwaveData.Order.CustomFieldValue = WorkwaveMobileSupport.generateRandomString(5);
                     orderPageView.EnterTextOnCommonField(WorkwaveData.Order.CustomFieldValue);
+                    System.TimeSpan.FromSeconds(30);
+                    orderPageView.ClickOK();
                     orderPageView.ClickOK();
                     break;
                 case "Check Box":

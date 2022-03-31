@@ -25,48 +25,49 @@ Scenario: Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,
 	| CustomFieldType | Text  |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value |
-	| CustomFieldName | Check Box  |
+	| Field           | Value     |
+	| CustomFieldName | Check Box |
 	When Custom Field Edited
-	| Field            | Value    |
-	| CustomFieldType | Check Box  |
-	| CustomFieldName | Check Box  |
-	| WorkOrderCustomFields | No |
+	| Field                 | Value     |
+	| CustomFieldType       | Check Box |
+	| CustomFieldName       | Check Box |
+	| WorkOrderCustomFields | No        |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value |
-	| CustomFieldName | Drop-down  |
+	| Field           | Value     |
+	| CustomFieldName | Drop-down |
 	When Custom Field Edited
-	| Field            | Value    |
-	| CustomFieldName  | Drop-down     |
-	| CustomFieldType  | Drop-down     |
+	| Field           | Value     |
+	| CustomFieldName | Drop-down |
+	| CustomFieldType | Drop-down |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
 	| Field           | Value |
 	| CustomFieldName | Quantity  |
 	When Custom Field Edited
-	| Field            | Value    |
-	| CustomFieldName | Quantity  |
-	| CustomFieldType | Quantity  |
+	| Field           | Value    |
+	| CustomFieldName | Quantity |
+	| CustomFieldType | Quantity |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value |
-	| CustomFieldName | Trait1  |
+	| Field           | Value  |
+	| CustomFieldName | Trait1 |
 	| CustomFieldType | Trait  |
 	When Custom Field Edited
-	| Field            | Value    |
-	| CustomFieldName | Trait1  |
+	| Field           | Value  |
+	| CustomFieldName | Trait1 |
 	| CustomFieldType | Trait  |
 	Then Verify Edited Custom Field
 	When Custom Field Selected
 	| Field           | Value |
 	| CustomFieldName | Date  |
 	When Custom Field Edited
-	| Field            | Value    |
+	| Field           | Value |
 	| CustomFieldName | Date  |
 	| CustomFieldType | Date  |
 	#Then Verify Custom Field Edited
 
+	#MOB-3050
 Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	Given Viewing Work Order Custom Fields
 	| Field         | Value |
@@ -80,8 +81,8 @@ Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	| CustomFieldType | Text  |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value |
-	| CustomFieldName | Check Box  |
+	| Field           | Value     |
+	| CustomFieldName | Check Box |
 	When Custom Field Edited
 	| Field            | Value     |
 	| CustomFieldType | Check Box  |
@@ -89,16 +90,16 @@ Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	| WorkOrderCustomFields | No  |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value |
-	| CustomFieldName | Drop-down  |
+	| Field           | Value     |
+	| CustomFieldName | Drop-down |
 	When Custom Field Edited
-	| Field            | Value    |
-	| CustomFieldName  | Drop-down     |
-	| CustomFieldType  | Drop-down     |
+	| Field           | Value     |
+	| CustomFieldName | Drop-down |
+	| CustomFieldType | Drop-down |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value |
-	| CustomFieldName | Quantity  |
+	| Field           | Value    |
+	| CustomFieldName | Quantity |
 	When Custom Field Edited
 	| Field            | Value    |
 	| CustomFieldName | Quantity  |
@@ -108,7 +109,7 @@ Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	| Field           | Value |
 	| CustomFieldName | Date  |
 	When Custom Field Edited
-	| Field            | Value    |
+	| Field           | Value |
 	| CustomFieldName | Date  |
 	| CustomFieldType | Date  |
 	#Then Verify Custom Field Edited
