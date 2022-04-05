@@ -186,6 +186,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "Send"));
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "Mail.ccBccMultiField"));
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "Subject: "));
+            orderPageView.ClickOnText("Cancel");
         }
 
 
