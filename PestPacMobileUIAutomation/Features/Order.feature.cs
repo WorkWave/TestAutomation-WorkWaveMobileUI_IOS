@@ -470,6 +470,38 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("View Service Location Memo")]
+        public virtual void ViewServiceLocationMemo()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View Service Location Memo", null, ((string[])(null)));
+#line 141
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table29.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 142
+ testRunner.Given("Viewing Service Location Custom Fields", ((string)(null)), table29, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table30.AddRow(new string[] {
+                        "CustomFieldValue",
+                        "Sample service Memo"});
+#line 145
+ testRunner.When("View Location Memo", ((string)(null)), table30, "When ");
+#line 148
+ testRunner.Then("Verify Location Memo Not Editable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
