@@ -125,4 +125,16 @@ Scenario: Update Service Location Property Trait
 	| CustomFieldName | Number of Bedrooms |
 	When Traits Field Edited
 	Then Verify Custom Field Edited
+
+	#MOB-3033
+Scenario: View Service Location Contacts
+	Given Viewing Service Location Custom Fields
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When View Service Location Contacts
+	When Access the phone 
+	Then Verify the Contact by Phone Opened
+	When Access the Email 
+	Then Verify the Contact by Email Opened
+	
 	
