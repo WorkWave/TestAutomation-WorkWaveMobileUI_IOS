@@ -13,6 +13,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         OrderPageView orderPageView = new OrderPageView();
+        ServiceLocationView serviceLocationView = new ServiceLocationView();
         String Date = null;
 
         public OrderSteps(WorkwaveData WorkwaveData)
@@ -146,6 +147,45 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Order.CustomFieldValue = WorkwaveMobileSupport.RandomInt(5);
             orderPageView.EnterTextOnCommonField(WorkwaveData.Order.CustomFieldValue);
             orderPageView.ClickOK();
+            if (orderPageView.VerifyOKButtonVisible(5))
+            {
+                orderPageView.ClickOK();
+            }
+        }
+
+        [When(@"View Service Location Contacts")]
+        public void WhenViewServiceLocationContacts()
+        {
+            WorkwaveMobileSupport.SwipeDownIOS("SERVICE LOCATION CONTACTS");
+            System.TimeSpan.FromSeconds(60);
+
+        }
+
+        [When(@"Access the phone")]
+        public void WhenAccessThePhone()
+        {
+            serviceLocationView.ClickOnPhoneButton();
+        }
+
+        [Then(@"Verify the Contact by Phone Opened")]
+        public void ThenVerifyTheContactByPhoneOpened()
+        {
+            Assert.True(orderPageView.VerifyViewLoadedByContainsText(5, "Call"));
+            orderPageView.ClickOnText("Cancel");
+        }
+
+        [When(@"Access the Email")]
+        public void WhenAccessTheEmail()
+        {
+            serviceLocationView.ClickOnEmailButton();
+        }
+
+        [Then(@"Verify the Contact by Email Opened")]
+        public void ThenVerifyTheContactByEmailOpened()
+        {
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "Send"));
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "Mail.ccBccMultiField"));
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "Subject: "));
         }
 
 
