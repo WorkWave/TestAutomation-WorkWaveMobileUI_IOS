@@ -12,7 +12,8 @@ Scenario: Complete Work Order
 	Then Verify Order Completed
 	Then Verify Appointment Card Status
 
-Scenario: Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,Trait Field
+	#MOB-3028,MOB-3025,MOB-3023,MOB-3020,MOB-3022,MOB-3026
+Scenario: Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,Multi Line Field
 	Given Viewing Service Location Custom Fields
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -50,13 +51,13 @@ Scenario: Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,
 	| CustomFieldType | Quantity |
 	Then Verify Custom Field Edited
 	When Custom Field Selected
-	| Field           | Value  |
-	| CustomFieldName | Trait1 |
-	| CustomFieldType | Trait  |
+	| Field           | Value      |
+	| CustomFieldName | Multi Line |
+	| CustomFieldType | Multi Line |
 	When Custom Field Edited
-	| Field           | Value  |
-	| CustomFieldName | Trait1 |
-	| CustomFieldType | Trait  |
+	| Field           | Value      |
+	| CustomFieldName | Multi Line |
+	| CustomFieldType | Multi Line |
 	Then Verify Edited Custom Field
 	When Custom Field Selected
 	| Field           | Value |
@@ -67,7 +68,7 @@ Scenario: Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,
 	| CustomFieldType | Date  |
 	#Then Verify Custom Field Edited
 
-	#MOB-3050
+	#MOB-3050,MOB-3048,MOB-3047,MOB-3045,MOB-3043,MOB-3042,MOB-3041
 Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	Given Viewing Work Order Custom Fields
 	| Field         | Value |
@@ -113,4 +114,15 @@ Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	| CustomFieldName | Date  |
 	| CustomFieldType | Date  |
 	#Then Verify Custom Field Edited
+
+	#MOB-3019
+Scenario: Update Service Location Property Trait
+	Given Viewing Service Location Custom Fields
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Custom Field Selected
+	| Field           | Value              |
+	| CustomFieldName | Number of Bedrooms |
+	When Traits Field Edited
+	Then Verify Custom Field Edited
 	

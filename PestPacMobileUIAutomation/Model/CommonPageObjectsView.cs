@@ -44,6 +44,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@class='UIATextField']")]
         private IWebElement CommonTextField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@XCElementType='XCUIElementTypeTextView']")]
+        private IWebElement MultiLineTextField { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Save']")]
         private IWebElement SaveButton { get; set; }
 
@@ -396,6 +399,10 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool FormBackButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(FormBackButton), TimeSpan.FromSeconds(time));
 
+        public void EnterTextOnMultiLineField(string name)
+        {
+            EnterText(name, MultiLineTextField);
+        }
 
 
         #endregion Behavior

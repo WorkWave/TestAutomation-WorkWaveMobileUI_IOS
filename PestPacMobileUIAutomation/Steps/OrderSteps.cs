@@ -70,6 +70,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenCustomFieldSelected(Table data)
         {
             WorkwaveData.Order = data.CreateInstance<Order>();
+            if (orderPageView.VerifyOKButtonVisible(5))
+            {
+                orderPageView.ClickOK();
+            }
             orderPageView.ClickOnStaticText(WorkwaveData.Order.CustomFieldName);
             Assert.True(orderPageView.VerifyViewLoadedByHeader(5, WorkwaveData.Order.CustomFieldName));
 
@@ -85,7 +89,6 @@ namespace WorkWave.Workwave.Mobile.Steps
                     WorkwaveData.Order.CustomFieldValue = WorkwaveMobileSupport.generateRandomString(5);
                     orderPageView.EnterTextOnCommonField(WorkwaveData.Order.CustomFieldValue);
                     System.TimeSpan.FromSeconds(30);
-                    orderPageView.ClickOK();
                     orderPageView.ClickOK();
                     break;
                 case "Check Box":
@@ -107,10 +110,10 @@ namespace WorkWave.Workwave.Mobile.Steps
                     orderPageView.EnterTextOnCommonField(WorkwaveData.Order.CustomFieldValue);
                     orderPageView.ClickOK();
                     break;
-                case "Trait":
-                    WorkwaveData.Order.CustomFieldValue = WorkwaveMobileSupport.RandomInt(5);
-                    orderPageView.EnterTextOnCommonField(WorkwaveData.Order.CustomFieldValue);
-                    orderPageView.ClickOK();              
+                case "Multi Line":
+                    WorkwaveData.Order.CustomFieldValue = WorkwaveMobileSupport.generateRandomString(5);
+                    orderPageView.EnterTextOnMultiLineField(WorkwaveData.Order.CustomFieldValue);
+                    orderPageView.ClickOnText("Save");
                     break;
             }
         }
@@ -136,6 +139,15 @@ namespace WorkWave.Workwave.Mobile.Steps
             orderPageView.ClickOnStaticText("Work Order Custom Fields");
             Assert.True(orderPageView.VerifyViewLoadedByHeader(5, "Work Order Custom Fields"));
         }
+
+        [When(@"Traits Field Edited")]
+        public void WhenTraitsFieldEdited()
+        {
+            WorkwaveData.Order.CustomFieldValue = WorkwaveMobileSupport.RandomInt(5);
+            orderPageView.EnterTextOnCommonField(WorkwaveData.Order.CustomFieldValue);
+            orderPageView.ClickOK();
+        }
+
 
     }
 }
