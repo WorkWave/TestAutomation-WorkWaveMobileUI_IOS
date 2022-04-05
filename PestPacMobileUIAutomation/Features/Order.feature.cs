@@ -105,13 +105,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,Trait Field" +
-            "")]
-        public virtual void UpdateServiceLocationCustomTextDateCheckBoxQuantityDrop_DownTraitField()
+        [NUnit.Framework.DescriptionAttribute("Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,Multi Line " +
+            "Field")]
+        public virtual void UpdateServiceLocationCustomTextDateCheckBoxQuantityDrop_DownMultiLineField()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,Trait Field" +
-                    "", null, ((string[])(null)));
-#line 15
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,Multi Line " +
+                    "Field", null, ((string[])(null)));
+#line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -121,7 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
             table2.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 16
+#line 17
  testRunner.Given("Viewing Service Location Custom Fields", ((string)(null)), table2, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -130,7 +130,7 @@ this.ScenarioInitialize(scenarioInfo);
             table3.AddRow(new string[] {
                         "CustomFieldName",
                         "Text"});
-#line 19
+#line 20
  testRunner.When("Custom Field Selected", ((string)(null)), table3, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -142,9 +142,9 @@ this.ScenarioInitialize(scenarioInfo);
             table4.AddRow(new string[] {
                         "CustomFieldType",
                         "Text"});
-#line 22
+#line 23
  testRunner.When("Custom Field Edited", ((string)(null)), table4, "When ");
-#line 26
+#line 27
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -153,7 +153,7 @@ this.ScenarioInitialize(scenarioInfo);
             table5.AddRow(new string[] {
                         "CustomFieldName",
                         "Check Box"});
-#line 27
+#line 28
  testRunner.When("Custom Field Selected", ((string)(null)), table5, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -168,9 +168,9 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "WorkOrderCustomFields",
                         "No"});
-#line 30
+#line 31
  testRunner.When("Custom Field Edited", ((string)(null)), table6, "When ");
-#line 35
+#line 36
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -179,7 +179,7 @@ this.ScenarioInitialize(scenarioInfo);
             table7.AddRow(new string[] {
                         "CustomFieldName",
                         "Drop-down"});
-#line 36
+#line 37
  testRunner.When("Custom Field Selected", ((string)(null)), table7, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -191,9 +191,9 @@ this.ScenarioInitialize(scenarioInfo);
             table8.AddRow(new string[] {
                         "CustomFieldType",
                         "Drop-down"});
-#line 39
+#line 40
  testRunner.When("Custom Field Edited", ((string)(null)), table8, "When ");
-#line 43
+#line 44
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -202,7 +202,7 @@ this.ScenarioInitialize(scenarioInfo);
             table9.AddRow(new string[] {
                         "CustomFieldName",
                         "Quantity"});
-#line 44
+#line 45
  testRunner.When("Custom Field Selected", ((string)(null)), table9, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -214,9 +214,9 @@ this.ScenarioInitialize(scenarioInfo);
             table10.AddRow(new string[] {
                         "CustomFieldType",
                         "Quantity"});
-#line 47
+#line 48
  testRunner.When("Custom Field Edited", ((string)(null)), table10, "When ");
-#line 51
+#line 52
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -224,11 +224,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table11.AddRow(new string[] {
                         "CustomFieldName",
-                        "Trait1"});
+                        "Multi Line"});
             table11.AddRow(new string[] {
                         "CustomFieldType",
-                        "Trait"});
-#line 52
+                        "Multi Line"});
+#line 53
  testRunner.When("Custom Field Selected", ((string)(null)), table11, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -236,13 +236,13 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table12.AddRow(new string[] {
                         "CustomFieldName",
-                        "Trait1"});
+                        "Multi Line"});
             table12.AddRow(new string[] {
                         "CustomFieldType",
-                        "Trait"});
-#line 56
+                        "Multi Line"});
+#line 57
  testRunner.When("Custom Field Edited", ((string)(null)), table12, "When ");
-#line 60
+#line 61
  testRunner.Then("Verify Edited Custom Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -251,7 +251,7 @@ this.ScenarioInitialize(scenarioInfo);
             table13.AddRow(new string[] {
                         "CustomFieldName",
                         "Date"});
-#line 61
+#line 62
  testRunner.When("Custom Field Selected", ((string)(null)), table13, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -263,7 +263,7 @@ this.ScenarioInitialize(scenarioInfo);
             table14.AddRow(new string[] {
                         "CustomFieldType",
                         "Date"});
-#line 64
+#line 65
  testRunner.When("Custom Field Edited", ((string)(null)), table14, "When ");
 #line hidden
             this.ScenarioCleanup();
@@ -274,7 +274,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void UpdateWorkOrderCustomTextDateCheckBoxQuantityDrop_DownField()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field", null, ((string[])(null)));
-#line 71
+#line 72
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -284,7 +284,7 @@ this.ScenarioInitialize(scenarioInfo);
             table15.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 72
+#line 73
  testRunner.Given("Viewing Work Order Custom Fields", ((string)(null)), table15, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -293,7 +293,7 @@ this.ScenarioInitialize(scenarioInfo);
             table16.AddRow(new string[] {
                         "CustomFieldName",
                         "Text"});
-#line 75
+#line 76
  testRunner.When("Custom Field Selected", ((string)(null)), table16, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -305,9 +305,9 @@ this.ScenarioInitialize(scenarioInfo);
             table17.AddRow(new string[] {
                         "CustomFieldType",
                         "Text"});
-#line 78
+#line 79
  testRunner.When("Custom Field Edited", ((string)(null)), table17, "When ");
-#line 82
+#line 83
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -316,7 +316,7 @@ this.ScenarioInitialize(scenarioInfo);
             table18.AddRow(new string[] {
                         "CustomFieldName",
                         "Check Box"});
-#line 83
+#line 84
  testRunner.When("Custom Field Selected", ((string)(null)), table18, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -331,9 +331,9 @@ this.ScenarioInitialize(scenarioInfo);
             table19.AddRow(new string[] {
                         "WorkOrderCustomFields",
                         "No"});
-#line 86
+#line 87
  testRunner.When("Custom Field Edited", ((string)(null)), table19, "When ");
-#line 91
+#line 92
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -342,7 +342,7 @@ this.ScenarioInitialize(scenarioInfo);
             table20.AddRow(new string[] {
                         "CustomFieldName",
                         "Drop-down"});
-#line 92
+#line 93
  testRunner.When("Custom Field Selected", ((string)(null)), table20, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -354,9 +354,9 @@ this.ScenarioInitialize(scenarioInfo);
             table21.AddRow(new string[] {
                         "CustomFieldType",
                         "Drop-down"});
-#line 95
+#line 96
  testRunner.When("Custom Field Edited", ((string)(null)), table21, "When ");
-#line 99
+#line 100
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -365,7 +365,7 @@ this.ScenarioInitialize(scenarioInfo);
             table22.AddRow(new string[] {
                         "CustomFieldName",
                         "Quantity"});
-#line 100
+#line 101
  testRunner.When("Custom Field Selected", ((string)(null)), table22, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -377,9 +377,9 @@ this.ScenarioInitialize(scenarioInfo);
             table23.AddRow(new string[] {
                         "CustomFieldType",
                         "Quantity"});
-#line 103
+#line 104
  testRunner.When("Custom Field Edited", ((string)(null)), table23, "When ");
-#line 107
+#line 108
  testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -388,7 +388,7 @@ this.ScenarioInitialize(scenarioInfo);
             table24.AddRow(new string[] {
                         "CustomFieldName",
                         "Date"});
-#line 108
+#line 109
  testRunner.When("Custom Field Selected", ((string)(null)), table24, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -400,8 +400,42 @@ this.ScenarioInitialize(scenarioInfo);
             table25.AddRow(new string[] {
                         "CustomFieldType",
                         "Date"});
-#line 111
+#line 112
  testRunner.When("Custom Field Edited", ((string)(null)), table25, "When ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Update Service Location Property Trait")]
+        public virtual void UpdateServiceLocationPropertyTrait()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Service Location Property Trait", null, ((string[])(null)));
+#line 119
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table26.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 120
+ testRunner.Given("Viewing Service Location Custom Fields", ((string)(null)), table26, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table27.AddRow(new string[] {
+                        "CustomFieldName",
+                        "Number of Bedrooms"});
+#line 123
+ testRunner.When("Custom Field Selected", ((string)(null)), table27, "When ");
+#line 126
+ testRunner.When("Traits Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 127
+ testRunner.Then("Verify Custom Field Edited", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
