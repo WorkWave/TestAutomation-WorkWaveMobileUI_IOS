@@ -122,7 +122,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Custom Field Edited")]
         public void ThenVerifyCustomFieldEdited()
         {
-            Assert.True(orderPageView.VerifyViewLoadedByText(5, WorkwaveData.Order.CustomFieldValue));
+            Assert.True(orderPageView.VerifyViewLoadedByContainsText(5, WorkwaveData.Order.CustomFieldValue));
         }
 
         [Then(@"Verify Edited Custom Field")]
@@ -188,6 +188,20 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "Subject: "));
             orderPageView.ClickOnText("Cancel");
             orderPageView.ClickOnText("Delete Draft");
+        }
+
+        [When(@"View Location Memo")]
+        public void WhenViewLocationMemo(Table data)
+        {
+            WorkwaveData.Order = data.CreateInstance<Order>();
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, WorkwaveData.Order.CustomFieldValue));
+            orderPageView.ClickOnText(WorkwaveData.Order.CustomFieldValue);
+        }
+
+        [Then(@"Verify Location Memo Not Editable")]
+        public void ThenVerifyLocationMemoNotEditable()
+        {
+            Assert.True(orderPageView.findElement("OK") == null);
         }
 
 

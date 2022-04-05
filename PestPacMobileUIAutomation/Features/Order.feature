@@ -137,4 +137,14 @@ Scenario: View Service Location Contacts
 	When Access the Email 
 	Then Verify the Contact by Email Opened
 	
+	#MOB-3034
+Scenario: View Service Location Memo
+	Given Viewing Service Location Custom Fields
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When View Location Memo
+	| Field            | Value               |
+	| CustomFieldValue | Sample service Memo |
+	Then Verify Location Memo Not Editable
+
 	
