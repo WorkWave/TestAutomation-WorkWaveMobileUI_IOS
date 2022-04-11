@@ -62,7 +62,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             {
                 noteView.ClickOnSeeAll();
             }
-            Assert.True(noteView.VerifyViewLoadedByText(5, WorkwaveData.Note.NoteText));
+            Assert.True(noteView.VerifyViewLoadedByContainsText(5, WorkwaveData.Note.NoteText));
         }
 
         [When(@"Existing Note Selected")]
