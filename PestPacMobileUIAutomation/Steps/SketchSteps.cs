@@ -43,7 +43,11 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(sketchView.VerifySketchPadVisible(5));
             System.TimeSpan.FromSeconds(60);
             sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
-            System.TimeSpan.FromSeconds(60);
+            if (sketchView.VerifyViewLoaded(5, WorkwaveData.Sketch.SubTool))
+            {
+                sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
+            }
+          
             sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
             System.TimeSpan.FromSeconds(60);
             WorkwaveMobileSupport.TapTargetNoWait(200, 200);
@@ -60,13 +64,17 @@ namespace WorkWave.Workwave.Mobile.Steps
             System.TimeSpan.FromSeconds(30);
             sketchView.ClickOK();
             WorkwaveMobileSupport.TapTargetNoWait(1200, 550);
-           
+            SketchName = WorkwaveData.Sketch.SketchName;
         }
         
         [Then(@"Verify Sketch Added")]
         public void ThenVerifySketchAdded()
         {
-            Assert.True(sketchView.VerifyViewLoadedByHeader(5, "Next Order"));
+            if (sketchView.VerifyViewLoaded(5, "Next Order"))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+          
             WorkwaveMobileSupport.SwipeDownIOS("SKETCHES");
             if (attachmentView.VerifySeeAllViewLoaded(5))
             {
@@ -89,6 +97,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Sketch Deleted")]
         public void ThenVerifySketchDeleted()
         {
+            Console.WriteLine(SketchName);
             Assert.True(sketchView.findElement(SketchName) == null);
         }
 

@@ -244,7 +244,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table11.AddRow(new string[] {
                         "FormType",
-                        "Ios_Test Form"});
+                        "WorkWave Test Automation Form Example"});
 #line 60
  testRunner.When("Form Added", ((string)(null)), table11, "When ");
 #line hidden
@@ -253,7 +253,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table12.AddRow(new string[] {
                         "FieldName",
-                        "Given Name Text Box"});
+                        "Text Field: Client Name"});
 #line 63
  testRunner.When("Fill Form Fields", ((string)(null)), table12, "When ");
 #line hidden
@@ -262,7 +262,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table13.AddRow(new string[] {
                         "FormType",
-                        "Ios_Test Form"});
+                        "WorkWave Test Automation Form Example"});
             table13.AddRow(new string[] {
                         "DocumentType",
                         "Pick from Gallery"});
@@ -276,7 +276,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table14.AddRow(new string[] {
                         "FormType",
-                        "Ios_Test Form"});
+                        "WorkWave Test Automation Form Example"});
             table14.AddRow(new string[] {
                         "DocumentType",
                         "Take a Photo"});
@@ -294,7 +294,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table15.AddRow(new string[] {
                         "FormType",
-                        "Ios_Test Form"});
+                        "WorkWave Test Automation Form Example"});
             table15.AddRow(new string[] {
                         "DocumentType",
                         "Location Images"});
@@ -496,7 +496,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Customer"});
             table29.AddRow(new string[] {
                         "Email",
-                        "mdelgoda@workwave.com"});
+                        "mdelgoda+1@workwave.com"});
 #line 143
  testRunner.When("Send The Form", ((string)(null)), table29, "When ");
 #line hidden
@@ -966,7 +966,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "SketchName",
                         "autoMapSketch"});
 #line 297
- testRunner.When("Insert Image To Form", ((string)(null)), table61, "When ");
+ testRunner.When("Insert Sketch To Form", ((string)(null)), table61, "When ");
 #line 302
  testRunner.Then("Verify Image Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 303

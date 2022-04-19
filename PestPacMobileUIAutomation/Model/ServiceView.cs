@@ -38,19 +38,19 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[contains(@text,'%')]")]
         private IWebElement DiscountValue { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[2]")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='UIATabBar']//*[@class='UIAButton'][2]")]
         private IWebElement ProductButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[4]")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='UIATabBar']//*[@class='UIAButton'][4]")]
         private IWebElement MaterialButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[5]")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='UIATabBar']//*[@class='UIAButton'][5]")]
         private IWebElement DiscountButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[5]")]
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[3]")]
         private IWebElement PriceField { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[3]")]
+        [FindsBy(How = How.XPath, Using = "//*[@text='Quantity']/..//XCUIElementTypeTextField[1]")]
         private IWebElement QuantityField { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeTextField[1]")]
@@ -71,8 +71,11 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Do Not Charge for Service']/..//*[@label='0']")]
         private IWebElement DoNotChargeForServiceToggleButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Tab Bar']//XCUIElementTypeButton[3]")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='UIATabBar']//*[@class='UIAButton'][3]")]
         private IWebElement PestButton { get; set; }
+
+        [FindsBy(How = How.Id, Using = "SERVICES")]
+        private IWebElement ServiceLabel { get; set; }
 
         #endregion Page Factory
 
@@ -209,7 +212,7 @@ namespace WorkWave.Workwave.Mobile.Model
 
        
 
-        public bool VerifyServicesViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SubTotalValueLabel), System.TimeSpan.FromSeconds(time));
+        public bool VerifyServicesViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ServiceLabel), System.TimeSpan.FromSeconds(time));
 
         public string getMaterialQuantity() => MaterialQuantityField.GetAttribute("text");
 
@@ -265,6 +268,15 @@ namespace WorkWave.Workwave.Mobile.Model
             String previousAmountS = amount[1].Replace(",", "");
             proudctAmount = double.Parse(previousAmountS);
             return proudctAmount;
+        }
+
+        public void ViewServices()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
+            System.TimeSpan.FromSeconds(10);
+
+
         }
 
         #endregion Behavior

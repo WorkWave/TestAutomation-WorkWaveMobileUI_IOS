@@ -91,6 +91,7 @@ namespace WorkWave.Workwave.Mobile.Steps
                 paymentView.VerifyViewLoadedByText(5, "Check # " + WorkwaveData.Order.PaymentReference);
             }
             paymentView.ClickOnText("Done");
+            paymentView.ClickOnText("Back");
         }
     }
 }

@@ -50,13 +50,21 @@ namespace WorkWave.Workwave.Mobile.Steps
                     attachmentView.ClickOnButton("Record Video");
                     System.TimeSpan.FromSeconds(90);
                     attachmentView.ClickOnButton("Stop Recording Video");
+                    while (!attachmentView.VerifyPlayButtonVisible(5))
+                    {
+                        attachmentView.ClickOnButton("Record Video");
+                        System.TimeSpan.FromSeconds(90);
+                        attachmentView.ClickOnButton("Stop Recording Video");
+                    }
                     attachmentView.ClickOnText("Use Video");
                     break;
                 case "Pick from Gallery":
-                    if (!attachmentView.VerifyPhotoViewLoaded(5))
+
+                  if (!attachmentView.VerifyPhotoViewLoaded(5))
                     {
                         System.TimeSpan.FromSeconds(30);
                     }
+                    attachmentView.ClickOnText("All Photos");
                     attachmentView.SelectImageFromGallery();
                     break;
             }

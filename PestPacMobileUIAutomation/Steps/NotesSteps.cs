@@ -46,12 +46,12 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenNoteModified(Table data)
         {
             WorkwaveData.Note = data.CreateInstance<Note>();
-
             WorkwaveData.Note.NoteText += WorkwaveMobileSupport.generateRandomString(10);
             noteView.EditNote(WorkwaveData.Note.NoteText);
             noteView.ClickOnText(WorkwaveData.Note.NoteStatus);
             noteView.ClickOnText("Save");
             Assert.True(noteView.VerifyViewLoadedByText(5, "Start"));
+            WorkwaveMobileSupport.SwipeUpIOS("NOTES");
         }
         
         [Then(@"Verify Note Exists")]

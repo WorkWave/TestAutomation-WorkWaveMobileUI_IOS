@@ -49,7 +49,17 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Navigate To Services View")]
         public void WhenNavigateToServicesView()
         {
-            WorkwaveMobileSupport.SwipeDownIOS("SERVICES");
+            //WorkwaveMobileSupport.SwipeDownIOS("SERVICES");
+            //while (!serviceView.VerifyServicesViewLoaded(5))
+            //{
+            //    WorkwaveMobileSupport.SwipeUpIOS("SERVICES");
+            //    if (!serviceView.VerifyServicesViewLoaded(5))
+            //    {
+            //        WorkwaveMobileSupport.SwipeDownIOS("SERVICES");
+            //    }
+            //}
+            //WorkwaveMobileSupport.Swipe(-1);
+            serviceView.ViewServices();
         }
 
 
@@ -75,13 +85,15 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             Assert.True(serviceView.VerifyViewLoadedByHeader(5,"Add "+ WorkwaveData.Services.ServiceProduct));
             WorkwaveData.Services.ServiceProductQuantity = WorkwaveMobileSupport.RandomInt(3);
-            WorkwaveData.Services.ServiceProductPrice = serviceView.getPrice();
+            double quantity = double.Parse(WorkwaveData.Services.ServiceProductQuantity);
+            String ProductPrice = serviceView.getPrice();
+            double price = double.Parse(ProductPrice);
             serviceView.EnterProductQuantity(WorkwaveData.Services.ServiceProductQuantity);
 
             productTotal = serviceView.GetProductSubTotal();
             productTotalAmount = serviceView.GetProSubTotalValue();
             Console.WriteLine(productTotalAmount);
-            double expectedquan = (Double.Parse(WorkwaveData.Services.ServiceProductQuantity) * Double.Parse(WorkwaveData.Services.ServiceProductPrice));
+            double expectedquan = quantity * price;
             Console.WriteLine(expectedquan);
             Assert.True(productTotalAmount == expectedquan);
 
@@ -110,8 +122,8 @@ namespace WorkWave.Workwave.Mobile.Steps
              updatedTotal = serviceView.GetTotal();
             Console.WriteLine(updatedSubTotal);
             Console.WriteLine(expectedServiceSubTotal);
-            Assert.True(updatedSubTotal == expectedServiceSubTotal);
-            Assert.True(updatedTotal == expectedServiceTotal);
+            Assert.True(updatedSubTotal.Equals(expectedServiceSubTotal));
+            Assert.True(updatedTotal.Equals(expectedServiceTotal));
         }
 
         [When(@"Product Edited")]
@@ -156,7 +168,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             firstProductValue = serviceView.getFirstProPrice(WorkwaveData.Services.ServiceProduct);
             double prodVal = serviceView.GetFirstproductValue(WorkwaveData.Services.ServiceProduct);
             serviceView.DeleteProductMaterial(WorkwaveData.Services.ServiceProduct);
-            
+            serviceView.ClickOnText("Delete");
             double productTotalAmountUpdated = serviceView.GetProMainSubTotalValue();
             Console.WriteLine("productTotalAmountUpdated " + productTotalAmountUpdated);
             double expectedquan = existingProdSubTotal - prodVal;
@@ -194,20 +206,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceMaterial);
             serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
 
-            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Edit Material"));
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add "+ WorkwaveData.Services.ServiceMaterial));
             WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
             serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
 
-            serviceView.ClickOnStaticText("Save");
-
-            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Material"));
+            serviceView.ClickOnStaticText("Add");
 
         }
 
         [Then(@"Verify Material Exists")]
         public void ThenVerifyMaterialExists()
         {
-            serviceView.ClickBack();
+            //serviceView.ClickBack();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceMaterial));
         }
 
@@ -227,6 +237,8 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
             string updatedQuantity = serviceView.getMaterialQuantity();
+            Console.WriteLine(updatedQuantity);
+            Console.WriteLine(WorkwaveData.Services.ServiceMaterialQuantity);
             Assert.True(updatedQuantity .Equals(WorkwaveData.Services.ServiceMaterialQuantity));
 
         }
@@ -362,7 +374,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenDiscountDeleted(Table data)
         {
             WorkwaveData.Services = data.CreateInstance<Payment>();
-            serviceView.ClickBack();
+            serviceView.ClickMainBackButtonTwo();
             serviceView.ClickOnText(serviceDescription);
             serviceView.ClickOnText("Remove Discount");
 
@@ -370,6 +382,41 @@ namespace WorkWave.Workwave.Mobile.Steps
             expectedServiceTotal = total + discountAmount;
 
         }
+
+        [When(@"Delete Product Value Discount")]
+        public void WhenDeleteProductValueDiscount(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickOnText(serviceDescription);
+            serviceView.ClickOnText("Remove Discount");
+            expectedServiceSubTotal = subTotal + discountAmount;
+            expectedServiceTotal = total + discountAmount;
+
+        }
+
+
+        [When(@"Delete Service Offering Percentage")]
+        public void WhenDeleteServiceOfferingPercentage(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickBack();
+            serviceView.ClickOnText(serviceDescription);
+            serviceView.ClickOnText("Remove Discount");
+            expectedServiceSubTotal = subTotal + discountAmount;
+            expectedServiceTotal = total + discountAmount;
+        }
+
+
+        [When(@"Delete Product Percentage Discount")]
+        public void WhenDeleteProductPercentageDiscount(Table data)
+        {
+            WorkwaveData.Services = data.CreateInstance<Payment>();
+            serviceView.ClickOnText(serviceDescription);
+            serviceView.ClickOnText("Remove Discount");
+            expectedServiceSubTotal = subTotal + discountAmount;
+            expectedServiceTotal = total + discountAmount;
+        }
+
 
         [Then(@"Verify Discount Does Not Exist")]
         public void ThenVerifyDiscountDoesNotExist()
@@ -389,7 +436,8 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickPlusIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
-            serviceView.ClickOnStaticText("Services");          
+            serviceView.ClickOnStaticText("Services");
+            System.TimeSpan.FromSeconds(60);
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceType);
             serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
@@ -399,6 +447,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Service Added")]
         public void ThenVerifyServiceAdded()
         {
+           
             Assert.True(serviceView.VerifyViewLoadedByText(5, WorkwaveData.Services.ServiceType));
         }
 
@@ -407,6 +456,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
+            if (serviceView.VerifyViewLoaded(5, WorkwaveData.Services.ServiceType))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
             serviceValueAmount = serviceView.getServicePriceString(WorkwaveData.Services.ServiceType);
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
             WorkwaveData.Services.ServicePrice = WorkwaveMobileSupport.RandomInt(4);
@@ -548,7 +601,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Services = data.CreateInstance<Payment>();
             serviceView.ClickAddIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Target Pests"));
-            serviceView.EnterTextOnCommonField(WorkwaveData.Services.Pest);
+            //serviceView.EnterTextOnCommonField(WorkwaveData.Services.Pest);
             serviceView.ClickOnText(WorkwaveData.Services.Pest);
             serviceView.ClickOnText("Done");
            
@@ -645,8 +698,8 @@ namespace WorkWave.Workwave.Mobile.Steps
             productSubTotal = serviceView.GetProMainSubTotalValue();
             Console.WriteLine(updatedProductAmount);
             Console.WriteLine(productAmount);
-            Assert.True(updatedProductAmount == productAmount);
-            Assert.True(updatedProductSubTotal == productSubTotal);
+            Assert.True(updatedProductAmount.Equals(productAmount));
+            Assert.True(updatedProductSubTotal. Equals(productSubTotal));
             serviceView.ClickBack();
 
         }
@@ -665,7 +718,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenDiscountProductEdited(Table data)
         {
             WorkwaveData.Services = data.CreateInstance<Payment>();
-
+           // serviceView.ClickMainBackButtonTwo();
             serviceView.ClickOnText(serviceDescription);
             WorkwaveData.Services.ServiceDiscountDescription = WorkwaveMobileSupport.generateRandomString(10);
             serviceView.EnterTextCommonField(WorkwaveData.Services.ServiceDiscountDescription, "Description");

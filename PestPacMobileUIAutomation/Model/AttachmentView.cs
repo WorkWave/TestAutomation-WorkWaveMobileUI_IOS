@@ -27,7 +27,7 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Photos']")]
         private IWebElement PhotoViewHeader { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Live Photo')])[1]")]
+        [FindsBy(How = How.XPath, Using = "//*[@text='PhotosGridView']//XCUIElementTypeCell[last()]")]
         private IWebElement ImageFromGallery { get; set; }
 
         [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Attachments:')])[1]/../..//*[@text='See All']")]

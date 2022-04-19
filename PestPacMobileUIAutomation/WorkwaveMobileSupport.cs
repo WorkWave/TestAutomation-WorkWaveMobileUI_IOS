@@ -457,7 +457,16 @@ namespace WorkWave.Workwave.Mobile
 
         }
 
-       
+        public static void SwipeUpIOS(String elementID)
+        {
+            // PestPacMobileSupport.ScrollToElement(ContactLabel);
+            Dictionary<string, string> scrollObject = new Dictionary<string, string>();
+            scrollObject.Add("direction", "up");
+            scrollObject.Add("accessibilityLabel", elementID);
+            ((IJavaScriptExecutor)WebApplication.Instance.WebDriver).ExecuteScript("mobile: scroll", scrollObject);
+
+        }
+
         public static IList<IWebElement> GetList(string className) => WebApplication.Instance.WebDriver.FindElements(By.ClassName(className));
 
     }

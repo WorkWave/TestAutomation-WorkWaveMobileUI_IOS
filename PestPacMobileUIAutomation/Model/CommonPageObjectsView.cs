@@ -65,6 +65,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Delete']")]
         private IWebElement DeleteButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Play']")]
+        private IWebElement PlayButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -403,6 +406,10 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             EnterText(name, MultiLineTextField);
         }
+
+        public bool VerifyViewLoaded(int time, String Header) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.Id(Header))), System.TimeSpan.FromSeconds(time));
+
+        public bool VerifyPlayButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PlayButton), System.TimeSpan.FromSeconds(time));
 
 
         #endregion Behavior

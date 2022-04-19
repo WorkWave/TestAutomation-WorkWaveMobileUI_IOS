@@ -58,10 +58,10 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[contains(text(),'Button: Image')]")]
         public IWebElement CommonInsertImageButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeButton[@text='Photos']")]
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Photos']")]
         private IWebElement PhotoViewHeader { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "(//XCUIElementTypeImage[contains(text(),'Photo')])[1]")]
+        [FindsBy(How = How.XPath, Using = "//*[@text='PhotosGridView']//XCUIElementTypeCell[last()]")]
         private IWebElement ImageFromGallery { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@text='Button: Customer Image']")]
@@ -285,6 +285,16 @@ namespace WorkWave.Workwave.Mobile.Model
         public bool VerifySketchesHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SketchesHeader), System.TimeSpan.FromSeconds(time));
 
         public bool LeaveWithoutSavingVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(LeaveWithoutSavingButton), TimeSpan.FromSeconds(time));
+
+        public void ViewForms()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
+            System.TimeSpan.FromSeconds(10);
+
+        }
+
+        public bool VerifyFormSeeAllButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(FormSeeAllButton), System.TimeSpan.FromSeconds(time));
 
 
         #endregion Behavior

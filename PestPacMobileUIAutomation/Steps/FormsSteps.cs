@@ -14,6 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         FormView formView = new FormView();
         OrderPageView orderPageView = new OrderPageView();
+        AttachmentView attachmentView = new AttachmentView();
         String FormType, Text, FormName, FieldName, Date;
 
         public FormsSteps(WorkwaveData WorkwaveData)
@@ -43,7 +44,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnStaticText("Start");
             WorkwaveData.Form.Text = WorkwaveMobileSupport.generateRandomString(10);
             Text = WorkwaveData.Form.Text;
-            formView.EnterTextCommonFieldTwo("Test", WorkwaveData.Form.FieldName);
+            formView.EnterTextToCommonField("Test", WorkwaveData.Form.FieldName);
            // formView.EnterOfficeText(WorkwaveData.Form.Text);
         }
 
@@ -117,10 +118,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Form Drafted")]
         public void ThenVerifyFormDrafted()
         {
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            formView.ViewForms();
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByText(5, "Draft"));
         }
@@ -195,31 +197,31 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenInsertImageToForm(Table data)
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
-           
 
-            if(WorkwaveData.Form.DocumentType.Equals("Pick from Gallery"))
+           
+            if (WorkwaveData.Form.DocumentType.Equals("Pick from Gallery"))
             {
-                formView.ClickInsertButton();
+                formView.ClickOnText("FormNavigationBarResetZoom");
+                formView.ClickInsertImageButton();
                 formView.ClickOnText(WorkwaveData.Form.DocumentType);
                 while (!formView.VerifyPhotoViewLoaded(5))
                 {
                     System.TimeSpan.FromSeconds(30);
                 }
+                attachmentView.ClickOnText("All Photos");
                 formView.SelectImageFromGallery();
             }else if (WorkwaveData.Form.DocumentType.Equals("Take a Photo"))
             {
                 formView.ClickCustomerImageInsertButton();
                 formView.ClickOnText(WorkwaveData.Form.DocumentType);
-                while (!formView.VerifyCameraViewLoaded(5))
+
+                attachmentView.ClickOnButton("Take Picture");
+                while (!attachmentView.UsePhotoButtonVisible(2))
                 {
                     System.TimeSpan.FromSeconds(30);
                 }
-                formView.ClickOnText("Take Picture");
-                while (!formView.VerifyUsePhotoViewLoaded(5))
-                {
-                    System.TimeSpan.FromSeconds(30);
-                }
-                formView.ClickOnText("Use Photo");
+                attachmentView.ClickOnText("Use Photo");
+
             }else if (WorkwaveData.Form.DocumentType.Equals("Location Images"))
             {
                 formView.ClickCustomerImageInsertButton();
@@ -230,19 +232,23 @@ namespace WorkWave.Workwave.Mobile.Steps
                 }
                 formView.ClickFirstLocationImage();
                 formView.ClickOnStaticText("Select as Background");
-            }else if (WorkwaveData.Form.DocumentType.Equals("Sketches"))
-            {
-                formView.ClickInsertImageButton();
-                System.TimeSpan.FromSeconds(60);
-                formView.ClickOnText(WorkwaveData.Form.DocumentType);
-                while (!formView.VerifySketchesHeaderVisible(5))
-                {
-                    System.TimeSpan.FromSeconds(30);
-                }
-                formView.ClickOnContainsText(WorkwaveData.Form.SketchName);
             }
            
         }
+
+        [When(@"Insert Sketch To Form")]
+        public void WhenInsertSketchToForm(Table data)
+        {
+            formView.ClickInsertImageButton();
+            System.TimeSpan.FromSeconds(60);
+            formView.ClickOnText(WorkwaveData.Form.DocumentType);
+            while (!formView.VerifySketchesHeaderVisible(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+            formView.ClickOnContainsText(WorkwaveData.Form.SketchName);
+        }
+
 
         [Then(@"Verify Image Added")]
         public void ThenVerifyImageAdded()
@@ -285,6 +291,7 @@ namespace WorkWave.Workwave.Mobile.Steps
                 {
                     System.TimeSpan.FromSeconds(30);
                 }
+                formView.ClickOnText("All Photos");
                 formView.SelectImageFromGallery();
             }
             else if (WorkwaveData.Form.DocumentType.Equals("Take a Photo"))
@@ -471,11 +478,16 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             WorkwaveData.Form = data.CreateInstance<Form>();
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
-            formView.ClickFormSeeAllButton();
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            formView.ViewForms();
+            if (formView.VerifyFormSeeAllButtonLoaded(5))
+            {
+                formView.ClickFormSeeAllButton();
+            }
+            
             formView.ClickOnText(WorkwaveData.Form.Status);
         }
 
@@ -527,10 +539,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
-            formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
+          //  formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
             Assert.True(formView.VerifyViewLoadedByText(5, "searchBlue"));
-            formView.ClickOnText("searchBlue");
-            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            //formView.ClickOnText("searchBlue");
+            //formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
             formView.ClickOnTextTwo(WorkwaveData.Form.Value);
         }
 
@@ -545,7 +557,8 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.EnterTextToCommonField(WorkwaveData.Form.Value, WorkwaveData.Form.FieldName);
-            WorkwaveMobileSupport.TapTargetNoWait(367,753);
+            //These coordinates are assigned as per iphone 11
+            WorkwaveMobileSupport.TapTargetNoWait(241,576);
         }
 
         [When(@"Enter Text To Multi-line Text Field")]
@@ -557,6 +570,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.SwipeDown();
             System.TimeSpan.FromSeconds(30);
             formView.EnterTextToCommonField(WorkwaveData.Form.Value, WorkwaveData.Form.FieldName);
+            //These coordinates are assigned as per iphone 11
             WorkwaveMobileSupport.TapTargetNoWait(208, 740);
         }
 
@@ -565,10 +579,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnText("FormNavigationBarResetZoom");
-            WorkwaveMobileSupport.TapTargetNoWait(561,1600);
+            //These coordinates are assigned as per iphone 11
+            WorkwaveMobileSupport.TapTargetNoWait(380,1210);
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Notes"));
-            formView.ClickOnText("searchBlue");
-            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            //formView.ClickOnText("searchBlue");
+            //formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
             formView.ClickOnStaticText(WorkwaveData.Form.Value);
         }
 
@@ -582,9 +597,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenEnterTextToTextFieldFromMappedLookupValues(Table data)
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
-            WorkwaveMobileSupport.TapTargetNoWait(580, 817);
-            formView.ClickOnText("searchBlue");
-            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            //These coordinates are assigned as per iphone 11
+            WorkwaveMobileSupport.TapTargetNoWait(380, 675);
+            //formView.ClickOnText("searchBlue");
+            //formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
             formView.ClickOnStaticText(WorkwaveData.Form.Value);
         }
 
@@ -594,8 +610,8 @@ namespace WorkWave.Workwave.Mobile.Steps
             WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickOnContainsText(WorkwaveData.Form.FieldName);
             Assert.True(formView.VerifyViewLoadedByText(5, "searchBlue"));
-            formView.ClickOnText("searchBlue");
-            formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
+            //formView.ClickOnText("searchBlue");
+            //formView.EnterTextOnCommonField(WorkwaveData.Form.Value);
             formView.ClickOnStaticText(WorkwaveData.Form.Value);
         }
 

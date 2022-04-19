@@ -45,8 +45,7 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             EnterText(text, SketchNameTextField);
         }
-
-
+        
         #endregion Behavior
 
     }

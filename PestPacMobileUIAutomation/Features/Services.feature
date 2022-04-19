@@ -111,7 +111,7 @@ Scenario: Add Percentage Discount On Service,Update Service offering Percentage 
 	Given Discount Tab Opened
 	| Field    | Value |
 	| ServiceType    | Cleaning Auto   |
-	When Discount Deleted
+	When Delete Service Offering Percentage
 	| Field | Value |
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Does Not Exist
@@ -303,7 +303,7 @@ Scenario: Add Product Percentage Discount,Update Product Percentage Discount,Del
 	| Field          | Value                        |
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS             |
-	When Discount Deleted
+	When Delete Product Percentage Discount
 	| Field | Value |
 	| ServiceDiscountType | Percent |
 	Then Verify Discount Does Not Exist
@@ -347,7 +347,7 @@ Scenario: Add Product Value Discount,Update Product Value Discount,Delete Produc
 	| Field          | Value                        |
 	| ServiceType    | Service with default product |
 	| ServiceProduct | Product auto IOS             |
-	When Discount Deleted
+	When Delete Product Value Discount
 	| Field | Value |
 	| ServiceDiscountType | Value |
 	Then Verify Discount Does Not Exist

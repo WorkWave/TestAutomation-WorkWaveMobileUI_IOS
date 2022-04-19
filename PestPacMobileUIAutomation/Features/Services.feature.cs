@@ -410,7 +410,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "ServiceDiscountType",
                         "Percent"});
 #line 114
- testRunner.When("Discount Deleted", ((string)(null)), table26, "When ");
+ testRunner.When("Delete Service Offering Percentage", ((string)(null)), table26, "When ");
 #line 117
  testRunner.Then("Verify Discount Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 118
@@ -979,7 +979,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "ServiceDiscountType",
                         "Percent"});
 #line 306
- testRunner.When("Discount Deleted", ((string)(null)), table64, "When ");
+ testRunner.When("Delete Product Percentage Discount", ((string)(null)), table64, "When ");
 #line 309
  testRunner.Then("Verify Discount Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1110,7 +1110,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "ServiceDiscountType",
                         "Value"});
 #line 350
- testRunner.When("Discount Deleted", ((string)(null)), table73, "When ");
+ testRunner.When("Delete Product Value Discount", ((string)(null)), table73, "When ");
 #line 353
  testRunner.Then("Verify Discount Does Not Exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

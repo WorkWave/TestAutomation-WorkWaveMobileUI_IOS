@@ -59,25 +59,25 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| DocumentName | autoDoc           |
 	When Form Added
 	| Field    | Value         |
-	| FormType | Ios_Test Form |
+	| FormType | WorkWave Test Automation Form Example |
 	When Fill Form Fields
 	| Field     | Value               |
-	| FieldName | Given Name Text Box |
+	| FieldName | Text Field: Client Name|
 	When Insert Image To Form
 	| Field        | Value             |
-	| FormType     | Ios_Test Form          |
+	| FormType     | WorkWave Test Automation Form Example          |
 	| DocumentType | Pick from Gallery |
 	Then Verify Image Added
 	When Insert Image To Form
 	| Field        | Value        |
-	| FormType     | Ios_Test Form     |
+	| FormType     | WorkWave Test Automation Form Example     |
 	| DocumentType | Take a Photo |
 	Then Verify Image Added
 	When All Form Fields Cleared
 	Then Verify All Form Fields Cleared
 	When Insert Image To Form
 	| Field        | Value           |
-	| FormType     | Ios_Test Form        |
+	| FormType     | WorkWave Test Automation Form Example        |
 	| DocumentType | Location Images |
 	Then Verify Image Added
 	
@@ -143,7 +143,7 @@ Scenario: Edit Form → Send Form → Customer Role,Interact with Out for Signat
 	When Send The Form
 	| Field | Value                 |
 	| Role  | Customer              |
-	| Email | mdelgoda@workwave.com |
+	| Email | mdelgoda+1@workwave.com |
 	Then Verify Sending Successful
 	| Field  | Value             |
 	| Status | Out for Signature |
@@ -294,7 +294,7 @@ Scenario: Edit Form → Insert Image → Sketches
 	| FormType | WorkWave Test Automation Form Example |
 	When Start Form Editing
 	When Resize The Screen
-	When Insert Image To Form
+	When Insert Sketch To Form
 	| Field        | Value                                 |
 	| FormType     | WorkWave Test Automation Form Example |
 	| DocumentType | Sketches                              |
