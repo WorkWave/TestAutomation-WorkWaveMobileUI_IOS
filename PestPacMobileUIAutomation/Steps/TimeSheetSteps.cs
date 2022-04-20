@@ -96,6 +96,24 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
         }
 
+        [When(@"End Team Lunch for All")]
+        public void WhenEndTeamLunchForAll(Table data)
+        {
+            WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
+            timeSheetPageView.ClickOnStaticText("End Event for All");
+        }
+
+        [Then(@"Verify End Team Lunch")]
+        public void ThenVerifyEndTeamLunch()
+        {
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", "0/" + WorkwaveData.TimeSheet.TeamCount));
+            int count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
+            for (int i = 1; i <= count; i++)
+            {
+                Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "Active"));
+            }
+        }
+
 
     }
 }
