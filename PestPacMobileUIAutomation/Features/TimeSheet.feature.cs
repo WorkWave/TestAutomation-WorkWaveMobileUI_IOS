@@ -72,10 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Time All In")]
-        public virtual void TimeAllIn()
+        [NUnit.Framework.DescriptionAttribute("Time All In ,Time All Out")]
+        public virtual void TimeAllInTimeAllOut()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In ,Time All Out", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -101,9 +101,20 @@ this.ScenarioInitialize(scenarioInfo);
                         "TeamCount",
                         "3"});
 #line 12
- testRunner.Then("Time All In", ((string)(null)), table2, "Then ");
+ testRunner.When("Time All In", ((string)(null)), table2, "When ");
 #line 15
  testRunner.Then("Verify Time All In", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table3.AddRow(new string[] {
+                        "TeamCount",
+                        "3"});
+#line 16
+ testRunner.When("Time All Out", ((string)(null)), table3, "When ");
+#line 19
+ testRunner.Then("Verify Time All Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

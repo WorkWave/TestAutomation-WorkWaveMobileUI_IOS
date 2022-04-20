@@ -20,8 +20,8 @@ namespace WorkWave.Workwave.Mobile.Steps
             common = new CommonSteps(WorkwaveData);
         }
 
-        [Then(@"Time All In")]
-        public void ThenTimeAllIn(Table data)
+        [When(@"Time All In")]
+        public void WhenTimeAllIn(Table data)
         {
             WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
             while (!timeSheetPageView.VerifyTimeAllInButtonLoaded(5))
@@ -41,6 +41,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             timeSheetPageView.ClickOnStaticText("Time All In");
         }
 
+
         [Then(@"Verify Time All In")]
         public void ThenVerifyTimeAllIn()
         {
@@ -48,6 +49,22 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(timeSheetPageView.VerifyStatus(5,"Active:" , WorkwaveData.TimeSheet.TeamCount+"/"+ WorkwaveData.TimeSheet.TeamCount));
             Assert.True(timeSheetPageView.VerifyStatus(5, "Inactive:","0/" + WorkwaveData.TimeSheet.TeamCount));
         }
+
+        [When(@"Time All Out")]
+        public void WhenTimeAllOut(Table data)
+        {
+            WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
+            timeSheetPageView.ClickOnStaticText("Time All Out");
+        }
+
+        [Then(@"Verify Time All Out")]
+        public void ThenVerifyTimeAllOut()
+        {
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Time All In"));
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Active:", "0/" + WorkwaveData.TimeSheet.TeamCount));
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Inactive:", WorkwaveData.TimeSheet.TeamCount+"/" + WorkwaveData.TimeSheet.TeamCount));
+        }
+
 
     }
 }
