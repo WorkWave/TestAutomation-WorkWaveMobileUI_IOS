@@ -50,6 +50,11 @@ namespace WorkWave.Workwave.Mobile.Steps
                 //        System.TimeSpan.FromSeconds(30);                       
                 //    }
                 //}
+                if (timeSheetPageView.VerifyReopenTimeSheetViewLoaded(2))
+                {
+                    timeSheetPageView.ClickOnStaticText("Reopen Timesheet");
+                    timeSheetPageView.ClickBack();
+                }
                 if (timeSheetPageView.VerifyViewLoaded(2))
                 {
                     timeSheetPageView.ClickOnStaticText("Go To Timesheet");

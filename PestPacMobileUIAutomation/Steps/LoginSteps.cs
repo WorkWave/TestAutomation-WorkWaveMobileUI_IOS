@@ -24,9 +24,21 @@ namespace WorkWave.Workwave.Mobile.Steps
 
         [Given(@"Logged Out")]
         public void GivenLoggedOut()
-        {
+        {           
+
             if (!loginPg.VerifyViewLoaded(2))
             {
+                if (timeSheetPageView.VerifyReopenTimeSheetViewLoaded(2))
+                {
+                    timeSheetPageView.ClickOnStaticText("Reopen Timesheet");
+                    timeSheetPageView.ClickBack();
+                }
+                if (timeSheetPageView.VerifyViewLoaded(2))
+                {
+                    timeSheetPageView.ClickOnStaticText("Go To Timesheet");
+                    Assert.True(loginPg.VerifyViewLoadedByHeader(5, "Timesheets"));
+                    timeSheetPageView.ClickBack();
+                }
                 if (loginPg.ProgressBarVisible())
                 {
                     System.TimeSpan.FromSeconds(30);

@@ -15,6 +15,7 @@ namespace WorkWave.Workwave.Mobile
             WorkwaveData.Services = data.CreateInstance<Payment>();
             WorkwaveData.Sketch = data.CreateInstance<Sketch>();
             WorkwaveData.Form = data.CreateInstance<Form>();
+            WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
 
         }
     }
