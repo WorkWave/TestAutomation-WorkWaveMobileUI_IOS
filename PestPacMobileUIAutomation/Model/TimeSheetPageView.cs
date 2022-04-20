@@ -41,6 +41,11 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyTimeAllInButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(TimeAllInButton), System.TimeSpan.FromSeconds(time));
 
+        public bool VerifyTeamMemberStatus(int time,String index, String Status)
+        {
+            return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@class='UIATable']//*[@accessibilityLabel='AddIconCell'])[" + index + "]//*[@text='" + Status + "']"))), System.TimeSpan.FromSeconds(time));
+        }
+
         #endregion Behavior
 
     }
