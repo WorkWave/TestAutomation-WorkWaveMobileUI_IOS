@@ -123,6 +123,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Sketch.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TimeSheet.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeSheet.feature</DependentUpon>
+    </Compile>
     <Compile Include="Model\CommonPageObjectsView.cs" />
     <Compile Include="Model\AttachmentView.cs" />
     <Compile Include="Model\FormView.cs" />
@@ -142,6 +147,7 @@
     <Compile Include="SharedData\Order.cs" />
     <Compile Include="SharedData\Services.cs" />
     <Compile Include="SharedData\Sketch.cs" />
+    <Compile Include="SharedData\TimeSheet.cs" />
     <Compile Include="SharedData\WorkwaveData.cs" />
     <Compile Include="Steps\AttachmentsSteps.cs" />
     <Compile Include="Steps\CommonSteps.cs" />
@@ -152,6 +158,7 @@
     <Compile Include="Steps\PaymentsSteps.cs" />
     <Compile Include="Steps\ServicesSteps.cs" />
     <Compile Include="Steps\SketchSteps.cs" />
+    <Compile Include="Steps\TimeSheetSteps.cs" />
     <Compile Include="WorkwaveMobileSupport.cs" />
     <Compile Include="WorkwaveMobileUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +199,10 @@
     <None Include="Features\Sketch.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Sketch.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TimeSheet.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TimeSheet.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -15,6 +15,7 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public Payment Services { get; set; }
         public Sketch Sketch { get; set; }
         public Form Form { get; set; }
+        public TimeSheet TimeSheet { get; set; }
 
     }
 }
