@@ -9,5 +9,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
     public class TimeSheet
     {
         public string TeamCount { get; set; }
+        public string Event { get; set; }
     }
 }
