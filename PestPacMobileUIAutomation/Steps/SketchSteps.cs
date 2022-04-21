@@ -43,7 +43,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(sketchView.VerifySketchPadVisible(5));
             System.TimeSpan.FromSeconds(60);
             sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
-            if (sketchView.VerifyViewLoaded(5, WorkwaveData.Sketch.SubTool))
+            if (!sketchView.VerifAllToolHeaderVisible(5))
             {
                 sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
             }

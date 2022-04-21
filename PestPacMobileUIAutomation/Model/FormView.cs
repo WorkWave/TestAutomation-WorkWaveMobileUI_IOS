@@ -118,6 +118,15 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Leave without saving']")]
         private IWebElement LeaveWithoutSavingButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Take another image")]
+        private IWebElement TakeAnotherImageButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Clear All Fields']")]
+        private IWebElement ClearAllButton { get; set; }
+
+        [FindsBy(How = How.Id, Using = "SketchArrowLeftSmallBlue")]
+        private IWebElement ExpandLeftButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -296,7 +305,11 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyFormSeeAllButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(FormSeeAllButton), System.TimeSpan.FromSeconds(time));
 
+        public bool VerifyTakeAnotherIamgeButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(TakeAnotherImageButton), System.TimeSpan.FromSeconds(time));
 
+        public bool VerifyClearAllButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ClearAllButton), System.TimeSpan.FromSeconds(time));
+
+        public void ClickLeftExpandButton() => ExpandLeftButton.Click();
         #endregion Behavior
     }
 }

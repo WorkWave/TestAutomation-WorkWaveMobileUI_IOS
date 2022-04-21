@@ -80,6 +80,7 @@ Scenario: Edit Form → Insert Image → Pick from Gallery,Edit Form → Insert 
 	| FormType     | WorkWave Test Automation Form Example        |
 	| DocumentType | Location Images |
 	Then Verify Image Added
+	Then ReturnsToHome
 	
 	#MOB-3159,MOB-3158
 Scenario: Edit Form → Interact with Read-only Fields,Edit Form → Interact with Required Fields
