@@ -2,8 +2,8 @@
 Feature: TimeSheet
 
 
-	#MOB-3812,MOB-3822,MOB-3826,MOB-3829
-Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All
+	#MOB-3812,MOB-3822,MOB-3826,MOB-3829,MOB-3819,MOB-3825
+Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,End Team Break for All
 	Given Logged Out
 	When I Login
 	| Field    | Value                     |
@@ -28,6 +28,11 @@ Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All
 	| TeamCount | 3          |
 	| Event     | Team Break |
 	Then Verify Team Event Added
+	When End Team Event for All
+	| Field     | Value      |
+	| TeamCount | 3          |
+	| Event     | Team Break |
+	Then Verify End Team Event 
 	When Time All Out
 	| Field     | Value |
 	| TeamCount | 3     |
