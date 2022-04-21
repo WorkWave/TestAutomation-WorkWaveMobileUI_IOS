@@ -86,10 +86,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Form Added")]
         public void ThenVerifyFormAdded()
         {
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            formView.ViewForms();
             Assert.True( formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByText(5, "Complete"));
             formView.ClickOnContainsText(FormType);
@@ -212,7 +213,11 @@ namespace WorkWave.Workwave.Mobile.Steps
                 formView.SelectImageFromGallery();
             }else if (WorkwaveData.Form.DocumentType.Equals("Take a Photo"))
             {
-                formView.ClickCustomerImageInsertButton();
+                formView.ClickInsertImageButton();
+                if (formView.VerifyTakeAnotherIamgeButtonLoaded(5))
+                {
+                    formView.ClickOnText("Take another image");
+                }
                 formView.ClickOnText(WorkwaveData.Form.DocumentType);
 
                 attachmentView.ClickOnButton("Take Picture");
@@ -224,7 +229,15 @@ namespace WorkWave.Workwave.Mobile.Steps
 
             }else if (WorkwaveData.Form.DocumentType.Equals("Location Images"))
             {
-                formView.ClickCustomerImageInsertButton();
+                if(formView.VerifyClearAllButtonLoaded(5))
+                {
+                    formView.ClickLeftExpandButton();
+                }
+                formView.ClickInsertImageButton();
+                if (formView.VerifyTakeAnotherIamgeButtonLoaded(5))
+                {
+                    formView.ClickOnText("Take another image");
+                }
                 formView.ClickOnText(WorkwaveData.Form.DocumentType);
                 while(!formView.VerifyImageViewLoaded(5))
                 {
@@ -239,8 +252,13 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Insert Sketch To Form")]
         public void WhenInsertSketchToForm(Table data)
         {
+            WorkwaveData.Form = data.CreateInstance<Form>();
             formView.ClickInsertImageButton();
             System.TimeSpan.FromSeconds(60);
+            if (formView.VerifyTakeAnotherIamgeButtonLoaded(5))
+            {
+                formView.ClickOnText("Take another image");
+            }
             formView.ClickOnText(WorkwaveData.Form.DocumentType);
             while (!formView.VerifySketchesHeaderVisible(5))
             {
@@ -260,8 +278,12 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"All Form Fields Cleared")]
         public void WhenAllFormFieldsCleared()
         {
-            formView.ClickOfficeTextField();
-            formView.ClickOnText("done");
+            //formView.ClickOfficeTextField();
+            //formView.ClickOnText("done");
+            if (formView.VerifyClearAllButtonLoaded(5))
+            {
+                formView.ClickOnText("Clear All Fields");
+            }
             formView.ClickBottomExpandArrowButton();
             formView.ClickOnText("Clear All Fields");
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Clear Form"));
@@ -466,10 +488,11 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Email sent!"));
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
-            WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
+            //System.TimeSpan.FromSeconds(30);
+            formView.ViewForms();
             Assert.True(formView.VerifyFormStatus(5, FormType, WorkwaveData.Form.Status));
         }
 

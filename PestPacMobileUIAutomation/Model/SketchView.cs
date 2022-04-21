@@ -32,6 +32,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='What kind of background would you like to load ?']")]
         private IWebElement BackgroundHeader { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='All Tools']")]
+        private IWebElement AllToolButton { get; set; }
+
 
         #endregion Page Factory
 
@@ -45,7 +48,10 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             EnterText(text, SketchNameTextField);
         }
-        
+
+        public bool VerifAllToolHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(AllToolButton), TimeSpan.FromSeconds(time));
+
+
         #endregion Behavior
 
     }
