@@ -75,42 +75,64 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
         }
 
-        [When(@"Add Team Lunch")]
-        public void WhenAddTeamLunch(Table data)
+       
+        [When(@"Add Team Event")]
+        public void WhenAddTeamEvent(Table data)
         {
             WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
             timeSheetPageView.ClickPlusIcon();
             Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Add Team Event"));
-            timeSheetPageView.ClickOnText("Team Lunch");
+            timeSheetPageView.ClickOnText(WorkwaveData.TimeSheet.Event);           
         }
 
-        [Then(@"Verify Team Lunch Added")]
-        public void ThenVerifyTeamLunchAdded()
+        [Then(@"Verify Team Event Added")]
+        public void ThenVerifyTeamEventAdded()
         {
-            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Team Timesheets"));
-            Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", WorkwaveData.TimeSheet.TeamCount + "/" + WorkwaveData.TimeSheet.TeamCount));
-            int count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
-            for (int i = 1; i <= count; i++)
+            switch (WorkwaveData.TimeSheet.Event)
             {
-                Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5,i.ToString(), "End Lunch"));
+                case "Team Lunch":
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Team Timesheets"));
+                    Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", WorkwaveData.TimeSheet.TeamCount + "/" + WorkwaveData.TimeSheet.TeamCount));
+                    int count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
+                    for (int i = 1; i <= count; i++)
+                    {
+                        Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "End Lunch"));
+                    }
+                    break;
+                case "Team Break":
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Team Timesheets"));
+                    Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", WorkwaveData.TimeSheet.TeamCount + "/" + WorkwaveData.TimeSheet.TeamCount));
+                    count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
+                    for (int i = 1; i <= count; i++)
+                    {
+                        Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "End Break"));
+                    }
+                    break;
+
             }
         }
 
-        [When(@"End Team Lunch for All")]
-        public void WhenEndTeamLunchForAll(Table data)
+        [When(@"End Team Event for All")]
+        public void WhenEndTeamEventForAll(Table data)
         {
             WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
             timeSheetPageView.ClickOnStaticText("End Event for All");
         }
 
-        [Then(@"Verify End Team Lunch")]
-        public void ThenVerifyEndTeamLunch()
+        [Then(@"Verify End Team Event")]
+        public void ThenVerifyEndTeamEvent()
         {
-            Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", "0/" + WorkwaveData.TimeSheet.TeamCount));
-            int count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
-            for (int i = 1; i <= count; i++)
+            switch (WorkwaveData.TimeSheet.Event)
             {
-                Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "Active"));
+                case "Team Lunch":
+                    Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", "0/" + WorkwaveData.TimeSheet.TeamCount));
+                    int count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
+                    for (int i = 1; i <= count; i++)
+                    {
+                        Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "Active"));
+                    }
+                    break;
+
             }
         }
 

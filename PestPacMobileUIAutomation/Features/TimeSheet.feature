@@ -13,14 +13,21 @@ Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All
 	| Field     | Value |
 	| TeamCount | 3     |
 	Then Verify Time All In
-	When Add Team Lunch
+	When Add Team Event
+	| Field     | Value      |
+	| TeamCount | 3          |
+	| Event     | Team Lunch |
+	Then  Verify Team Event Added
+	When End Team Event for All
 	| Field     | Value |
 	| TeamCount | 3     |
-	Then Verify Team Lunch Added
-	When End Team Lunch for All
-	| Field     | Value |
-	| TeamCount | 3     |
-	Then Verify End Team Lunch 
+	| Event     | Team Lunch |
+	Then Verify End Team Event 
+	When Add Team Event
+	| Field     | Value      |
+	| TeamCount | 3          |
+	| Event     | Team Break |
+	Then Verify Team Event Added
 	When Time All Out
 	| Field     | Value |
 	| TeamCount | 3     |
