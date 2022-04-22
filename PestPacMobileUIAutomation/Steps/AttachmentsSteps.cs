@@ -85,6 +85,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             System.TimeSpan.FromSeconds(30);
             WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
             System.TimeSpan.FromSeconds(30);
+            attachmentView.ViewAttachments();
             if (attachmentView.VerifySeeAllViewLoaded(5))
             {
                 attachmentView.ClickOnSeeAll();

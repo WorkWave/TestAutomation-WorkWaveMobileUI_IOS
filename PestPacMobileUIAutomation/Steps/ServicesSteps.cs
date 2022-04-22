@@ -374,7 +374,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenDiscountDeleted(Table data)
         {
             WorkwaveData.Services = data.CreateInstance<Payment>();
-            serviceView.ClickMainBackButtonTwo();
+            serviceView.ClickBack();
             serviceView.ClickOnText(serviceDescription);
             serviceView.ClickOnText("Remove Discount");
 
