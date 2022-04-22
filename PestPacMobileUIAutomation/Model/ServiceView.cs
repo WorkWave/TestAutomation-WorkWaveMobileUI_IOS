@@ -275,8 +275,6 @@ namespace WorkWave.Workwave.Mobile.Model
 
             WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
             System.TimeSpan.FromSeconds(10);
-
-
         }
 
         #endregion Behavior

@@ -47,7 +47,7 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ViewAttachments()
         {
 
-            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -1200, 1);
             System.TimeSpan.FromSeconds(10);
 
 

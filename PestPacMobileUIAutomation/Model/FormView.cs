@@ -303,6 +303,14 @@ namespace WorkWave.Workwave.Mobile.Model
 
         }
 
+        public void ViewFormsTwo()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 250, 5, -700, 1);
+            System.TimeSpan.FromSeconds(10);
+
+        }
+
         public bool VerifyFormSeeAllButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(FormSeeAllButton), System.TimeSpan.FromSeconds(time));
 
         public bool VerifyTakeAnotherIamgeButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(TakeAnotherImageButton), System.TimeSpan.FromSeconds(time));
