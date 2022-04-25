@@ -74,12 +74,14 @@ namespace WorkWave.Workwave.Mobile.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
             "d Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Sing" +
-            "le Technician In")]
-        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTimeEndTeamTravelTimeForAllTimeSingleTechnicianIn()
+            "le Technician In,Time Single Technician Out,Add Lunch Event for Single Technicia" +
+            "n")]
+        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTimeEndTeamTravelTimeForAllTimeSingleTechnicianInTimeSingleTechnicianOutAddLunchEventForSingleTechnician()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
                     "d Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Sing" +
-                    "le Technician In", null, ((string[])(null)));
+                    "le Technician In,Time Single Technician Out,Add Lunch Event for Single Technicia" +
+                    "n", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -217,9 +219,26 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Time Single Technician In", ((string)(null)), table10, "When ");
 #line 54
  testRunner.Then("Verify Time Single Technician In", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table11.AddRow(new string[] {
+                        "TeamCount",
+                        "3"});
+            table11.AddRow(new string[] {
+                        "TeamMemberName",
+                        "Team Member 1"});
+            table11.AddRow(new string[] {
+                        "Event",
+                        "Lunch"});
 #line 55
+ testRunner.When("Add Event for Single Technician", ((string)(null)), table11, "When ");
+#line 60
+ testRunner.Then("Verify Add Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 61
  testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 56
+#line 62
  testRunner.Then("Verify Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
