@@ -52,4 +52,6 @@ Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Te
 	| TeamCount      | 3             |
 	| TeamMemberName | Team Member 1 |
 	Then Verify Time Single Technician In
+	When Time Single Technician Out
+	Then Verify Time Single Technician Out
 	
