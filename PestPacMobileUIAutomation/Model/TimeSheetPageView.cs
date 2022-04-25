@@ -46,6 +46,9 @@ namespace WorkWave.Workwave.Mobile.Model
             return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[@class='UIATable']//*[@accessibilityLabel='AddIconCell'])[" + index + "]//*[@text='" + Status + "']"))), System.TimeSpan.FromSeconds(time));
         }
 
+        public bool VerifyStatusUpdated(int time, String index,String Text) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[contains(@text,'" + Text + "')])[" + index + "]"))), System.TimeSpan.FromSeconds(time));
+
+
         #endregion Behavior
 
     }
