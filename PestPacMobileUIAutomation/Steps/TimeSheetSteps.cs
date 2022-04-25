@@ -163,5 +163,20 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(timeSheetPageView.VerifyStatus(5, "Active:", "1/" + WorkwaveData.TimeSheet.TeamCount));           
         }
 
+        [When(@"Time Single Technician Out")]
+        public void WhenTimeSingleTechnicianOut()
+        {
+            timeSheetPageView.ClickOnButton(WorkwaveData.TimeSheet.TeamMemberName);
+        }
+
+        [Then(@"Verify Time Single Technician Out")]
+        public void ThenVerifyTimeSingleTechnicianOut()
+        {
+            Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "Inactive"));
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Active:", "0/" + WorkwaveData.TimeSheet.TeamCount));
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Inactive:", WorkwaveData.TimeSheet.TeamCount + "/" + WorkwaveData.TimeSheet.TeamCount));
+
+        }
+
     }
 }

@@ -217,6 +217,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Time Single Technician In", ((string)(null)), table10, "When ");
 #line 54
  testRunner.Then("Verify Time Single Technician In", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 55
+ testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 56
+ testRunner.Then("Verify Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
