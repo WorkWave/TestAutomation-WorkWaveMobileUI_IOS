@@ -48,6 +48,15 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyStatusUpdated(int time, String index,String Text) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("(//*[contains(@text,'" + Text + "')])[" + index + "]"))), System.TimeSpan.FromSeconds(time));
 
+        public void ClickOnEventButton(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/../XCUIElementTypeButton[2]"));
+            element.Click();
+        }
+        public bool VerifyTechnicianStatus(int time, String OrderName, String Status)
+        {
+            return SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + OrderName + "']/..//*[contains(@text,'" + Status + "')]"))), System.TimeSpan.FromSeconds(time));
+        }
 
         #endregion Behavior
 
