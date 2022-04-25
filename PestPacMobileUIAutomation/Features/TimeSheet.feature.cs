@@ -73,11 +73,11 @@ namespace WorkWave.Workwave.Mobile.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
-            "d Team Break for All,Add Team Travel Time")]
-        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTime()
+            "d Team Break for All,Add Team Travel Time,End Team Travel Time For All")]
+        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTimeEndTeamTravelTimeForAll()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
-                    "d Team Break for All,Add Team Travel Time", null, ((string[])(null)));
+                    "d Team Break for All,Add Team Travel Time,End Team Travel Time For All", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -183,9 +183,23 @@ this.ScenarioInitialize(scenarioInfo);
             table8.AddRow(new string[] {
                         "TeamCount",
                         "3"});
+            table8.AddRow(new string[] {
+                        "Event",
+                        "Team Travel Time"});
 #line 41
- testRunner.When("Time All Out", ((string)(null)), table8, "When ");
-#line 44
+ testRunner.When("End Team Event for All", ((string)(null)), table8, "When ");
+#line 45
+ testRunner.Then("Verify End Team Event", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table9.AddRow(new string[] {
+                        "TeamCount",
+                        "3"});
+#line 46
+ testRunner.When("Time All Out", ((string)(null)), table9, "When ");
+#line 49
  testRunner.Then("Verify Time All Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
