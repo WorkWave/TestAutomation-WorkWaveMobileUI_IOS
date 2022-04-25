@@ -10,5 +10,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
     {
         public string TeamCount { get; set; }
         public string Event { get; set; }
+        public string TeamMemberName { get; set; }
     }
 }

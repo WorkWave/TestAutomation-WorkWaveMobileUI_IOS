@@ -148,6 +148,20 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
         }
 
+        [When(@"Time Single Technician In")]
+        public void WhenTimeSingleTechnicianIn(Table data)
+        {
+            WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
+            timeSheetPageView.ClickOnButton(WorkwaveData.TimeSheet.TeamMemberName);
+        }
+
+        [Then(@"Verify Time Single Technician In")]
+        public void ThenVerifyTimeSingleTechnicianIn()
+        {
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "pauseIcon"));
+            Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName,"Active"));
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Active:", "1/" + WorkwaveData.TimeSheet.TeamCount));           
+        }
 
     }
 }
