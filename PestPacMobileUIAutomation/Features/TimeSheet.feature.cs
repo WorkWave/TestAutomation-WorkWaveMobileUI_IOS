@@ -73,11 +73,11 @@ namespace WorkWave.Workwave.Mobile.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
-            "d Team Break for All")]
-        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAll()
+            "d Team Break for All,Add Team Travel Time")]
+        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTime()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
-                    "d Team Break for All", null, ((string[])(null)));
+                    "d Team Break for All,Add Team Travel Time", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -169,9 +169,23 @@ this.ScenarioInitialize(scenarioInfo);
             table7.AddRow(new string[] {
                         "TeamCount",
                         "3"});
+            table7.AddRow(new string[] {
+                        "Event",
+                        "Team Travel Time"});
 #line 36
- testRunner.When("Time All Out", ((string)(null)), table7, "When ");
-#line 39
+ testRunner.When("Add Team Event", ((string)(null)), table7, "When ");
+#line 40
+ testRunner.Then("Verify Team Event Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table8.AddRow(new string[] {
+                        "TeamCount",
+                        "3"});
+#line 41
+ testRunner.When("Time All Out", ((string)(null)), table8, "When ");
+#line 44
  testRunner.Then("Verify Time All Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

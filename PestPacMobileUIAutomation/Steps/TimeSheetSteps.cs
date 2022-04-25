@@ -96,6 +96,7 @@ namespace WorkWave.Workwave.Mobile.Steps
                     int count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
                     for (int i = 1; i <= count; i++)
                     {
+                        Assert.True(timeSheetPageView.VerifyStatusUpdated(5, i.ToString(), "On Lunch"));
                         Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "End Lunch"));
                     }
                     break;
@@ -105,7 +106,18 @@ namespace WorkWave.Workwave.Mobile.Steps
                     count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
                     for (int i = 1; i <= count; i++)
                     {
+                        Assert.True(timeSheetPageView.VerifyStatusUpdated(5, i.ToString(), "On Break"));
                         Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "End Break"));
+                    }
+                    break;
+                case "Team Travel Time":
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Team Timesheets"));
+                    Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", WorkwaveData.TimeSheet.TeamCount + "/" + WorkwaveData.TimeSheet.TeamCount));
+                    count = int.Parse(WorkwaveData.TimeSheet.TeamCount);
+                    for (int i = 1; i <= count; i++)
+                    {
+                        Assert.True(timeSheetPageView.VerifyStatusUpdated(5, i.ToString(), "Traveling"));
+                        Assert.True(timeSheetPageView.VerifyTeamMemberStatus(5, i.ToString(), "End Travel"));
                     }
                     break;
 
