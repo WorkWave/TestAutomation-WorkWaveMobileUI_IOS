@@ -68,6 +68,12 @@ Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/T
 	Then Verify Add Event for Single Technician	
 	When End Event for Single Technician
 	Then Verify End Event for Single Technician
+	When Add Event for Single Technician
+	| Field          | Value         |
+	| TeamCount      | 3             |
+	| TeamMemberName | Team Member 1 |
+	| Event          | Break         |  
+	Then Verify Add Event for Single Technician	
 	When Time Single Technician Out
 	Then Verify Time Single Technician Out
 	
