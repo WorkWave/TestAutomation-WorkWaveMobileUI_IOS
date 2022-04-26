@@ -190,17 +190,27 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Add Event for Single Technician")]
         public void ThenVerifyAddEventForSingleTechnician()
         {
-            switch (WorkwaveData.TimeSheet.Event)
-            {
-                case "Team Lunch":
-                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Team Timesheets"));
-                    Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", "1/" + WorkwaveData.TimeSheet.TeamCount));
-                    Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "End Lunch"));
-                    Assert.True(timeSheetPageView.VerifyTechnicianStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "On Lunch"));
-                    break;
-                
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Team Timesheets"));
+            timeSheetPageView.ClickBack();
+            timeSheetPageView.ClickOnText("whiteClock");
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", "1/" + WorkwaveData.TimeSheet.TeamCount));
+            Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "End "+ WorkwaveData.TimeSheet.Event));
+            Assert.True(timeSheetPageView.VerifyTechnicianStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "On "+ WorkwaveData.TimeSheet.Event));
 
-            }
+        }
+
+        [When(@"End Event for Single Technician")]
+        public void WhenEndEventForSingleTechnician()
+        {
+            timeSheetPageView.ClickOnText("End " + WorkwaveData.TimeSheet.Event);
+        }
+
+        [Then(@"Verify End Event for Single Technician")]
+        public void ThenVerifyEndEventForSingleTechnician()
+        {
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "pauseIcon"));
+            Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "Active"));
+            Assert.True(timeSheetPageView.VerifyStatus(5, "Active:", "1/" + WorkwaveData.TimeSheet.TeamCount));
         }
 
 
