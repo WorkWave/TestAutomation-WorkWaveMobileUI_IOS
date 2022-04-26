@@ -72,16 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
-            "d Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Sing" +
-            "le Technician In,Time Single Technician Out,Add Lunch Event for Single Technicia" +
-            "n")]
-        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTimeEndTeamTravelTimeForAllTimeSingleTechnicianInTimeSingleTechnicianOutAddLunchEventForSingleTechnician()
+        [NUnit.Framework.DescriptionAttribute(@"Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,End Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Single Technician In,Time Single Technician Out,Add Lunch Event for Single Technician,End Lunch Event for Single Technician")]
+        public virtual void TimeAllInTimeAllOutAddTeamLunchEndTeamLunchForAllAddTeamBreakEndTeamBreakForAllAddTeamTravelTimeEndTeamTravelTimeForAllTimeSingleTechnicianInTimeSingleTechnicianOutAddLunchEventForSingleTechnicianEndLunchEventForSingleTechnician()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,En" +
-                    "d Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Sing" +
-                    "le Technician In,Time Single Technician Out,Add Lunch Event for Single Technicia" +
-                    "n", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,End Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Single Technician In,Time Single Technician Out,Add Lunch Event for Single Technician,End Lunch Event for Single Technician", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -237,8 +231,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 60
  testRunner.Then("Verify Add Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 61
- testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("End Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 62
+ testRunner.Then("Verify End Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 63
+ testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 64
  testRunner.Then("Verify Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
