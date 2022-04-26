@@ -3,7 +3,7 @@ Feature: TimeSheet
 
 
 	#MOB-3812,MOB-3822,MOB-3826,MOB-3829,MOB-3819,MOB-3825,MOB-3815,MOB-3816,MOB-3824,MOB-3817,MOB-3821,MOB-3823
-Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Team Break,End Team Break for All,Add Team Travel Time,End Team Travel Time For All,Time Single Technician In,Time Single Technician Out,Add Lunch Event for Single Technician,End Lunch Event for Single Technician
+Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician
 	Given Logged Out
 	When I Login
 	| Field    | Value                     |
@@ -60,6 +60,12 @@ Scenario: Time All In ,Time All Out,Add Team Lunch,End Team Lunch for All,Add Te
 	Then Verify Add Event for Single Technician
 	When End Event for Single Technician
 	Then Verify End Event for Single Technician
+	When Add Event for Single Technician
+	| Field          | Value         |
+	| TeamCount      | 3             |
+	| TeamMemberName | Team Member 1 |
+	| Event          | Travel Time   |  
+	Then Verify Add Event for Single Technician	
 	When Time Single Technician Out
 	Then Verify Time Single Technician Out
 	
