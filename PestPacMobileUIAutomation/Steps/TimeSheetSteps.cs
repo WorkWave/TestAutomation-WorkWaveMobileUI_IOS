@@ -194,15 +194,33 @@ namespace WorkWave.Workwave.Mobile.Steps
             timeSheetPageView.ClickBack();
             timeSheetPageView.ClickOnText("whiteClock");
             Assert.True(timeSheetPageView.VerifyStatus(5, "Travel/Breaks:", "1/" + WorkwaveData.TimeSheet.TeamCount));
-            Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "End "+ WorkwaveData.TimeSheet.Event));
-            Assert.True(timeSheetPageView.VerifyTechnicianStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "On "+ WorkwaveData.TimeSheet.Event));
+           
+            if (WorkwaveData.TimeSheet.Event.Equals("Travel Time"))
+            {
+                Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "End Travel"));
+                Assert.True(timeSheetPageView.VerifyTechnicianStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "Traveling"));
+            }
+            else
+            {
+                Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "End " + WorkwaveData.TimeSheet.Event));
+                Assert.True(timeSheetPageView.VerifyTechnicianStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "On " + WorkwaveData.TimeSheet.Event));
+            }
+           
 
         }
 
         [When(@"End Event for Single Technician")]
         public void WhenEndEventForSingleTechnician()
         {
-            timeSheetPageView.ClickOnText("End " + WorkwaveData.TimeSheet.Event);
+            
+            if (WorkwaveData.TimeSheet.Event.Equals("Travel Time"))
+            {
+                timeSheetPageView.ClickOnText("End Travel");
+            }
+            else
+            {
+                timeSheetPageView.ClickOnText("End " + WorkwaveData.TimeSheet.Event);
+            }
         }
 
         [Then(@"Verify End Event for Single Technician")]
