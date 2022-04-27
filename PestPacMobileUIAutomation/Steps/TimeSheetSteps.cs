@@ -40,6 +40,10 @@ namespace WorkWave.Workwave.Mobile.Steps
                     Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Hi Team Lead"));
                     timeSheetPageView.ClickOnStaticText("Go To Timesheet");
                 }
+                if (dailyView.VerifyViewLoaded(1))
+                {
+                    timeSheetPageView.ClickOnText("whiteClock");
+                }
             }
             timeSheetPageView.ClickOnStaticText("Time All In");
         }
@@ -155,6 +159,24 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenTimeSingleTechnicianIn(Table data)
         {
             WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
+            while (!timeSheetPageView.VerifyTimeAllInButtonLoaded(5))
+            {
+                if (timeSheetPageView.VerifyReopenTimeSheetViewLoaded(2))
+                {
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Hi Team Lead"));
+                    timeSheetPageView.ClickOnStaticText("Reopen Timesheet");
+                }
+
+                if (timeSheetPageView.VerifyViewLoaded(2))
+                {
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Hi Team Lead"));
+                    timeSheetPageView.ClickOnStaticText("Go To Timesheet");
+                }
+                if (dailyView.VerifyViewLoaded(1))
+                {
+                    timeSheetPageView.ClickOnText("whiteClock");
+                }
+            }
             timeSheetPageView.ClickOnButton(WorkwaveData.TimeSheet.TeamMemberName);
         }
 
@@ -240,13 +262,21 @@ namespace WorkWave.Workwave.Mobile.Steps
             while (!dailyView.VerifyViewLoaded(1))
             {
                 if (commonPageObjectsView.MainBackButtonVisible(5))
-                {                  
-                        commonPageObjectsView.ClickBack();
+                {
+                    commonPageObjectsView.ClickBack();
                 }
                 if (timeSheetPageView.VerifyReopenTimeSheetViewLoaded(2))
                 {
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Hi Team Lead"));
                     timeSheetPageView.ClickOnStaticText("Reopen Timesheet");
                 }
+
+                if (timeSheetPageView.VerifyViewLoaded(2))
+                {
+                    Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Hi Team Lead"));
+                    timeSheetPageView.ClickOnStaticText("Go To Timesheet");
+                }
+                             
             }
                
             while (!dailyView.VerifyNotStartedOrderLoaded(5))
@@ -264,6 +294,8 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Checking if at least one member of your team is timed in"));
             Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Not Timed In"));
             Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Please time in for the day before starting a work order."));
+            orderPageView.ClickOnText("OK");
+            commonPageObjectsView.ClickBack();
         }
 
 

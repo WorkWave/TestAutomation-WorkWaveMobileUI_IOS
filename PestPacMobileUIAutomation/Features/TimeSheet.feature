@@ -2,13 +2,15 @@
 Feature: TimeSheet
 
 
-	#MOB-3812,MOB-3822,MOB-3826,MOB-3829,MOB-3819,MOB-3825,MOB-3815,MOB-3816,MOB-3824,MOB-3817,MOB-3821,MOB-3823,MOB-3818,MOB-3820,MOB-3813,MOB-3814,MOB-3872
-Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician,Start Work Order before any Team Member Timed In for the Day
+	#MOB-3812,MOB-3822,MOB-3826,MOB-3829,MOB-3819,MOB-3825,MOB-3815,MOB-3816,MOB-3824,MOB-3817,MOB-3821,MOB-3823,MOB-3818,MOB-3820,MOB-3813,MOB-3814,MOB-3872,MOB-3828
+Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician,Start Work Order before any Team Member Timed In for the Day,Start Work Order after all Team Members Timed Out for the Day
 	Given Logged Out
 	When I Login
 	| Field    | Value                     |
 	| Email    | mdelgoda+tml@workwave.com |
 	| Password | WorkWave1!                |
+	When Start WorkOrder Without TimeIn
+	Then Verify Not Able to Start WorkOrder Without TimeIn
 	When Time All In
 	| Field     | Value |
 	| TeamCount | 3     |
@@ -47,6 +49,8 @@ Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/T
 	| Field     | Value |
 	| TeamCount | 3     |
 	Then Verify Time All Out
+	When Start WorkOrder Without TimeIn
+	Then Verify Not Able to Start WorkOrder Without TimeIn
 	When Time Single Technician In
 	| Field          | Value         |
 	| TeamCount      | 3             |
