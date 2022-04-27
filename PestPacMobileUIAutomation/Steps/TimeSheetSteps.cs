@@ -13,6 +13,9 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         TimeSheetPageView timeSheetPageView = new TimeSheetPageView();
+        OrderPageView orderPageView = new OrderPageView();
+        DailyView dailyView = new DailyView();
+        CommonPageObjectsView commonPageObjectsView = new CommonPageObjectsView();
 
         public TimeSheetSteps(WorkwaveData WorkwaveData)
         {
@@ -229,6 +232,38 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "pauseIcon"));
             Assert.True(timeSheetPageView.VerifyStatus(5, WorkwaveData.TimeSheet.TeamMemberName, "Active"));
             Assert.True(timeSheetPageView.VerifyStatus(5, "Active:", "1/" + WorkwaveData.TimeSheet.TeamCount));
+        }
+
+        [When(@"Start WorkOrder Without TimeIn")]
+        public void WhenStartWorkOrderWithoutTimeIn()
+        {
+            while (!dailyView.VerifyViewLoaded(1))
+            {
+                if (commonPageObjectsView.MainBackButtonVisible(5))
+                {                  
+                        commonPageObjectsView.ClickBack();
+                }
+                if (timeSheetPageView.VerifyReopenTimeSheetViewLoaded(2))
+                {
+                    timeSheetPageView.ClickOnStaticText("Reopen Timesheet");
+                }
+            }
+               
+            while (!dailyView.VerifyNotStartedOrderLoaded(5))
+            {
+                WorkwaveMobileSupport.Swipe(-1139);
+            }
+            dailyView.NotStartedOrderClick();
+            Assert.True(orderPageView.VerifyViewLoadedByText(5, "Start"));   
+            orderPageView.ClickOnText("Start");
+        }
+
+        [Then(@"Verify Not Able to Start WorkOrder Without TimeIn")]
+        public void ThenVerifyNotAbleToStartWorkOrderWithoutTimeIn()
+        {
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Checking if at least one member of your team is timed in"));
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Not Timed In"));
+            Assert.True(timeSheetPageView.VerifyViewLoadedByText(5, "Please time in for the day before starting a work order."));
         }
 
 
