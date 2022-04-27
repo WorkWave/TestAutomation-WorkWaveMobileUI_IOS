@@ -279,8 +279,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 76
  testRunner.Then("Verify Add Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 77
- testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("End Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 78
+ testRunner.Then("Verify End Event for Single Technician", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 79
+ testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 80
  testRunner.Then("Verify Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
