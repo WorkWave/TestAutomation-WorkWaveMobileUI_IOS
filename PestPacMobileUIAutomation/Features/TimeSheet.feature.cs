@@ -72,16 +72,10 @@ namespace WorkWave.Workwave.Mobile.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch" +
-            " for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/B" +
-            "reak Event for Single Technician,End Lunch/Travel/Break Event for Single Technic" +
-            "ian")]
-        public virtual void TimeAllInTimeAllOutAddTeamBreakTravelLunchEndTeamBreakTravelLunchForAllTimeSingleTechnicianInTimeSingleTechnicianOutAddLunchTravelBreakEventForSingleTechnicianEndLunchTravelBreakEventForSingleTechnician()
+        [NUnit.Framework.DescriptionAttribute(@"Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician,Start Work Order before any Team Member Timed In for the Day")]
+        public virtual void TimeAllInTimeAllOutAddTeamBreakTravelLunchEndTeamBreakTravelLunchForAllTimeSingleTechnicianInTimeSingleTechnicianOutAddLunchTravelBreakEventForSingleTechnicianEndLunchTravelBreakEventForSingleTechnicianStartWorkOrderBeforeAnyTeamMemberTimedInForTheDay()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch" +
-                    " for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/B" +
-                    "reak Event for Single Technician,End Lunch/Travel/Break Event for Single Technic" +
-                    "ian", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo(@"Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician,Start Work Order before any Team Member Timed In for the Day", null, ((string[])(null)));
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -286,6 +280,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 80
  testRunner.Then("Verify Time Single Technician Out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 81
+ testRunner.When("Start WorkOrder Without TimeIn", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
+ testRunner.Then("Verify Not Able to Start WorkOrder Without TimeIn", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

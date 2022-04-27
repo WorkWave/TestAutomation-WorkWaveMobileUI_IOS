@@ -2,8 +2,8 @@
 Feature: TimeSheet
 
 
-	#MOB-3812,MOB-3822,MOB-3826,MOB-3829,MOB-3819,MOB-3825,MOB-3815,MOB-3816,MOB-3824,MOB-3817,MOB-3821,MOB-3823,MOB-3818,MOB-3820,MOB-3813,MOB-3814
-Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician
+	#MOB-3812,MOB-3822,MOB-3826,MOB-3829,MOB-3819,MOB-3825,MOB-3815,MOB-3816,MOB-3824,MOB-3817,MOB-3821,MOB-3823,MOB-3818,MOB-3820,MOB-3813,MOB-3814,MOB-3872
+Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/Travel/Lunch for All,Time Single Technician In,Time Single Technician Out,Add Lunch/Travel/Break Event for Single Technician,End Lunch/Travel/Break Event for Single Technician,Start Work Order before any Team Member Timed In for the Day
 	Given Logged Out
 	When I Login
 	| Field    | Value                     |
@@ -78,4 +78,6 @@ Scenario: Time All In ,Time All Out,Add Team Break/Travel/Lunch,End Team Break/T
 	Then Verify End Event for Single Technician
 	When Time Single Technician Out
 	Then Verify Time Single Technician Out
+	When Start WorkOrder Without TimeIn
+	Then Verify Not Able to Start WorkOrder Without TimeIn
 	
