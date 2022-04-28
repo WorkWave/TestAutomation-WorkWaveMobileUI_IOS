@@ -83,6 +83,10 @@ namespace WorkWave.Workwave.Mobile.Steps
                     {
                         sketchView.ClickOnText("Rect");
                         WorkwaveMobileSupport.LongPressMovePoint(200, 200, 400, 400);
+                    }else if(WorkwaveData.Sketch.SubTool.Equals("Straight"))
+                    {
+                        sketchView.ClickOnText("Straight");
+                        WorkwaveMobileSupport.LongPressMovePoint(200, 200, 400, 400);
                     }
                                  
                     break;
