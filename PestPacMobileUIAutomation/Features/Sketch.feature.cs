@@ -132,10 +132,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Sketch → Text,Label,Arrow")]
-        public virtual void AddSketchTextLabelArrow()
+        [NUnit.Framework.DescriptionAttribute("Add Sketch → Text,Label,Arrow,Reactangle")]
+        public virtual void AddSketchTextLabelArrowReactangle()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Text,Label,Arrow", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Text,Label,Arrow,Reactangle", null, ((string[])(null)));
 #line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -155,7 +155,7 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "SketchBackground",
                         "Grid"});
-#line 53
+#line 65
  testRunner.Given("New Sketch Opened", ((string)(null)), table6, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -166,11 +166,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "Draw"});
             table7.AddRow(new string[] {
                         "SubTool",
-                        "Arrow"});
+                        "Rectangle"});
             table7.AddRow(new string[] {
                         "SketchName",
-                        "ArrowSketch"});
-#line 56
+                        "RectSketch"});
+#line 68
  testRunner.When("Object Added To Sketch", ((string)(null)), table7, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -178,10 +178,10 @@ this.ScenarioInitialize(scenarioInfo);
                         "Value"});
             table8.AddRow(new string[] {
                         "SketchName",
-                        "ArrowSketch"});
-#line 61
+                        "RectSketch"});
+#line 73
  testRunner.When("New Sketch Saved", ((string)(null)), table8, "When ");
-#line 64
+#line 76
  testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
