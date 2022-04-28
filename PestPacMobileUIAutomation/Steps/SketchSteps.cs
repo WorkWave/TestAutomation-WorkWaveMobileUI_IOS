@@ -69,6 +69,19 @@ namespace WorkWave.Workwave.Mobile.Steps
                     sketchView.EnterTextOnCommonField(WorkwaveMobileSupport.RandomString(3));
                     sketchView.ClickOnText("Insert");
                     break;
+                case "Draw":
+                    WorkwaveMobileSupport.TapTargetNoWait(1687, 242);
+                    if(WorkwaveData.Sketch.SubTool.Equals("Arrow"))
+                    {
+                        sketchView.ClickOnText("SketchArrowDownGray");
+                        sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
+                        WorkwaveMobileSupport.TapTargetNoWait(1687, 664);
+                        //WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                        //WorkwaveMobileSupport.TapTargetNoWait(400, 400);
+                        WorkwaveMobileSupport.LongPressMovePoint(200,200,400,400);
+                    }
+                                 
+                    break;
 
             }
 
