@@ -63,7 +63,11 @@ namespace WorkWave.Workwave.Mobile.Steps
                     sketchView.ClickOnText("Insert");
                     break;
                 case "Labels":
-                    
+                    WorkwaveMobileSupport.TapTargetNoWait(1687, 380);
+                    WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                    Assert.True(sketchView.VerifyViewLoadedByText(5, "Label"));
+                    sketchView.EnterTextOnCommonField(WorkwaveMobileSupport.RandomString(3));
+                    sketchView.ClickOnText("Insert");
                     break;
 
             }
