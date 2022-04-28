@@ -36,6 +36,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             sketchView.ClickOnText(WorkwaveData.Sketch.SketchBackground);
         }
         
+        //Coordinates are set as per the iphone11 resolutions
         [When(@"Object Added To Sketch")]
         public void WhenObjectAddedToSketch(Table data)
         {
@@ -43,14 +44,32 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(sketchView.VerifySketchPadVisible(5));
             System.TimeSpan.FromSeconds(60);
             sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
-            if (!sketchView.VerifAllToolHeaderVisible(5))
+            switch (WorkwaveData.Sketch.Tool)
             {
-                sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
+                case "Objects":
+                    if (!sketchView.VerifAllToolHeaderVisible(5))
+                    {
+                        sketchView.ClickOnText(WorkwaveData.Sketch.Tool);
+                    }
+                    sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
+                    System.TimeSpan.FromSeconds(60);
+                    WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                    break;
+                case "Text":                   
+                    WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
+                    WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                    Assert.True(sketchView.VerifyViewLoadedByText(5, "Enter Text"));
+                    sketchView.EnterTextOnCommonField(WorkwaveMobileSupport.RandomString(5));
+                    sketchView.ClickOnText("Insert");
+                    break;
+                case "Labels":
+                    
+                    break;
+
             }
+
+
           
-            sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
-            System.TimeSpan.FromSeconds(60);
-            WorkwaveMobileSupport.TapTargetNoWait(200, 200);
         }
         
         [When(@"New Sketch Saved")]
@@ -63,7 +82,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             sketchView.EnterSketchName(WorkwaveData.Sketch.SketchName);
             System.TimeSpan.FromSeconds(30);
             sketchView.ClickOK();
-            WorkwaveMobileSupport.TapTargetNoWait(1200, 550);
+            //WorkwaveMobileSupport.TapTargetNoWait(1200, 550);
             SketchName = WorkwaveData.Sketch.SketchName;
         }
         
