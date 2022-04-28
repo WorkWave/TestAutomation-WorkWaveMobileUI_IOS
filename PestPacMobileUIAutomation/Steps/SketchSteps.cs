@@ -79,6 +79,10 @@ namespace WorkWave.Workwave.Mobile.Steps
                         //WorkwaveMobileSupport.TapTargetNoWait(200, 200);
                         //WorkwaveMobileSupport.TapTargetNoWait(400, 400);
                         WorkwaveMobileSupport.LongPressMovePoint(200,200,400,400);
+                    }else if (WorkwaveData.Sketch.SubTool.Equals("Rectangle"))
+                    {
+                        sketchView.ClickOnText("Rect");
+                        WorkwaveMobileSupport.LongPressMovePoint(200, 200, 400, 400);
                     }
                                  
                     break;
