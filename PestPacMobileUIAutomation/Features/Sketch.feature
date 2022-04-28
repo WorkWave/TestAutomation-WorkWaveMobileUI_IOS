@@ -21,8 +21,8 @@ Scenario: Add Sketch → Objects,Delete Sketch
 	When Sketch Deleted
 	Then Verify Sketch Deleted
 
-	#MOB-3010,MOB-3009,MOB-3008,MOB-3007
-Scenario: Add Sketch → Text,Label,Arrow,Reactangle
+	#MOB-3010,MOB-3009,MOB-3008,MOB-3007,MOB-3006
+Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -62,15 +62,27 @@ Scenario: Add Sketch → Text,Label,Arrow,Reactangle
 	#| Field      | Value       |
 	#| SketchName | ArrowSketch |
 	#Then Verify Sketch Added
+	#Given New Sketch Opened
+	#| Field            | Value |
+	#| SketchBackground | Grid  |
+	#When Object Added To Sketch
+	#| Field      | Value      |
+	#| Tool       | Draw       |
+	#| SubTool    | Rectangle  |
+	#| SketchName | RectSketch |
+	#When New Sketch Saved
+	#| Field      | Value      |
+	#| SketchName | RectSketch |
+	#Then Verify Sketch Added
 	Given New Sketch Opened
 	| Field            | Value |
 	| SketchBackground | Grid  |
 	When Object Added To Sketch
-	| Field      | Value      |
-	| Tool       | Draw       |
-	| SubTool    | Rectangle  |
-	| SketchName | RectSketch |
+	| Field      | Value          |
+	| Tool       | Draw           |
+	| SubTool    | Straight       |
+	| SketchName | StraightSketch |
 	When New Sketch Saved
-	| Field      | Value      |
-	| SketchName | RectSketch |
+	| Field      | Value          |
+	| SketchName | StraightSketch |
 	Then Verify Sketch Added
