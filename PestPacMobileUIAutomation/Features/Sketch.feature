@@ -21,8 +21,8 @@ Scenario: Add Sketch → Objects,Delete Sketch
 	When Sketch Deleted
 	Then Verify Sketch Deleted
 
-	#MOB-3010,MOB-3009
-Scenario: Add Sketch → Text,Label
+	#MOB-3010,MOB-3009,MOB-3008
+Scenario: Add Sketch → Text,Label,Arrow
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -38,15 +38,27 @@ Scenario: Add Sketch → Text,Label
 	#| Field      | Value      |
 	#| SketchName | TextSketch |
 	#Then Verify Sketch Added
+	#Given New Sketch Opened
+	#| Field            | Value |
+	#| SketchBackground | Grid  |
+	#When Object Added To Sketch
+	#| Field      | Value       |
+	#| Tool       | Labels      |
+	#| SubTool    | Null        |
+	#| SketchName | LabelSketch |
+	#When New Sketch Saved
+	#| Field      | Value       |
+	#| SketchName | LabelSketch |
+	#Then Verify Sketch Added
 	Given New Sketch Opened
 	| Field            | Value |
 	| SketchBackground | Grid  |
 	When Object Added To Sketch
 	| Field      | Value       |
-	| Tool       | Labels      |
-	| SubTool    | Null        |
-	| SketchName | LabelSketch |
+	| Tool       | Draw        |
+	| SubTool    | Arrow       |
+	| SketchName | ArrowSketch |
 	When New Sketch Saved
 	| Field      | Value       |
-	| SketchName | LabelSketch |
+	| SketchName | ArrowSketch |
 	Then Verify Sketch Added
