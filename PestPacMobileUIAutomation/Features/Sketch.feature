@@ -22,58 +22,58 @@ Scenario: Add Sketch → Objects,Delete Sketch
 	Then Verify Sketch Deleted
 
 	#MOB-3010,MOB-3009,MOB-3008,MOB-3007,MOB-3006
-Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight
+Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
-	#Given New Sketch Opened
-	#| Field            | Value |
-	#| SketchBackground | Grid  |
-	#When Object Added To Sketch
-	#| Field      | Value      |
-	#| Tool       | Text       |
-	#| SubTool    | Null       |
-	#| SketchName | TextSketch |
-	#When New Sketch Saved
-	#| Field      | Value      |
-	#| SketchName | TextSketch |
-	#Then Verify Sketch Added
-	#Given New Sketch Opened
-	#| Field            | Value |
-	#| SketchBackground | Grid  |
-	#When Object Added To Sketch
-	#| Field      | Value       |
-	#| Tool       | Labels      |
-	#| SubTool    | Null        |
-	#| SketchName | LabelSketch |
-	#When New Sketch Saved
-	#| Field      | Value       |
-	#| SketchName | LabelSketch |
-	#Then Verify Sketch Added
-	#Given New Sketch Opened
-	#| Field            | Value |
-	#| SketchBackground | Grid  |
-	#When Object Added To Sketch
-	#| Field      | Value       |
-	#| Tool       | Draw        |
-	#| SubTool    | Arrow       |
-	#| SketchName | ArrowSketch |
-	#When New Sketch Saved
-	#| Field      | Value       |
-	#| SketchName | ArrowSketch |
-	#Then Verify Sketch Added
-	#Given New Sketch Opened
-	#| Field            | Value |
-	#| SketchBackground | Grid  |
-	#When Object Added To Sketch
-	#| Field      | Value      |
-	#| Tool       | Draw       |
-	#| SubTool    | Rectangle  |
-	#| SketchName | RectSketch |
-	#When New Sketch Saved
-	#| Field      | Value      |
-	#| SketchName | RectSketch |
-	#Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value      |
+	| Tool       | Text       |
+	| SubTool    | Null       |
+	| SketchName | TextSketch |
+	When New Sketch Saved
+	| Field      | Value      |
+	| SketchName | TextSketch |
+	Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value       |
+	| Tool       | Labels      |
+	| SubTool    | Null        |
+	| SketchName | LabelSketch |
+	When New Sketch Saved
+	| Field      | Value       |
+	| SketchName | LabelSketch |
+	Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value       |
+	| Tool       | Draw        |
+	| SubTool    | Arrow       |
+	| SketchName | ArrowSketch |
+	When New Sketch Saved
+	| Field      | Value       |
+	| SketchName | ArrowSketch |
+	Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value      |
+	| Tool       | Draw       |
+	| SubTool    | Rectangle  |
+	| SketchName | RectSketch |
+	When New Sketch Saved
+	| Field      | Value      |
+	| SketchName | RectSketch |
+	Then Verify Sketch Added
 	Given New Sketch Opened
 	| Field            | Value |
 	| SketchBackground | Grid  |
@@ -85,4 +85,16 @@ Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight
 	When New Sketch Saved
 	| Field      | Value          |
 	| SketchName | StraightSketch |
+	Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value          |
+	| Tool       | Draw           |
+	| SubTool    | Freehand       |
+	| SketchName | FreehandSketch |
+	When New Sketch Saved
+	| Field      | Value          |
+	| SketchName | FreehandSketch |
 	Then Verify Sketch Added

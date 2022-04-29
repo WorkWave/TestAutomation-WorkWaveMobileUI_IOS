@@ -88,7 +88,12 @@ namespace WorkWave.Workwave.Mobile.Steps
                         sketchView.ClickOnText("Straight");
                         WorkwaveMobileSupport.LongPressMovePoint(200, 200, 400, 400);
                     }
-                                 
+                    else if (WorkwaveData.Sketch.SubTool.Equals("Freehand"))
+                    {
+                        sketchView.ClickOnText("Freehand");
+                        WorkwaveMobileSupport.LongPressMovePoint(200, 200, 400, 400);
+                    }
+
                     break;
 
             }
@@ -118,7 +123,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             {
                 System.TimeSpan.FromSeconds(30);
             }
-          
+
             WorkwaveMobileSupport.SwipeDownIOS("SKETCHES");
             if (attachmentView.VerifySeeAllViewLoaded(5))
             {
