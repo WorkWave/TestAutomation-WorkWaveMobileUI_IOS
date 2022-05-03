@@ -95,10 +95,20 @@ namespace WorkWave.Workwave.Mobile.Steps
                     }
 
                     break;
+                case "Treatment":
+                    WorkwaveMobileSupport.TapTargetNoWait(1659, 732);
+                    sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
+                    if (WorkwaveData.Sketch.SubTool.Equals("No Material"))
+                    {
+                        sketchView.ClickButton(WorkwaveData.Sketch.SubTool);
+                        sketchView.ClickOnText("Search materials");
+                        sketchView.EnterTextToCommonField(WorkwaveData.Sketch.TreatmentMaterial, "Search materials");
+                        sketchView.ClickOnText(WorkwaveData.Sketch.TreatmentMaterial);
+                    }
+                    WorkwaveMobileSupport.TapTargetNoWait(200, 200);                
+                    break;
 
             }
-
-
           
         }
         
@@ -119,7 +129,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Sketch Added")]
         public void ThenVerifySketchAdded()
         {
-            if (sketchView.VerifyViewLoaded(5, "Next Order"))
+            if (sketchView.VerifyOrderPageLoaded(5))
             {
                 System.TimeSpan.FromSeconds(30);
             }
