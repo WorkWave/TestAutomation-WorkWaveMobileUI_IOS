@@ -104,8 +104,19 @@ namespace WorkWave.Workwave.Mobile.Steps
                         sketchView.ClickOnText("Search materials");
                         sketchView.EnterTextToCommonField(WorkwaveData.Sketch.TreatmentMaterial, "Search materials");
                         sketchView.ClickOnText(WorkwaveData.Sketch.TreatmentMaterial);
+                        WorkwaveMobileSupport.TapTargetNoWait(200, 200);
                     }
-                    WorkwaveMobileSupport.TapTargetNoWait(200, 200);                
+                    else if (WorkwaveData.Sketch.SubTool.Equals("Size"))
+                    {
+                        for (int i = 1; i <= 3; i++)
+                        {
+                            WorkwaveMobileSupport.PressMovePoint(1687, 372, 1687, 664);
+                            sketchView.ClickOnSizeButton(i.ToString());
+                           WorkwaveMobileSupport.TapTargetNoWait(200+i+100, 200+i+100);
+                          
+                        }
+                    }
+                         
                     break;
 
             }

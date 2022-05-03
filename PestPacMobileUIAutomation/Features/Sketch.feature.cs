@@ -363,10 +363,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Sketch → Treatment → Associate Material with Treatment Color")]
-        public virtual void AddSketchTreatmentAssociateMaterialWithTreatmentColor()
+        [NUnit.Framework.DescriptionAttribute("Add Sketch → Treatment → Associate Material with Treatment Color,Change Sprayer S" +
+            "ize")]
+        public virtual void AddSketchTreatmentAssociateMaterialWithTreatmentColorChangeSprayerSize()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Treatment → Associate Material with Treatment Color", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Treatment → Associate Material with Treatment Color,Change Sprayer S" +
+                    "ize", null, ((string[])(null)));
 #line 103
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -416,6 +418,41 @@ this.ScenarioInitialize(scenarioInfo);
 #line 116
  testRunner.When("New Sketch Saved", ((string)(null)), table27, "When ");
 #line 119
+ testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table28.AddRow(new string[] {
+                        "SketchBackground",
+                        "Grid"});
+#line 120
+ testRunner.Given("New Sketch Opened", ((string)(null)), table28, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table29.AddRow(new string[] {
+                        "Tool",
+                        "Treatment"});
+            table29.AddRow(new string[] {
+                        "SubTool",
+                        "Size"});
+            table29.AddRow(new string[] {
+                        "SketchName",
+                        "TreatmentSketch"});
+#line 123
+ testRunner.When("Object Added To Sketch", ((string)(null)), table29, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table30.AddRow(new string[] {
+                        "SketchName",
+                        "TreatmentSketch"});
+#line 128
+ testRunner.When("New Sketch Saved", ((string)(null)), table30, "When ");
+#line 131
  testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
