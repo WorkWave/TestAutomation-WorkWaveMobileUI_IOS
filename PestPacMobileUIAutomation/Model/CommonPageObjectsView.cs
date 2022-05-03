@@ -68,6 +68,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Play']")]
         private IWebElement PlayButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@text='Next Order']")]
+        private IWebElement NextOrderButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -90,6 +93,12 @@ namespace WorkWave.Workwave.Mobile.Model
         public void ClickOnButton(String Name)
         {
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[contains(text(),'" + Name + "')]/../XCUIElementTypeButton[1]"));
+            element.Click();
+        }
+
+        public void ClickButton(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//XCUIElementTypeButton[@text='" + Name + "']"));
             element.Click();
         }
 
@@ -411,6 +420,8 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifyPlayButtonVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(PlayButton), System.TimeSpan.FromSeconds(time));
 
+      
+        public bool VerifyOrderPageLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(NextOrderButton), System.TimeSpan.FromSeconds(time));
 
         #endregion Behavior
     }
