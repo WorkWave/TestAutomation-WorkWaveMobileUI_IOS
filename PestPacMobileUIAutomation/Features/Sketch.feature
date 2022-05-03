@@ -99,8 +99,8 @@ Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand
 	| SketchName | FreehandSketch |
 	Then Verify Sketch Added
 
-	#MOB-3012
-Scenario:Add Sketch → Treatment → Associate Material with Treatment Color
+	#MOB-3012,MOB-3005
+Scenario:Add Sketch → Treatment → Associate Material with Treatment Color,Change Sprayer Size
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -113,6 +113,18 @@ Scenario:Add Sketch → Treatment → Associate Material with Treatment Color
 	| SubTool           | No Material     |
 	| SketchName        | TreatmentSketch |
 	| TreatmentMaterial | Broom           |
+	When New Sketch Saved
+	| Field      | Value           |
+	| SketchName | TreatmentSketch |
+	Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field             | Value           |
+	| Tool              | Treatment       |
+	| SubTool           | Size            |
+	| SketchName        | TreatmentSketch |
 	When New Sketch Saved
 	| Field      | Value           |
 	| SketchName | TreatmentSketch |

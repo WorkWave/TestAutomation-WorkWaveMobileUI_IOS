@@ -51,7 +51,11 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifAllToolHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(AllToolButton), TimeSpan.FromSeconds(time));
 
-
+        public void ClickOnSizeButton(String Index)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='Color']/../following-sibling::XCUIElementTypeCell["+ Index + "]"));
+            element.Click();
+        }
         #endregion Behavior
 
     }
