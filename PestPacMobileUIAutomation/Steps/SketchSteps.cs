@@ -254,5 +254,19 @@ namespace WorkWave.Workwave.Mobile.Steps
             sketchView.ClickOnStaticText("Select as Background");
         }
 
+        [When(@"Take Image For Background")]
+        public void WhenTakeImageForBackground()
+        {
+           
+            Assert.True(attachmentView.VerifyViewLoadedByText(5, "Camera Mode"));
+            attachmentView.ClickOnButton("Take Picture");
+            while (!attachmentView.UsePhotoButtonVisible(2))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+            attachmentView.ClickOnText("Use Photo");
+        }
+
+
     }
 }
