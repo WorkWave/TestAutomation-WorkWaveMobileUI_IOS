@@ -21,8 +21,8 @@ Scenario: Add Sketch → Objects,Delete Sketch
 	When Sketch Deleted
 	Then Verify Sketch Deleted
 
-	#MOB-3010,MOB-3009,MOB-3008,MOB-3007,MOB-3006,MOB-3013,MOB-2993
-Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand,Polygon
+	#MOB-3010,MOB-3009,MOB-3008,MOB-3007,MOB-3006,MOB-3013,MOB-2993,MOB-2998
+Scenario: Add Sketch → Grid Background -> Text,Label,Arrow,Reactangle,Straight,Freehand,Polygon
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |

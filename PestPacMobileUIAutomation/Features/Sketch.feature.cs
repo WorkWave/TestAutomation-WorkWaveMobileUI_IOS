@@ -132,10 +132,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand,Polygon")]
-        public virtual void AddSketchTextLabelArrowReactangleStraightFreehandPolygon()
+        [NUnit.Framework.DescriptionAttribute("Add Sketch → Grid Background -> Text,Label,Arrow,Reactangle,Straight,Freehand,Pol" +
+            "ygon")]
+        public virtual void AddSketchGridBackground_TextLabelArrowReactangleStraightFreehandPolygon()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand,Polygon", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Grid Background -> Text,Label,Arrow,Reactangle,Straight,Freehand,Pol" +
+                    "ygon", null, ((string[])(null)));
 #line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
