@@ -494,10 +494,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Sketch → Blank Background")]
-        public virtual void AddSketchBlankBackground()
+        [NUnit.Framework.DescriptionAttribute("Add Sketch → Blank Background,Location Image Background")]
+        public virtual void AddSketchBlankBackgroundLocationImageBackground()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Blank Background", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Blank Background,Location Image Background", null, ((string[])(null)));
 #line 146
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -544,6 +544,73 @@ this.ScenarioInitialize(scenarioInfo);
 #line 158
  testRunner.When("New Sketch Saved", ((string)(null)), table37, "When ");
 #line 161
+ testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Sketch →Location Image Background")]
+        public virtual void AddSketchLocationImageBackground()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch →Location Image Background", null, ((string[])(null)));
+#line 164
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table38.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 165
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table38, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table39.AddRow(new string[] {
+                        "Type",
+                        "Take a Photo"});
+#line 168
+ testRunner.When("Capture Location Image", ((string)(null)), table39, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table40.AddRow(new string[] {
+                        "SketchBackground",
+                        "Location Images"});
+#line 171
+ testRunner.Given("New Sketch Opened", ((string)(null)), table40, "Given ");
+#line 174
+ testRunner.When("Location Image Added To Sketch", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table41.AddRow(new string[] {
+                        "Tool",
+                        "Text"});
+            table41.AddRow(new string[] {
+                        "SubTool",
+                        "Null"});
+            table41.AddRow(new string[] {
+                        "SketchName",
+                        "TextSketch"});
+#line 175
+ testRunner.When("Object Added To Sketch", ((string)(null)), table41, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table42.AddRow(new string[] {
+                        "SketchName",
+                        "TextSketch"});
+#line 180
+ testRunner.When("New Sketch Saved", ((string)(null)), table42, "When ");
+#line 183
  testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
