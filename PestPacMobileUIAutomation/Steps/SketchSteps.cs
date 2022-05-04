@@ -57,7 +57,7 @@ namespace WorkWave.Workwave.Mobile.Steps
                     break;
                 case "Text":                   
                     WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
-                    WorkwaveMobileSupport.TapTargetNoWait(600, 200);
+                    WorkwaveMobileSupport.TapTargetNoWait(700, 200);
                     while (!sketchView.VerifyEnterTextHeaderVisible(5))
                     {
                         WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
@@ -265,6 +265,17 @@ namespace WorkWave.Workwave.Mobile.Steps
                 System.TimeSpan.FromSeconds(30);
             }
             attachmentView.ClickOnText("Use Photo");
+        }
+
+        [When(@"Pick Image For Background")]
+        public void WhenPickImageForBackground()
+        {
+            if (!attachmentView.VerifyPhotoViewLoaded(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+            attachmentView.ClickOnText("All Photos");
+            attachmentView.SelectImageFromGallery();
         }
 
 

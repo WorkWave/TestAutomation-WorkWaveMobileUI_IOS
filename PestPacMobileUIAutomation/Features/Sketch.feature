@@ -200,3 +200,22 @@ Scenario: Add Sketch → Take Image Background
 	| Field      | Value      |
 	| SketchName | TextSketch |
 	Then Verify Sketch Added
+
+	#MOB-3000
+Scenario: Add Sketch → Pick Image Background
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	Given New Sketch Opened
+	| Field            | Value      |
+	| SketchBackground | Pick Image |
+	When Pick Image For Background
+	When Object Added To Sketch
+	| Field      | Value      |
+	| Tool       | Text       |
+	| SubTool    | Null       |
+	| SketchName | TextSketch |
+	When New Sketch Saved
+	| Field      | Value      |
+	| SketchName | TextSketch |
+	Then Verify Sketch Added
