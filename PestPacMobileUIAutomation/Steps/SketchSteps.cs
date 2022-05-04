@@ -92,9 +92,17 @@ namespace WorkWave.Workwave.Mobile.Steps
                     {
                         sketchView.ClickOnText("Freehand");
                         WorkwaveMobileSupport.LongPressMovePoint(200, 200, 400, 400);
+                    }else if (WorkwaveData.Sketch.SubTool.Equals("Polygon"))
+                    {
+                        sketchView.ClickOnText("Polygon");
+                        WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                        WorkwaveMobileSupport.TapTargetNoWait(200, 400);
+                        WorkwaveMobileSupport.TapTargetNoWait(400, 400);
+                        WorkwaveMobileSupport.TapTargetNoWait(400, 200);
+                        WorkwaveMobileSupport.TapTargetNoWait(200, 200);
                     }
 
-                    break;
+                        break;
                 case "Treatment":
                     WorkwaveMobileSupport.TapTargetNoWait(1659, 732);
                     sketchView.ClickOnText(WorkwaveData.Sketch.SubTool);
@@ -145,7 +153,13 @@ namespace WorkWave.Workwave.Mobile.Steps
                 System.TimeSpan.FromSeconds(30);
             }
 
-            WorkwaveMobileSupport.SwipeDownIOS("SKETCHES");
+            // WorkwaveMobileSupport.SwipeDownIOS("SKETCHES");
+            if (!sketchView.VerifySketchHeaderVisible(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+                sketchView.ViewSketches();
+            }
+          
             if (attachmentView.VerifySeeAllViewLoaded(5))
             {
                 attachmentView.ClickOnSeeAll();
