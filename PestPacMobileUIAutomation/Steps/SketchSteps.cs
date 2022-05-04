@@ -57,7 +57,12 @@ namespace WorkWave.Workwave.Mobile.Steps
                     break;
                 case "Text":                   
                     WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
-                    WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                    WorkwaveMobileSupport.TapTargetNoWait(600, 200);
+                    while (!sketchView.VerifyEnterTextHeaderVisible(5))
+                    {
+                        WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
+                        WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+                    }
                     Assert.True(sketchView.VerifyViewLoadedByText(5, "Enter Text"));
                     sketchView.EnterTextOnCommonField(WorkwaveMobileSupport.RandomString(5));
                     sketchView.ClickOnText("Insert");
@@ -183,6 +188,70 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             Console.WriteLine(SketchName);
             Assert.True(sketchView.findElement(SketchName) == null);
+        }
+
+        [When(@"Capture Location Image")]
+        public void WhenCaptureLocationImage(Table data)
+        {
+            WorkwaveData.Attachment = data.CreateInstance<Attachment>();
+            sketchView.ClickOnText("camera");
+            if (sketchView.VerifyServiceLocationPhotoOptionAlertVisible(5))
+            {
+                sketchView.ClickOnText("Add New Picture");
+            }
+            attachmentView.ClickOnText(WorkwaveData.Attachment.Type);
+            switch (WorkwaveData.Attachment.Type)
+            {
+                case "Take a Photo":
+                    Assert.True(attachmentView.VerifyViewLoadedByText(5, "Camera Mode"));
+                    attachmentView.ClickOnButton("Take Picture");
+                    while (!attachmentView.UsePhotoButtonVisible(2))
+                    {
+                        System.TimeSpan.FromSeconds(30);
+                    }
+                    attachmentView.ClickOnText("Use Photo");
+                    break;
+                case "Take a Video":
+                    if (attachmentView.VerifyOKButtonVisible(5))
+                    {
+                        attachmentView.ClickOK();
+                    }
+                    Assert.True(attachmentView.VerifyViewLoadedByText(5, "Camera Mode"));
+                    attachmentView.ClickOnButton("Record Video");
+                    System.TimeSpan.FromSeconds(90);
+                    attachmentView.ClickOnButton("Stop Recording Video");
+                    while (!attachmentView.VerifyPlayButtonVisible(5))
+                    {
+                        attachmentView.ClickOnButton("Record Video");
+                        System.TimeSpan.FromSeconds(90);
+                        attachmentView.ClickOnButton("Stop Recording Video");
+                    }
+                    attachmentView.ClickOnText("Use Video");
+                    break;
+                case "Pick from Gallery":
+
+                    if (!attachmentView.VerifyPhotoViewLoaded(5))
+                    {
+                        System.TimeSpan.FromSeconds(30);
+                    }
+                    attachmentView.ClickOnText("All Photos");
+                    attachmentView.SelectImageFromGallery();
+                    break;
+            }
+            while (!attachmentView.VerifySaveButtonVisible(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
+
+            attachmentView.ClickOnStaticText("Save");        
+        }
+
+        [When(@"Location Image Added To Sketch")]
+        public void WhenLocationImageAddedToSketch()
+        {
+            Assert.True(attachmentView.VerifyViewLoadedByHeader(5, "Images"));
+            attachmentView.ClickOnContainsText("Photo");
+            sketchView.ClickOnStaticText("Select as Background");
         }
 
     }

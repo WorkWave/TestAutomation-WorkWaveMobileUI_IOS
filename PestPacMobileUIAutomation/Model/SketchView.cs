@@ -39,6 +39,12 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "SKETCHES")]
         private IWebElement SketchesHeader { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeAlert[@text='Service Location Photo Option']")]
+        private IWebElement ServiceLocationPhotoOptionAlert{ get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeAlert[@text='Enter Text']")]
+        private IWebElement EnterTextHeader { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -69,6 +75,9 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public bool VerifySketchHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SketchesHeader), TimeSpan.FromSeconds(time));
 
+        public bool VerifyServiceLocationPhotoOptionAlertVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ServiceLocationPhotoOptionAlert), TimeSpan.FromSeconds(time));
+
+        public bool VerifyEnterTextHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(EnterTextHeader), TimeSpan.FromSeconds(time));
 
         #endregion Behavior
 

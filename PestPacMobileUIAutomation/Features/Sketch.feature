@@ -142,14 +142,36 @@ Scenario:Add Sketch → Treatment → Associate Material with Treatment Color,Ch
 	| SketchName | TreatmentSketch |
 	Then Verify Sketch Added
 
-	#MOB-3002
-Scenario: Add Sketch → Blank Background
+	#MOB-3002,MOB-3003
+Scenario: Add Sketch → Blank Background,Location Image Background
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
 	Given New Sketch Opened
 	| Field            | Value |
 	| SketchBackground | Blank |
+	When Object Added To Sketch
+	| Field      | Value      |
+	| Tool       | Text       |
+	| SubTool    | Null       |
+	| SketchName | TextSketch |
+	When New Sketch Saved
+	| Field      | Value      |
+	| SketchName | TextSketch |
+	Then Verify Sketch Added
+	
+	#MOB-3003
+Scenario: Add Sketch →Location Image Background
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Capture Location Image
+	| Field | Value        |
+	| Type  | Take a Photo |
+	Given New Sketch Opened
+	| Field            | Value           |
+	| SketchBackground | Location Images |
+	When Location Image Added To Sketch
 	When Object Added To Sketch
 	| Field      | Value      |
 	| Tool       | Text       |
