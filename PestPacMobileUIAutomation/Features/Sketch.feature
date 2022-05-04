@@ -21,8 +21,8 @@ Scenario: Add Sketch → Objects,Delete Sketch
 	When Sketch Deleted
 	Then Verify Sketch Deleted
 
-	#MOB-3010,MOB-3009,MOB-3008,MOB-3007,MOB-3006,MOB-3013
-Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand
+	#MOB-3010,MOB-3009,MOB-3008,MOB-3007,MOB-3006,MOB-3013,MOB-2993
+Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand,Polygon
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -97,6 +97,18 @@ Scenario: Add Sketch → Text,Label,Arrow,Reactangle,Straight,Freehand
 	When New Sketch Saved
 	| Field      | Value          |
 	| SketchName | FreehandSketch |
+	Then Verify Sketch Added
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Grid  |
+	When Object Added To Sketch
+	| Field      | Value         |
+	| Tool       | Draw          |
+	| SubTool    | Polygon       |
+	| SketchName | PolygonSketch |
+	When New Sketch Saved
+	| Field      | Value         |
+	| SketchName | PolygonSketch |
 	Then Verify Sketch Added
 
 	#MOB-3012,MOB-3005

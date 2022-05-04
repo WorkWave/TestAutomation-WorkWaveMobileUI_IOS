@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='All Tools']")]
         private IWebElement AllToolButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "SKETCHES")]
+        private IWebElement SketchesHeader { get; set; }
 
         #endregion Page Factory
 
@@ -56,6 +59,17 @@ namespace WorkWave.Workwave.Mobile.Model
             IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='Color']/../following-sibling::XCUIElementTypeCell["+ Index + "]"));
             element.Click();
         }
+
+        public void ViewSketches()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
+            System.TimeSpan.FromSeconds(10);
+        }
+
+        public bool VerifySketchHeaderVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(SketchesHeader), TimeSpan.FromSeconds(time));
+
+
         #endregion Behavior
 
     }
