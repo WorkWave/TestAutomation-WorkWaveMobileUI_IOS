@@ -795,10 +795,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Sketch Clear All,Undo")]
-        public virtual void AddSketchClearAllUndo()
+        [NUnit.Framework.DescriptionAttribute("Add Sketch Clear All,Undo,Redo")]
+        public virtual void AddSketchClearAllUndoRedo()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch Clear All,Undo", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch Clear All,Undo,Redo", null, ((string[])(null)));
 #line 244
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -843,6 +843,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Undo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 259
  testRunner.Then("Undo Success", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 260
+ testRunner.When("Redo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 261
+ testRunner.Then("Redo Success", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -304,5 +304,17 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(sketchView.findElement(Text) != null);
         }
 
+        [When(@"Redo")]
+        public void WhenRedo()
+        {
+            attachmentView.ClickOnText("Redo");
+        }
+
+        [Then(@"Redo Success")]
+        public void ThenRedoSuccess()
+        {
+            Assert.True(sketchView.findElement(Text) == null);
+        }
+
     }
 }
