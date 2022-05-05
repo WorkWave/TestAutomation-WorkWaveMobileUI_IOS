@@ -496,10 +496,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Sketch → Blank Background,Location Image Background")]
-        public virtual void AddSketchBlankBackgroundLocationImageBackground()
+        [NUnit.Framework.DescriptionAttribute("Add Sketch → Blank Background")]
+        public virtual void AddSketchBlankBackground()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Blank Background,Location Image Background", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Blank Background", null, ((string[])(null)));
 #line 146
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -729,6 +729,62 @@ this.ScenarioInitialize(scenarioInfo);
 #line 218
  testRunner.When("New Sketch Saved", ((string)(null)), table50, "When ");
 #line 221
+ testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Sketch → Map Background")]
+        public virtual void AddSketchMapBackground()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sketch → Map Background", null, ((string[])(null)));
+#line 224
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table51.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 225
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table51, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table52.AddRow(new string[] {
+                        "SketchBackground",
+                        "Map"});
+#line 228
+ testRunner.Given("New Sketch Opened", ((string)(null)), table52, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table53.AddRow(new string[] {
+                        "Tool",
+                        "Text"});
+            table53.AddRow(new string[] {
+                        "SubTool",
+                        "Null"});
+            table53.AddRow(new string[] {
+                        "SketchName",
+                        "TextSketch"});
+#line 231
+ testRunner.When("Object Added To Sketch", ((string)(null)), table53, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table54.AddRow(new string[] {
+                        "SketchName",
+                        "TextSketch"});
+#line 236
+ testRunner.When("New Sketch Saved", ((string)(null)), table54, "When ");
+#line 239
  testRunner.Then("Verify Sketch Added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
