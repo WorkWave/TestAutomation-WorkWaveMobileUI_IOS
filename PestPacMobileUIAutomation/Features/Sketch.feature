@@ -220,8 +220,8 @@ Scenario: Add Sketch → Pick Image Background
 	| SketchName | TextSketch |
 	Then Verify Sketch Added
 
-	#MOB-2999,MOB-2996
-Scenario: Add Sketch → Map Background,Clear All
+	#MOB-2999
+Scenario: Add Sketch → Map Background
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -237,8 +237,7 @@ Scenario: Add Sketch → Map Background,Clear All
 	| Field      | Value      |
 	| SketchName | TextSketch |
 	Then Verify Sketch Added
-	When Clear All
-	Then Verify All Cleared
+	
 
 	#MOB-2996,MOB-2995,MOB-2994
 Scenario: Add Sketch Clear All,Undo,Redo
@@ -259,3 +258,23 @@ Scenario: Add Sketch Clear All,Undo,Redo
 	Then Undo Success
 	When Redo
 	Then Redo Success
+
+	#MOB-2997
+Scenario: Edit Sketch
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Map   |
+	When Object Added To Sketch
+	| Field      | Value      |
+	| Tool       | Text       |
+	| SubTool    | Null       |
+	| SketchName | TextSketch |
+	When New Sketch Saved
+	| Field      | Value      |
+	| SketchName | TextSketch |
+	Then Verify Sketch Added
+	When Edit Sketch
+	Then Verify Sketch Edited
