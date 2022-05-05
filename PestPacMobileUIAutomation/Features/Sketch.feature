@@ -241,7 +241,7 @@ Scenario: Add Sketch → Map Background,Clear All
 	Then Verify All Cleared
 
 	#MOB-2996
-Scenario: Add Sketch Clear All
+Scenario: Add Sketch Clear All,Undo
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -255,3 +255,5 @@ Scenario: Add Sketch Clear All
 	| SketchName | TextSketch |
 	When Clear All
 	Then Verify All Cleared
+	When Undo
+	Then Undo Success
