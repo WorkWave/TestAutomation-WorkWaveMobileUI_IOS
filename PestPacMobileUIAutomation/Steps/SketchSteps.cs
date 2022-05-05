@@ -292,5 +292,17 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(sketchView.findElement(Text) == null);
         }
 
+        [When(@"Undo")]
+        public void WhenUndo()
+        {
+            attachmentView.ClickOnText("Undo");
+        }
+
+        [Then(@"Undo Success")]
+        public void ThenUndoSuccess()
+        {
+            Assert.True(sketchView.findElement(Text) != null);
+        }
+
     }
 }
