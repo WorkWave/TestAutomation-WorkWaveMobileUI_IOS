@@ -220,8 +220,8 @@ Scenario: Add Sketch → Pick Image Background
 	| SketchName | TextSketch |
 	Then Verify Sketch Added
 
-	#MOB-2999
-Scenario: Add Sketch → Map Background
+	#MOB-2999,MOB-2996
+Scenario: Add Sketch → Map Background,Clear All
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -237,3 +237,21 @@ Scenario: Add Sketch → Map Background
 	| Field      | Value      |
 	| SketchName | TextSketch |
 	Then Verify Sketch Added
+	When Clear All
+	Then Verify All Cleared
+
+	#MOB-2996
+Scenario: Add Sketch Clear All
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	Given New Sketch Opened
+	| Field            | Value |
+	| SketchBackground | Map   |
+	When Object Added To Sketch
+	| Field      | Value      |
+	| Tool       | Text       |
+	| SubTool    | Null       |
+	| SketchName | TextSketch |
+	When Clear All
+	Then Verify All Cleared

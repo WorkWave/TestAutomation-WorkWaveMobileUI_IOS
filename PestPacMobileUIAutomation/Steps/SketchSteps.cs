@@ -14,7 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         private CommonSteps common;
         SketchView sketchView = new SketchView();
         AttachmentView attachmentView = new AttachmentView();
-        String SketchName;
+        String SketchName,Text;
 
         public SketchSteps(WorkwaveData WorkwaveData)
         {
@@ -64,7 +64,8 @@ namespace WorkWave.Workwave.Mobile.Steps
                         WorkwaveMobileSupport.TapTargetNoWait(200, 200);
                     }
                     Assert.True(sketchView.VerifyViewLoadedByText(5, "Enter Text"));
-                    sketchView.EnterTextOnCommonField(WorkwaveMobileSupport.RandomString(5));
+                    Text = WorkwaveMobileSupport.RandomString(5);
+                    sketchView.EnterTextOnCommonField(Text);
                     sketchView.ClickOnText("Insert");
                     break;
                 case "Labels":
@@ -278,6 +279,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             attachmentView.SelectImageFromGallery();
         }
 
+        [When(@"Clear All")]
+        public void WhenClearAll()
+        {
+            attachmentView.ClickOnText("SketchArrowRightSmallBlue");
+            attachmentView.ClickOnText("Clear All");
+        }
+
+        [Then(@"Verify All Cleared")]
+        public void ThenVerifyAllCleared()
+        {
+            Assert.True(sketchView.findElement(Text) == null);
+        }
 
     }
 }
