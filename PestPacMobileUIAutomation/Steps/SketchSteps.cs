@@ -316,5 +316,31 @@ namespace WorkWave.Workwave.Mobile.Steps
             Assert.True(sketchView.findElement(Text) == null);
         }
 
+        [When(@"Edit Sketch")]
+        public void WhenEditSketch()
+        {
+            attachmentView.ClickOnText(SketchName);
+            WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
+            WorkwaveMobileSupport.TapTargetNoWait(700, 200);
+            while (!sketchView.VerifyEnterTextHeaderVisible(5))
+            {
+                WorkwaveMobileSupport.TapTargetNoWait(1687, 518);
+                WorkwaveMobileSupport.TapTargetNoWait(200, 200);
+            }
+            Assert.True(sketchView.VerifyViewLoadedByText(5, "Enter Text"));
+            Text = WorkwaveMobileSupport.RandomString(5);
+            sketchView.EnterTextOnCommonField(Text);
+            sketchView.ClickOnText("Insert");
+            sketchView.ClickCommonSave();
+            attachmentView.ClickOnText("Overwrite Existing");
+        }
+
+        [Then(@"Verify Sketch Edited")]
+        public void ThenVerifySketchEdited()
+        {
+            ThenVerifySketchAdded();
+        }
+
+
     }
 }
