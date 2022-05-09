@@ -71,6 +71,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Next Order']")]
         private IWebElement NextOrderButton { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Done")]
+        private IWebElement DoneButton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -422,6 +425,14 @@ namespace WorkWave.Workwave.Mobile.Model
 
       
         public bool VerifyOrderPageLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(NextOrderButton), System.TimeSpan.FromSeconds(time));
+
+        public void ClickOnKey(String Name)
+        {
+            IWebElement element = WebApplication.Instance.WebDriver.FindElement(By.XPath("//XCUIElementTypeKey[@text='"+ Name + "']"));
+            element.Click();
+        }
+
+        public bool VerifyDoneButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(DoneButton), System.TimeSpan.FromSeconds(time));
 
         #endregion Behavior
     }
