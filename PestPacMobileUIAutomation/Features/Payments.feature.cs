@@ -243,10 +243,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment and Store Card → Vantiv")]
-        public virtual void RecordCreditCardPaymentAndStoreCardVantiv()
+        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment and Store Card → Vantiv,Record Credit Card Payment wit" +
+            "h Stored Card → Vantiv")]
+        public virtual void RecordCreditCardPaymentAndStoreCardVantivRecordCreditCardPaymentWithStoredCardVantiv()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment and Store Card → Vantiv", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment and Store Card → Vantiv,Record Credit Card Payment wit" +
+                    "h Stored Card → Vantiv", null, ((string[])(null)));
 #line 63
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -281,10 +283,35 @@ this.ScenarioInitialize(scenarioInfo);
                         "Yes"});
             table10.AddRow(new string[] {
                         "CardNumber",
-                        "5610591081018250"});
+                        "4111111111111111"});
 #line 69
  testRunner.When("Select Payment Made", ((string)(null)), table10, "When ");
 #line 76
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 77
+ testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table11.AddRow(new string[] {
+                        "PaymentType",
+                        "Credit Card"});
+            table11.AddRow(new string[] {
+                        "PayTotalDue",
+                        "true"});
+            table11.AddRow(new string[] {
+                        "Option",
+                        "Visa - 1111 (12/25)"});
+            table11.AddRow(new string[] {
+                        "SaveOption",
+                        "Yes"});
+            table11.AddRow(new string[] {
+                        "CardNumber",
+                        "4111111111111111"});
+#line 78
+ testRunner.When("Select Payment Made", ((string)(null)), table11, "When ");
+#line 85
  testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
