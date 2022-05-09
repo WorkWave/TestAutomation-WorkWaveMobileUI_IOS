@@ -12,10 +12,11 @@ namespace WorkWave.Workwave.Mobile
             WorkwaveData.Order = data.CreateInstance<Order>();
             WorkwaveData.Attachment = data.CreateInstance<Attachment>();
             WorkwaveData.Note = data.CreateInstance<Note>();
-            WorkwaveData.Services = data.CreateInstance<Payment>();
+            WorkwaveData.Services = data.CreateInstance<Services>();
             WorkwaveData.Sketch = data.CreateInstance<Sketch>();
             WorkwaveData.Form = data.CreateInstance<Form>();
             WorkwaveData.TimeSheet = data.CreateInstance<TimeSheet>();
+            WorkwaveData.Payments = data.CreateInstance<Payments>();
 
         }
     }

@@ -76,7 +76,7 @@ namespace WorkWave.Workwave.Mobile.Features
         public virtual void CashPayment()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cash Payment", null, ((string[])(null)));
-#line 4
+#line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -86,11 +86,11 @@ this.ScenarioInitialize(scenarioInfo);
             table1.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 5
+#line 6
  testRunner.Given("Not Started Order Opened", ((string)(null)), table1, "Given ");
-#line 8
- testRunner.When("Navigate To Payment View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
+ testRunner.When("Navigate To Payment View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
  testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -102,9 +102,11 @@ this.ScenarioInitialize(scenarioInfo);
             table2.AddRow(new string[] {
                         "PayTotalDue",
                         "true"});
-#line 10
+#line 11
  testRunner.When("Payment Made", ((string)(null)), table2, "When ");
-#line 14
+#line 15
+ testRunner.When("Process Payment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
  testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -115,7 +117,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CheckPayment()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check Payment", null, ((string[])(null)));
-#line 17
+#line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -125,11 +127,11 @@ this.ScenarioInitialize(scenarioInfo);
             table3.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 18
+#line 20
  testRunner.Given("Not Started Order Opened", ((string)(null)), table3, "Given ");
-#line 21
+#line 23
  testRunner.When("Navigate To Payment View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 22
+#line 24
  testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -141,9 +143,11 @@ this.ScenarioInitialize(scenarioInfo);
             table4.AddRow(new string[] {
                         "PayTotalDue",
                         "true"});
-#line 23
+#line 25
  testRunner.When("Payment Made", ((string)(null)), table4, "When ");
-#line 27
+#line 29
+ testRunner.When("Process Payment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 30
  testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -154,7 +158,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CreditCardPayment()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Credit Card Payment", null, ((string[])(null)));
-#line 29
+#line 33
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -164,11 +168,11 @@ this.ScenarioInitialize(scenarioInfo);
             table5.AddRow(new string[] {
                         "DetailsNeeded",
                         "false"});
-#line 30
- testRunner.Given("Not Started Order Opened", ((string)(null)), table5, "Given ");
-#line 33
- testRunner.When("Navigate To Payment View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table5, "Given ");
+#line 37
+ testRunner.When("Navigate To Payment View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 38
  testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -180,9 +184,59 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "PayTotalDue",
                         "true"});
-#line 35
- testRunner.When("Payment Made", ((string)(null)), table6, "When ");
 #line 39
+ testRunner.When("Payment Made", ((string)(null)), table6, "When ");
+#line 43
+ testRunner.When("Process Payment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 44
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment → Vantiv")]
+        public virtual void RecordCreditCardPaymentVantiv()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment → Vantiv", null, ((string[])(null)));
+#line 47
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table7.AddRow(new string[] {
+                        "DetailsNeeded",
+                        "false"});
+#line 48
+ testRunner.Given("Not Started Order Opened", ((string)(null)), table7, "Given ");
+#line 51
+ testRunner.When("Navigate To Payment View", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 52
+ testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table8.AddRow(new string[] {
+                        "PaymentType",
+                        "Credit Card"});
+            table8.AddRow(new string[] {
+                        "PayTotalDue",
+                        "true"});
+            table8.AddRow(new string[] {
+                        "Option",
+                        "Enter a new card.."});
+            table8.AddRow(new string[] {
+                        "SaveOption",
+                        "No"});
+            table8.AddRow(new string[] {
+                        "CardNumber",
+                        "5610591081018250"});
+#line 53
+ testRunner.When("Select Payment Made", ((string)(null)), table8, "When ");
+#line 60
  testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

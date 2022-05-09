@@ -42,56 +42,138 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Payment Made")]
         public void WhenPaymentMade(Table data)
         {
-            WorkwaveData.Order = data.CreateInstance<Order>();
+            WorkwaveData.Payments = data.CreateInstance<Payments>();
             paymentView.PaymentTypeClick();
             System.TimeSpan.FromSeconds(60);
-            paymentView.SelectType(WorkwaveData.Order.PaymentType);
+            paymentView.SelectType(WorkwaveData.Payments.PaymentType);
             System.TimeSpan.FromSeconds(60);
             paymentView.ClickOnText("Done");
 
-            if ((WorkwaveData.Order.PayTotalDue).Equals("Total Due"))
+            if ((WorkwaveData.Payments.PayTotalDue).Equals("Total Due"))
             {
                 paymentView.ClickOnButton("Total Due");
                 Assert.True(paymentView.getAmountFieldText().Equals(paymentView.getTotalDue().Replace("$", string.Empty).Replace(",", string.Empty)));
-                WorkwaveData.Order.PaymentAmount = paymentView.getTotalDue();
+                WorkwaveData.Payments.PaymentAmount = paymentView.getTotalDue();
             }
             else
             {
-                WorkwaveData.Order.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
-                paymentView.EnterAmount(WorkwaveData.Order.PaymentAmount);
-                WorkwaveData.Order.PaymentAmount = "$" + WorkwaveData.Order.PaymentAmount;
+                WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
+                paymentView.EnterAmount(WorkwaveData.Payments.PaymentAmount);
+                WorkwaveData.Payments.PaymentAmount = "$" + WorkwaveData.Payments.PaymentAmount;
             }
 
-            if ((WorkwaveData.Order.PaymentType).Equals("Check"))
+            if ((WorkwaveData.Payments.PaymentType).Equals("Check"))
             {
                
-                WorkwaveData.Order.PaymentReference = WorkwaveMobileSupport.RandomInt(5);
-                paymentView.EnterCheckNumber(WorkwaveData.Order.PaymentReference);
+                WorkwaveData.Payments.PaymentReference = WorkwaveMobileSupport.RandomInt(5);
+                paymentView.EnterCheckNumber(WorkwaveData.Payments.PaymentReference);
             }
 
-            if ((WorkwaveData.Order.PaymentType).Equals("Credit Card"))
+            if ((WorkwaveData.Payments.PaymentType).Equals("Credit Card"))
             {
 
-                WorkwaveData.Order.PaymentReference = WorkwaveMobileSupport.RandomInt(5);
-                paymentView.EnterReference(WorkwaveData.Order.PaymentReference);
+                WorkwaveData.Payments.PaymentReference = WorkwaveMobileSupport.RandomInt(5);
+                paymentView.EnterReference(WorkwaveData.Payments.PaymentReference);
             }
 
+         
+        }
+
+        [When(@"Process Payment")]
+        public void WhenProcessPayment()
+        {
             paymentView.ClickOnButton("Process");
             System.TimeSpan.FromSeconds(60);
-            paymentView.VerifyViewLoadedByText(5,"Payment History");
+            paymentView.VerifyViewLoadedByText(5, "Payment History");
             System.TimeSpan.FromSeconds(60);
         }
-        
+
+
         [Then(@"Verify Payment Made")]
         public void ThenVerifyPaymentMade()
         {
-            paymentView.VerifyViewLoadedByText(5, WorkwaveData.Order.PaymentAmount);
-            if ((WorkwaveData.Order.PaymentType).Equals("check"))
+            paymentView.VerifyViewLoadedByText(5, WorkwaveData.Payments.PaymentAmount);
+            if ((WorkwaveData.Payments.PaymentType).Equals("check"))
             {
-                paymentView.VerifyViewLoadedByText(5, "Check # " + WorkwaveData.Order.PaymentReference);
+                paymentView.VerifyViewLoadedByText(5, "Check # " + WorkwaveData.Payments.PaymentReference);
             }
             paymentView.ClickOnText("Done");
             paymentView.ClickOnText("Back");
         }
+
+        [When(@"Select Payment Made")]
+        public void WhenSelectPaymentMade(Table data)
+        {
+            WorkwaveData.Payments = data.CreateInstance<Payments>();
+            paymentView.PaymentTypeClick();
+            System.TimeSpan.FromSeconds(60);
+            paymentView.SelectType(WorkwaveData.Payments.PaymentType);
+            System.TimeSpan.FromSeconds(60);
+            paymentView.ClickOnText("Done");
+            if ((WorkwaveData.Payments.PayTotalDue).Equals("Total Due"))
+            {
+                paymentView.ClickOnButton("Total Due");
+                Assert.True(paymentView.getAmountFieldText().Equals(paymentView.getTotalDue().Replace("$", string.Empty).Replace(",", string.Empty)));
+                WorkwaveData.Payments.PaymentAmount = paymentView.getTotalDue();
+            }
+            else
+            {
+                WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
+                paymentView.EnterAmount(WorkwaveData.Payments.PaymentAmount);
+                WorkwaveData.Payments.PaymentAmount = "$" + WorkwaveData.Payments.PaymentAmount;
+            }
+            paymentView.ClickOnText("Please select a credit card");
+            if ((WorkwaveData.Payments.Option).Equals("Enter a new card.."))
+            {
+                paymentView.SelectType(WorkwaveData.Payments.Option);
+                paymentView.ClickOnText("Done");
+                paymentView.EnterName(WorkwaveMobileSupport.RandomString(5));
+                paymentView.ClickOnText(WorkwaveData.Payments.Option);
+                paymentView.ClickOnText(WorkwaveData.Payments.SaveOption);
+                paymentView.ClickOnText("Done");
+                paymentView.ClickOnButton("Process");
+                System.TimeSpan.FromSeconds(60);
+                while (!paymentView.VerifyAddNewCardViewLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(60);
+                }
+
+                string message = WorkwaveData.Payments.CardNumber;
+                Console.WriteLine(message);
+                string[] result = new string[message.Length];
+                char[] temp = new char[message.Length];
+
+                temp = message.ToCharArray();
+                paymentView.ClickCardNumberTextBox();
+                for (int i = 0; i < message.Length; i++)
+                {
+                    result[i] = Convert.ToString(temp[i]);
+                    paymentView.ClickOnKey(result[i]);
+                    Console.WriteLine(result[i]);
+                }
+
+
+
+                //paymentView.EnterCardNumber((WorkwaveData.Payments.CardNumber).ToString());
+                paymentView.ClickOnText("Expiration Month");
+                paymentView.SelectType("12");
+                paymentView.ClickOnText("Expiration Year");
+                paymentView.ClickOnText("Expiration Year");
+                paymentView.SelectType("2025");
+                WorkwaveMobileSupport.TapTargetNoWait(292, 614);
+                paymentView.EnterCVV("1234");              
+                paymentView.ClickOnText("Process Credit Card");
+                while (!paymentView.VerifyDoneButtonLoaded(5))
+                {
+                    System.TimeSpan.FromSeconds(60);
+                }
+                paymentView.VerifyViewLoadedByText(5, "Payment History");
+               
+            }
+            
+           
+
+        }
+
     }
 }

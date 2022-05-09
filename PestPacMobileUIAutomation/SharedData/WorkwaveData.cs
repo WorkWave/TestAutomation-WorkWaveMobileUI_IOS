@@ -12,10 +12,10 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public Order Order { get; set; }
         public Attachment Attachment { get; set; }
         public Note Note { get; set; }
-        public Payment Services { get; set; }
+        public Services Services { get; set; }
         public Sketch Sketch { get; set; }
         public Form Form { get; set; }
         public TimeSheet TimeSheet { get; set; }
-
+        public Payments Payments { get; set; }
     }
 }

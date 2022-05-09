@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkWave.Workwave.Mobile.SharedData
 {
-    public class Payment
+    public class Services
     {
         public string ServiceType { get; set; }
         public string ServicePrice { get; set; }

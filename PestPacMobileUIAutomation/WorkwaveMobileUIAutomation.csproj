@@ -145,6 +145,7 @@
     <Compile Include="SharedData\Login.cs" />
     <Compile Include="SharedData\Note.cs" />
     <Compile Include="SharedData\Order.cs" />
+    <Compile Include="SharedData\Payments.cs" />
     <Compile Include="SharedData\Services.cs" />
     <Compile Include="SharedData\Sketch.cs" />
     <Compile Include="SharedData\TimeSheet.cs" />
