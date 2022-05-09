@@ -59,8 +59,8 @@ Scenario: Record Credit Card Payment → Vantiv
 	| CardNumber  | 5610591081018250   |
 	Then Verify Payment Made
 
-	#MOB-2967
-Scenario: Record Credit Card Payment and Store Card → Vantiv
+	#MOB-2967,MOB-2968
+Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Card Payment with Stored Card → Vantiv
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -72,6 +72,17 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv
 	| PayTotalDue | true               |
 	| Option      | Enter a new card.. |
 	| SaveOption  | Yes                |
-	| CardNumber  | 5610591081018250   |
+	| CardNumber  | 4111111111111111   |
+	Then Verify Payment Made	
+	Given Payments Opened
+	When Select Payment Made 
+	| Field       | Value               |
+	| PaymentType | Credit Card         |
+	| PayTotalDue | true                |
+	| Option      | Visa - 1111 (12/25) |
+	| SaveOption  | Yes                 |
+	| CardNumber  | 4111111111111111    |
 	Then Verify Payment Made
+
+	
 

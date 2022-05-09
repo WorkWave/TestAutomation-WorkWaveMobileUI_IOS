@@ -14,6 +14,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         WorkwaveData WorkwaveData;
         private CommonSteps common;
         PaymentView paymentView = new PaymentView();
+        string Name=null;
 
         public PaymentsSteps(WorkwaveData WorkwaveData)
         {
@@ -98,7 +99,7 @@ namespace WorkWave.Workwave.Mobile.Steps
                 paymentView.VerifyViewLoadedByText(5, "Check # " + WorkwaveData.Payments.PaymentReference);
             }
             paymentView.ClickOnText("Done");
-            paymentView.ClickOnText("Back");
+           
         }
 
         [When(@"Select Payment Made")]
@@ -123,11 +124,12 @@ namespace WorkWave.Workwave.Mobile.Steps
                 WorkwaveData.Payments.PaymentAmount = "$" + WorkwaveData.Payments.PaymentAmount;
             }
             paymentView.ClickOnText("Please select a credit card");
+            Name = WorkwaveMobileSupport.RandomString(5);
             if ((WorkwaveData.Payments.Option).Equals("Enter a new card.."))
             {
                 paymentView.SelectType(WorkwaveData.Payments.Option);
                 paymentView.ClickOnText("Done");
-                paymentView.EnterName(WorkwaveMobileSupport.RandomString(5));
+                paymentView.EnterName(Name);
                 paymentView.ClickOnText(WorkwaveData.Payments.Option);
                 paymentView.ClickOnText(WorkwaveData.Payments.SaveOption);
                 paymentView.ClickOnText("Done");
@@ -152,9 +154,6 @@ namespace WorkWave.Workwave.Mobile.Steps
                     Console.WriteLine(result[i]);
                 }
 
-
-
-                //paymentView.EnterCardNumber((WorkwaveData.Payments.CardNumber).ToString());
                 paymentView.ClickOnText("Expiration Month");
                 paymentView.SelectType("12");
                 paymentView.ClickOnText("Expiration Year");
@@ -169,6 +168,12 @@ namespace WorkWave.Workwave.Mobile.Steps
                 }
                 paymentView.VerifyViewLoadedByText(5, "Payment History");
                
+            }else if ((WorkwaveData.Payments.Option).Equals("Visa - 1111 (12/25)"))
+            {
+                paymentView.SelectType(WorkwaveData.Payments.Option);
+                paymentView.ClickOnText("Done");
+                //paymentView.VerifyViewLoadedByText(5, Name);
+                paymentView.ClickOnButton("Process");
             }
             
            
