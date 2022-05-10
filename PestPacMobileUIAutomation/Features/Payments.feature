@@ -66,23 +66,47 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Car
 	| DetailsNeeded | false |
 	When Navigate To Payment View
 	Given Payments Opened
-	When Select Payment Made 
+	When Select Payment Mode 
 	| Field       | Value              |
 	| PaymentType | Credit Card        |
 	| PayTotalDue | true               |
 	| Option      | Enter a new card.. |
 	| SaveOption  | Yes                |
 	| CardNumber  | 4111111111111111   |
-	Then Verify Payment Made	
+	Then Verify Payment Mode	
 	Given Payments Opened
-	When Select Payment Made 
+	When Select Payment Mode 
 	| Field       | Value               |
 	| PaymentType | Credit Card         |
 	| PayTotalDue | true                |
 	| Option      | Visa - 1111 (12/25) |
 	| SaveOption  | Yes                 |
 	| CardNumber  | 4111111111111111    |
-	Then Verify Payment Made
+	| CVV         | 1234                |
+	Then Verify Payment Mode
+
+	#MOB-2965
+Scenario: Record Credit Card Payment → OpenEdge
+	Given Logged Out
+	When I Login
+	| Field    | Value                      |
+	| Email    | mdelgoda+emp1@workwave.com |
+	| Password | WorkWave1!                 |
+	Then Verify logged in
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Navigate To Payment View
+	Given Payments Opened
+	When Select Payment Mode OpenEdge
+	| Field       | Value              |
+	| PaymentType | Credit Card        |
+	| PayTotalDue | true               |
+	| Option      | Enter a new card.. |
+	| SaveOption  | No                 |
+	| CardNumber  | 4761739001010010   |
+	| CVV         | 123                |
+	Then Verify Payment Mode 
 
 	
 

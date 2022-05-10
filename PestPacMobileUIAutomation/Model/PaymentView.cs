@@ -42,11 +42,14 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "//*[@text='Name On Card']/../XCUIElementTypeTextField[5]")]
         private IWebElement NameOnCard { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@text='Card Number']")]
-        private IWebElement CardNumberLabel { get; set; }
+        [FindsBy(How = How.XPath, Using = "//*[@text='Cancel']")]
+        private IWebElement CancelLabel { get; set; }
 
         [FindsBy(How = How.XPath, Using = "(//*[@id='CVV'])[2]")]
         private IWebElement CVV_TextField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "(//*[@class='UIATextField'])[2]")]
+        private IWebElement CVV_TextFieldTwo { get; set; }
 
         [FindsBy(How = How.XPath, Using = "(//*[@id='Card Number'])[2]")]
         private IWebElement CardNumberTextField { get; set; }
@@ -92,15 +95,21 @@ namespace WorkWave.Workwave.Mobile.Model
             EnterText(name, NameOnCard);
         }
 
-        public bool VerifyAddNewCardViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(CardNumberLabel), System.TimeSpan.FromSeconds(time));
+        public bool VerifyAddNewCardViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(CancelLabel), System.TimeSpan.FromSeconds(time));
 
         public void EnterCVV(string name)
         {
             EnterText(name, CVV_TextField);
         }
 
+        public void EnterCVVTwo(string name)
+        {
+            EnterText(name, CVV_TextFieldTwo);
+        }
+
         public void ClickCardNumberTextBox() => CardNumberTextField.Click();
 
+        public void ClickCVV() => CVV_TextFieldTwo.Click();
 
         public void EnterCardNumber(string name)
         {

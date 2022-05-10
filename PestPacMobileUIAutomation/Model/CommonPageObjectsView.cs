@@ -182,6 +182,7 @@ namespace WorkWave.Workwave.Mobile.Model
         {
             EnterText(name, CommonTextField);
         }
+        public void ClickOnCommonField() => CommonTextField.Click();
 
         public String selectDate()
         {
@@ -277,7 +278,6 @@ namespace WorkWave.Workwave.Mobile.Model
 
             return null;
         }
-
         public void EnterTextCommonField(string text, string fieldName)
         {
             IWebElement field = WebApplication.Instance.WebDriver.FindElement(By.XPath("//*[@text='" + fieldName + "']/../../XCUIElementTypeTextField"));
@@ -287,6 +287,8 @@ namespace WorkWave.Workwave.Mobile.Model
             field.SendKeys(text);
             WorkwaveMobileSupport.HideKeyboard();
         }
+
+        
 
         public void EnterTextCommonFieldTwo(string text, string fieldName)
         {
