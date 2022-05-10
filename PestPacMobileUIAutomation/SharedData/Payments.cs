@@ -15,5 +15,6 @@ namespace WorkWave.Workwave.Mobile.SharedData
         public string Option { get; set; }
         public string SaveOption { get; set; }
         public string CardNumber { get; set; }
+        public string CVV { get; set; }
     }
 }
