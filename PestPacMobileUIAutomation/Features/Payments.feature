@@ -85,8 +85,8 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Car
 	| CVV         | 1234                |
 	Then Verify Payment Mode
 
-	#MOB-2965
-Scenario: Record Credit Card Payment → OpenEdge
+	#MOB-2965,MOB-2966
+Scenario: Record Credit Card Payment,Store Card → OpenEdge
 	Given Logged Out
 	When I Login
 	| Field    | Value                      |
@@ -104,6 +104,16 @@ Scenario: Record Credit Card Payment → OpenEdge
 	| PayTotalDue | true               |
 	| Option      | Enter a new card.. |
 	| SaveOption  | No                 |
+	| CardNumber  | 4761739001010010   |
+	| CVV         | 123                |
+	Then Verify Payment Mode 
+	Given Payments Opened
+	When Select Payment Mode OpenEdge
+	| Field       | Value              |
+	| PaymentType | Credit Card        |
+	| PayTotalDue | true               |
+	| Option      | Enter a new card.. |
+	| SaveOption  | Yes                |
 	| CardNumber  | 4761739001010010   |
 	| CVV         | 123                |
 	Then Verify Payment Mode 
