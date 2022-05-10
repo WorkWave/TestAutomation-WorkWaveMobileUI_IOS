@@ -50,7 +50,7 @@ Scenario: Record Credit Card Payment → Vantiv
 	| DetailsNeeded | false |
 	When Navigate To Payment View
 	Given Payments Opened
-	When Select Payment Made 
+	When Select Payment Mode 
 	| Field       | Value              |
 	| PaymentType | Credit Card        |
 	| PayTotalDue | true               |
@@ -73,7 +73,7 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Car
 	| Option      | Enter a new card.. |
 	| SaveOption  | Yes                |
 	| CardNumber  | 4111111111111111   |
-	Then Verify Payment Mode	
+	Then Verify Payment Made	
 	Given Payments Opened
 	When Select Payment Mode 
 	| Field       | Value               |
@@ -83,10 +83,10 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Car
 	| SaveOption  | Yes                 |
 	| CardNumber  | 4111111111111111    |
 	| CVV         | 1234                |
-	Then Verify Payment Mode
+	Then Verify Payment Made
 
-	#MOB-2965,MOB-2966
-Scenario: Record Credit Card Payment,Store Card → OpenEdge
+	#MOB-2965,MOB-2966,MOB-2962
+Scenario: Record Credit Card Payment,and Store Card,with Stored Card → OpenEdge
 	Given Logged Out
 	When I Login
 	| Field    | Value                      |
@@ -106,7 +106,7 @@ Scenario: Record Credit Card Payment,Store Card → OpenEdge
 	| SaveOption  | No                 |
 	| CardNumber  | 4761739001010010   |
 	| CVV         | 123                |
-	Then Verify Payment Mode 
+	Then Verify Payment Made 
 	Given Payments Opened
 	When Select Payment Mode OpenEdge
 	| Field       | Value              |
@@ -116,7 +116,17 @@ Scenario: Record Credit Card Payment,Store Card → OpenEdge
 	| SaveOption  | Yes                |
 	| CardNumber  | 4761739001010010   |
 	| CVV         | 123                |
-	Then Verify Payment Mode 
+	Then Verify Payment Made 
+	Given Payments Opened
+	When Select Payment Mode OpenEdge
+	| Field       | Value               |
+	| PaymentType | Credit Card         |
+	| PayTotalDue | true                |
+	| Option      | Visa - 0010 (12/25) |
+	| SaveOption  | Yes                 |
+	| CardNumber  | 4761739001010010    |
+	| CVV         | 123                 |
+	Then Verify Payment Made 
 
 	
 
