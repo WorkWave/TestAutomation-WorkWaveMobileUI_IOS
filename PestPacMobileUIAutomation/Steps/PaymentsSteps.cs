@@ -90,8 +90,8 @@ namespace WorkWave.Workwave.Mobile.Steps
         }
 
 
-        [Then(@"Verify Payment Mode")]
-        public void ThenVerifyPaymentMode()
+        [Then(@"Verify Payment Made")]
+        public void ThenVerifyPaymentMade()
         {
             paymentView.VerifyViewLoadedByText(5, WorkwaveData.Payments.PaymentAmount);
             if ((WorkwaveData.Payments.PaymentType).Equals("check"))
@@ -258,6 +258,13 @@ namespace WorkWave.Workwave.Mobile.Steps
                 }
                 paymentView.VerifyViewLoadedByText(5, "Payment History");
 
+            }
+            else if ((WorkwaveData.Payments.Option).Equals("Visa - 0010 (12/25)"))
+            {
+                paymentView.SelectType(WorkwaveData.Payments.Option);
+                paymentView.ClickOnText("Done");
+                //paymentView.VerifyViewLoadedByText(5, Name);
+                paymentView.ClickOnButton("Process");
             }
         }
 

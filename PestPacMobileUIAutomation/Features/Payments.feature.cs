@@ -235,7 +235,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "CardNumber",
                         "5610591081018250"});
 #line 53
- testRunner.When("Select Payment Made", ((string)(null)), table8, "When ");
+ testRunner.When("Select Payment Mode", ((string)(null)), table8, "When ");
 #line 60
  testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -287,7 +287,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 69
  testRunner.When("Select Payment Mode", ((string)(null)), table10, "When ");
 #line 76
- testRunner.Then("Verify Payment Mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 77
  testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
@@ -315,16 +315,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 78
  testRunner.When("Select Payment Mode", ((string)(null)), table11, "When ");
 #line 86
- testRunner.Then("Verify Payment Mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment,Store Card → OpenEdge")]
-        public virtual void RecordCreditCardPaymentStoreCardOpenEdge()
+        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment,and Store Card,with Stored Card → OpenEdge")]
+        public virtual void RecordCreditCardPaymentAndStoreCardWithStoredCardOpenEdge()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment,Store Card → OpenEdge", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment,and Store Card,with Stored Card → OpenEdge", null, ((string[])(null)));
 #line 89
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -382,7 +382,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 101
  testRunner.When("Select Payment Mode OpenEdge", ((string)(null)), table14, "When ");
 #line 109
- testRunner.Then("Verify Payment Mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 110
  testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
@@ -410,7 +410,35 @@ this.ScenarioInitialize(scenarioInfo);
 #line 111
  testRunner.When("Select Payment Mode OpenEdge", ((string)(null)), table15, "When ");
 #line 119
- testRunner.Then("Verify Payment Mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 120
+ testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table16.AddRow(new string[] {
+                        "PaymentType",
+                        "Credit Card"});
+            table16.AddRow(new string[] {
+                        "PayTotalDue",
+                        "true"});
+            table16.AddRow(new string[] {
+                        "Option",
+                        "Visa - 0010 (12/25)"});
+            table16.AddRow(new string[] {
+                        "SaveOption",
+                        "Yes"});
+            table16.AddRow(new string[] {
+                        "CardNumber",
+                        "4761739001010010"});
+            table16.AddRow(new string[] {
+                        "CVV",
+                        "123"});
+#line 121
+ testRunner.When("Select Payment Mode OpenEdge", ((string)(null)), table16, "When ");
+#line 129
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
