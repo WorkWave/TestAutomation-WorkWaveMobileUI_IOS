@@ -312,7 +312,13 @@ namespace WorkWave.Workwave.Mobile.Steps
                 char[] temp = new char[message.Length];
 
                 temp = message.ToCharArray();
-                paymentView.ClickCardNumberTextBox();
+                //paymentView.ClickCardNumberTextBox();
+                WorkwaveMobileSupport.TapTargetNoWait(200, 208);
+                while (!paymentView.VerifyDoneButtonLoaded(5))
+                {
+                    paymentView.ClickCardNumberTextBox();
+                }
+                System.TimeSpan.FromSeconds(60);
                 for (int i = 0; i < message.Length; i++)
                 {
                     result[i] = Convert.ToString(temp[i]);
@@ -349,6 +355,15 @@ namespace WorkWave.Workwave.Mobile.Steps
                 }
                 paymentView.VerifyViewLoadedByText(5, "Payment History");
 
+            }
+            else if ((WorkwaveData.Payments.Option).Equals("Visa - 0006 (12/25)"))
+            {
+                paymentView.SelectType(WorkwaveData.Payments.Option);
+                paymentView.ClickOnText("Done");
+                //paymentView.VerifyViewLoadedByText(5, Name);
+                paymentView.ClickOnText("Visa - 0006 (12/25)");
+                paymentView.ClickOnText("Done");
+                paymentView.ClickOnButton("Process");
             }
         }
 

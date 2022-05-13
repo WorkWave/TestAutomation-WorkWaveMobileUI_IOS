@@ -444,10 +444,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment,and Store Card → WorkWave Payments")]
-        public virtual void RecordCreditCardPaymentAndStoreCardWorkWavePayments()
+        [NUnit.Framework.DescriptionAttribute("Record Credit Card Payment,and Store Card,with Stored Card → WorkWave Payments")]
+        public virtual void RecordCreditCardPaymentAndStoreCardWithStoredCardWorkWavePayments()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment,and Store Card → WorkWave Payments", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Record Credit Card Payment,and Store Card,with Stored Card → WorkWave Payments", null, ((string[])(null)));
 #line 132
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -517,6 +517,34 @@ this.ScenarioInitialize(scenarioInfo);
 #line 148
  testRunner.When("Select Payment Mode WWP", ((string)(null)), table19, "When ");
 #line 156
+ testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 157
+ testRunner.Given("Payments Opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table20.AddRow(new string[] {
+                        "PaymentType",
+                        "Credit Card"});
+            table20.AddRow(new string[] {
+                        "PayTotalDue",
+                        "true"});
+            table20.AddRow(new string[] {
+                        "Option",
+                        "Visa - 0006 (12/25)"});
+            table20.AddRow(new string[] {
+                        "SaveOption",
+                        "Yes"});
+            table20.AddRow(new string[] {
+                        "CardNumber",
+                        "4895281000000006"});
+            table20.AddRow(new string[] {
+                        "CVV",
+                        "123"});
+#line 158
+ testRunner.When("Select Payment Mode WWP", ((string)(null)), table20, "When ");
+#line 166
  testRunner.Then("Verify Payment Made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
