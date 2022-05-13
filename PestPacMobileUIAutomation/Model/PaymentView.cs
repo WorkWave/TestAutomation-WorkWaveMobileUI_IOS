@@ -51,7 +51,7 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[@class='UIATextField'])[2]")]
         private IWebElement CVV_TextFieldTwo { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "(//*[@id='Card Number'])[2]")]
+        [FindsBy(How = How.XPath, Using = "(//*[@class='UIATextField'])[1]")]
         private IWebElement CardNumberTextField { get; set; }
 
         #endregion Page Factory

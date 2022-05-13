@@ -128,5 +128,19 @@ Scenario: Record Credit Card Payment,and Store Card,with Stored Card → OpenEdg
 	| CVV         | 123                 |
 	Then Verify Payment Made 
 
-	
-
+	#MOB-2964
+Scenario: Record Credit Card Payment → WorkWave Payments
+	Given Not Started Order Opened
+	| Field         | Value |
+	| DetailsNeeded | false |
+	When Navigate To Payment View
+	Given Payments Opened
+	When Select Payment Mode WWP
+	| Field       | Value              |
+	| PaymentType | Credit Card        |
+	| PayTotalDue | true               |
+	| Option      | Enter a new card.. |
+	| SaveOption  | No                 |
+	| CardNumber  | 4895281000000006   |
+	| CVV         | 123                |
+	Then Verify Payment Made 
