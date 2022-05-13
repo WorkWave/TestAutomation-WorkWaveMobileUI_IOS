@@ -68,7 +68,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Existing Note Selected")]
         public void WhenExistingNoteSelected()
         {
-            noteView.ClickOnText(WorkwaveData.Note.NoteText);
+            noteView.ClickOnContainsText(WorkwaveData.Note.NoteText);
         }
 
         [When(@"Users Tagged On Note")]
