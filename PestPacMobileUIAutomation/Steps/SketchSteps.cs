@@ -188,6 +188,7 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void ThenVerifySketchDeleted()
         {
             Console.WriteLine(SketchName);
+            System.TimeSpan.FromSeconds(30);
             Assert.True(sketchView.findElement(SketchName) == null);
         }
 

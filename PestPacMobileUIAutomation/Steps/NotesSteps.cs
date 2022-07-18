@@ -57,11 +57,15 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Note Exists")]
         public void ThenVerifyNoteExists()
         {
-            WorkwaveMobileSupport.SwipeDownIOS("NOTES");
-            if (noteView.VerifySeeAllViewLoaded(5))
-            {
-                noteView.ClickOnSeeAll();
-            }
+            noteView.ViewNotes();
+            //if (noteView.VerifySeeAllViewLoaded(5))
+            //{
+            //    noteView.ClickOnSeeAll();
+            //}
+            System.TimeSpan.FromSeconds(60);
+            noteView.ClickPlusIcon();
+            noteView.ClickClose();
+            System.TimeSpan.FromSeconds(60);
             Assert.True(noteView.VerifyViewLoadedByContainsText(5, WorkwaveData.Note.NoteText));
         }
 

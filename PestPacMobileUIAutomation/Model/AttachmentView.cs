@@ -33,7 +33,6 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Attachments:')])[1]/../..//*[@text='See All']")]
         private IWebElement AttachmentsSeeAllButton { get; set; }
 
-
         #endregion Page Factory
 
         #region Behavior
@@ -46,11 +45,8 @@ namespace WorkWave.Workwave.Mobile.Model
 
         public void ViewAttachments()
         {
-
             WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -1200, 1);
             System.TimeSpan.FromSeconds(10);
-
-
         }
 
         public bool VerifySeeAllViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(AttachmentsSeeAllButton), System.TimeSpan.FromSeconds(time));

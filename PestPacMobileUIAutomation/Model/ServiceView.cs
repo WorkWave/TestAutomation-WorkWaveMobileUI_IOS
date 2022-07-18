@@ -77,6 +77,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "SERVICES")]
         private IWebElement ServiceLabel { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Add Service']")]
+        private IWebElement AddServiceHeader { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -276,6 +279,7 @@ namespace WorkWave.Workwave.Mobile.Model
             WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
             System.TimeSpan.FromSeconds(10);
         }
+        public bool VerifyServicesPageLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(AddServiceHeader), System.TimeSpan.FromSeconds(time));
 
         #endregion Behavior
 

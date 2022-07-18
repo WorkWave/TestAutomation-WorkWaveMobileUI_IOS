@@ -193,6 +193,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         {
             WorkwaveData.Services = data.CreateInstance<Services>();
             serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
+            while (orderPageView.VerifyStartButtonLoaded(5))
+            {
+                serviceView.ClickOnArrowFollowingToText(WorkwaveData.Services.ServiceType);
+            }
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceType));
             serviceView.ClickMaterialButton();
         }
@@ -206,18 +210,18 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceMaterial);
             serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
 
-            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add "+ WorkwaveData.Services.ServiceMaterial));
+            Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Edit Material"));
             WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
             serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
 
-            serviceView.ClickOnStaticText("Add");
+            serviceView.ClickOnStaticText("Save");
 
         }
 
         [Then(@"Verify Material Exists")]
         public void ThenVerifyMaterialExists()
         {
-            //serviceView.ClickBack();
+            serviceView.ClickBack();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, WorkwaveData.Services.ServiceMaterial));
         }
 
@@ -228,8 +232,9 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.ClickOnStaticText(WorkwaveData.Services.ServiceMaterial);
             WorkwaveData.Services.ServiceMaterialQuantity = WorkwaveMobileSupport.RandomInt(5);
             serviceView.EnterMaterialQuantity(WorkwaveData.Services.ServiceMaterialQuantity);
+            System.TimeSpan.FromSeconds(60);
             serviceView.ClickOnStaticText("Save");
-
+            System.TimeSpan.FromSeconds(60);
         }
 
         [Then(@"Verify Material Edited")]
@@ -437,7 +442,10 @@ namespace WorkWave.Workwave.Mobile.Steps
             serviceView.ClickPlusIcon();
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add"));
             serviceView.ClickOnStaticText("Services");
-            System.TimeSpan.FromSeconds(60);
+            while (!serviceView.VerifyServicesPageLoaded(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
             Assert.True(serviceView.VerifyViewLoadedByHeader(5, "Add Service"));
             serviceView.EnterTextOnCommonField(WorkwaveData.Services.ServiceType);
             serviceView.ClickOnText(WorkwaveData.Services.ServiceType);
@@ -516,6 +524,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Employee Signature Tab added")]
         public void WhenEmployeeSignatureTabAdded()
         {
+            while(!orderPageView.VerifyStartButtonLoaded(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }          
             Assert.True(orderPageView.VerifyViewLoadedByText(5, "EMPLOYEE SIGNATURE"));
         }
 

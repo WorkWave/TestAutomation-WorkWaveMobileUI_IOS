@@ -27,6 +27,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         public void WhenFormAdded(Table data)
         {
             WorkwaveData.Form = data.CreateInstance<Form>();
+            while (!orderPageView.VerifyStartButtonLoaded(5))
+            {
+                System.TimeSpan.FromSeconds(60);
+            }
             formView.ClickPlusIcon();
             System.TimeSpan.FromSeconds(60);
             Assert.True(formView.VerifyViewLoadedByHeader(5, "Add"));
@@ -91,6 +95,17 @@ namespace WorkWave.Workwave.Mobile.Steps
             //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
             //System.TimeSpan.FromSeconds(30);
             formView.ViewForms();
+            
+            if (!formView.VerifyCompletedFormLableVisible(5))
+            {
+                WorkwaveMobileSupport.SwipeUpIOS("FORMS");
+                System.TimeSpan.FromSeconds(30);
+            }
+            if (!formView.VerifyCompletedFormLableVisible(5))
+            {
+                WorkwaveMobileSupport.SwipeDownIOS("FORMS");
+                System.TimeSpan.FromSeconds(30);
+            }
             Assert.True( formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByText(5, "Complete"));
             formView.ClickOnContainsText(FormType);
@@ -119,11 +134,18 @@ namespace WorkWave.Workwave.Mobile.Steps
         [Then(@"Verify Form Drafted")]
         public void ThenVerifyFormDrafted()
         {
-            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            //System.TimeSpan.FromSeconds(30);
-            //WorkwaveMobileSupport.SwipeDownIOS("PAYMENTS");
-            //System.TimeSpan.FromSeconds(30);
             formView.ViewForms();
+
+            if (!formView.VerifyCompletedFormLableVisible(5))
+            {
+                WorkwaveMobileSupport.SwipeUpIOS("FORMS");
+                System.TimeSpan.FromSeconds(30);
+            }
+            if (!formView.VerifyCompletedFormLableVisible(5))
+            {
+                WorkwaveMobileSupport.SwipeDownIOS("FORMS");
+                System.TimeSpan.FromSeconds(30);
+            }
             Assert.True(formView.VerifyViewLoadedByContainsText(5, WorkwaveData.Form.FormType));
             Assert.True(formView.VerifyViewLoadedByText(5, "Draft"));
         }
@@ -337,6 +359,10 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Draft Form Delete")]
         public void WhenDraftFormDelete()
         {
+            while (!orderPageView.VerifyStartButtonLoaded(5))
+            {
+                System.TimeSpan.FromSeconds(30);
+            }
             formView.ClickFormSeeAllButton();
             FormName = formView.getDraftedFormName();
             formView.DeleteForm(FormName);
@@ -458,6 +484,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             formView.ClickOnStaticText("Start");
             WorkwaveData.Form.Text = WorkwaveMobileSupport.generateRandomString(10);
             Text = WorkwaveData.Form.Text;
+            System.TimeSpan.FromSeconds(30);
             formView.EnterTextToCommonField(WorkwaveData.Form.Text, WorkwaveData.Form.FieldName);
             formView.ClickOnText("Given Name:");
         }

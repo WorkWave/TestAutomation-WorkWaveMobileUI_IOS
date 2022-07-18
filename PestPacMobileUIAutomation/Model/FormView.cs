@@ -127,6 +127,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.Id, Using = "SketchArrowLeftSmallBlue")]
         private IWebElement ExpandLeftButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[contains(text(),'Completed Forms')])[1]")]
+        private IWebElement CompletedFormLable { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -318,6 +321,9 @@ namespace WorkWave.Workwave.Mobile.Model
         public bool VerifyClearAllButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ClearAllButton), System.TimeSpan.FromSeconds(time));
 
         public void ClickLeftExpandButton() => ExpandLeftButton.Click();
+
+        public bool VerifyCompletedFormLableVisible(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(CompletedFormLable), System.TimeSpan.FromSeconds(time));
+
         #endregion Behavior
     }
 }

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[contains(@text,'Notes:')])[1]/../..//*[@text='See All']")]
         private IWebElement NotesSeeAllButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//*[@class='UIAImage'])[2]")]
+        private IWebElement CloseButton { get; set; }
+
 
         #endregion Page Factory
 
@@ -48,6 +52,15 @@ namespace WorkWave.Workwave.Mobile.Model
         public bool VerifySeeAllViewLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(NotesSeeAllButton), System.TimeSpan.FromSeconds(time));
 
         public void ClickOnSeeAll() => NotesSeeAllButton.Click();
+
+        public void ViewNotes()
+        {
+
+            WorkwaveMobileSupport.SwipeIOSUsingCoordinates(((AppiumDriver<IWebElement>)WebApplication.Instance.WebDriver), 0, 192, 5, -500, 1);
+            System.TimeSpan.FromSeconds(10);
+        }
+
+        public void ClickClose() => CloseButton.Click();
 
         #endregion Behavior
 

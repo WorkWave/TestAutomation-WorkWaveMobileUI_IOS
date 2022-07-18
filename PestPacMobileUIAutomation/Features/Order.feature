@@ -68,7 +68,7 @@ Scenario: Update Service Location Custom Text,Date,Check Box,Quantity,Drop-Down,
 	| CustomFieldType | Date  |
 	#Then Verify Custom Field Edited
 
-	#MOB-3050,MOB-3048,MOB-3047,MOB-3045,MOB-3043,MOB-3042,MOB-3041
+	#MOB-3050,MOB-3047,MOB-3045,MOB-3043,MOB-3042,MOB-3041
 Scenario: Update Work Order Custom Text,Date,Check Box,Quantity,Drop-Down Field
 	Given Viewing Work Order Custom Fields
 	| Field         | Value |

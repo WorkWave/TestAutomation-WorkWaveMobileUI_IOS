@@ -3,6 +3,12 @@ Feature: Payments
 
 	#MOB-2963
 Scenario: Cash Payment
+	Given Logged Out
+	When I Login
+	| Field    | Value                    |
+	| Email    | mdelgoda+qa@workwave.com |
+	| Password | WorkWave1!               |
+	Then Verify logged in
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -17,6 +23,12 @@ Scenario: Cash Payment
 
 	#MOB-2960
 Scenario: Check Payment
+	Given Logged Out
+	When I Login
+	| Field    | Value                    |
+	| Email    | mdelgoda+qa@workwave.com |
+	| Password | WorkWave1!               |
+	Then Verify logged in
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -30,7 +42,13 @@ Scenario: Check Payment
 	Then Verify Payment Made
 
 	#MOB-2956
-Scenario: Credit Card Payment
+Scenario: Credit Card Payment → No Payment Processor
+	Given Logged Out
+	When I Login
+	| Field    | Value                    |
+	| Email    | mdelgoda+qa@workwave.com |
+	| Password | WorkWave1!               |
+	Then Verify logged in
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -43,8 +61,14 @@ Scenario: Credit Card Payment
 	When Process Payment
 	Then Verify Payment Made
 
-	#MOB-2955
-Scenario: Record Credit Card Payment → Vantiv
+	#MOB-2955,MOB-2967,MOB-2968
+Scenario: Record Credit Card Payment,and Store Card,with Stored Card → Vantiv
+	Given Logged Out
+	When I Login
+	| Field    | Value                      |
+	| Email    | mdelgoda+emp5@workwave.com |
+	| Password | WorkWave1!                 |
+	Then Verify logged in
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
@@ -57,14 +81,8 @@ Scenario: Record Credit Card Payment → Vantiv
 	| Option      | Enter a new card.. |
 	| SaveOption  | No                 |
 	| CardNumber  | 5610591081018250   |
+	| CVV         | 1234               |
 	Then Verify Payment Made
-
-	#MOB-2967,MOB-2968
-Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Card Payment with Stored Card → Vantiv
-	Given Not Started Order Opened
-	| Field         | Value |
-	| DetailsNeeded | false |
-	When Navigate To Payment View
 	Given Payments Opened
 	When Select Payment Mode 
 	| Field       | Value              |
@@ -73,6 +91,7 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Car
 	| Option      | Enter a new card.. |
 	| SaveOption  | Yes                |
 	| CardNumber  | 4111111111111111   |
+	| CVV         | 1234               |
 	Then Verify Payment Made	
 	Given Payments Opened
 	When Select Payment Mode 
@@ -84,6 +103,7 @@ Scenario: Record Credit Card Payment and Store Card → Vantiv,Record Credit Car
 	| CardNumber  | 4111111111111111    |
 	| CVV         | 1234                |
 	Then Verify Payment Made
+	
 
 	#MOB-2965,MOB-2966,MOB-2962
 Scenario: Record Credit Card Payment,and Store Card,with Stored Card → OpenEdge
@@ -130,6 +150,12 @@ Scenario: Record Credit Card Payment,and Store Card,with Stored Card → OpenEdg
 
 	#MOB-2964
 Scenario: Record Credit Card Payment,and Store Card,with Stored Card → WorkWave Payments
+	Given Logged Out
+	When I Login
+	| Field    | Value                      |
+	| Email    | mdelgoda+emp2@workwave.com |
+	| Password | WorkWave1!                 |
+	Then Verify logged in
 	Given Not Started Order Opened
 	| Field         | Value |
 	| DetailsNeeded | false |
