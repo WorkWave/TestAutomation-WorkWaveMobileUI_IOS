@@ -54,6 +54,9 @@ namespace WorkWave.Workwave.Mobile.Model
         [FindsBy(How = How.XPath, Using = "(//*[@class='UIATextField'])[1]")]
         private IWebElement CardNumberTextField { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeStaticText[@text='Continue']")]
+        private IWebElement ContinueButtton { get; set; }
+
         #endregion Page Factory
 
         #region Behavior
@@ -117,6 +120,9 @@ namespace WorkWave.Workwave.Mobile.Model
             CardNumberTextField.SendKeys(name);
             //WorkwaveMobileSupport.HideKeyboard();
         }
+        public bool VerifyContinueButtonLoaded(int time) => SeleniumUtility.WaitFor(CustomExpectedConditions.ElementIsVisible(ContinueButtton), System.TimeSpan.FromSeconds(time));
+
+        public void ClickContinueButton() => ContinueButtton.Click();
 
         #endregion Behavior
 
