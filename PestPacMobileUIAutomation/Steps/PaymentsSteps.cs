@@ -83,7 +83,8 @@ namespace WorkWave.Workwave.Mobile.Steps
         [When(@"Process Payment")]
         public void WhenProcessPayment()
         {
-            paymentView.ClickOnButton("Process");
+            // paymentView.ClickOnButton("Process");
+            WorkwaveMobileSupport.TapTargetNoWait(553, 1644);
             System.TimeSpan.FromSeconds(60);
             paymentView.VerifyViewLoadedByText(5, "Payment History");
             System.TimeSpan.FromSeconds(60);
@@ -119,7 +120,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
             else
             {
-                WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
+                //WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
                 paymentView.EnterAmount(WorkwaveData.Payments.PaymentAmount);
                 WorkwaveData.Payments.PaymentAmount = "$" + WorkwaveData.Payments.PaymentAmount;
             }
@@ -133,7 +134,15 @@ namespace WorkWave.Workwave.Mobile.Steps
                 paymentView.ClickOnText(WorkwaveData.Payments.Option);
                 paymentView.ClickOnText(WorkwaveData.Payments.SaveOption);
                 paymentView.ClickOnText("Done");
-                paymentView.ClickOnButton("Process");
+                if (paymentView.VerifyContinueButtonLoaded(5))
+                {
+                    paymentView.ClickContinueButton();
+                }
+                else
+                {
+                    paymentView.ClickOnButton("Process");
+                }
+               
                 System.TimeSpan.FromSeconds(60);
                 while (!paymentView.VerifyAddNewCardViewLoaded(5))
                 {
@@ -194,7 +203,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
             else
             {
-                WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
+                //WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
                 paymentView.EnterAmount(WorkwaveData.Payments.PaymentAmount);
                 WorkwaveData.Payments.PaymentAmount = "$" + WorkwaveData.Payments.PaymentAmount;
             }
@@ -208,7 +217,7 @@ namespace WorkWave.Workwave.Mobile.Steps
                 paymentView.ClickOnText(WorkwaveData.Payments.Option);
                 paymentView.ClickOnText(WorkwaveData.Payments.SaveOption);
                 paymentView.ClickOnText("Done");
-                paymentView.ClickOnButton("Process");
+                paymentView.ClickOnButton("Continue");
                 System.TimeSpan.FromSeconds(60);
                 while (!paymentView.VerifyAddNewCardViewLoaded(5))
                 {
@@ -285,7 +294,7 @@ namespace WorkWave.Workwave.Mobile.Steps
             }
             else
             {
-                WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
+                //WorkwaveData.Payments.PaymentAmount = WorkwaveMobileSupport.RandomDouble(2);
                 paymentView.EnterAmount(WorkwaveData.Payments.PaymentAmount);
                 WorkwaveData.Payments.PaymentAmount = "$" + WorkwaveData.Payments.PaymentAmount;
             }
@@ -299,7 +308,8 @@ namespace WorkWave.Workwave.Mobile.Steps
                 paymentView.ClickOnText(WorkwaveData.Payments.Option);
                 paymentView.ClickOnText(WorkwaveData.Payments.SaveOption);
                 paymentView.ClickOnText("Done");
-                paymentView.ClickOnButton("Process");
+                //paymentView.ClickOnButton("Continue");
+                WorkwaveMobileSupport.TapTargetNoWait(553, 1644);
                 System.TimeSpan.FromSeconds(60);
                 while (!paymentView.VerifyAddNewCardViewLoaded(5))
                 {

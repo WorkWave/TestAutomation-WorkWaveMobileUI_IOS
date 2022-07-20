@@ -75,33 +75,36 @@ Scenario: Record Credit Card Payment,and Store Card,with Stored Card → Vantiv
 	When Navigate To Payment View
 	Given Payments Opened
 	When Select Payment Mode 
-	| Field       | Value              |
-	| PaymentType | Credit Card        |
-	| PayTotalDue | true               |
-	| Option      | Enter a new card.. |
-	| SaveOption  | No                 |
-	| CardNumber  | 5610591081018250   |
-	| CVV         | 1234               |
+	| Field         | Value              |
+	| PaymentType   | Credit Card        |
+	| PayTotalDue   | true               |
+	| Option        | Enter a new card.. |
+	| SaveOption    | No                 |
+	| CardNumber    | 6011000990139424   |
+	| CVV           | 1234               |
+	| PaymentAmount | 1.00               |
 	Then Verify Payment Made
 	Given Payments Opened
 	When Select Payment Mode 
-	| Field       | Value              |
-	| PaymentType | Credit Card        |
-	| PayTotalDue | true               |
-	| Option      | Enter a new card.. |
-	| SaveOption  | Yes                |
-	| CardNumber  | 4111111111111111   |
-	| CVV         | 1234               |
+	| Field         | Value              |
+	| PaymentType   | Credit Card        |
+	| PayTotalDue   | true               |
+	| Option        | Enter a new card.. |
+	| SaveOption    | Yes                |
+	| CardNumber    | 6011000990139424   |
+	| CVV           | 1234               |
+	| PaymentAmount | 1.00               |
 	Then Verify Payment Made	
 	Given Payments Opened
 	When Select Payment Mode 
-	| Field       | Value               |
-	| PaymentType | Credit Card         |
-	| PayTotalDue | true                |
-	| Option      | Visa - 1111 (12/25) |
-	| SaveOption  | Yes                 |
-	| CardNumber  | 4111111111111111    |
-	| CVV         | 1234                |
+	| Field         | Value               |
+	| PaymentType   | Credit Card         |
+	| PayTotalDue   | true                |
+	| Option        | Visa - 1111 (12/25) |
+	| SaveOption    | Yes                 |
+	| CardNumber    | 6011000990139424    |
+	| CVV           | 1234                |
+	| PaymentAmount | 1.00                |
 	Then Verify Payment Made
 	
 
@@ -119,33 +122,36 @@ Scenario: Record Credit Card Payment,and Store Card,with Stored Card → OpenEdg
 	When Navigate To Payment View
 	Given Payments Opened
 	When Select Payment Mode OpenEdge
-	| Field       | Value              |
-	| PaymentType | Credit Card        |
-	| PayTotalDue | true               |
-	| Option      | Enter a new card.. |
-	| SaveOption  | No                 |
-	| CardNumber  | 4761739001010010   |
-	| CVV         | 123                |
+	| Field         | Value              |
+	| PaymentType   | Credit Card        |
+	| PayTotalDue   | true               |
+	| Option        | Enter a new card.. |
+	| SaveOption    | No                 |
+	| CardNumber    | 5413330089604111   |
+	| CVV           | 123                |
+	| PaymentAmount | 13.17              |
 	Then Verify Payment Made 
 	Given Payments Opened
 	When Select Payment Mode OpenEdge
-	| Field       | Value              |
-	| PaymentType | Credit Card        |
-	| PayTotalDue | true               |
-	| Option      | Enter a new card.. |
-	| SaveOption  | Yes                |
-	| CardNumber  | 4761739001010010   |
-	| CVV         | 123                |
+	| Field         | Value              |
+	| PaymentType   | Credit Card        |
+	| PayTotalDue   | true               |
+	| Option        | Enter a new card.. |
+	| SaveOption    | Yes                |
+	| CardNumber    | 5413330089604111   |
+	| CVV           | 123                |
+	| PaymentAmount | 13.17              |
 	Then Verify Payment Made 
 	Given Payments Opened
 	When Select Payment Mode OpenEdge
-	| Field       | Value               |
-	| PaymentType | Credit Card         |
-	| PayTotalDue | true                |
-	| Option      | Visa - 0010 (12/25) |
-	| SaveOption  | Yes                 |
-	| CardNumber  | 4761739001010010    |
-	| CVV         | 123                 |
+	| Field         | Value               |
+	| PaymentType   | Credit Card         |
+	| PayTotalDue   | true                |
+	| Option        | Visa - 0010 (12/25) |
+	| SaveOption    | Yes                 |
+	| CardNumber    | 5413330089604111    |
+	| CVV           | 123                 |
+	| PaymentAmount | 13.17               |
 	Then Verify Payment Made 
 
 	#MOB-2964
@@ -162,31 +168,34 @@ Scenario: Record Credit Card Payment,and Store Card,with Stored Card → WorkWav
 	When Navigate To Payment View
 	Given Payments Opened
 	When Select Payment Mode WWP
-	| Field       | Value              |
-	| PaymentType | Credit Card        |
-	| PayTotalDue | true               |
-	| Option      | Enter a new card.. |
-	| SaveOption  | No                 |
-	| CardNumber  | 4895281000000006   |
-	| CVV         | 123                |
+	| Field         | Value              |
+	| PaymentType   | Credit Card        |
+	| PayTotalDue   | true               |
+	| Option        | Enter a new card.. |
+	| SaveOption    | No                 |
+	| CardNumber    | 5413330089010681   |
+	| CVV           | 123                |
+	| PaymentAmount | 43.17              |
 	Then Verify Payment Made 
 	Given Payments Opened
 	When Select Payment Mode WWP
-	| Field       | Value              |
-	| PaymentType | Credit Card        |
-	| PayTotalDue | true               |
-	| Option      | Enter a new card.. |
-	| SaveOption  | Yes                |
-	| CardNumber  | 4895281000000006   |
-	| CVV         | 123                |
+	| Field         | Value              |
+	| PaymentType   | Credit Card        |
+	| PayTotalDue   | true               |
+	| Option        | Enter a new card.. |
+	| SaveOption    | Yes                |
+	| CardNumber    | 5413330089010681   |
+	| CVV           | 123                |
+	| PaymentAmount | 43.17              |
 	Then Verify Payment Made
 	Given Payments Opened
 	When Select Payment Mode WWP
-	| Field       | Value               |
-	| PaymentType | Credit Card         |
-	| PayTotalDue | true                |
-	| Option      | Visa - 0006 (12/25) |
-	| SaveOption  | Yes                 |
-	| CardNumber  | 4895281000000006    |
-	| CVV         | 123                 |
+	| Field         | Value               |
+	| PaymentType   | Credit Card         |
+	| PayTotalDue   | true                |
+	| Option        | Visa - 0006 (12/25) |
+	| SaveOption    | Yes                 |
+	| CardNumber    | 5413330089010681    |
+	| CVV           | 123                 |
+	| PaymentAmount | 43.17               |
 	Then Verify Payment Made 
